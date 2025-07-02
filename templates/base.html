@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ _("Anifou") }}{% endblock %}</title>
+
+  <!-- Inter Font von Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Eigenes Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    /* Burger Icon */
+    .burger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 1rem;
+      position: fixed;
+      top: 0.5rem;
+      left: 1rem;
+      z-index: 1001;
+    }
+
+    /* Menü standardmäßig ausblenden (mobil) */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      background: white;
+      position: absolute;
+      top: 3.5rem;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-top: 1px solid #ddd;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    /* Mobilansicht aktivieren */
+    @media (max-width: 768px) {
+      .burger {
+        display: block;
+      }
+      nav ul.navbar {
+        flex-direction: column;
+      }
+    }
+
+    /* Desktop Menü */
+    @media (min-width: 769px) {
+      .burger {
+        display: none;
+      }
+      .mobile-menu {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        position: static;
+        background: none;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Burger-Menü nur mobil -->
+<div class="burger" id="burger">&#9776;</div>
+
+<!-- Navigation -->
+<nav class="main-nav">
+  <ul class="navbar mobile-menu" id="mobileMenu">
+    <li><a href="{{ url_for('index', lang=get_locale()) }}">{{ _("Fouani") }}</a></li>
+
+    <li class="dropdown">
+      <button class="dropdown-toggle">{{ _("Projekte") }}</button>
+      <ul class="dropdown-content">
+        <li><a href="{{ url_for('projekt', projektname='drei_komma_5', lang=get_locale()) }}">–3.5</a></li>
+        <li><a href="{{ url_for('projekt', projektname='plastic_vs_profit', lang=get_locale()) }}">{{ _("Life In Plastic") }}</a></li>
+        <li><a href="{{ url_for('projekt', projektname='how_the_internet_feels', lang=get_locale()) }}">{{ _("HTIF") }}</a></li>
+      </ul>
+    </li>
+
+    <li><a href="{{ url_for('kontakt', lang=get_locale()) }}">{{ _("Kontakt") }}</a></li>
+
+    <li class="language-switch">
+      <a href="{{ request.path }}?lang=de" {% if get_locale() == 'de' %}class="active"{% endif %}>DE</a> |
+      <a href="{{ request.path }}?lang=en" {% if get_locale() == 'en' %}class="active"{% endif %}>EN</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Hauptinhalt -->
+<main>
+  <div class="page-wrapper">
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+<!-- JS für Dropdowns & Burger -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Dropdown
+    const dropdowns = document.querySelectorAll(".dropdown");
+
+    dropdowns.forEach(dropdown => {
+      const toggle = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-content");
+
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelectorAll(".dropdown-content").forEach(m => {
+          if (m !== menu) m.style.display = "none";
+        });
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      });
+
+      dropdown.addEventListener("mouseleave", function () {
+        menu.style.display = "none";
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown-content").forEach(menu => {
+          menu.style.display = "none";
+        });
+      }
+    });
+
+    // Burger Menü Toggle
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    burger?.addEventListener("click", function () {
+      mobileMenu?.classList.toggle("active");
+    });
+  });
+</script>
+
+</body>
+</html>

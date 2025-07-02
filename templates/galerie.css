@@ -1,0 +1,370 @@
+/* Grundlayout */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  color: #111;
+}
+
+/* Container für Bild und Text */
+.explore-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 40px;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Optional: individuelles Padding für bestimmte Werke */
+.explore-container.beirut {
+  padding-top: 40px;
+}
+.explore-container.delphi {
+  padding-top: 100px;
+}
+.explore-container.rio {
+  padding-top: 40px;
+}
+/* Weitere Beispiele */
+.explore-container.demo {
+  padding-top: 60px;
+}
+.explore-container.gibran {
+  padding-top: 60px;
+}
+.explore-container.byblos {
+  padding-top: 60px;
+}
+.explore-container.urbanamazonas {
+  padding-top: 60px;
+}
+.explore-container.2brothers {
+  padding-top: 60px;
+}
+
+/* Bildblock */
+.image-block {
+  width: 100%;
+  max-width: 500px;      /* Fixiere die maximale Breite */
+  aspect-ratio: 4 / 3;   /* Einheitliches Seitenverhältnis für Container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image-block img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* Bild proportional skalieren, ohne Verzerrung */
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+}
+
+
+
+
+/* -------------------------- */
+/* Infotextblock – kompakt   */
+/* -------------------------- */
+.info-block {
+  max-width: 500px;
+  font-family: 'Inter', sans-serif;
+}
+
+.info-block h1 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.info-block p {
+  font-size: 0.83rem;
+  line-height: 1.2;       /* 👈 Noch kompakter */
+  margin-bottom: 0.1rem;   /* 👈 Minimaler Abstand */
+  font-weight: 300;
+  color: #333;
+}
+
+
+.info-block p strong {
+  font-weight: 500;
+  color: #111;
+}
+
+.info-block a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-decoration: underline;
+  color: #222;
+  margin-top: 0.6rem;
+  display: inline-block;
+}
+
+
+/* Fixierter Zurück-zur-Galerie-Button */
+.fixed-back-button {
+  position: fixed;
+  bottom: 20px;       /* Abstand vom unteren Rand */
+  right: 20px;        /* Abstand vom rechten Rand */
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #000;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  text-decoration: underline;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s;
+}
+.fixed-back-button:hover {
+  background-color: #eee;
+}
+
+
+/* Pfeilnavigation ← → */
+/* Neue Klasse für zentrierte Pfeile unter Galerie */
+.arrow-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;       /* Abstand zwischen den Pfeilen */
+  margin-top: 20px; /* Abstand nach oben */
+}
+
+.arrow-navigation button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #222;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.arrow-navigation button:hover {
+  color: #666;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;  /* Zentriert die Pfeile horizontal */
+  gap: 40px;
+  margin-top: 20px;         /* Abstand nach oben (zum Content) */
+  z-index: 2;
+  width: auto;
+  max-width: none;
+}
+
+
+.nav-buttons button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  font-size: 36px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: normal;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-buttons button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* -------------------------- */
+/* Responsive Tweaks (<=768px) */
+/* -------------------------- */
+@media (max-width: 768px) {
+  .explore-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 1rem;
+    gap: 20px;
+  }
+  .image-block,
+  .info-block {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  .info-block h1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .info-block p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .info-block a {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .arrow-navigation {
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .nav-buttons {
+    gap: 20px;
+    margin-top: 1rem;
+  }
+  .nav-buttons button {
+    font-size: 28px;
+    width: 48px;
+    height: 48px;
+  }
+  .fixed-back-button {
+    position: static;
+    display: block;
+    margin: 2rem auto 0 auto;
+    text-align: center;
+    font-size: 0.85rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .fixed-back-button:hover {
+    background: none;
+    text-decoration: underline;
+  }
+}
+/* -------------------------- */
+/* Projekt 3.5 – Desktop-Stil */
+/* -------------------------- */
+.project .info-block {
+  text-align: left;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  padding: 0 0.5rem;
+}
+
+.project .info-block h1 {
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+
+/* ----------------------------------------- */
+/* Mobile Optimierung ≤768px (Tablet & Handy) */
+/* ----------------------------------------- */
+@media (max-width: 768px) {
+  .explore-container {
+    padding: 30px 1rem;
+    gap: 20px;
+  }
+
+  .image-block {
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+
+  .info-block {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .info-block h1 {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .info-block p {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+
+  .info-block a {
+    font-size: 0.75rem;
+    margin-top: 0.8rem;
+  }
+
+  .nav-buttons {
+    gap: 16px;
+    margin-top: 1.2rem;
+  }
+
+  .nav-buttons button {
+    font-size: 22px;
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+  }
+
+  .fixed-back-button {
+    font-size: 0.75rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+}
+
+
+/* ----------------------------------------------- */
+/* Extra Fein: Mobile Galerie-Detailansicht ≤480px */
+/* ----------------------------------------------- */
+@media (max-width: 480px) {
+  .info-block p {
+    font-size: 0.68rem;
+    line-height: 1.1;         /* 👈 dichterer Zeilenabstand */
+    margin-bottom: 0.0rem;    /* 👈 weniger Abstand zwischen Blöcken */
+  }
+
+  .info-block h1 {
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+
+  .info-block a {
+    font-size: 0.7rem;
+    margin-top: 0.6rem;
+  }
+}
+
+
+
+  .arrow-navigation {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .nav-buttons {
+    gap: 12px;
+    margin-top: 1rem;
+  }
+
+  .nav-buttons button {
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
+  .fixed-back-button {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    opacity: 0.8;
+    text-align: center;
+  }
+}
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ _("–3.5 Simulation") }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+  /* Desktop Back-Link fixiert oben rechts */
+  .back-link {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    background: none;
+    padding: 0;
+    z-index: 1000;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Pfeil Buttons */
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 1.5rem;
+  }
+
+  .arrow-btn {
+    font-size: 1.8rem;
+    padding: 0.3rem 0.6rem;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: color 0.3s ease;
+    color: #000;
+  }
+
+  .arrow-btn:hover {
+    color: #e91e63;
+  }
+
+  /* Galerie-Link */
+  .gallery-link {
+    margin-top: 2rem;
+    text-align: right;
+  }
+
+  .gallery-link a {
+    font-weight: bold;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    color: #000;
+    text-decoration: none;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .gallery-link a:hover {
+    color: #e91e63;
+    text-decoration: underline;
+  }
+
+  /* Simulation Image */
+  .sim-img {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    margin-top: 1.5rem;
+  }
+
+  /* Slider Container */
+  #stage-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  #stage {
+    width: 100%;
+    height: 60px;
+    display: block;
+  }
+
+  /* Mobile Anpassungen */
+  @media (max-width: 768px) {
+    .back-link {
+      position: static;
+      display: block;
+      margin: 1rem auto;
+      font-size: 0.75rem;
+      text-align: center;
+      color: #444;
+      padding: 0.2rem 0;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.9;
+      background: none;
+    }
+
+    .back-link:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    .controls {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem auto 0 auto;
+      max-width: none;
+    }
+
+    .arrow-btn {
+      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+    }
+
+    .gallery-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .sim-img {
+      max-height: 280px;
+      margin-top: 1rem;
+    }
+
+    #stage-container {
+      padding: 0 1rem;
+    }
+
+    /* Titel kleiner darstellen */
+    .sim-container h1 {
+      font-size: 1rem !important;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Extra kleinere mobile Geräte */
+  @media (max-width: 480px) {
+    .back-link {
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    .arrow-btn {
+      font-size: 1.2rem;
+      width: 40px;
+      height: 40px;
+    }
+
+    .sim-img {
+      max-height: 260px;
+    }
+
+    .gallery-link a {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+  <!-- Zurück-Link -->
+  <a href="{{ url_for('index', lang=get_locale()) }}" class="back-link">
+    {{ _("Zurück") }}
+  </a>
+
+  <div class="logo-screen" id="logoScreen">
+    <img src="{{ url_for('static', filename='projects/drei_komma_5/img/logos/-3.5_LOGO.png') }}" alt="{{ _('Projektlogo') }}" />
+  </div>
+
+  <div class="sim-container hidden" id="simContent">
+    <h1>{{ _("How I See – Myopie-Simulation (0 bis –3.5 dpt)") }}</h1>
+
+    <img id="myopieImage"
+         src="{{ url_for('static', filename='projects/drei_komma_5/img/simulation/Hand/desktop/sim_IMG_8001_prep_for_sim_0.0dpt_16bit.jpg') }}"
+         class="sim-img"
+         alt="{{ _('Simulationsbild') }}" />
+
+    <div class="controls">
+      <button id="prevBtn" class="arrow-btn" aria-label="{{ _('Vorheriges Projekt') }}">&#8592;</button>
+
+      <!-- SVG Slider -->
+      <div id="stage-container">
+        <div class="progress">
+          <span id="progress-value">0.0</span> dpt
+        </div>
+        <svg id="stage" viewBox="0 0 600 60" role="slider"
+             aria-valuemin="0" aria-valuemax="3.5" aria-valuenow="0"
+             aria-label="{{ _('Regler für Myopie-Grad') }}">
+          <g id="slider-group">
+            <rect id="slider-inner" x="0" y="0" width="600" height="60" fill="none" />
+            <g id="track-group">
+              <rect id="track-inner" x="20" y="30" width="560" height="6" rx="3" ry="3" fill="#ddd" />
+              <rect id="track-fill" x="20" y="30" width="0" height="6" rx="3" ry="3" fill="#e91e63" />
+            </g>
+            <g id="handle-group">
+              <circle id="handle-inner" cx="20" cy="33" r="12" fill="#e91e63" stroke="white" stroke-width="2" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <button id="nextBtn" class="arrow-btn" aria-label="{{ _('Nächstes Projekt') }}">&#8594;</button>
+    </div>
+
+    <div class="gallery-link">
+      <a href="{{ url_for('galerie', lang=get_locale()) }}">{{ _("Galerie") }}</a>
+    </div>
+  </div>
+
+<script>
+  const image = document.getElementById("myopieImage");
+  const progressText = document.getElementById("progress-value");
+  const handle = document.getElementById("handle-inner");
+  const trackFill = document.getElementById("track-fill");
+  const svg = document.getElementById("stage");
+
+  const steps = ["0.0", "0.5", "1.0", "1.5", "2.0", "2.5", "3.0", "3.5"];
+  const folders = ["Delphi", "Gibran", "Hand"];
+  const imageIds = {
+    "Delphi": "1359",
+    "Gibran": "1459",
+    "Hand": "8001"
+  };
+  let currentFolderIndex = 2; // Start bei "Hand"
+  let currentStep = 0;
+
+  const trackStart = 20;
+  const trackEnd = 580;
+  const stepCount = steps.length;
+  const stepWidth = (trackEnd - trackStart) / (stepCount - 1);
+
+  function updateVisual() {
+    const cx = trackStart + currentStep * stepWidth;
+    handle.setAttribute("cx", cx);
+    trackFill.setAttribute("width", cx - trackStart);
+    progressText.textContent = steps[currentStep] === "0.0" ? "0.0" : `–${steps[currentStep]}`;
+
+
+    const folder = folders[currentFolderIndex];
+    const val = steps[currentStep];
+    const id = imageIds[folder];
+    image.src = `/static/projects/drei_komma_5/img/simulation/${folder}/desktop/sim_IMG_${id}_prep_for_sim_${val}dpt_16bit.jpg`;
+  }
+
+  function getMouseX(e) {
+    const pt = svg.createSVGPoint();
+    pt.x = e.clientX;
+    pt.y = e.clientY;
+    return pt.matrixTransform(svg.getScreenCTM().inverse()).x;
+  }
+
+  function getTouchX(e) {
+    const pt = svg.createSVGPoint();
+    pt.x = e.touches[0].clientX;
+    pt.y = e.touches[0].clientY;
+    return pt.matrixTransform(svg.getScreenCTM().inverse()).x;
+  }
+
+  svg.addEventListener("click", e => {
+    const x = Math.max(trackStart, Math.min(getMouseX(e), trackEnd));
+    currentStep = Math.round((x - trackStart) / (trackEnd - trackStart) * (stepCount - 1));
+    updateVisual();
+  });
+
+  let dragging = false;
+
+  // Maus Drag
+  handle.addEventListener("mousedown", e => { e.preventDefault(); dragging = true; });
+  window.addEventListener("mouseup", () => dragging = false);
+  window.addEventListener("mousemove", e => {
+    if (!dragging) return;
+    const x = Math.max(trackStart, Math.min(getMouseX(e), trackEnd));
+    const newIndex = Math.round((x - trackStart) / (trackEnd - trackStart) * (stepCount - 1));
+    if (newIndex !== currentStep) {
+      currentStep = newIndex;
+      updateVisual();
+    }
+  });
+
+  // Touch Drag
+  handle.addEventListener("touchstart", e => { e.preventDefault(); dragging = true; });
+  window.addEventListener("touchend", () => dragging = false);
+  window.addEventListener("touchcancel", () => dragging = false);
+  window.addEventListener("touchmove", e => {
+    if (!dragging) return;
+    const x = Math.max(trackStart, Math.min(getTouchX(e), trackEnd));
+    const newIndex = Math.round((x - trackStart) / (trackEnd - trackStart) * (stepCount - 1));
+    if (newIndex !== currentStep) {
+      currentStep = newIndex;
+      updateVisual();
+    }
+  });
+
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    currentFolderIndex = (currentFolderIndex - 1 + folders.length) % folders.length;
+    currentStep = 0;
+    updateVisual();
+  });
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    currentFolderIndex = (currentFolderIndex + 1) % folders.length;
+    currentStep = 0;
+    updateVisual();
+  });
+
+  window.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") document.getElementById("prevBtn").click();
+    if (event.key === "ArrowRight") document.getElementById("nextBtn").click();
+  });
+
+  window.addEventListener("load", () => {
+    const logo = document.getElementById("logoScreen");
+    const content = document.getElementById("simContent");
+    setTimeout(() => {
+      logo.style.opacity = "0";
+      setTimeout(() => {
+        logo.style.display = "none";
+        content.classList.remove("hidden");
+        content.classList.add("fade-in");
+        updateVisual();
+      }, 1500);
+    }, 2000);
+  });
+</script>
+
+
+</body>
+</html>

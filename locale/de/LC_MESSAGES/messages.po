@@ -1,0 +1,663 @@
+# German translations for Anifou Project.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the Anifou.
+# Hebi Fouani <EMAIL@ADDRESS>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: Anifou 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-07-01 22:45+0200\n"
+"PO-Revision-Date: 2025-06-30 14:35+0200\n"
+"Last-Translator: Hebi Fouani <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: German\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# -----------------------------------
+# GLOBAL
+#: templates/base.html:6
+msgid "Anifou"
+msgstr "Anifou"
+
+#: templates/base.html:80
+msgid "Fouani"
+msgstr "Fouani"
+
+#: templates/base.html:83 templates/projekte.html:3 templates/projekte.html:7
+msgid "Projekte"
+msgstr "Projekte"
+
+#: templates/base.html:86 templates/projekte.html:10
+msgid "Plastic vs. Profit"
+msgstr ""
+
+#: templates/base.html:87 templates/projekt/how_the_internet_feels/index.html:2
+#: templates/projekte.html:11
+msgid "HTIF"
+msgstr ""
+
+#: templates/base.html:91 templates/kontakt.html:2
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#: templates/galerie.html:5 templates/projekt/drei_komma_5/index.html:232
+msgid "Galerie"
+msgstr "Galerie"
+
+#: templates/galerie.html:37 templates/werk_2brothers.html:147
+#: templates/werk_beirut.html:203 templates/werk_byblos.html:205
+#: templates/werk_delphi.html:204 templates/werk_demo.html:206
+#: templates/werk_gibran.html:205 templates/werk_rio.html:205
+#: templates/werk_urbanamazonas.html:204
+msgid "Zurück zur Galerie"
+msgstr "Zurück zur Galerie"
+
+#: templates/galerie.html:38
+msgid "Projektbericht"
+msgstr "Projektbericht"
+
+#: templates/galerie.html:40
+msgid "Galeriebild"
+msgstr "Galeriebild"
+
+#: templates/galerie.html:49
+msgid "EXPLORE"
+msgstr "ENTDECKEN"
+
+#: templates/galerie.html:53 templates/galerie_vorschau.html:100
+#: templates/werk_byblos.html:201 templates/werk_delphi.html:200
+#: templates/werk_gibran.html:201 templates/werk_rio.html:201
+#: templates/werk_urbanamazonas.html:200
+msgid "Vorheriges Bild"
+msgstr "Vorheriges Bild"
+
+#: templates/galerie.html:54 templates/galerie_vorschau.html:101
+#: templates/werk_byblos.html:202 templates/werk_delphi.html:201
+#: templates/werk_gibran.html:202 templates/werk_rio.html:202
+#: templates/werk_urbanamazonas.html:201
+msgid "Nächstes Bild"
+msgstr "Nächstes Bild"
+
+#: templates/galerie.html:57
+msgid "Großes Bild"
+msgstr "Großes Bild"
+
+#: templates/galerie.html:64 templates/werk_demo.html:180
+msgid "Demo Bar"
+msgstr ""
+
+#: templates/galerie.html:65 templates/werk_beirut.html:177
+#: templates/werk_demo.html:181
+msgid "Beirut"
+msgstr ""
+
+#: templates/galerie.html:66 templates/werk_2brothers.html:127
+#: templates/werk_beirut.html:179 templates/werk_byblos.html:183
+#: templates/werk_delphi.html:183 templates/werk_demo.html:182
+#: templates/werk_gibran.html:183 templates/werk_rio.html:183
+#: templates/werk_urbanamazonas.html:182
+msgid "Myopie-Simulation"
+msgstr "Myopie-Simulation"
+
+#: templates/galerie.html:67
+#: templates/projekt/how_the_internet_feels/index.html:8
+#: templates/werk_2brothers.html:128 templates/werk_beirut.html:180
+#: templates/werk_byblos.html:184 templates/werk_delphi.html:184
+#: templates/werk_demo.html:183 templates/werk_gibran.html:184
+#: templates/werk_rio.html:184 templates/werk_urbanamazonas.html:183
+msgid "tba"
+msgstr "tba"
+
+#: templates/galerie.html:68 templates/werk_2brothers.html:129
+#: templates/werk_beirut.html:181 templates/werk_byblos.html:185
+#: templates/werk_delphi.html:185 templates/werk_demo.html:184
+#: templates/werk_gibran.html:185 templates/werk_rio.html:185
+#: templates/werk_urbanamazonas.html:184
+msgid "Fine Art Giclée auf Hahnemühle Photo Rag"
+msgstr "Fine Art Giclée auf Hahnemühle Photo Rag"
+
+#: templates/galerie.html:69 templates/werk_beirut.html:182
+#: templates/werk_byblos.html:186 templates/werk_delphi.html:186
+#: templates/werk_demo.html:185 templates/werk_gibran.html:186
+#: templates/werk_rio.html:186 templates/werk_urbanamazonas.html:185
+msgid "1/5"
+msgstr "1/5"
+
+#: templates/galerie.html:70
+msgid ""
+"Zwischen Palmen, urbaner Struktur und abstrahierender Reduktion. Die "
+"Szene ist entrückt. Der Blick taucht ein in Tiefe, Dunkelheit – wenn sich"
+" die Perspektiven verschieben."
+msgstr ""
+
+#: templates/galerie.html:86 templates/werk_2brothers.html:126
+#: templates/werk_beirut.html:178 templates/werk_byblos.html:182
+#: templates/werk_delphi.html:182 templates/werk_demo.html:181
+#: templates/werk_gibran.html:182 templates/werk_rio.html:182
+#: templates/werk_urbanamazonas.html:181
+msgid "Ort"
+msgstr "Ort"
+
+#: templates/galerie.html:87 templates/werk_2brothers.html:127
+#: templates/werk_beirut.html:179 templates/werk_byblos.html:183
+#: templates/werk_delphi.html:183 templates/werk_demo.html:182
+#: templates/werk_gibran.html:183 templates/werk_rio.html:183
+#: templates/werk_urbanamazonas.html:182
+msgid "Technik"
+msgstr "Technik"
+
+#: templates/galerie.html:88 templates/werk_2brothers.html:128
+#: templates/werk_beirut.html:180 templates/werk_byblos.html:184
+#: templates/werk_delphi.html:184 templates/werk_demo.html:183
+#: templates/werk_gibran.html:184 templates/werk_rio.html:184
+#: templates/werk_urbanamazonas.html:183
+msgid "Format"
+msgstr "Format"
+
+#: templates/galerie.html:89 templates/werk_2brothers.html:129
+#: templates/werk_beirut.html:181 templates/werk_byblos.html:185
+#: templates/werk_delphi.html:185 templates/werk_demo.html:184
+#: templates/werk_gibran.html:185 templates/werk_rio.html:185
+#: templates/werk_urbanamazonas.html:184
+msgid "Druck"
+msgstr "Druck"
+
+#: templates/galerie.html:90 templates/werk_2brothers.html:130
+#: templates/werk_beirut.html:182 templates/werk_byblos.html:186
+#: templates/werk_delphi.html:186 templates/werk_demo.html:185
+#: templates/werk_gibran.html:186 templates/werk_rio.html:186
+#: templates/werk_urbanamazonas.html:185
+msgid "Edition"
+msgstr "Edition"
+
+#: templates/galerie_vorschau.html:5
+#, fuzzy
+msgid "Galerie Preview"
+msgstr "Galerie"
+
+#: templates/galerie_vorschau.html:93
+#, fuzzy
+msgid "Galerievorschau Bild"
+msgstr "Galeriebild"
+
+#: templates/galerie_vorschau.html:96
+msgid "ALLE ANSEHEN"
+msgstr ""
+
+# -----------------------------------
+# INDEX
+#: templates/index.html:2
+msgid "Anifou – Über mich"
+msgstr "Anifou – Über mich"
+
+#: templates/index.html:8
+msgid ""
+"Mein Hintergrund liegt im Kulturbereich, wo ich Unternehmen mitgegründet "
+"und geführt habe."
+msgstr ""
+"Mein Hintergrund liegt im Kulturbereich, wo ich Unternehmen mitgegründet "
+"und geführt habe."
+
+#: templates/index.html:9
+msgid ""
+"Durch mein Studium der Datenwissenschaft mit Schwerpunkten in Machine "
+"Learning, Deep Learning, Computer Vision und Natural Language Processing "
+"verbinde ich unternehmerische Perspektiven mit datengetriebenen "
+"Prozessen."
+msgstr ""
+"Durch mein Studium der Datenwissenschaft mit Schwerpunkten in Machine "
+"Learning, Deep Learning, Computer Vision und Natural Language Processing "
+"verbinde ich unternehmerische Perspektiven mit datengetriebenen "
+"Prozessen."
+
+#: templates/index.html:10
+msgid ""
+"In meinen Projekten setze ich mich mit Wahrnehmung, Umwelt und Sprache "
+"auseinander."
+msgstr ""
+"In meinen Projekten setze ich mich mit Wahrnehmung, Umwelt und Sprache "
+"auseinander."
+
+#: templates/werk_2brothers.html:5
+msgid "Explore – 2 Brothers & The Sea"
+msgstr ""
+
+#: templates/projekt/drei_komma_5/index.html:189
+#: templates/werk_2brothers.html:115 templates/werk_beirut.html:168
+#: templates/werk_byblos.html:172 templates/werk_delphi.html:172
+#: templates/werk_demo.html:171 templates/werk_gibran.html:172
+#: templates/werk_rio.html:172 templates/werk_urbanamazonas.html:171
+msgid "Zurück"
+msgstr "Zurück"
+
+#: templates/werk_2brothers.html:121
+msgid "2 Brothers & The Sea Werk"
+msgstr ""
+
+#: templates/werk_2brothers.html:125
+msgid "Two Brothers And The Sea"
+msgstr ""
+
+#: templates/werk_2brothers.html:126 templates/werk_rio.html:182
+#: templates/werk_urbanamazonas.html:181
+msgid "Rio de Janeiro, Brasilien"
+msgstr ""
+
+#: templates/werk_2brothers.html:132
+msgid "Ipanema. Weites, tiefes Licht im Dunst – und Ruhe."
+msgstr ""
+
+#: templates/werk_2brothers.html:136 templates/werk_beirut.html:190
+#: templates/werk_byblos.html:194 templates/werk_delphi.html:193
+#: templates/werk_demo.html:193 templates/werk_gibran.html:194
+#: templates/werk_rio.html:194 templates/werk_urbanamazonas.html:193
+msgid "Projektbericht herunterladen (PDF)"
+msgstr ""
+
+#: templates/werk_2brothers.html:151 templates/werk_beirut.html:208
+#: templates/werk_byblos.html:209 templates/werk_delphi.html:208
+#: templates/werk_demo.html:211 templates/werk_gibran.html:209
+#: templates/werk_rio.html:209 templates/werk_urbanamazonas.html:208
+msgid "Schließen"
+msgstr "Schließen"
+
+#: templates/werk_2brothers.html:152 templates/werk_beirut.html:209
+#: templates/werk_byblos.html:210 templates/werk_delphi.html:209
+#: templates/werk_demo.html:212 templates/werk_gibran.html:210
+#: templates/werk_rio.html:210 templates/werk_urbanamazonas.html:209
+msgid "Vergrößertes Bild"
+msgstr "Vergrößertes Bild"
+
+#: templates/werk_beirut.html:5
+#, fuzzy
+msgid "Explore – Beirut"
+msgstr "ENTDECKEN"
+
+#: templates/werk_beirut.html:173
+msgid "Beirut Werk"
+msgstr ""
+
+#: templates/werk_beirut.html:178
+msgid "Beirut, Libanon"
+msgstr ""
+
+#: templates/werk_beirut.html:184
+msgid "Fassaden. Ein Geflecht aus Leitungen. Beirut."
+msgstr ""
+
+#: templates/werk_beirut.html:185
+msgid "Die Architektur löst sich in der Tiefe auf. Eine Auseinandersetzung"
+msgstr ""
+
+#: templates/werk_beirut.html:186
+msgid "mit Urbanität und der Aussicht, Ordnung im Chaos zu erkennen."
+msgstr ""
+
+#: templates/werk_beirut.html:198
+msgid "Vorheriges Werk"
+msgstr "Vorheriges Werk"
+
+#: templates/werk_beirut.html:199
+msgid "Nächstes Werk"
+msgstr "Nächstes Werk"
+
+#: templates/werk_byblos.html:5
+#, fuzzy
+msgid "Explore – Byblos"
+msgstr "ENTDECKEN"
+
+#: templates/werk_byblos.html:177
+msgid "Byblos Werk"
+msgstr ""
+
+#: templates/werk_byblos.html:181
+msgid "Byblos"
+msgstr ""
+
+#: templates/werk_byblos.html:182
+msgid "Byblos, Libanon"
+msgstr ""
+
+#: templates/werk_byblos.html:188
+msgid "Byblos. Eine der ältesten Städte der Welt."
+msgstr ""
+
+#: templates/werk_byblos.html:189
+msgid "Schichtung von Geschichte. Küstenlicht."
+msgstr ""
+
+#: templates/werk_byblos.html:190
+msgid "Unschärfe. Wahrnehmung. Zeitlosigkeit."
+msgstr ""
+
+#: templates/werk_delphi.html:5
+#, fuzzy
+msgid "Explore – Delphi"
+msgstr "ENTDECKEN"
+
+#: templates/werk_delphi.html:177
+msgid "Delphi Werk"
+msgstr ""
+
+#: templates/werk_delphi.html:181
+msgid "Delphi"
+msgstr ""
+
+#: templates/werk_delphi.html:182
+msgid "Delphi, Griechenland"
+msgstr ""
+
+#: templates/werk_delphi.html:188
+msgid "Delphi. Zwischen Bergrelief und Ruinen. Im Raum der Antike."
+msgstr ""
+
+#: templates/werk_delphi.html:189
+msgid "Demut im Sehen von Landschaft und Geschichte."
+msgstr ""
+
+#: templates/werk_demo.html:5
+#, fuzzy
+msgid "Explore – Demo"
+msgstr "ENTDECKEN"
+
+#: templates/werk_demo.html:176
+msgid "Demo Werk"
+msgstr ""
+
+#: templates/werk_demo.html:187
+msgid "Zwischen Palmen, urbaner Struktur und abstrahierender Reduktion."
+msgstr ""
+
+#: templates/werk_demo.html:188
+msgid "Die Szene ist entrückt. Der Blick taucht ein in Tiefe, Dunkelheit –"
+msgstr ""
+
+#: templates/werk_demo.html:189
+msgid "wenn sich die Perspektiven verschieben."
+msgstr ""
+
+#: templates/werk_gibran.html:5
+#, fuzzy
+msgid "Explore – Gibran"
+msgstr "ENTDECKEN"
+
+#: templates/werk_gibran.html:177
+msgid "Gibran Werk"
+msgstr ""
+
+#: templates/werk_gibran.html:181
+msgid "Gibran"
+msgstr ""
+
+#: templates/werk_gibran.html:182
+msgid "Bsharri, Libanon"
+msgstr ""
+
+#: templates/werk_gibran.html:188
+msgid "Der Blick ins Tal – ein Fenster der Erinnerung."
+msgstr ""
+
+#: templates/werk_gibran.html:189
+msgid "Landschaft, Herkunft und das Abstrakte finden sich,"
+msgstr ""
+
+#: templates/werk_gibran.html:190
+msgid "wenn sich die Welt zeigt."
+msgstr ""
+
+#: templates/werk_rio.html:5
+#, fuzzy
+msgid "Explore – Rio"
+msgstr "ENTDECKEN"
+
+#: templates/werk_rio.html:177
+#, fuzzy
+msgid "Rio Werk"
+msgstr "Vorheriges Werk"
+
+#: templates/werk_rio.html:181
+msgid "Rio"
+msgstr ""
+
+#: templates/werk_rio.html:188
+msgid "Rio. Weite – subtile Irritation. Ein kontemplativer Blick auf das Meer."
+msgstr ""
+
+#: templates/werk_rio.html:189
+msgid "Das Licht in der Nacht kontrastiert mit dem warmen Sand – eine leise"
+msgstr ""
+
+#: templates/werk_rio.html:190
+msgid "Reflexion über Distanz und die Ästhetik des Ungefähren."
+msgstr ""
+
+#: templates/werk_urbanamazonas.html:5
+#, fuzzy
+msgid "Explore – Hand"
+msgstr "ENTDECKEN"
+
+#: templates/werk_urbanamazonas.html:176
+msgid "Hand Werk"
+msgstr ""
+
+#: templates/werk_urbanamazonas.html:180
+msgid "Hand"
+msgstr ""
+
+#: templates/werk_urbanamazonas.html:187
+msgid "Eine ausgestreckte Hand, halb verborgen."
+msgstr ""
+
+#: templates/werk_urbanamazonas.html:188
+msgid "Ein Moment über unsichtbare Räume –"
+msgstr ""
+
+#: templates/werk_urbanamazonas.html:189
+msgid "und das Fragmentarische im urbanen Leben."
+msgstr ""
+
+#: templates/projekt/drei_komma_5/index.html:6
+#, fuzzy
+msgid "–3.5 Simulation"
+msgstr "Myopie-Simulation"
+
+#: templates/projekt/drei_komma_5/index.html:193
+#, fuzzy
+msgid "Projektlogo"
+msgstr "Projekte"
+
+#: templates/projekt/drei_komma_5/index.html:197
+msgid "How I See – Myopie-Simulation (0 bis –3.5 dpt)"
+msgstr ""
+
+#: templates/projekt/drei_komma_5/index.html:202
+#, fuzzy
+msgid "Simulationsbild"
+msgstr "Myopie-Simulation"
+
+#: templates/projekt/drei_komma_5/index.html:205
+#, fuzzy
+msgid "Vorheriges Projekt"
+msgstr "Vorheriges Werk"
+
+#: templates/projekt/drei_komma_5/index.html:214
+msgid "Regler für Myopie-Grad"
+msgstr ""
+
+#: templates/projekt/drei_komma_5/index.html:228
+#, fuzzy
+msgid "Nächstes Projekt"
+msgstr "Nächstes Werk"
+
+# -----------------------------------
+# PROJEKT: Plastic vs. Profit
+#: templates/projekt/plastic_vs_profit/index.html:2
+#: templates/projekt/plastic_vs_profit/index.html:9
+msgid "Life In Plastic"
+msgstr "Life In Plastic"
+
+#: templates/projekt/plastic_vs_profit/index.html:10
+msgid ""
+"Dieses Projekt beleuchtet den Konflikt zwischen wirtschaftlichen "
+"Interessen und ökologischer Verantwortung."
+msgstr ""
+"Dieses Projekt beleuchtet den Konflikt zwischen wirtschaftlichen "
+"Interessen und ökologischer Verantwortung."
+
+#: templates/projekt/plastic_vs_profit/index.html:19
+msgid "Dein Browser unterstützt kein HTML5-Video."
+msgstr "Dein Browser unterstützt kein HTML5-Video."
+
+#: templates/projekt/plastic_vs_profit/index.html:29
+msgid ""
+"Die Animation zeigt die zunehmende Belastung durch Plastikmüll in den "
+"Weltmeeren. Sie hinterfragt den Zusammenhang zwischen wachsendem Konsum, "
+"unternehmerischem Gewinn und ökologischer Verantwortung."
+msgstr ""
+"Die Animation zeigt die zunehmende Belastung durch Plastikmüll in den "
+"Weltmeeren. Sie hinterfragt den Zusammenhang zwischen wachsendem Konsum, "
+"unternehmerischem Gewinn und ökologischer Verantwortung."
+
+#: templates/projekt/plastic_vs_profit/index.html:32
+#, fuzzy
+msgid "Informationen zur Plastikverschmutzung und Konzerngewinnen:"
+msgstr "Informationen zur Plastikverschmutzung und Konzerngewinnen"
+
+#: templates/projekt/plastic_vs_profit/index.html:34
+msgid ""
+"Plastik ist nicht nur ein Umweltproblem, sondern auch fester Bestandteil "
+"globaler Wirtschaftsprozesse. Multinationale Konzerne wie Walmart, Coca-"
+"Cola, Nestlé und PepsiCo nutzen große Mengen Plastik für Verpackungen – "
+"vor allem bei Eigenmarkenprodukten."
+msgstr ""
+"Plastik ist nicht nur ein Umweltproblem, sondern auch fester Bestandteil "
+"globaler Wirtschaftsprozesse. Multinationale Konzerne wie Walmart, Coca-"
+"Cola, Nestlé und PepsiCo nutzen große Mengen Plastik für Verpackungen – "
+"vor allem bei Eigenmarkenprodukten."
+
+#: templates/projekt/plastic_vs_profit/index.html:35
+msgid ""
+"Diese Visualisierung basiert auf öffentlich zugänglichen Daten und zeigt "
+"eine Projektion der Plastikmengen bis 2090 unter der Annahme eines "
+"„Business-as-usual“-Szenarios."
+msgstr ""
+"Diese Visualisierung basiert auf öffentlich zugänglichen Daten und zeigt "
+"eine Projektion der Plastikmengen bis 2090 unter der Annahme eines "
+"„Business-as-usual“-Szenarios."
+
+#: templates/projekt/plastic_vs_profit/index.html:38
+msgid "Kernaussagen:"
+msgstr "Kernaussagen:"
+
+#: templates/projekt/plastic_vs_profit/index.html:40
+#, fuzzy, python-format
+msgid ""
+"2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa "
+"23 %% (~86 Mio. Tonnen) gelangten in die Ozeane."
+msgstr ""
+"2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa "
+"23 % (~86 Mio. Tonnen) gelangten in die Ozeane."
+
+#: templates/projekt/plastic_vs_profit/index.html:41
+#: templates/projekt/plastic_vs_profit/index.html:51
+#: templates/projekt/plastic_vs_profit/index.html:56
+#: templates/projekt/plastic_vs_profit/index.html:61
+msgid "Quellen:"
+msgstr "Quellen:"
+
+#: templates/projekt/plastic_vs_profit/index.html:46
+msgid ""
+"Walmart meldete im selben Jahr einen Verbrauch von rund 1,2 Mio. Tonnen "
+"Plastikverpackungen."
+msgstr ""
+"Walmart meldete im selben Jahr einen Verbrauch von rund 1,2 Mio. Tonnen "
+"Plastikverpackungen."
+
+#: templates/projekt/plastic_vs_profit/index.html:47
+msgid "Quelle:"
+msgstr "Quelle:"
+
+#: templates/projekt/plastic_vs_profit/index.html:50
+msgid ""
+"Walmart erklärte Anfang 2025, die Ziele des US Plastics Pact "
+"voraussichtlich nicht zu erreichen."
+msgstr ""
+"Walmart erklärte Anfang 2025, die Ziele des US Plastics Pact "
+"voraussichtlich nicht zu erreichen."
+
+#: templates/projekt/plastic_vs_profit/index.html:55
+msgid ""
+"Ohne regulatorische Maßnahmen könnte sich der globale Plastikmüll bis "
+"2090 auf über 1.000 Mio. Tonnen summieren."
+msgstr ""
+"Ohne regulatorische Maßnahmen könnte sich der globale Plastikmüll bis "
+"2090 auf über 1.000 Mio. Tonnen summieren."
+
+#: templates/projekt/plastic_vs_profit/index.html:60
+msgid ""
+"Die Visualisierung fokussiert auf Müllstrudel (Gyres) in Pazifik, "
+"Atlantik und Indischem Ozean."
+msgstr ""
+"Die Visualisierung fokussiert auf Müllstrudel (Gyres) in Pazifik, "
+"Atlantik und Indischem Ozean."
+
+#: templates/projekt/plastic_vs_profit/index.html:67
+msgid "Zusätzliche Information:"
+msgstr "Zusätzliche Information:"
+
+#: templates/projekt/plastic_vs_profit/index.html:68
+msgid "Die Walmart-Erbin Alice Walton zählt laut"
+msgstr "Die Walmart-Erbin Alice Walton zählt laut"
+
+#: templates/projekt/plastic_vs_profit/index.html:68
+msgid "zu den zwanzig reichsten Menschen der Welt."
+msgstr "zu den zwanzig reichsten Menschen der Welt."
+
+#: templates/projekt/plastic_vs_profit/index.html:69
+msgid "Alice Walton – Wikipedia"
+msgstr "Alice Walton – Wikipedia"
+
+#: templates/projekt/plastic_vs_profit/index.html:72
+msgid "Weiterführender Bericht:"
+msgstr "Weiterführender Bericht:"
+
+#: templates/projekt/plastic_vs_profit/index.html:73
+msgid ""
+"Eine ausführliche Analyse mit Quellen, Methodik und rechtlicher "
+"Einordnung finden Sie im PDF:"
+msgstr ""
+"Eine ausführliche Analyse mit Quellen, Methodik und rechtlicher "
+"Einordnung finden Sie im PDF:"
+
+#: templates/projekt/plastic_vs_profit/index.html:74
+msgid ""
+"„Life in Plastic – Plastikverschmutzung, Konzerngewinne & Projektion bis "
+"2090“"
+msgstr ""
+"„Life in Plastic – Plastikverschmutzung, Konzerngewinne & Projektion bis "
+"2090“"
+
+#: templates/projekt/plastic_vs_profit/index.html:76
+msgid "(DE | EN)"
+msgstr ""
+
+#~ msgid "EN"
+#~ msgstr "EN"
+
+#~ msgid ""
+#~ "Details zu Datenquellen, Methodik und "
+#~ "rechtlicher Einordnung finden Sie im"
+#~ msgstr ""
+#~ "Details zu Datenquellen, Methodik und "
+#~ "rechtlicher Einordnung finden Sie im"
+
+#~ msgid "Life in Plastic (PDF)"
+#~ msgstr "Life in Plastic (PDF)"
+
+#~ msgid "Hier auf unserer Homepage lesen"
+#~ msgstr "Hier auf unserer Homepage lesen"
+

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Life In Plastic") }}{% endblock %}
+
+{% block content %}
+<section class="project life-in-plastic">
+
+  <!-- Titel + Untertitel -->
+  <div class="project-header">
+    <h1>{{ _("Life In Plastic") }}</h1>
+    <p class="lead">{{ _("Dieses Projekt beleuchtet den Konflikt zwischen wirtschaftlichen Interessen und ökologischer Verantwortung.") }}</p>
+  </div>
+
+  <hr class="fade-in-hr">
+
+  <!-- Video -->
+  <div class="life-in-plastic-video">
+    <video controls autoplay muted loop>
+      <source src="{{ url_for('static', filename='projects/LifeInPlastic/videos/plastic_pollution_animation.mp4') }}" type="video/mp4">
+      {{ _("Dein Browser unterstützt kein HTML5-Video.") }}
+    </video>
+  </div>
+
+  <hr class="fade-in-hr">
+
+  <!-- Textbereich -->
+  <div class="text-section">
+
+    <p>
+      {{ _("Die Animation zeigt die zunehmende Belastung durch Plastikmüll in den Weltmeeren. Sie hinterfragt den Zusammenhang zwischen wachsendem Konsum, unternehmerischem Gewinn und ökologischer Verantwortung.") }}
+    </p>
+
+    <p><strong>{{ _("Informationen zur Plastikverschmutzung und Konzerngewinnen:") }}</strong></p>
+    <p>
+      {{ _("Plastik ist nicht nur ein Umweltproblem, sondern auch fester Bestandteil globaler Wirtschaftsprozesse. Multinationale Konzerne wie Walmart, Coca-Cola, Nestlé und PepsiCo nutzen große Mengen Plastik für Verpackungen – vor allem bei Eigenmarkenprodukten.") }}
+      {{ _("Diese Visualisierung basiert auf öffentlich zugänglichen Daten und zeigt eine Projektion der Plastikmengen bis 2090 unter der Annahme eines „Business-as-usual“-Szenarios.") }}
+    </p>
+
+    <p><strong>{{ _("Kernaussagen:") }}</strong></p>
+    <ul>
+      <li>{{ _("2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa 23 %% (~86 Mio. Tonnen) gelangten in die Ozeane.") }}<br>
+        {{ _("Quellen:") }}
+        <a href="https://www.ellenmacarthurfoundation.org" target="_blank">Ellen MacArthur Foundation</a>,
+        <a href="https://marinedebris.noaa.gov" target="_blank">NOAA</a>,
+        <a href="https://theoceancleanup.com" target="_blank">The Ocean Cleanup</a>
+      </li>
+      <li>{{ _("Walmart meldete im selben Jahr einen Verbrauch von rund 1,2 Mio. Tonnen Plastikverpackungen.") }}<br>
+        {{ _("Quelle:") }}
+        <a href="https://www.ellenmacarthurfoundation.org/global-commitment-2021/signatory-reports/ppu/walmart-inc" target="_blank">Global Commitment Report 2021</a>
+      </li>
+      <li>{{ _("Walmart erklärte Anfang 2025, die Ziele des US Plastics Pact voraussichtlich nicht zu erreichen.") }}<br>
+        {{ _("Quellen:") }}
+        <a href="https://usplasticspact.org" target="_blank">US Plastics Pact</a>,
+        <a href="https://www.greenbiz.com/article/us-plastics-pact-walmart-takes-step-back-reducing-plastic" target="_blank">GreenBiz</a>
+      </li>
+      <li>{{ _("Ohne regulatorische Maßnahmen könnte sich der globale Plastikmüll bis 2090 auf über 1.000 Mio. Tonnen summieren.") }}<br>
+        {{ _("Quellen:") }}
+        <a href="https://marinedebris.noaa.gov" target="_blank">NOAA</a>,
+        <a href="https://theoceancleanup.com" target="_blank">The Ocean Cleanup</a>
+      </li>
+      <li>{{ _("Die Visualisierung fokussiert auf Müllstrudel (Gyres) in Pazifik, Atlantik und Indischem Ozean.") }}<br>
+        {{ _("Quellen:") }}
+        <a href="https://theoceancleanup.com/great-pacific-garbage-patch/" target="_blank">The Ocean Cleanup</a>,
+        <a href="https://marinedebris.noaa.gov" target="_blank">NOAA</a>
+      </li>
+    </ul>
+
+    <p><strong>{{ _("Zusätzliche Information:") }}</strong><br>
+      {{ _("Die Walmart-Erbin Alice Walton zählt laut") }} <em>Wikipedia</em> {{ _("zu den zwanzig reichsten Menschen der Welt.") }}<br>
+      <a href="https://de.wikipedia.org/wiki/Alice_Walton" target="_blank" rel="noopener noreferrer">{{ _("Alice Walton – Wikipedia") }}</a>
+    </p>
+
+    <p><strong>{{ _("Weiterführender Bericht:") }}</strong><br>
+      {{ _("Eine ausführliche Analyse mit Quellen, Methodik und rechtlicher Einordnung finden Sie im PDF:") }}<br>
+      <strong>{{ _("„Life in Plastic – Plastikverschmutzung, Konzerngewinne & Projektion bis 2090“") }}</strong><br>
+      <a href="{{ url_for('static', filename='reports/LifeInPlastic_Bericht.pdf') }}" target="_blank" rel="noopener noreferrer">
+        {{ _("(DE | EN)") }}
+      </a>
+    </p>
+  </div>
+
+</section>
+{% endblock %}

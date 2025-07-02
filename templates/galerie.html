@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ _("Galerie") }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+  }
+  .gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 480px) {
+    .info-block h1 { font-size: 0.8rem; margin-bottom: 0.5rem; }
+    .info-block p { font-size: 0.7rem; line-height: 1.4; margin-bottom: 0.3rem; }
+    .explore { font-size: 0.7rem; padding: 0.4rem 0.8rem; display: inline-block; margin-top: 0.5rem; }
+    #galleryImage { max-width: 100%; height: auto; }
+    .nav-buttons button { font-size: 1rem; padding: 4px 8px; width: 36px; height: 36px; }
+    .fixed-back-button { font-size: 0.6rem; padding: 0.2rem 0.5rem; border-radius: 3px; bottom: 10px; right: 10px; }
+    .fixed-report-button { font-size: 0.6rem; padding: 0.2rem 0.5rem; border-radius: 3px; bottom: 50px; }
+    .gallery-container { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+  <a href="{{ url_for('galerie', lang=get_locale()) }}" class="fixed-back-button">{{ _("Zurück zur Galerie") }}</a>
+  <a href="{{ url_for('static', filename='reports/LifeInPlastic_Bericht.pdf') }}" target="_blank" class="fixed-report-button">{{ _("Projektbericht") }}</a>
+  <div class="gallery-container">
+    <img id="galleryImage" src="" alt="{{ _('Galeriebild') }}" />
+    <div class="info-block">
+      <h1 id="info-title"></h1>
+      <p id="info-location"></p>
+      <p id="info-technique"></p>
+      <p id="info-format"></p>
+      <p id="info-print"></p>
+      <p id="info-edition"></p>
+      <p id="info-description"></p>
+      <a id="exploreBtn" class="explore" href="#">{{ _("EXPLORE") }}</a>
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button id="prevBtn" aria-label="{{ _('Vorheriges Bild') }}">&#8592;</button>
+    <button id="nextBtn" aria-label="{{ _('Nächstes Bild') }}">&#8594;</button>
+  </div>
+  <div id="lightbox">
+    <img id="lightbox-img" src="" alt="{{ _('Großes Bild') }}" />
+  </div>
+  <script>
+    const images = [
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Beirut.jpg') }}",
+        link: "{{ url_for('galerie_werk', werk='beirut', lang=get_locale()) }}",
+        title: "{{ _('Demo Bar') }}",
+        location: "{{ _('Beirut') }}",
+        technique: "{{ _('Myopie-Simulation') }}",
+        format: "{{ _('tba') }}",
+        print: "{{ _('Fine Art Giclée auf Hahnemühle Photo Rag') }}",
+        edition: "{{ _('1/5') }}",
+        description: "{{ _('Zwischen Palmen, urbaner Struktur und abstrahierender Reduktion. Die Szene ist entrückt. Der Blick taucht ein in Tiefe, Dunkelheit – wenn sich die Perspektiven verschieben.') }}"
+      }
+      // Weitere Bilder hinzufügen wie oben
+    ];
+    let currentIndex = 0;
+    const galleryImage = document.getElementById("galleryImage");
+    const exploreBtn = document.getElementById("exploreBtn");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    function updateImage(idx) {
+      const item = images[idx];
+      galleryImage.classList.add("fade-out");
+      setTimeout(() => {
+        galleryImage.src = item.src;
+        exploreBtn.href = item.link;
+        document.getElementById("info-title").innerText = item.title;
+        document.getElementById("info-location").innerHTML = `<strong>{{ _('Ort') }}:</strong> ${item.location}`;
+        document.getElementById("info-technique").innerHTML = `<strong>{{ _('Technik') }}:</strong> ${item.technique}`;
+        document.getElementById("info-format").innerHTML = `<strong>{{ _('Format') }}:</strong> ${item.format}`;
+        document.getElementById("info-print").innerHTML = `<strong>{{ _('Druck') }}:</strong> ${item.print}`;
+        document.getElementById("info-edition").innerHTML = `<strong>{{ _('Edition') }}:</strong> ${item.edition}`;
+        document.getElementById("info-description").innerText = item.description;
+        galleryImage.classList.remove("fade-out");
+      }, 500);
+    }
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage(currentIndex);
+    });
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage(currentIndex);
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "ArrowLeft") document.getElementById("prevBtn").click();
+      if (e.key === "ArrowRight") document.getElementById("nextBtn").click();
+      if (e.key === "Escape") lightbox.style.display = 'none';
+    });
+    galleryImage.addEventListener('click', () => {
+      lightboxImg.src = images[currentIndex].src;
+      lightbox.style.display = 'flex';
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+    updateImage(currentIndex);
+  </script>
+</body>
+</html>

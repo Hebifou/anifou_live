@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ _("Explore – Delphi") }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/explore.css') }}" />
+  <style>
+    .back-link {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      color: #000;
+      text-decoration: none;
+      background: none;
+      padding: 0;
+      z-index: 1000;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+      background-color: #f2f2f2;
+    }
+
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: transparent;
+      color: grey;
+      padding: 8px 14px;
+      border-radius: 3px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: normal;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      z-index: 10;
+    }
+
+    .back-button:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-buttons {
+      position: fixed;
+      bottom: 25px;
+      right: 47px;
+      display: flex;
+      gap: 6px;
+      z-index: 15;
+    }
+
+    .nav-buttons a {
+      background: transparent;
+      border: none;
+      color: grey;
+      font-size: 28px;
+      cursor: pointer;
+      width: auto;
+      height: auto;
+      padding: 0 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .nav-buttons a:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Overlay für vergrößertes Bild */
+    #imageOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      z-index: 10000;
+    }
+
+    #overlayImage {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: none;
+      position: relative;
+    }
+
+    #closeOverlay {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;
+    }
+
+    /* Mobile Anpassungen */
+    @media (max-width: 768px) {
+      .back-link {
+        position: static;
+        display: block;
+        margin: 1rem auto;
+        font-size: 0.75rem;
+        text-align: center;
+        color: #444;
+        padding: 0.2rem 0;
+        background: none;
+      }
+
+      .back-button {
+        position: static;
+        display: block;
+        margin: 1rem auto 2rem auto;
+        font-size: 0.75rem;
+        color: #666;
+        padding: 6px 10px;
+        background: transparent;
+        border: none;
+        text-align: center;
+      }
+
+      .nav-buttons {
+        position: static;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem auto;
+      }
+
+      .nav-buttons a {
+        font-size: 1.5rem;
+        padding: 0.2rem 0.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .back-link {
+        font-size: 0.65rem;
+        color: #666;
+      }
+
+      .back-button {
+        font-size: 0.65rem;
+        padding: 4px 8px;
+        margin-bottom: 1rem;
+      }
+
+      .nav-buttons a {
+        font-size: 1.2rem;
+        padding: 0.1rem 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-link" href="/">{{ _("Zurück") }}</a>
+
+  <div class="page-wrapper">
+    <div class="explore-container delphi">
+      <div class="image-block">
+        <img id="mainImage" src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Delphi.jpg') }}" alt="{{ _('Delphi Werk') }}" style="cursor:pointer;" />
+      </div>
+
+      <div class="info-block">
+        <h1>{{ _("Delphi") }}</h1>
+        <p><strong>{{ _("Ort") }}:</strong> {{ _("Delphi, Griechenland") }}</p>
+        <p><strong>{{ _("Technik") }}:</strong> {{ _("Myopie-Simulation") }}</p>
+        <p><strong>{{ _("Format") }}:</strong> {{ _("tba") }}</p>
+        <p><strong>{{ _("Druck") }}:</strong> {{ _("Fine Art Giclée auf Hahnemühle Photo Rag") }}</p>
+        <p><strong>{{ _("Edition") }}:</strong> {{ _("1/5") }}</p>
+        <p class="description">
+          {{ _("Delphi. Between mountain relief and ruins. In the space of the ancient. ") }}<br />
+          {{ _("Humility in viewing landscape and history.") }}
+        </p>
+        <p>
+          <a class="pdf-link" href="{{ url_for('static', filename='reports/Projektbericht.pdf') }}" target="_blank" rel="noopener noreferrer">
+            {{ _("Report (DE | EN)") }}
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <a class="nav-left" href="/galerie/beirut" aria-label="{{ _('Vorheriges Bild') }}">&#8592;</a>
+      <a class="nav-right" href="/galerie/rio" aria-label="{{ _('Nächstes Bild') }}">&#8594;</a>
+    </div>
+
+    <a href="/galerie" class="back-button">{{ _("Back to Gallery") }}</a>
+  </div>
+
+  <div id="imageOverlay">
+    <button id="closeOverlay" aria-label="{{ _('Schließen') }}">&times;</button>
+    <img id="overlayImage" src="" alt="{{ _('Vergrößertes Bild') }}" />
+  </div>
+
+  <script>
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "ArrowLeft") {
+        window.location.href = "/galerie/beirut";
+      }
+      if (event.key === "ArrowRight") {
+        window.location.href = "/galerie/rio";
+      }
+    });
+
+    const mainImage = document.getElementById('mainImage');
+    const imageOverlay = document.getElementById('imageOverlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const closeOverlay = document.getElementById('closeOverlay');
+
+    mainImage.addEventListener('click', () => {
+      overlayImage.src = mainImage.src;
+      imageOverlay.style.display = 'flex';
+    });
+
+    closeOverlay.addEventListener('click', () => {
+      imageOverlay.style.display = 'none';
+    });
+
+    imageOverlay.addEventListener('click', (e) => {
+      if (e.target === imageOverlay) {
+        imageOverlay.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
