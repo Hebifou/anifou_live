@@ -1073,3 +1073,18 @@ button.arrow-btn:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .project.htif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .project.htif p {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
