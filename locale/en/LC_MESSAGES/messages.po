@@ -521,10 +521,6 @@ msgstr ""
 " questions the link between increasing consumption, corporate profit, and"
 " ecological responsibility."
 
-#: templates/projekt/plastic_vs_profit/index.html:32
-
-msgid "Informationen zur Plastikverschmutzung und Konzerngewinnen:"
-msgstr "Information on plastic pollution and corporate profits"
 
 #: templates/projekt/plastic_vs_profit/index.html:34
 msgid ""
@@ -556,7 +552,7 @@ msgstr "Key messages:"
 
 msgid ""
 "2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa "
-"23 %% (~86 Mio. Tonnen) gelangten in die Ozeane."
+"23 % (~86 Mio. Tonnen) gelangten in die Ozeane."
 msgstr ""
 "In 2020, around 367 million tons of plastic were produced globally, of "
 "which about 23% – approximately 86 million tons – entered the oceans."
