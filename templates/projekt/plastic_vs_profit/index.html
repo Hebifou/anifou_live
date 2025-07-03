@@ -13,12 +13,17 @@
   <hr class="fade-in-hr">
 
   <!-- Video -->
-  <div class="life-in-plastic-video">
-    <video controls autoplay muted loop>
+<div class="life-in-plastic-video">
+  <video controls autoplay muted loop>
+    {% if lang == 'en' %}
+      <source src="{{ url_for('static', filename='projects/LifeInPlastic/videos/plastic_pollution_animation_en.mp4') }}" type="video/mp4">
+    {% else %}
       <source src="{{ url_for('static', filename='projects/LifeInPlastic/videos/plastic_pollution_animation.mp4') }}" type="video/mp4">
-      {{ _("Dein Browser unterstützt kein HTML5-Video.") }}
-    </video>
-  </div>
+    {% endif %}
+    {{ _("Dein Browser unterstützt kein HTML5-Video.") }}
+  </video>
+</div>
+
 
   <hr class="fade-in-hr">
 

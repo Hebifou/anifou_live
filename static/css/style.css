@@ -1088,3 +1088,23 @@ button.arrow-btn:hover {
     margin: 0;
   }
 }
+@media (max-width: 768px) {
+  /* Touchzone vergrößern */
+  #stage {
+    height: 100px; /* mehr Raum für Touch */
+    touch-action: pan-x;
+  }
+
+  #handle-inner {
+    r: 16; /* etwas größer für den Finger */
+  }
+
+  #track-inner,
+  #track-fill {
+    y: 40; /* leicht nach unten verschieben */
+  }
+
+  #handle-inner {
+    cy: 43; /* mittig zur neuen Track-Position */
+  }
+}

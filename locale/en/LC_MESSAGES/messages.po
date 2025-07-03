@@ -522,7 +522,7 @@ msgstr ""
 " ecological responsibility."
 
 #: templates/projekt/plastic_vs_profit/index.html:32
-#, fuzzy
+
 msgid "Informationen zur Plastikverschmutzung und Konzerngewinnen:"
 msgstr "Information on plastic pollution and corporate profits"
 
@@ -553,7 +553,7 @@ msgid "Kernaussagen:"
 msgstr "Key messages:"
 
 #: templates/projekt/plastic_vs_profit/index.html:40
-#, fuzzy, python-format
+
 msgid ""
 "2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa "
 "23 %% (~86 Mio. Tonnen) gelangten in die Ozeane."

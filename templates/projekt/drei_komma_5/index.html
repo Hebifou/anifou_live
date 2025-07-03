@@ -304,18 +304,26 @@
   });
 
   // Touch Drag
-  handle.addEventListener("touchstart", e => { e.preventDefault(); dragging = true; });
+  handle.addEventListener("touchstart", e => {
+    e.preventDefault();
+    dragging = true;
+  }, { passive: false });
+
   window.addEventListener("touchend", () => dragging = false);
   window.addEventListener("touchcancel", () => dragging = false);
+
   window.addEventListener("touchmove", e => {
+    e.preventDefault(); // verhindert Scrollen beim Ziehen
     if (!dragging) return;
-    const x = Math.max(trackStart, Math.min(getTouchX(e), trackEnd));
-    const newIndex = Math.round((x - trackStart) / (trackEnd - trackStart) * (stepCount - 1));
-    if (newIndex !== currentStep) {
-      currentStep = newIndex;
-      updateVisual();
-    }
-  });
+
+  const x = Math.max(trackStart, Math.min(getTouchX(e), trackEnd));
+  const newIndex = Math.round((x - trackStart) / (trackEnd - trackStart) * (stepCount - 1));
+
+  if (newIndex !== currentStep) {
+    currentStep = newIndex;
+    updateVisual();
+  }
+}, { passive: false });
 
   document.getElementById("prevBtn").addEventListener("click", () => {
     currentFolderIndex = (currentFolderIndex - 1 + folders.length) % folders.length;
