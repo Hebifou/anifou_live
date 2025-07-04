@@ -522,10 +522,6 @@ msgstr ""
 "Weltmeeren. Sie hinterfragt den Zusammenhang zwischen wachsendem Konsum, "
 "unternehmerischem Gewinn und ökologischer Verantwortung."
 
-#: templates/projekt/plastic_vs_profit/index.html:32
-#, fuzzy
-msgid "Informationen zur Plastikverschmutzung und Konzerngewinnen:"
-msgstr "Informationen zur Plastikverschmutzung und Konzerngewinnen"
 
 #: templates/projekt/plastic_vs_profit/index.html:34
 msgid ""
@@ -554,10 +550,11 @@ msgid "Kernaussagen:"
 msgstr "Kernaussagen:"
 
 #: templates/projekt/plastic_vs_profit/index.html:40
-#, fuzzy, python-format
+
 msgid ""
+
 "2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa "
-"23 %% (~86 Mio. Tonnen) gelangten in die Ozeane."
+"23 % (~86 Mio. Tonnen) gelangten in die Ozeane."
 msgstr ""
 "2020 wurden weltweit rund 367 Mio. Tonnen Plastik produziert, davon etwa "
 "23 % (~86 Mio. Tonnen) gelangten in die Ozeane."
