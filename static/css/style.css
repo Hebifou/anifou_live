@@ -404,7 +404,7 @@ button.arrow-btn:hover {
 }
 
 .hero p, .clean-hero p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.5;
   color: #444;
   margin-bottom: 0.8rem;
@@ -419,12 +419,21 @@ button.arrow-btn:hover {
 @media (max-width: 600px) {
   .hero, .clean-hero {
     margin-top: -2rem;
+    padding-top: 0.3rem;
+    max-width: 600px; /* maximale Breite */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
   }
 
   .hero p, .clean-hero p {
     font-size: 0.8rem;
-    line-height: 1.6;
-    padding: 0 1rem;
+    line-height: 1.5;
+    max-width: 40ch; /* Begrenzung der Textzeilen auf ca. 40 Zeichen */
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -432,13 +441,22 @@ button.arrow-btn:hover {
   .hero, .clean-hero {
     margin-top: 1rem;
     padding-top: 0.3rem;
-    max-width: 48ch; /* oder z.B. 80% für etwas mehr Spielraum */
+    max-width: 600px; /* maximale Breite */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
   }
 
   .hero p, .clean-hero p {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     line-height: 1.5;
+    max-width: 40ch; /* Begrenzung der Textzeilen auf ca. 40 Zeichen */
+    margin-left: auto;
+    margin-right: auto;
   }
+
 
 }
 

@@ -399,7 +399,7 @@ a {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 1rem;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
