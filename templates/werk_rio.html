@@ -2,212 +2,53 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>{{ _("Explore – Rio") }}</title>
+  <title>Explore – Rio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/explore.css') }}" />
-  <style>
-    .back-link {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.5rem;
-      text-transform: uppercase;
-      color: #000;
-      text-decoration: none;
-      background: none;
-      padding: 0;
-      z-index: 1000;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: background-color 0.3s ease;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
-      background-color: #f2f2f2;
-    }
-
-    .back-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: transparent;
-      color: grey;
-      padding: 8px 14px;
-      border-radius: 3px;
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: normal;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      z-index: 10;
-    }
-
-    .back-button:hover {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .nav-buttons {
-      position: fixed;
-      bottom: 25px;
-      right: 47px;
-      display: flex;
-      gap: 6px;
-      z-index: 15;
-    }
-
-    .nav-buttons a {
-      background: transparent;
-      border: none;
-      color: grey;
-      font-size: 28px;
-      cursor: pointer;
-      width: auto;
-      height: auto;
-      padding: 0 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-      transition: color 0.3s;
-      text-decoration: none;
-    }
-
-    .nav-buttons a:hover {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    /* Overlay für vergrößertes Bild */
-    #imageOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      background: white;
-      z-index: 10000;
-    }
-
-    #overlayImage {
-      max-width: 90vw;
-      max-height: 90vh;
-      box-shadow: none;
-      position: relative;
-    }
-
-    #closeOverlay {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      background: transparent;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: black;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      .back-link {
-        position: static;
-        display: block;
-        margin: 1rem auto;
-        font-size: 0.75rem;
-        text-align: center;
-        color: #444;
-        padding: 0.2rem 0;
-        background: none;
-      }
-
-      .back-button {
-        position: static;
-        display: block;
-        margin: 1rem auto 2rem auto;
-        font-size: 0.75rem;
-        color: #666;
-        padding: 6px 10px;
-        background: transparent;
-        border: none;
-        text-align: center;
-      }
-
-      .nav-buttons {
-        position: static;
-        justify-content: center;
-        gap: 1rem;
-        margin: 1rem auto;
-      }
-
-      .nav-buttons a {
-        font-size: 1.5rem;
-        padding: 0.2rem 0.6rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .back-link {
-        font-size: 0.65rem;
-        color: #666;
-      }
-
-      .back-button {
-        font-size: 0.65rem;
-        padding: 4px 8px;
-        margin-bottom: 1rem;
-      }
-
-      .nav-buttons a {
-        font-size: 1.2rem;
-        padding: 0.1rem 0.4rem;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_werke.css') }}">
 </head>
 <body>
 
-  <!-- Zurück zur Startseite -->
-  <a class="back-link" href="/">{{ _("Zurück") }}</a>
+  <a class="back-link" href="/">Back</a>
 
   <div class="page-wrapper">
-    <div class="explore-container rio">
+    <div class="explore-container">
       <div class="image-block">
-        <img id="mainImage" src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Rio.jpg') }}" alt="{{ _('Rio Werk') }}" style="cursor:pointer;" />
+        <img id="mainImage" src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Rio.jpg') }}" alt="Rio Werk" />
       </div>
 
       <div class="info-block">
-        <h1>{{ _("Rio") }}</h1>
-        <p><strong>{{ _("Ort") }}:</strong> {{ _("Rio de Janeiro, Brasilien") }}</p>
-        <p><strong>{{ _("Technique") }}:</strong> {{ _("Myopie-Simulation") }}</p>
-        <p><strong>{{ _("Format") }}:</strong> {{ _("70 x 100 cm") }}</p>
-        <p><strong>{{ _("Print") }}:</strong> {{ _("Fine Art Giclée auf Hahnemühle Photo Rag") }}</p>
-        <p><strong>{{ _("Edition") }}:</strong> {{ _("1/5") }}</p>
-        <p class="description">
-          {{ _("Rio. Wide open space – subtle unease. A contemplative gaze") }}<br />
-          {{ _("at the sea. Night light contrasts with warm sand – a quiet") }}<br />
-          {{ _("reflection on distance and the aesthetics of the undefined.") }}
+        <h1>Rio</h1>
+        <p><span class="label">Location:</span> Rio de Janeiro, Brazil</p>
+        <p><span class="label">Technique:</span> Myopia Simulation</p>
+        <p><span class="label">Format:</span> 74.98 × 100 cm</p>
+        <p><span class="label">Druck:</span> Fine Art Giclée on Hahnemühle Photo Rag</p>
+        <p><span class="label">Edition:</span> 1/5</p>
+        <p>
+          Spaciousness – a subtle sense of unease. A contemplative gaze at the sea.<br />
+          Night light contrasts with the warmth of the sand – a quiet reflection<br />
+          on distance and the aesthetics of the vague.<br />
+
         </p>
         <p>
           <a class="pdf-link" href="{{ url_for('static', filename='reports/Projektbericht.pdf') }}" target="_blank" rel="noopener noreferrer">
-            {{ _("Report (DE | EN)") }}
+            Report (DE | EN)
           </a>
         </p>
       </div>
     </div>
 
     <div class="nav-buttons">
-      <a class="nav-left" href="/galerie/delphi" aria-label="{{ _('Vorheriges Bild') }}">&#8592;</a>
-      <a class="nav-right" href="/galerie/urbanamazonas" aria-label="{{ _('Nächstes Bild') }}">&#8594;</a>
+      <a class="nav-left" href="/galerie/delphi" aria-label="Vorheriges Bild">&#8592;</a>
+      <a class="nav-right" href="/galerie/urbanamazonas" aria-label="Nächstes Bild">&#8594;</a>
     </div>
 
-    <a href="/galerie" class="back-button">{{ _("Zurück zur Galerie") }}</a>
+    <a href="/galerie" class="back-button">Back to Gallery</a>
   </div>
 
   <div id="imageOverlay">
-    <button id="closeOverlay" aria-label="{{ _('Schließen') }}">&times;</button>
-    <img id="overlayImage" src="" alt="{{ _('Vergrößertes Bild') }}" />
+    <button id="closeOverlay" aria-label="Schließen">&times;</button>
+    <img id="overlayImage" src="" alt="Vergrößertes Bild" />
   </div>
 
   <script>

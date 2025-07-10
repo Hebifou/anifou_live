@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel, _
 import os
 
+print(">>> Flask-Babel aktiviert:", Babel)  # Debug-Ausgabe beim Start
+
 app = Flask(__name__)
 app.config['BABEL_DEFAULT_LOCALE'] = 'de'
 app.config['BABEL_SUPPORTED_LOCALES'] = ['de', 'en']
@@ -11,17 +13,20 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
-    # Erst Sprache aus der URL lesen
+    print(">>> get_locale() wurde ausgeführt")  # Wird bei jedem Request aufgerufen
+
     lang = request.args.get('lang')
+    print("Sprache erkannt (URL):", lang)
+
     if lang in app.config['BABEL_SUPPORTED_LOCALES']:
         g.current_lang = lang
         return lang
 
-    # Dann: automatisch aus Browser
     best_match = request.accept_languages.best_match(app.config['BABEL_SUPPORTED_LOCALES'])
+    print("Sprache erkannt (Browser):", best_match)
+
     g.current_lang = best_match or 'de'
     return g.current_lang
-
 
 # Sprache in Templates verfügbar machen
 @app.context_processor
@@ -41,21 +46,9 @@ def galerie():
 def galerie_voll():
     return render_template("galerie.html")
 
-
 @app.route("/galerie/<werk>")
 def galerie_werk(werk):
-    # Lies Sprache direkt aus der URL oder aus g
-    lang = request.args.get("lang") or g.get("current_lang", "de")
-    print("Sprache erkannt:", lang)  # Optional: Debug
-
-    if lang == 'en':
-        en_template = f"werk_{werk}_en.html"
-        en_template_path = os.path.join(app.root_path, "templates", en_template)
-        if os.path.exists(en_template_path):
-            return render_template(en_template)
-
     return render_template(f"werk_{werk}.html")
-
 
 @app.route("/projekt/<projektname>")
 def projekt(projektname):
@@ -71,7 +64,6 @@ def projekt(projektname):
     template_path = f"projekt/{projektname}/index.html"
     return render_template(template_path)
 
-
 @app.route("/kontakt")
 def kontakt():
     return render_template("kontakt.html")
@@ -81,8 +73,4 @@ def projekt_uebersicht():
     return render_template("projekte.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5010)
-
-
-
-
+    app.run(debug=True, host="0.0.0.0", port=5030)

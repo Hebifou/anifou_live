@@ -3,16 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}{{ _("Anifou") }}{% endblock %}</title>
+  <title>{% block title %}Anifou{% endblock %}</title>
 
   <!-- Inter Font von Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <!-- Eigenes Stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <style>
-    /* Burger Icon */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: #1a1a1a;
+      background-color: #eaeaea;
+      -webkit-font-smoothing: antialiased;
+    }
+
     .burger {
       display: none;
       font-size: 2rem;
@@ -24,13 +33,12 @@
       z-index: 1001;
     }
 
-    /* Menü standardmäßig ausblenden (mobil) */
     .mobile-menu {
       display: none;
       flex-direction: column;
       gap: 1rem;
       padding: 1rem;
-      background: white;
+      background: #eaeaea;
       position: absolute;
       top: 3.5rem;
       left: 0;
@@ -43,7 +51,10 @@
       display: flex;
     }
 
-    /* Mobilansicht aktivieren */
+    nav ul.navbar {
+      flex-direction: row;
+    }
+
     @media (max-width: 768px) {
       .burger {
         display: block;
@@ -53,7 +64,6 @@
       }
     }
 
-    /* Desktop Menü */
     @media (min-width: 769px) {
       .burger {
         display: none;
@@ -67,28 +77,133 @@
         gap: 2rem;
       }
     }
+
+    .contact {
+      text-align: center;
+      max-width: 40ch;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 0.6rem;
+      padding: 4rem 1rem;
+      color: #1a1a1a;
+
+    }
+
+    a {
+      color: #1a1a1a;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+      font-weight: 100;
+    }
+    a:hover {
+      color: #000;
+    }
+
+    a.download {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #ddd;
+      color: #222;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+    a.download:hover {
+      background-color: #ccc;
+      color: #000;
+    }
+
+    .quelle, blockquote {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .textblock {
+      background: #f5f5f5;
+      padding: 2rem 1.5rem;
+      border-radius: 6px;
+      max-width: 65ch;
+      margin: 2rem auto;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .video-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem;
+      max-width: 100%;
+    }
+
+    .video-wrapper video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .video-wrapper + * {
+      margin-top: 1.5rem !important;
+    }
+
+    @media (max-width: 700px) {
+      .contact {
+        font-size: 0.95rem;
+        padding: 3rem 1.25rem;
+        line-height: 1.5;
+        max-width: 90vw;
+      }
+
+      .video-wrapper {
+        margin-top: 1rem !important;
+        margin-bottom: 1.2rem !important;
+      }
+
+      .video-wrapper + * {
+        margin-top: 0rem !important;
+      }
+
+      h1, h2 {
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      main {
+        padding-top: 1rem;
+      }
+
+      hr {
+        margin: 0.5rem 0;
+      }
+
+  }
   </style>
 </head>
 <body>
 
-<!-- Burger-Menü nur mobil -->
 <div class="burger" id="burger">&#9776;</div>
 
-<!-- Navigation -->
 <nav class="main-nav">
   <ul class="navbar mobile-menu" id="mobileMenu">
-    <li><a href="{{ url_for('index', lang=get_locale()) }}">{{ _("Fouani") }}</a></li>
+    <li><a href="{{ url_for('index', lang=get_locale()) }}">{{ _('Fouani') }}</a></li>
 
     <li class="dropdown">
-      <button class="dropdown-toggle">{{ _("Projekte") }}</button>
+      <button class="dropdown-toggle">{{ _('Projects') }}</button>
       <ul class="dropdown-content">
         <li><a href="{{ url_for('projekt', projektname='drei_komma_5', lang=get_locale()) }}">–3.5</a></li>
-        <li><a href="{{ url_for('projekt', projektname='plastic_vs_profit', lang=get_locale()) }}">{{ _("Life In Plastic") }}</a></li>
-        <li><a href="{{ url_for('projekt', projektname='how_the_internet_feels', lang=get_locale()) }}">{{ _("HTIF") }}</a></li>
+        <li><a href="{{ url_for('projekt', projektname='plastic_vs_profit', lang=get_locale()) }}">{{ _('Life In Plastic') }}</a></li>
+        <li><a href="{{ url_for('projekt', projektname='how_the_internet_feels', lang=get_locale()) }}">{{ _('How The Internet Feels') }}</a></li>
       </ul>
     </li>
 
-    <li><a href="{{ url_for('kontakt', lang=get_locale()) }}">{{ _("Kontakt") }}</a></li>
+    <li><a href="{{ url_for('kontakt', lang=get_locale()) }}">{{ _('Contact') }}</a></li>
 
     <li class="language-switch">
       <a href="{{ request.path }}?lang=de" {% if get_locale() == 'de' %}class="active"{% endif %}>DE</a> |
@@ -97,17 +212,14 @@
   </ul>
 </nav>
 
-<!-- Hauptinhalt -->
 <main>
   <div class="page-wrapper">
     {% block content %}{% endblock %}
   </div>
 </main>
 
-<!-- JS für Dropdowns & Burger -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Dropdown
     const dropdowns = document.querySelectorAll(".dropdown");
 
     dropdowns.forEach(dropdown => {
@@ -135,7 +247,6 @@
       }
     });
 
-    // Burger Menü Toggle
     const burger = document.getElementById("burger");
     const mobileMenu = document.getElementById("mobileMenu");
 

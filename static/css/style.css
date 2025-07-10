@@ -12,7 +12,7 @@ body {
   font-weight: 300;
   font-size: 10px;
   line-height: 1.6;
-  color: #222;
+  background-color: #eaeaea;
   overflow: auto !important; /* 👈 HIER eingefügt */
 }
 
@@ -53,6 +53,7 @@ nav {
 .navbar {
   display: flex;
   justify-content: center;
+  padding-right: 2rem;
   gap: 2rem;
   list-style: none;
   margin: 0;
@@ -93,7 +94,7 @@ nav {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
+  background-color: #eaeaea;
   border: none;
   border-radius: 6px;
   min-width: 200px;
@@ -122,7 +123,7 @@ nav {
 }
 
 .dropdown-content li a:hover {
-  background-color: #f9f9f9;
+  background-color: #dcdcdc;
 }
 
 
@@ -374,14 +375,22 @@ button.arrow-btn:hover {
 }
 
 .contact a {
-  color: #222;
-  font-weight: bold;
+  color: #1a1a1a;
+  font-weight: normal;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  position: relative;
+  top: -5rem;
 }
 
 .contact a:hover {
   text-decoration: underline;
+}
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .contact a {
+    font-size: 0.75rem;
+    top: -2rem;
+  }
 }
 
 /* -------------------------- */
@@ -389,7 +398,7 @@ button.arrow-btn:hover {
 /* -------------------------- */
 .hero, .clean-hero {
   max-width: 520px;
-  margin: 3rem auto;
+  margin: -6rem auto 0 auto;
   padding: 0 1.5rem;
   text-align: center;
 }
@@ -405,6 +414,32 @@ button.arrow-btn:hover {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .hero, .clean-hero {
+    margin-top: -2rem;
+  }
+
+  .hero p, .clean-hero p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .hero, .clean-hero {
+    margin-top: 1rem;
+    padding-top: 0.3rem;
+    max-width: 48ch; /* oder z.B. 80% für etwas mehr Spielraum */
+  }
+
+  .hero p, .clean-hero p {
+    font-size: 0.5rem;
+    line-height: 1.5;
+  }
+
 }
 
 
@@ -573,6 +608,52 @@ button.arrow-btn:hover {
     padding: 0 1rem;
   }
 }
+@media screen and (orientation: landscape) and (max-height: 480px) {
+  .project.life-in-plastic .text-section {
+    max-width: 90vw;
+    font-size: 0.7rem;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
+
+  .life-in-plastic-video {
+    max-width: 90vw;
+  }
+}
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .project.life-in-plastic .project-header,
+  .project.life-in-plastic .text-section,
+  .life-in-plastic-video,
+  .sim-container,
+  .video-container,
+  .hero,
+  .clean-hero {
+    padding: 1rem;
+    max-width: 95vw;
+    text-align: center;
+  }
+
+  .project.life-in-plastic .text-section p,
+  .project.life-in-plastic .project-header p {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .project.life-in-plastic .project-header h1 {
+    font-size: 0.75rem;
+  }
+
+  .sim-img {
+    max-height: 200px;
+  }
+
+  .controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
 
 /* -------------------------- */
 /* Mobile Optimierung (<= 768px) */
@@ -1108,3 +1189,34 @@ button.arrow-btn:hover {
     cy: 43; /* mittig zur neuen Track-Position */
   }
 }
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  body,
+  .page-wrapper,
+  .project.life-in-plastic {
+    font-size: 0.5rem !important;
+    text-align: left !important;
+  }
+
+  .project.life-in-plastic *,
+  .project.life-in-plastic a,
+  .project.life-in-plastic h1,
+  .project.life-in-plastic h2,
+  .project.life-in-plastic h3,
+  .project.life-in-plastic p,
+  .project.life-in-plastic li,
+  .project.life-in-plastic ul,
+  .project.life-in-plastic ol {
+    font-size: 0.5rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+    font-weight: 300 !important;
+  }
+
+  .project.life-in-plastic .life-in-plastic-video {
+    margin-top: 1rem;
+  }
+}
+
+
+
