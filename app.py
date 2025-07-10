@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, send_from_directory
 from flask_babel import Babel, _
 import os
 
@@ -32,6 +32,11 @@ def get_locale():
 @app.context_processor
 def inject_get_locale():
     return dict(get_locale=lambda: g.get('current_lang', 'de'))
+
+# ✅ Sitemap richtig einbinden, ohne Templates zu stören
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory(directory=os.path.join(app.root_path, 'static'), path='sitemap.xml', mimetype='application/xml')
 
 # Routen
 @app.route("/")
@@ -74,3 +79,4 @@ def projekt_uebersicht():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5030)
+
