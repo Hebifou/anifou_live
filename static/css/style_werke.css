@@ -302,7 +302,7 @@ a {
   .back-link {
     position: fixed;
     top: 1rem;
-    right: 5rem;
+    right: 3rem;
     font-size: 0.7rem;
     z-index: 10;
   }
