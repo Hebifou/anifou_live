@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Anifou{% endblock %}</title>
 
+  {% block meta_description %}{% endblock %}
+
+  <!-- Browser-Tab Logo -->
+  <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='projects/drei_komma_5/img/logos/IMG_1918.jpg') }}">
+
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Anifou" />
+  <meta property="og:description" content="Exploring perception, culture, and language through data science and machine learning." />
+  <meta property="og:image" content="https://www.anifou.com/static/projects/drei_komma_5/img/logos/IMG_1918.jpg" />
+  <meta property="og:url" content="https://www.anifou.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Schema.org Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anifou",
+    "url": "https://www.anifou.com",
+    "image": "https://www.anifou.com/static/projects/drei_komma_5/img/logos/IMG_1918.jpg",
+    "description": "Anifou combines cultural insight with data science and machine learning to explore language, perception, and systems."
+  }
+  </script>
+
   <!-- Inter Font von Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
