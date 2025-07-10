@@ -2,7 +2,7 @@
 <html lang="{{ get_locale() }}">
 <head>
   <meta charset="UTF-8" />
-  <title>{{ _('Galerie Preview') }}</title>
+  <title>{{ _('Preview') }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -10,6 +10,7 @@
     html, body {
       margin: 0;
       padding: 0;
+
       height: 100%;
       background-color: #111;
       font-family: 'Inter', sans-serif;
@@ -200,7 +201,7 @@
   <div class="gallery-container">
     <img id="galleryImage"
          src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg') }}"
-         alt="{{ _('Galerievorschau Bild') }}"
+         alt="{{ _('Gallery preview image') }}"
          draggable="false" />
 
     <a id="exploreBtn" class="back-button" href="/galerie/demo?lang={{ get_locale() }}">{{ _('Explore all') }}</a>
