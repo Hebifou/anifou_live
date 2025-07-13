@@ -87,6 +87,15 @@ def galerie_voll():
 def gallery_werk(werk):
     return render_template(f"werk_{werk}.html")
 
+@app.route("/gallery/two-brothers-and-the-sea")
+def gallery_two_brothers():
+    return render_template("werk_2brothers.html")
+
+@app.route("/gallery/2brothers")
+def redirect_2brothers_old():
+    return redirect(url_for("gallery_two_brothers"), code=301)
+
+
 
 # 🔹 Kontakt & Projektübersicht
 @app.route("/contact")
@@ -96,6 +105,7 @@ def kontakt():
 @app.route("/projects")
 def projekt_uebersicht():
     return render_template("projekte.html")
+
 
 
 if __name__ == "__main__":
