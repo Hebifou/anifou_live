@@ -199,20 +199,23 @@
 </head>
 <body>
 
+
   <div class="gallery-container">
     <img id="galleryImage"
          src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Byblos.jpg') }}"
          alt="{{ _('Gallery preview image') }}"
          draggable="false" />
 
-    <a id="exploreBtn" class="back-button" href="{{ url_for('gallery_werk', werk='demo') }}">{{ _('Explore all') }}</a>
+    <a id="exploreBtn" class="back-button" href="{{ url_for('gallery_werk', werk='byblos') }}">{{ _('Explore all') }}</a>
 
-
+<!--
     <div class="nav-buttons">
       <a id="prevBtn" aria-label="{{ _('Vorheriges Bild') }}"><i data-lucide="arrow-left"></i></a>
       <a id="nextBtn" aria-label="{{ _('Nächstes Bild') }}"><i data-lucide="arrow-right"></i></a>
     </div>
+    -->
   </div>
+
 
   <script>
     const locale = "{{ get_locale() }}";
