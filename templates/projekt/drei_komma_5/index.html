@@ -309,10 +309,10 @@
 </head>
 <body>
 
-  <a href="/" class="back-link" aria-label="{{ _('Zurück zur Startseite') }}">{{ _('Zurück') }}</a>
+  <a href="/" class="back-link" aria-label="{{ _('Zurück zur Startseite') }}">{{ _('Back') }}</a>
 
   <div class="logo-screen" id="logoScreen" role="presentation" aria-hidden="true">
-    <img src="/static/projects/drei_komma_5/img/logos/-3.5_LOGO.png" alt="{{ _('Projektlogo') }}">
+    <img src="/static/projects/drei_komma_5/img/logos/-3.5_LOGO.png" alt="{{ _('Logo') }}">
   </div>
 
   <main class="sim-container hidden" id="simContent">
@@ -347,10 +347,13 @@
     </section>
 
     <footer class="gallery-link">
-      <a href="{{ url_for('galerie', lang=get_locale()) }}" role="button" aria-label="{{ _('Gallery') }}">
+      <a href="{{ url_for('gallery_preview') }}" role="button" aria-label="{{ _('Gallery') }}">
+
         {{ _('Gallery') }}
       </a>
     </footer>
+
+
   </main>
 
   <script>

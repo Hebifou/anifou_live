@@ -205,7 +205,8 @@
          alt="{{ _('Gallery preview image') }}"
          draggable="false" />
 
-    <a id="exploreBtn" class="back-button" href="/galerie/demo?lang={{ get_locale() }}">{{ _('Explore all') }}</a>
+    <a id="exploreBtn" class="back-button" href="{{ url_for('gallery_werk', werk='demo') }}">{{ _('Explore all') }}</a>
+
 
     <div class="nav-buttons">
       <a id="prevBtn" aria-label="{{ _('Vorheriges Bild') }}"><i data-lucide="arrow-left"></i></a>
@@ -219,37 +220,39 @@
     const images = [
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Byblos.jpg') }}",
-        link: `/galerie/byblos?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='byblos') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Gibran.jpg') }}",
-        link: `/galerie/gibran?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='gibran') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg') }}",
-        link: `/galerie/demo?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='demo') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Beirut.jpg') }}",
-        link: `/galerie/beirut?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='beirut') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Delphi.jpg') }}",
-        link: `/galerie/delphi?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='delphi') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_TwoBrothersAndTheSea.jpg') }}",
-        link: `/galerie/2brothers?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='2brothers') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Rio.jpg') }}",
-        link: `/galerie/rio?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='rio') }}"
       },
       {
         src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Hand.jpg') }}",
-        link: `/galerie/urbanamazonas?lang=${locale}`
+        link: "{{ url_for('gallery_werk', werk='hand') }}"
       }
     ];
+
+
 
     let currentIndex = 0;
 
