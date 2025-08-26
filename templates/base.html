@@ -30,38 +30,29 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: #333333;
+      background-color: #eaeaea;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    body { margin: 0; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 14px; color: #1a1a1a; background-color: #eaeaea; -webkit-font-smoothing: antialiased; }
-    .burger { display: none; font-size: 2rem; cursor: pointer; padding: 1rem; position: fixed; top: 0.5rem; left: 1rem; z-index: 1001; }
-    .mobile-menu { display: none; flex-direction: column; gap: 1rem; padding: 1rem; background: #eaeaea; position: absolute; top: 3.5rem; left: 0; right: 0; z-index: 1000; border-top: 1px solid #ddd; }
-    .mobile-menu.active { display: flex; }
-    nav ul.navbar { flex-direction: row; }
-    @media (max-width: 768px) {
-      .burger { display: block; }
-      nav ul.navbar { flex-direction: column; }
+    a, p, h1, h2, h3, h4, h5, h6, li, ul, ol, span, div, strong, em {
+      color: #333333 !important;
     }
-    @media (min-width: 769px) {
-      .burger { display: none; }
-      .mobile-menu { display: flex !important; flex-direction: row; justify-content: center; position: static; background: none; gap: 2rem; }
+
+    a:hover {
+      color: #333333 !important;
     }
-    .contact { text-align: center; max-width: 40ch; margin: 0 auto; line-height: 1.6; font-size: 0.6rem; padding: 4rem 1rem; color: #1a1a1a; }
-    a { color: #1a1a1a; text-decoration: underline; transition: color 0.2s ease; font-weight: 100; }
-    a:hover { color: #000; }
-    a.download { display: inline-block; margin-top: 1.5rem; padding: 0.6rem 1.2rem; background-color: #ddd; color: #222; text-decoration: none; border-radius: 6px; font-size: 0.95rem; transition: background 0.3s ease; }
-    a.download:hover { background-color: #ccc; color: #000; }
-    .quelle, blockquote { color: #666; font-size: 0.9rem; margin-top: 0.5rem; }
-    .textblock { background: #f5f5f5; padding: 2rem 1.5rem; border-radius: 6px; max-width: 65ch; margin: 2rem auto; color: #333; line-height: 1.6; }
-    .video-wrapper { display: flex; justify-content: center; margin: 1.5rem; max-width: 100%; }
-    .video-wrapper video { max-width: 100%; height: auto; }
-    ul li { margin-bottom: 0.5rem; line-height: 1.5; }
-    .video-wrapper + * { margin-top: 1.5rem !important; }
-    @media (max-width: 700px) {
-      .contact { font-size: 0.95rem; padding: 3rem 1.25rem; line-height: 1.5; max-width: 90vw; }
-      .video-wrapper { margin-top: 1rem !important; margin-bottom: 1.2rem !important; }
-      .video-wrapper + * { margin-top: 0rem !important; }
-      h1, h2 { margin-top: 0.5rem; margin-bottom: 1rem; font-size: 1.25rem; }
-      main { padding-top: 1rem; }
-      hr { margin: 0.5rem 0; }
+
+    .textblock,
+    .contact,
+    .quelle,
+    blockquote {
+      color: #333333 !important;
     }
   </style>
 </head>
@@ -72,7 +63,6 @@
 <nav class="main-nav">
   <ul class="navbar mobile-menu" id="mobileMenu">
     <li><a href="{{ url_for('index') }}">{{ _('About') }}</a></li>
-
     <li class="dropdown">
       <button class="dropdown-toggle">{{ _('Projects') }}</button>
       <ul class="dropdown-content">
@@ -81,7 +71,6 @@
         <li><a href="{{ url_for('how_the_internet_feels') }}">{{ _('How The Internet Feels') }}</a></li>
       </ul>
     </li>
-
     <li><a href="{{ url_for('kontakt') }}">{{ _('Contact') }}</a></li>
   </ul>
 </nav>
@@ -95,7 +84,6 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const dropdowns = document.querySelectorAll(".dropdown");
-
     dropdowns.forEach(dropdown => {
       const toggle = dropdown.querySelector(".dropdown-toggle");
       const menu = dropdown.querySelector(".dropdown-content");

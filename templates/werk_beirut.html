@@ -18,15 +18,15 @@
       </div>
 
       <div class="info-block">
-        <h1>Beirut</h1>
-        <p><span class="label">Location:</span> Beirut, Lebanon</p>
-        <p><span class="label">Technique:</span> Myopia Simulation</p>
-        <p><span class="label">Format:</span> 100 × 77.4 cm</p>
-        <p><span class="label">Print:</span> Fine Art Giclée on Hahnemühle Photo Rag</p>
-        <p><span class="label">Edition:</span> 1/5</p>
+        <p>Beirut</p>
+        <p>Beirut, Lebanon</p>
+        <p>Myopia Simulation</p>
+        <p>100 × 77.4 cm</p>
+        <p>Fine Art Giclée on Hahnemühle Photo Rag</p>
+        <p>1/5</p>
         <p>
           Facades. A tangle of wires. Architecture dissolves into depth.<br />
-          An exploration of urban space –  and the possibility<br />
+          An exploration of urban space – and the possibility<br />
           of recognizing order within chaos.<br />
         </p>
         <p>
@@ -37,12 +37,20 @@
       </div>
     </div>
 
-    <div class="nav-buttons">
-      <a class="nav-left" href="/galerie/byblos" aria-label="Vorheriges Werk">&#8592;</a>
-      <a class="nav-right" href="/galerie/delphi" aria-label="Nächstes Werk">&#8594;</a>
-    </div>
-
-    <a href="/galerie" class="back-button">Back to Gallery</a>
+    <!-- Pagination Dots (8 Stück; Beirut ist #2 aktiv) -->
+    <nav class="pagination" aria-label="Werk-Navigation">
+      <ul class="pagination__list">
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/byblos" aria-label="Werk 1 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link is-active" aria-current="page" href="/galerie/beirut" aria-label="Werk 2 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/delphi" aria-label="Werk 3 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/rio" aria-label="Werk 4 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/hand" aria-label="Werk 5 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/2brothers" aria-label="Werk 6 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/demo" aria-label="Werk 7 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/gibran" aria-label="Werk 8 von 8"></a></li>
+      </ul>
+    </nav>
+    <!-- /Pagination -->
   </div>
 
   <div id="imageOverlay">
@@ -51,15 +59,45 @@
   </div>
 
   <script>
+    // Beirut ist Werk 2 → prev = Byblos, next = Delphi
+    const prevUrl = "/galerie/byblos";
+    const nextUrl = "/galerie/delphi";
+
+    // Keyboard-Navigation
     document.addEventListener("keydown", function(event) {
-      if (event.key === "ArrowLeft") {
-        window.location.href = "/galerie/byblos";
-      }
-      if (event.key === "ArrowRight") {
-        window.location.href = "/galerie/delphi";
+      if (event.key === "ArrowLeft" && prevUrl) window.location.href = prevUrl;
+      if (event.key === "ArrowRight" && nextUrl) window.location.href = nextUrl;
+      if (event.key === "Escape") {
+        const overlay = document.getElementById('imageOverlay');
+        if (overlay && overlay.style.display === 'flex') overlay.style.display = 'none';
       }
     });
 
+    // Swipe-Gesten (mobile)
+    (function addSwipeNavigation() {
+      let startX = 0, startY = 0, isMoving = false;
+      const area = document.body;
+
+      area.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY; isMoving = true;
+      }, {passive: true});
+
+      area.addEventListener('touchend', (e) => {
+        if (!isMoving) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        isMoving = false;
+
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0 && nextUrl) window.location.href = nextUrl;
+          if (dx > 0 && prevUrl) window.location.href = prevUrl;
+        }
+      }, {passive: true});
+    })();
+
+    // Overlay
     const mainImage = document.getElementById('mainImage');
     const imageOverlay = document.getElementById('imageOverlay');
     const overlayImage = document.getElementById('overlayImage');
@@ -68,16 +106,17 @@
     mainImage.addEventListener('click', () => {
       overlayImage.src = mainImage.src;
       imageOverlay.style.display = 'flex';
+      document.documentElement.style.overflow = 'hidden';
     });
 
-    closeOverlay.addEventListener('click', () => {
+    function closeOverlayFn() {
       imageOverlay.style.display = 'none';
-    });
+      document.documentElement.style.overflow = '';
+    }
 
+    closeOverlay.addEventListener('click', closeOverlayFn);
     imageOverlay.addEventListener('click', (e) => {
-      if (e.target === imageOverlay) {
-        imageOverlay.style.display = 'none';
-      }
+      if (e.target === imageOverlay) closeOverlayFn();
     });
   </script>
 

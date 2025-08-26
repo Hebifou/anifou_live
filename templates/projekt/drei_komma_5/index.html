@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Interactive simulation of myopia from 0 to –3.5 diopters. Experience changing perception through visualized data and progressive blur." />
-
+  <meta name="description" content="Interactive simulation of myopia from 0 to –3.5 diopters." />
   <title>{{ _('–3.5 Myopia Simulation') }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       font-size: 10px;
-      color: #2c2c2c;
+      color: #333333;
       text-align: center;
       background: #eaeaea;
       -webkit-font-smoothing: antialiased;
     }
+
     a {
-      color: #2c2c2c;
+      color: #333333;
       text-decoration: none;
     }
+
     .back-link {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 0.75rem;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       color: #eaeaea;
       opacity: 0.85;
@@ -35,10 +40,12 @@
       border: none;
       cursor: pointer;
     }
+
     .back-link:hover {
       text-decoration: underline;
       opacity: 1;
     }
+
     .logo-screen {
       position: fixed;
       top: 0;
@@ -52,259 +59,198 @@
       z-index: 9999;
       transition: opacity 1.5s ease;
     }
+
     .logo-screen img {
-      width: 60vw;
-      max-width: 650px;
+      width: 80vw;
+      max-width: 600px;
       height: auto;
     }
+
     main.sim-container {
       display: flex;
-      position: relative;
       flex-direction: column;
       align-items: center;
-      padding: 0.5rem 1rem 3rem;
+      gap: 1.5rem;
+      padding: 2rem 1rem;
       max-width: 800px;
-      margin: 0 auto;
+      margin: auto;
+      margin-top: 3rem;
     }
+
     main.sim-container h1 {
-      font-size: 1.3rem;
+      font-size: 1rem;
       font-weight: 400;
-      margin-bottom: -1.5rem;
-      letter-spacing: 0.01em;
-      color: #1f1f1f;
+      margin: 0;
+      margin-bottom: 2rem;
     }
+
     .sim-img-wrapper {
       width: 100%;
-      max-width: 800px;
-      height: 600px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 1rem auto 0.5rem;
-      overflow: hidden;
     }
+
     .sim-img {
-      max-width: 100%;
-      max-height: 600px;
+      width: 100%;
+      max-width: 75%;
+      max-height: 80vh;
+      height: auto;
       object-fit: contain;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      margin-bottom: 0.5rem;
     }
 
     .controls {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
+      gap: 0.5rem;
     }
+
     .progress {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 300;
-      color: #444;
-      letter-spacing: 0.01em;
-      margin-top: -3rem;
+      color: #333333;
+      margin-top: 0.2rem;
     }
+
     #stage-container {
       width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
+      max-width: 500px;
     }
+
     #stage {
       width: 100%;
       height: 60px;
     }
+
     #track-inner {
       fill: #2c2c2c;
     }
+
     #track-fill {
       fill: #333;
       transition: width 0.3s ease;
     }
+
     #handle-inner {
       fill: #333;
       transition: cx 0.3s ease;
     }
+
     .gallery-link {
-      margin-top: 1.5rem;
-      margin-bottom: 2rem;
+      margin-top: -0.5rem;
     }
+
     .gallery-link a {
       font-weight: 500;
-      font-size: 0.75rem;
-      padding: 0.7rem 1.6rem;
+      font-size: 0.7rem;
+      padding: 0.6rem 1.2rem;
       border: 1px solid #ddd;
       border-radius: 6px;
-      display: inline-block;
       background: #eaeaea;
       transition: all 0.25s ease;
     }
+
     .gallery-link a:hover {
       background-color: #eaeaea;
       border-color: #bbb;
     }
+
     .hidden {
       visibility: hidden;
       opacity: 0;
     }
 
-    /* === MOBILE: Hochformat (Portrait) === */
-@media (max-width: 768px) and (orientation: portrait) {
-  main.sim-container h1 {
-    font-size: 0.75rem; /* Titelgröße */
-    margin-top: 7rem;
-    margin-bottom: 0.5rem/* optional verschieben */
-  }
+  /* === MOBILE BREAKPOINTS === */
+  @media (max-width: 1023px) {
+    main.sim-container {
+      padding: 2rem 1rem;
+      gap: 1.2rem;
+    }
 
-  .progress {
-    font-size: 0.5rem; /* Dioptrien-Anzeige */
-    margin-top: -2rem; /* Position nach oben/unten anpassen */
-  }
+    main.sim-container h1 {
+      font-size: 0.7rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
 
-  .sim-img-wrapper {
-    max-height: 60vh;        /* Bildbereich */
-    margin-top: -5rem;       /* nur dieser Wert gilt */
-    margin-bottom: -5rem;    /* zieht Regler dichter ran */
-  }
+    .sim-img {
+      width: 75%;
+      max-width: 420px;
+    }
 
-  .sim-img {
-    max-height: 55vh;        /* Bildgröße */
-    width: auto;
-    height: auto;
-  }
-
-  #stage {
-    height: 80px;            /* Reglerhöhe */
-    margin-top: -1rem;       /* Regler-Position */
-    width: 75%;             /* damit er skaliert wie das Bild */
-  }
-
-  .gallery-link {
-    margin-top: -0.5rem; /* Abstand über Button */
-  }
-
-  .gallery-link a {
-    font-size: 0.5rem; /* Galerie-Button Schriftgröße */
-    padding: 0.7rem 1.4rem;
-  }
-  .back-link {
-      position: absolute;
-      top: 2.5rem;
-      right: 1.5rem;
+    .progress {
       font-size: 0.5rem;
-      text-transform: uppercase;
-      color: #eaeaea;
-      opacity: 0.85;
-      font-weight: 400;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .back-link:hover {
-      text-decoration: underline;
-      opacity: 1;
     }
 
-    .logo-screen {
-      position: center;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #eaeaea;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 1.5s ease;
+    #stage {
+      height: 60px;
+      max-width: 50%;
     }
-    .logo-screen img {
-      width: 90vw;
-      max-width: 800px;
-      height: auto;
-      margin-top: -5rem;  /* nach oben */
-      margin-left: 0rem;
 
-    }
-}
-
-/* === MOBILE: Querformat (Landscape) === */
-@media (max-width: 768px) and (orientation: landscape) {
-  main.sim-container h1 {
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1.2rem;
-  }
-    .back-link {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
+    .gallery-link a {
       font-size: 0.5rem;
-      text-transform: uppercase;
-      color: #eaeaea;
-      opacity: 0.85;
-      font-weight: 400;
-      background: none;
-      border: none;
-      cursor: pointer;
+      padding: 0.5rem 1.2rem;
     }
-    .back-link:hover {
-      text-decoration: underline;
-      opacity: 1;
-    }
-  .progress {
-    font-size: 0.3rem;
-    margin-top: -2rem;
-  }
 
-  .sim-img-wrapper {
-    max-height: 75vh;
-    margin-top: -0.5rem;
-  }
-
-  .sim-img {
-    max-height: 70vh;
-    width: auto;
-    height: auto;
-  }
-
-  #stage {
-    height: 70px;
-    margin-top: -1rem;
-    width: 50%; /* damit Regler so breit ist wie sein Eltern-Container */
-  }
-
-  .gallery-link {
-    margin-top: -1rem;
-  }
-
-  .gallery-link a {
-    font-size: 0.5rem;
-    padding: 0.6rem 1.3rem;
-  }
-
-  .logo-screen {
-      position: center;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #eaeaea;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 1.5s ease;
-    }
     .logo-screen img {
-      width: 80vw;
-      max-width: 300px;
-      height: auto;
-      margin-top: -5rem;  /* nach oben */
-      margin-left: 0rem;
+      width: 85vw;
+      max-width: 480px;
     }
-}
+  }
+
+  @media (max-width: 767px) {
+    main.sim-container h1 {
+      font-size: 0.7rem;
+    }
+
+    .sim-img {
+      width: 75%;
+      max-width: 360px;
+    }
+
+    .progress {
+      font-size: 0.5rem;
+    }
+
+    .gallery-link a {
+      font-size: 0.5rem;
+    }
+
+    #stage {
+      height: 55px;
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sim-img {
+      width: 75%;
+      max-width: 340px;
+    }
+
+    main.sim-container h1 {
+      font-size: 0.7rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+
+    }
+
+    .progress {
+      font-size: 0.5rem;
+    }
+    #stage {
+      height: 55px;
+      width: 50%;
+    }
+
+    .gallery-link a {
+      font-size: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+  }
   </style>
 </head>
 <body>
@@ -348,12 +294,9 @@
 
     <footer class="gallery-link">
       <a href="{{ url_for('gallery_preview') }}" role="button" aria-label="{{ _('Gallery') }}">
-
         {{ _('Gallery') }}
       </a>
     </footer>
-
-
   </main>
 
   <script>
@@ -449,5 +392,6 @@
       }, 2000);
     });
   </script>
+
 </body>
 </html>

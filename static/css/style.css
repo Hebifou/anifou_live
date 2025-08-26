@@ -1,10 +1,7 @@
-
 /* -------------------------- */
 /* Grundlayout + Typografie   */
 /* -------------------------- */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   position: relative;
@@ -13,17 +10,33 @@ body {
   font-size: 10px;
   line-height: 1.6;
   background-color: #eaeaea;
-  overflow: auto !important; /* 👈 HIER eingefügt */
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-
-p, li, ul, ol, a, h2, h3, h4, h5, h6 {
+/* Einheitliche Typo/Links */
+p, li, ul, ol, a, h1, h2, h3, h4, h5, h6, .navbar a, .dropdown-toggle,
+.dropdown-content li a, .project-title, .project-lead, .video-info,
+.text-section, .gallery-link a, .contact a {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.6;
-  color: #222;
+  color: #333 !important;
 }
+
+a:hover,
+.dropdown-content li a:hover,
+.gallery-link a:hover,
+.contact a:hover {
+  color: #333 !important;
+  background-color: transparent !important;
+  text-decoration: underline;
+}
+
 .page-wrapper {
   display: flex;
   justify-content: center;
@@ -31,23 +44,27 @@ p, li, ul, ol, a, h2, h3, h4, h5, h6 {
   min-height: 100vh;
   width: 100%;
   padding: 40px 20px;
-  box-sizing: border-box;
 }
 
 h1 {
-  font-size: 1.8em;
-  margin-bottom: 0.5em;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
   font-weight: 400;
 }
 
 /* -------------------------- */
+/* Burger Standard: Desktop   */
+/* -------------------------- */
+.burger { display: none; }
+
+/* -------------------------- */
 /* Navigation & Dropdown      */
 /* -------------------------- */
-
 nav {
   background-color: transparent;
   box-shadow: none;
   border-bottom: none;
+  margin-top: 25px;
 }
 
 .navbar {
@@ -63,12 +80,12 @@ nav {
 .navbar li {
   position: relative;
   display: flex;
-  align-items: center; /* sorgt für vertikale Zentrierung */
+  align-items: center;
 }
 
 .navbar a,
 .dropdown-toggle {
-  color: #222;
+  color: #333;
   text-decoration: none;
   padding: 0.4rem 0.8rem;
   background: none;
@@ -79,15 +96,13 @@ nav {
   letter-spacing: 0.01em;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  display: flex;               /* ⬅ sorgt für vertikalen Ausgleich */
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;                /* ⬅ gleichmäßige Ausrichtung */
+  height: 100%;
 }
 
-.dropdown-toggle:focus {
-  outline: none;
-}
+.dropdown-toggle:focus { outline: none; }
 
 .dropdown-content {
   display: none;
@@ -106,10 +121,7 @@ nav {
   box-shadow: none;
 }
 
-.dropdown-content li {
-  list-style: none;
-  margin: 0;
-}
+.dropdown-content li { list-style: none; margin: 0; }
 
 .dropdown-content li a {
   display: block;
@@ -122,21 +134,17 @@ nav {
   transition: background-color 0.2s ease;
 }
 
-.dropdown-content li a:hover {
-  background-color: #dcdcdc;
-}
-
+.dropdown-content li a:hover { background-color: #dcdcdc; }
 
 /* -------------------------- */
 /* Landing Logo Screen        */
 /* -------------------------- */
 .logo-screen {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  background: white;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,12 +171,11 @@ nav {
   margin: 0 auto;
   padding: 30px 1rem 20px;
   text-align: center;
-  box-sizing: border-box;
 }
 
 .sim-img {
   max-width: 100%;
-  max-height: 500px; /* Bild bleibt in fixer Höhe */
+  max-height: 500px;
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
@@ -191,25 +198,21 @@ nav {
   margin-top: 0.5rem;
 }
 
-.gallery-link {
-  margin-top: 2rem;
-}
+.gallery-link { margin-top: 1.5rem; }
 
 .gallery-link a {
   font-weight: bold;
   font-size: 1rem;
-  background: none;
+  background: transparent;
   border: none;
-  color: #000;
+  color: #222;
   text-decoration: none;
-  padding: 0;
+  padding: 0.5rem 1.2rem;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.gallery-link a:hover {
-  text-decoration: underline;
-}
-
+.gallery-link a:hover { color: #666; }
 
 /* SVG Slider */
 #stage-container {
@@ -219,43 +222,25 @@ nav {
   margin: 0 auto;
 }
 
-#stage {
-  width: 100%;
-  height: 60px;
-}
+#stage { width: 100%; height: 60px; }
+#slider-inner { fill: none; }
 
-#slider-inner {
-  fill: none;
-}
-
-#track-inner,
-#track-fill {
+#track-inner, #track-fill {
   height: 3px;
   y: 33;
   rx: 1.5;
   ry: 1.5;
 }
 
-#track-inner {
-  fill: #555;
-}
-
-#track-fill {
-  fill: #000;
-}
+#track-inner { fill: #555; }
+#track-fill  { fill: #000; }
 
 #handle-inner {
   r: 8;
   cy: 34;
   fill: #000;
-  stroke: black;
+  stroke: #000;
   stroke-width: 1.5;
-}
-
-.progress {
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 0.5rem;
 }
 
 button.arrow-btn {
@@ -267,34 +252,13 @@ button.arrow-btn {
 
 button.arrow-btn:hover {
   background: #222;
-  color: white;
-}
-
-/* Galerie-Link */
-.gallery-link {
-  margin-top: 1.5rem;
-}
-
-.gallery-link a {
-  padding: 0.5rem 1.2rem;
-  background: transparent;
-  color: #222;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s ease;
-}
-
-.gallery-link a:hover {
-  color: #666;
+  color: #fff;
 }
 
 /* -------------------------- */
 /* Sichtbarkeit & Animation   */
 /* -------------------------- */
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-}
+.hidden { visibility: hidden; opacity: 0; }
 
 .fade-in {
   visibility: visible;
@@ -315,14 +279,13 @@ button.arrow-btn:hover {
   width: 100%;
   max-width: 800px;
   border-radius: 10px;
-  box-shadow: none; /* ⬅ etwas dezenter */
+  box-shadow: none;
 }
 
-/* Optional: wenn du einen Titel wie "Life In Plastic" hast */
 .project-title {
   font-size: 1.2rem;
   font-weight: 400;
-  margin: 3rem auto 1rem auto;
+  margin: 3rem auto 1rem;
   max-width: 800px;
   text-align: left;
   padding: 0 1rem;
@@ -333,7 +296,7 @@ button.arrow-btn:hover {
   font-weight: 300;
   line-height: 1.5;
   color: #333;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2rem;
   max-width: 800px;
   text-align: left;
   padding: 0 1rem;
@@ -341,7 +304,7 @@ button.arrow-btn:hover {
 
 .video-info {
   max-width: 800px;
-  margin: 1.5rem auto 2rem auto;
+  margin: 1.5rem auto 2rem;
   font-size: 0.9rem;
   line-height: 1.5;
   text-align: left;
@@ -359,10 +322,7 @@ button.arrow-btn:hover {
   color: #333;
 }
 
-.text-section strong {
-  font-weight: 500;
-}
-
+.text-section strong { font-weight: 500; }
 
 /* -------------------------- */
 /* Kontaktseite               */
@@ -383,81 +343,171 @@ button.arrow-btn:hover {
   top: -5rem;
 }
 
-.contact a:hover {
-  text-decoration: underline;
-}
+.contact a:hover { text-decoration: underline; }
+
 @media screen and (max-width: 768px) and (orientation: landscape) {
-  .contact a {
-    font-size: 0.75rem;
-    top: -2rem;
-  }
+  .contact a { font-size: 0.75rem; top: -2rem; }
 }
 
 /* -------------------------- */
-/* Hero / Intro               */
+/* Hero / Intro - Desktop     */
 /* -------------------------- */
-.hero, .clean-hero {
-  max-width: 520px;
-  margin: -6rem auto 0 auto;
-  padding: 0 1.5rem;
+.hero,
+.clean-hero {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
   text-align: center;
-}
-
-.hero p, .clean-hero p {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #444;
-  margin-bottom: 0.8rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: none;
 }
 
 .clean-hero h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 24px;
   font-weight: 500;
+  line-height: 1.6;
 }
 
-@media (max-width: 600px) {
-  .hero, .clean-hero {
-    margin-top: -2rem;
-    padding-top: 0.3rem;
-    max-width: 600px; /* maximale Breite */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+.clean-hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0 auto 20px;
+  max-width: 700px;
+}
+
+/* ============================================================
+   💻 Tablets & kleine Laptops (≤1024px Breite)
+   → Typische Geräte:
+     - iPad (10.2", 820–1024px)
+     - iPad Air / iPad Pro (Portrait ≤1024px)
+     - kleine Notebooks & Chromebooks (11–13")
+============================================================ */
+@media (max-width: 1024px) {
+  .hero,
+  .clean-hero {
+    max-width: 760px;
+    padding: 0 20px;
+  }
+
+  .clean-hero h1 { font-size: 1rem; }
+  .clean-hero p  { max-width: 60ch; }
+}
+
+/* ============================================================
+   📱 Phones & kleine Tablets im Portrait (≤768px, Portrait)
+   → Typische Geräte:
+     - iPhone 12 / 13 / 14 / 15 (390–430px Portrait)
+     - Pixel 7 (412px Portrait)
+     - Samsung Galaxy S20 Ultra / S8+ (360–412px Portrait)
+     - iPad Mini & iPad Air (Portrait ≤768px)
+============================================================ */
+@media (max-width: 768px) and (orientation: portrait) {
+  .hero,
+  .clean-hero {
+    min-height: auto;
+    margin-top: 5rem;   /* Feinjustieren */
+    padding: 0 1rem;
+  }
+
+  .clean-hero h1 { font-size: 1rem; }
+  .clean-hero p  { font-size: 1rem; max-width: 38ch; }
+}
+
+/* ============================================================
+   📱 Phones Landscape & flache Tablets (≤768px, Landscape)
+   → Typische Geräte:
+     - iPhone 12 / 13 / 14 / 15 quer
+     - Pixel 7 quer
+     - Samsung Galaxy S20 Ultra / S8+ quer
+     - iPad Mini quer (768px)
+============================================================ */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero,
+  .clean-hero {
+    min-height: auto;
+    transform: none;
+    margin-top: 2rem;  /* Feinjustieren */
+    padding: 0 1rem;
     text-align: center;
   }
 
-  .hero p, .clean-hero p {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    max-width: 40ch; /* Begrenzung der Textzeilen auf ca. 40 Zeichen */
-    margin-left: auto;
-    margin-right: auto;
+  .clean-hero h1 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .clean-hero p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 50ch;
+    margin: 0 auto 0.6rem;
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 500px) {
-  .hero, .clean-hero {
-    margin-top: 1rem;
-    padding-top: 0.3rem;
-    max-width: 600px; /* maximale Breite */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* ============================================================
+   📱 Große Phones im Landscape (769px – 1024px, Landscape)
+   → Typische Geräte:
+     - iPhone 14 Pro / Pro Max quer (≈ 852–932px breit)
+     - Pixel 7 Pro quer
+     - Galaxy Note / Ultra quer
+     - kleine Tablets im Landscape (unterhalb 1024px)
+============================================================ */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .hero,
+  .clean-hero {
+    min-height: auto;
+    margin-top: 3rem;   /* Extra-Abstand für breite Phones quer */
+    padding: 0 2rem;
     text-align: center;
   }
 
-  .hero p, .clean-hero p {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    max-width: 40ch; /* Begrenzung der Textzeilen auf ca. 40 Zeichen */
-    margin-left: auto;
-    margin-right: auto;
+  .clean-hero h1 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
 
+  .clean-hero p {
+    font-size: 1.05rem;
+    max-width: 65ch;
+    margin: 0 auto 1rem;
+  }
+}
 
+/* ============================================================
+   📱 Very small phones (≤480px Breite)
+   → Typische Geräte:
+     - iPhone SE (375px)
+     - ältere iPhones (5, 6, 7, 8, X)
+     - kleine Android Phones (Galaxy A-Serie, Pixel 4a)
+============================================================ */
+@media (max-width: 480px) {
+  .hero,
+  .clean-hero {
+    min-height: auto;
+    transform: none;
+    margin-top: 8rem;   /* Feinjustieren */
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .clean-hero h1 {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .clean-hero p {
+    font-size: 1rem;   /* ggf. auf 1.2–1.4rem erhöhen */
+    line-height: 1.6;
+    max-width: 32ch;
+    margin: 0 auto 1rem;
+  }
 }
 
 
@@ -467,7 +517,7 @@ button.arrow-btn:hover {
 .button {
   padding: 0.6rem 1.2rem;
   background: #000;
-  color: white;
+  color: #fff;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
@@ -475,23 +525,21 @@ button.arrow-btn:hover {
   display: inline-block;
 }
 
-.button:hover {
-  background: #333;
-}
+.button:hover { background: #333; }
 
 /* -------------------------- */
-/* ZurÃ¼ck-Link oben rechts    */
+/* Zurück-Link oben rechts    */
 /* -------------------------- */
 .back-link {
   position: fixed;
   top: 0.6rem;
   right: 0.8rem;
-  font-size: 0.65rem;             /* kleiner */
+  font-size: 0.65rem;
   text-transform: uppercase;
-  color: #555;                    /* etwas heller = dezenter */
+  color: #555;
   text-decoration: none;
   background: none;
-  padding: 2px 4px;               /* leicht gepolstert */
+  padding: 2px 4px;
   z-index: 1000;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -499,39 +547,29 @@ button.arrow-btn:hover {
   transition: opacity 0.3s ease;
 }
 
-.back-link:hover {
-  text-decoration: underline;
-  opacity: 1;
-}
-
+.back-link:hover { text-decoration: underline; opacity: 1; }
 
 /* -------------------------- */
 /* Responsive Layout          */
 /* -------------------------- */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-logo {
-    max-width: 200px;
-  }
+  .navbar { flex-direction: column; align-items: center; }
+  .hero-logo { max-width: 200px; }
 }
 
-/* -------------------------- */
-/* High-End Feintuning Final  */
-/* -------------------------- */
+/* =============================================================
+   Project: "Life in Plastic"
+============================================================= */
 
 /* Überschrift-Container */
 .project.life-in-plastic .project-header {
   max-width: 700px;
-  margin: 3rem auto 2rem auto; /* Mehr Luft nach oben */
+  margin: 3rem auto 2rem;
   padding: 0 1rem;
   text-align: left;
 }
 
-/* Überschrift optisch präzise */
+/* Überschrift */
 .project.life-in-plastic .project-header h1 {
   font-size: 0.85rem;
   font-weight: 400;
@@ -546,7 +584,7 @@ button.arrow-btn:hover {
   font-weight: 300;
   color: #555;
   margin-top: 0.2rem;
-  line-height: 1.8; /* etwas luftiger */
+  line-height: 1.8;
 }
 
 /* Divider */
@@ -558,7 +596,7 @@ button.arrow-btn:hover {
   opacity: 0.4;
 }
 
-/* Video schlicht & bündig */
+/* Video */
 .life-in-plastic-video {
   max-width: 800px;
   margin: 1.5rem auto;
@@ -578,15 +616,15 @@ button.arrow-btn:hover {
 
 /* Textabschnitt */
 .project.life-in-plastic .text-section {
-  max-width: 700px;
+  max-width: 830px;
   margin: 2.5rem auto;
   padding: 0 1rem;
-  font-size: 0.85rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: #333;
 }
 
-/* Typo-Feinschliff */
+/* Typo-Feinschliff (Desktop) */
 .project.life-in-plastic .text-section p,
 .project.life-in-plastic .text-section li,
 .project.life-in-plastic h1,
@@ -597,13 +635,13 @@ button.arrow-btn:hover {
 .project.life-in-plastic ul,
 .project.life-in-plastic ol,
 .project.life-in-plastic a {
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.6;
   font-weight: 300;
   color: #333;
 }
 
-/* Sanfte Einblendung (optional) */
+/* Sanfte Einblendung (global .fade-in bleibt erhalten) */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -611,208 +649,182 @@ button.arrow-btn:hover {
 }
 
 @keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
-/* -------------------------- */
-/* Responsive Tweaks          */
-/* -------------------------- */
-@media (max-width: 600px) {
-  .project.life-in-plastic .project-header,
-  .project.life-in-plastic .text-section,
-  .life-in-plastic-video {
-    padding: 0 1rem;
-  }
-}
-@media screen and (orientation: landscape) and (max-height: 480px) {
-  .project.life-in-plastic .text-section {
-    max-width: 90vw;
-    font-size: 0.7rem;
-    padding: 0 1rem;
-    line-height: 1.5;
+
+/* ---------------------------- */
+/* Tablet & kleiner (<=1024px) */
+/* ---------------------------- */
+@media (max-width: 1024px) {
+  :root {
+    --tab-col: 720px;
+    --tab-pad: 1.25rem;
+    --tab-leading: 1.65;
+    --gap: 0.75rem; /* vertikale Abstände */
   }
 
-  .life-in-plastic-video {
-    max-width: 90vw;
-  }
-}
-@media screen and (max-width: 768px) and (orientation: landscape) {
+  /* oben andocken statt zentrieren */
+  .page-wrapper { align-items: flex-start; padding-top: var(--gap); }
+
   .project.life-in-plastic .project-header,
   .project.life-in-plastic .text-section,
-  .life-in-plastic-video,
-  .sim-container,
-  .video-container,
-  .hero,
-  .clean-hero {
-    padding: 1rem;
-    max-width: 95vw;
-    text-align: center;
+  .project.life-in-plastic .life-in-plastic-video {
+    max-width: var(--tab-col);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--tab-pad);
+    padding-right: var(--tab-pad);
   }
 
+  .project.life-in-plastic .text-section { line-height: var(--tab-leading); }
+
+  .project.life-in-plastic .project-header h1,
+  .project.life-in-plastic .project-header p,
   .project.life-in-plastic .text-section p,
-  .project.life-in-plastic .project-header p {
-    font-size: 0.7rem;
-    line-height: 1.4;
-  }
+  .project.life-in-plastic .text-section li { font-size: 0.95rem; }
 
-  .project.life-in-plastic .project-header h1 {
-    font-size: 0.75rem;
-  }
+  /* kompaktere Abstände */
+  .project.life-in-plastic .project-header       { margin: var(--gap) auto calc(var(--gap)*1.2); }
+  .project.life-in-plastic .life-in-plastic-video{ margin: var(--gap) auto calc(var(--gap)*1.2); }
+  .project.life-in-plastic .text-section         { margin: var(--gap) auto calc(var(--gap)*1.6); }
 
-  .sim-img {
-    max-height: 200px;
-  }
-
-  .controls {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-}
-
-
-/* -------------------------- */
-/* Mobile Optimierung (<= 768px) */
-/* -------------------------- */
-@media (max-width: 768px) {
-  /* Navigation vertikal */
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .navbar li {
+  .project.life-in-plastic .life-in-plastic-video {
     width: 100%;
-    justify-content: center;
-  }
-
-  .dropdown-toggle {
-    width: 100%;
-    text-align: center;
-  }
-
-  .dropdown-content {
-    position: static;
-    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0;
+    overflow: hidden;
     box-shadow: none;
-    background-color: transparent;
-    padding: 0;
-
   }
-
-  .dropdown-content li a {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-    text-align: center;
-  }
-
-  /* Page Layout */
-  .page-wrapper {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 20px 1rem;
-  }
-
-  .sim-container,
-  .text-section,
-  .contact,
-  .video-container,
-  .project-title,
-  .project-lead,
-  .video-info {
-    padding: 0 1rem;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  .controls {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  /* Videos & Bilder full-width */
-  .video-container video,
-  .life-in-plastic-video video,
-  img {
-    max-width: 100%;
+  .project.life-in-plastic .life-in-plastic-video video {
+    width: 100%;
     height: auto;
-  }
-
-  .hero-logo {
-    max-width: 200px;
-  }
-
-  /* Typografie */
-  body {
-    font-size: 9px;
-    overflow-x: hidden; /* WICHTIG: scrollen verhindern */
-  }
-
-  h1, h2 {
-    font-size: 1.2rem;
-  }
-
-  .button {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-
-@media (max-width: 768px) {
-  .back-link {
-    position: relative;
+    object-fit: contain;
     display: block;
-    margin: 1rem 0 1.5rem 0.5rem;
-    text-align: left;
-    font-size: 0.8rem;
-    padding: 0;
-    color: #444;
+  }
+}
+
+/* ------------------------- */
+/* Phones (<=768px) — PORTRAIT */
+/* ------------------------- */
+@media (max-width: 768px) and (orientation: portrait) {
+  :root {
+    --phone-col: 38ch;       /* Breite Text/Video */
+    --phone-pad: 1rem;       /* seitliches Padding */
+    --p-top: 8px;            /* Abstand ganz oben */
+    --gap: 0.6rem;           /* vertikale Abstände */
+    --phone-leading: 1.6;
+  }
+
+  .page-wrapper { align-items: flex-start; padding-top: var(--p-top); }
+
+  .project.life-in-plastic .project-header,
+  .project.life-in-plastic .text-section,
+  .project.life-in-plastic .life-in-plastic-video {
+    max-width: var(--phone-col);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--phone-pad);
+    padding-right: var(--phone-pad);
+  }
+
+  .project.life-in-plastic .project-header h1,
+  .project.life-in-plastic .project-header p,
+  .project.life-in-plastic .text-section p,
+  .project.life-in-plastic .text-section li {
+    font-size: clamp(0.9rem, 0.9rem + 0.2vw, 1rem);
+    line-height: var(--phone-leading);
+  }
+
+  /* dichter nach oben */
+  .project.life-in-plastic .project-header        { margin: var(--gap) auto calc(var(--gap)*1.2); }
+  .project.life-in-plastic .life-in-plastic-video { margin: var(--gap) auto calc(var(--gap)*1.2); }
+  .project.life-in-plastic .text-section          { margin: var(--gap) auto calc(var(--gap)*1.6); }
+
+  .back-link {
+    position: static;
+    display: block;
+    margin: 1rem auto;
+    font-size: 0.75rem;
+    text-align: center;
+    color: #666;
+    padding: 0.2rem 0;
     opacity: 0.9;
-    z-index: auto;
-  }
-
-  .back-link:hover {
-    opacity: 1;
-    text-decoration: underline;
   }
 }
 
-
-  /* Galerie-Link größer & fingerfreundlich */
-  .gallery-link a {
-    font-size: 1rem;
-    padding: 0.8rem 1.5rem;
-    display: inline-block;
-  }
-}
-/* -------------------------- */
-/* Feinjustierung (<= 480px) */
-/* -------------------------- */
+/* Kleine Phones (<=480px) */
 @media (max-width: 480px) {
-  h1, h2 {
-    font-size: 1.1rem;
-  }
+  :root { --phone-col: 36ch; --phone-leading: 1.6; }
+  h1, h2 { font-size: 1.1rem; }
+  .navbar { gap: 0.5rem; }
+  .dropdown-content li a { font-size: 0.8rem; }
+  .button { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+  .project.life-in-plastic .project-header { margin-top: 0.75rem; }
+  .project.life-in-plastic .text-section { margin-top: 0.75rem; }
 
-  .navbar {
-    gap: 0.5rem;
-  }
-
-  .dropdown-content li a {
-    font-size: 0.8rem;
-  }
-
-  .button {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
+  .fixed-back-button {
+    bottom: 60px;
+    right: 10px;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
   }
 }
+
+/* Extra-kleine Phones (<=360px) */
+@media (max-width: 360px) {
+  :root { --phone-col: 34ch; }
+  .project.life-in-plastic .project-header { margin-top: 0.5rem; }
+}
+
+/* ------------------------------ */
+/* Phones (<=768px) — LANDSCAPE  */
+/* ------------------------------ */
+@media (max-width: 768px) and (orientation: landscape) {
+  :root {
+    --land-col: min(640px, 92vw);  /* Breite Text/Video */
+    --l-top: 6px;                  /* Abstand ganz oben */
+    --gap: 0.5rem;                 /* vertikale Abstände */
+    --land-leading: 1.5;
+  }
+
+  .page-wrapper { align-items: flex-start; padding-top: var(--l-top); }
+
+  .project.life-in-plastic .project-header,
+  .project.life-in-plastic .text-section,
+  .project.life-in-plastic .life-in-plastic-video {
+    max-width: var(--land-col);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .project.life-in-plastic .project-header        { margin: var(--gap) auto calc(var(--gap)*1.1); }
+  .project.life-in-plastic .life-in-plastic-video { margin: var(--gap) auto calc(var(--gap)*1.1); }
+  .project.life-in-plastic .text-section {
+    margin: var(--gap) auto calc(var(--gap)*1.4);
+    line-height: var(--land-leading);
+  }
+
+  .project.life-in-plastic .life-in-plastic-video video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+/* sehr kleine Landscape-Höhe */
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 480px) {
+  .project.life-in-plastic .project-header,
+  .project.life-in-plastic .text-section { margin-top: 0.25rem; }
+}
+
 /* ----------------------------------------- */
 /* Responsive Optimierung: Projekt 3.5 Ansicht */
 /* ----------------------------------------- */
-@media (max-width: 768px) {
-  /* Navbar */
+@media (max-width: 1024px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -844,9 +856,7 @@ button.arrow-btn:hover {
     background-color: transparent;
   }
 
-  .dropdown-content li a:hover {
-    background-color: #f0f0f0;
-  }
+  .dropdown-content li a:hover { background-color: #f0f0f0; }
 
   .language-switch {
     font-size: 0.8rem;
@@ -861,15 +871,8 @@ button.arrow-btn:hover {
     cursor: pointer;
   }
 
-  .mobile-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .mobile-menu.active {
-    display: flex;
-  }
+  .mobile-menu { display: none; flex-direction: column; width: 100%; }
+  .mobile-menu.active { display: flex; }
 
   /* Zurück-Link */
   .back-link {
@@ -889,16 +892,10 @@ button.arrow-btn:hover {
     padding: 0;
   }
 
-  .back-link:hover {
-    text-decoration: underline;
-    opacity: 1;
-  }
+  .back-link:hover { text-decoration: underline; opacity: 1; }
 
   /* Simulation Bild */
-  .sim-img {
-    max-height: 300px;
-    margin-top: 1rem;
-  }
+  .sim-img { max-height: 300px; margin-top: 1rem; }
 
   /* Controls */
   .controls {
@@ -908,29 +905,15 @@ button.arrow-btn:hover {
     margin-top: 1rem;
   }
 
-  button.arrow-btn {
-    font-size: 1.5rem;
-    padding: 0.4rem 0.8rem;
-  }
+  button.arrow-btn { font-size: 1.5rem; padding: 0.4rem 0.8rem; }
 
   /* Slider */
-  #stage-container {
-    max-width: 100%;
-    padding: 0 1rem;
-  }
+  #stage-container { max-width: 100%; padding: 0 1rem; }
 
-  .progress {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    text-align: center;
-  }
+  .progress { margin-top: 0.5rem; font-size: 0.9rem; text-align: center; }
 
   /* Galerie-Link */
-  .gallery-link {
-    margin-top: 2rem;
-    text-align: center;
-  }
-
+  .gallery-link { margin-top: 2rem; text-align: center; }
   .gallery-link a {
     font-size: 1rem;
     padding: 0.8rem 1.6rem;
@@ -939,28 +922,23 @@ button.arrow-btn:hover {
     display: inline-block;
     background-color: #fafafa;
   }
-
-  .gallery-link a:hover {
-    background-color: #f0f0f0;
-    color: #000;
-  }
+  .gallery-link a:hover { background-color: #f0f0f0; color: #000; }
 }
 
 /* ----------------------------------------- */
 /* Mobile Optimierung: Simulation Ansicht    */
-/* Gültig für alle Seiten mit .sim-container */
 /* ----------------------------------------- */
 @media (max-width: 768px) {
-  .sim-container {
-    padding: 2rem 1rem 3rem;
-  }
+  .sim-container { padding: 2rem 1rem 3rem; }
 
   .sim-img {
+    width: 100% !important;
+    height: auto !important;
     max-height: 280px;
-    margin-bottom: 1rem;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    margin: 1rem 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    object-fit: contain !important;
   }
 
   .controls {
@@ -970,15 +948,9 @@ button.arrow-btn:hover {
     align-items: center;
   }
 
-  #stage-container {
-    padding: 0 0.5rem;
-    width: 100%;
-  }
+  #stage-container { padding: 0 0.5rem; width: 100%; }
 
-  .progress {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
+  .progress { margin-bottom: 0.5rem; font-size: 1rem; }
 
   .arrow-btn {
     font-size: 1.6rem;
@@ -987,23 +959,15 @@ button.arrow-btn:hover {
     height: 40px;
   }
 
-  .gallery-link {
-    margin-top: 2rem;
-  }
+  .gallery-link { margin-top: 2rem; }
 }
 
 /* ----------------------------------------- */
 /* Mobile Optimierung: Galerie und Text      */
 /* ----------------------------------------- */
 @media (max-width: 768px) {
-  /* Galerie Container mobil anpassen */
-  .gallery-container {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-  }
+  .gallery-container { flex-direction: column; gap: 20px; padding: 20px; }
 
-  /* Galerie-Bild skalieren */
   #galleryImage {
     max-width: 100%;
     max-height: 40vh;
@@ -1011,7 +975,6 @@ button.arrow-btn:hover {
     object-fit: contain;
   }
 
-  /* Textblock mobil */
   .info-block {
     max-width: 100%;
     margin-top: 16px;
@@ -1038,58 +1001,38 @@ button.arrow-btn:hover {
     text-align: left;
   }
 
-  /* Explore Button kleiner und besser klickbar */
-  .explore {
-    margin-top: 0.8rem;
-    font-size: 0.72rem;
-    padding: 0.5rem 1rem;
-  }
+  .explore { margin-top: 0.8rem; font-size: 0.72rem; padding: 0.5rem 1rem; }
 
-  /* Fixed Back Button anpassen */
   .fixed-back-button {
     font-size: 0.65rem;
-    margin: 1.5rem auto 2rem auto;
+    margin: 1.5rem auto 2rem;
     padding: 6px 10px;
     color: #aaa;
     display: block;
-    position: static; /* Nicht fixiert, am Ende der Seite */
+    position: static;
     text-align: center;
     border-radius: 4px;
     width: fit-content;
   }
 
-  /* Navigation Buttons kleiner */
-  .nav-buttons {
-    margin-top: 1.2rem;
-    gap: 16px;
-  }
-
-  .nav-buttons button {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-    padding: 5px 8px;
-  }
+  .nav-buttons { margin-top: 1.2rem; gap: 16px; }
+  .nav-buttons button { width: 40px; height: 40px; font-size: 16px; padding: 5px 8px; }
 }
 
 /* ----------------------------------------- */
 /* Feinjustierung für sehr kleine Bildschirme */
 /* ----------------------------------------- */
 @media (max-width: 480px) {
-  .gallery-container {
-    padding: 10px;
-  }
+  .gallery-container { padding: 10px; }
 
   .nav-buttons button {
     width: 36px;
     height: 36px;
     font-size: 14px;
+    padding: 4px 8px;
   }
 
-  .fixed-back-button {
-    font-size: 0.6rem;
-    padding: 5px 8px;
-  }
+  .fixed-back-button { font-size: 0.6rem; padding: 5px 8px; }
 
   .info-block p {
     font-size: 0.65rem !important;
@@ -1103,12 +1046,8 @@ button.arrow-btn:hover {
     line-height: 1.2 !important;
   }
 
-  .info-block a {
-    font-size: 0.7rem !important;
-    margin-top: 0.6rem !important;
-  }
+  .info-block a { font-size: 0.7rem !important; margin-top: 0.6rem !important; }
 
-  /* Navigationspfeile kleiner */
   .nav-buttons button {
     font-size: 1rem !important;
     padding: 4px 8px !important;
@@ -1116,7 +1055,6 @@ button.arrow-btn:hover {
     height: 36px !important;
   }
 
-  /* Optional: Projektbericht Button falls vorhanden */
   .fixed-report-button {
     font-size: 0.6rem !important;
     padding: 0.2rem 0.5rem !important;
@@ -1124,56 +1062,10 @@ button.arrow-btn:hover {
     bottom: 50px !important;
   }
 }
-@media (max-width: 768px) {
-  .back-link {
-    position: static;
-    display: block;
-    margin: 1rem auto;
-    font-size: 0.75rem;
-    text-align: center;
-    color: #666;
-    padding: 0.2rem 0;
-  }
-}
-@media (max-width: 480px) {
-  .fixed-back-button {
-    bottom: 60px; /* weiter hoch */
-    right: 10px;
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
-  }
-}
-@media (max-width: 480px) {
-  .sim-img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    object-fit: contain !important;
-  }
-}
-@media (max-width: 768px) {
-  .sim-img {
-    width: 100% !important;       /* Volle Breite auf Mobil */
-    height: auto !important;      /* Höhe automatisch, damit kein Verzerren */
-    max-height: none !important;  /* Max-Höhe aufheben */
-    border-radius: 0 !important;  /* Falls gewünscht, abgerundete Ecken entfernen */
-    box-shadow: none !important;  /* Schatten entfernen */
-    margin: 1rem 0 !important;    /* Abstand oben und unten */
-    object-fit: contain !important; /* Bild komplett sichtbar, kein Zuschneiden */
-  }
-}
-@media (max-width: 768px) {
-  .sim-container h1 {
-    font-size: 0.8rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-  }
-}
 
 @media (max-width: 768px) {
+  .sim-container h1 { font-size: 0.8rem; line-height: 1.4; margin-bottom: 1rem; }
+
   .project.htif {
     display: flex;
     justify-content: center;
@@ -1183,59 +1075,12 @@ button.arrow-btn:hover {
     padding: 1rem;
   }
 
-  .project.htif p {
-    font-size: 1rem;
-    margin: 0;
-  }
-}
-@media (max-width: 768px) {
+  .project.htif p { font-size: 1rem; margin: 0; }
+
   /* Touchzone vergrößern */
-  #stage {
-    height: 100px; /* mehr Raum für Touch */
-    touch-action: pan-x;
-  }
-
-  #handle-inner {
-    r: 16; /* etwas größer für den Finger */
-  }
-
-  #track-inner,
-  #track-fill {
-    y: 40; /* leicht nach unten verschieben */
-  }
-
-  #handle-inner {
-    cy: 43; /* mittig zur neuen Track-Position */
-  }
+  #stage { height: 100px; touch-action: pan-x; }
+  #handle-inner { r: 16; }
+  #track-inner, #track-fill { y: 40; }
+  #handle-inner { cy: 43; }
 }
-
-@media screen and (max-width: 768px) and (orientation: landscape) {
-  body,
-  .page-wrapper,
-  .project.life-in-plastic {
-    font-size: 0.5rem !important;
-    text-align: left !important;
-  }
-
-  .project.life-in-plastic *,
-  .project.life-in-plastic a,
-  .project.life-in-plastic h1,
-  .project.life-in-plastic h2,
-  .project.life-in-plastic h3,
-  .project.life-in-plastic p,
-  .project.life-in-plastic li,
-  .project.life-in-plastic ul,
-  .project.life-in-plastic ol {
-    font-size: 0.5rem !important;
-    line-height: 1.4 !important;
-    text-align: left !important;
-    font-weight: 300 !important;
-  }
-
-  .project.life-in-plastic .life-in-plastic-video {
-    margin-top: 1rem;
-  }
-}
-
-
 

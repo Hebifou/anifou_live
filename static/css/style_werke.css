@@ -1,39 +1,71 @@
-/* ========== BASE STYLES ========== */
-* {
-  box-sizing: border-box;
+/* ===================== Design-Variablen ===================== */
+:root {
+  --font-base: 1rem;          /* Basis-Textgröße (Desktop) */
+  --font-scale-sm: 0.9rem;    /* Info-Text Desktop */
+  --font-scale-xs: 0.75rem;   /* Kleintext / Mobile */
+  --content-max: 100vw;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+
+  --bg: #eaeaea;
+  --text: #333;
+  --text-weak: #555;
+  --text-strong: #111;
+
+  --radius-img: 10px; /* Bildabrundung — unverändert */
+
+  /* Pagination/Footer */
+  --pag-h: 56px;                                   /* Höhe der Pagination inkl. Luft (Default/Desktop) */
+  --safe-bottom: env(safe-area-inset-bottom, 0px); /* iOS Safe Area */
+
+  /* (nur Mobile genutzt) Bühnenbalken-Höhen */
+  --chrome-top: 56px;
+  --chrome-bottom: 72px;
 }
+
+/* ===================== BASE STYLES ===================== */
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background: #eaeaea;
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
-  font-size: 10px;
+  font-size: var(--font-base);
+  scrollbar-gutter: stable both-edges; /* verhindert Layout-Shift durch Scrollbar */
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+/* Anti-Jump Guards */
+html { overflow-anchor: none; }
+body { overscroll-behavior: none; }
+
+a { text-decoration: none; color: inherit; }
 
 .back-link {
-  position: absolute;
-  top: 3rem;
-  right: 3rem;
+  position: absolute;                 /* Desktop-Default; Mobile wird unten überschrieben */
+  top: var(--space-6);
+  right: var(--space-6);
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #555;
+  color: var(--text-weak);
   z-index: 100;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
 }
-.back-link:hover {
-  text-decoration: underline;
-}
+.back-link:hover { text-decoration: underline; }
+.back-link:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
 
 .page-wrapper {
-  max-width: 100vw;
-  padding: 2rem 1rem 5rem;
+  max-width: var(--content-max);
+  padding: var(--space-4) var(--space-2)
+           calc(5rem + var(--pag-h) + var(--safe-bottom)); /* genug Luft über den fixen Dots */
+  overflow: visible;
 }
 
 .explore-container {
@@ -41,8 +73,11 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
+  min-height: 100svh;
   padding-top: 0;
+  gap: var(--space-3);
+  padding-bottom: calc(3rem + var(--pag-h) + var(--safe-bottom));
 }
 
 .image-block {
@@ -51,32 +86,35 @@ a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left: -200vw;
-  padding-bottom: 2vh;
+  padding: 0 0 2vh 0;
 }
 
+/* ======== Bildgrößen & Rundung UNVERÄNDERT ======== */
 .image-block img {
-  max-height: 75vh;
-  max-width: 75vh;
+  max-height: 75vh;   /* Desktop */
+  max-width: 75vh;    /* Desktop */
   height: auto;
   width: auto;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: var(--radius-img);
   display: block;
-  margin-left: -32vw;
-  cursor: pointer;
+  margin: 0;          /* Position steuert das Grid */
+  aspect-ratio: auto; /* optional: Verhältnis setzen (z.B. 3/2) für noch weniger Shift */
 }
 
 .info-block {
+  /* Standard (auf Desktop & Mobile-Breakpoints unterschiedlich überschrieben) */
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   right: 7vw;
   width: 400px;
+  max-width: 36ch;
+  margin-right: 2.5rem;
   font-size: 1.05rem;
   line-height: 1.6;
   letter-spacing: 0.01em;
-  color: #111;
+  color: var(--text-strong);
   z-index: 10;
   text-align: left;
 }
@@ -88,62 +126,22 @@ a {
 }
 
 .info-block p {
-  font-size: 0.9rem;
+  font-size: var(--font-scale-sm);
   font-weight: 400;
   line-height: 1.35;
   margin-bottom: 0.4rem;
 }
+.info-block p:last-of-type { margin-bottom: 1.75rem; }
 
-.label {
-  font-weight: 600;
-  color: #444;
-}
+/* Labels/Links */
+.label { font-weight: 600; color: #444; }
+.pdf-link { text-decoration: underline; color: #444; }
+.pdf-link:hover { color: #000; }
 
-.pdf-link {
-  text-decoration: underline;
-  color: #444;
-}
-.pdf-link:hover {
-  color: #000;
-}
+/* Alte Navigation ausblenden */
+.nav-buttons, .back-button { display: none !important; }
 
-.nav-buttons {
-  position: fixed;
-  bottom: 35px;
-  right: 35px;
-  display: flex;
-  gap: 10px;
-  z-index: 15;
-}
-
-.nav-buttons a {
-  font-size: 1.5rem;
-  color: grey;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: color 0.3s ease;
-}
-.nav-buttons a:hover {
-  color: #000;
-}
-
-.back-button {
-  position: fixed;
-  bottom: 15px;
-  right: 20px;
-  color: grey;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  background: transparent;
-  border-radius: 6px;
-  transition: color 0.3s ease;
-  z-index: 10;
-}
-.back-button:hover {
-  color: #000;
-}
-
-/* ========== OVERLAY ========== */
+/* ===================== OVERLAY ===================== */
 #imageOverlay {
   position: fixed;
   inset: 0;
@@ -154,7 +152,7 @@ a {
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  padding: 2rem;
+  padding: var(--space-4);
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -166,9 +164,7 @@ a {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
 }
-#overlayImage:hover {
-  transform: scale(1.01);
-}
+#overlayImage:hover { transform: scale(1.01); }
 
 #closeOverlay {
   position: absolute;
@@ -185,60 +181,105 @@ a {
   justify-content: center;
   padding: 0;
 }
-
 #closeOverlay svg {
-  width: 24px;
-  height: 24px;
+  width: 24px; height: 24px;
   stroke: rgba(30, 30, 30, 0.65);
-  stroke-width: 2;
-  fill: none;
+  stroke-width: 2; fill: none;
   transition: stroke 0.3s ease;
 }
-#closeOverlay:hover svg {
-  stroke: #111;
+#closeOverlay:hover svg { stroke: #111; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===================== Pagination Dots (fix bottom) ===================== */
+.pagination {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + var(--safe-bottom));
+  transform: translateX(-50%);
+  z-index: 1500;
+  pointer-events: none;
+}
+.pagination__list { pointer-events: auto; }
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.pagination__item { display: inline-block; }
+
+.pagination__link {
+  display: block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #555;
+  background: transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.pagination__link:hover { transform: scale(1.2); }
+
+.pagination__link.is-active,
+.pagination__link[aria-current="page"] {
+  background-color: #111;
+  border-color: #111;
 }
 
-/* ========== MOBILE: COMMON (up to 768px) ========== */
+/* ===================== MOBILE COMMON (≤768px) ===================== */
 @media (max-width: 768px) {
-  #overlayImage {
-    max-width: 95vw;
-    max-height: 80vh;
-  }
+  :root { --pag-h: 64px; }
 
-  #closeOverlay {
-    top: 16px;
-    right: 16px;
-    width: 32px;
-    height: 32px;
-  }
+  html { font-size: 15px; }
 
-  #closeOverlay svg {
-    width: 22px;
-    height: 22px;
-  }
+  #overlayImage { max-width: 95vw; max-height: 80vh; }
+
+  #closeOverlay { top: 16px; right: 16px; width: 32px; height: 32px; }
+  #closeOverlay svg { width: 22px; height: 22px; }
+
+  .pagination__link { width: 14px; height: 14px; }
+  .pagination__list { gap: 10px; }
 }
 
+/* ===================== MOBILE PORTRAIT (≤768px) — inkl. Balken ===================== */
 @media (max-width: 768px) and (orientation: portrait) {
+  /* Top-/Bottom-Balken NUR auf Mobile */
+  body::before,
+  body::after{
+    content: "";
+    position: fixed;
+    left: 0; right: 0;
+    z-index: 1400;
+    background: var(--bg);
+    pointer-events: none;
+  }
+  body::before{ top: 0; height: calc(48px + env(safe-area-inset-top)); box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+  body::after { bottom: 0; height: calc(68px + env(safe-area-inset-bottom)); box-shadow: 0 -1px 0 rgba(0,0,0,.06); }
+
+  .page-wrapper,
   .explore-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 1rem 4rem;
-    gap: 2rem;
+    padding-bottom: calc(5.5rem + var(--safe-bottom) + var(--pag-h));
+    min-height: 100svh;
   }
 
-  .image-block {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0 auto;
+  .page-wrapper{
+    /* unter der Top-Bar starten */
+    padding-top: calc(1.25rem + 48px + env(safe-area-inset-top));
   }
+
+  .explore-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    justify-items: center;
+    padding-top: var(--space-4);
+    row-gap: var(--space-4);
+  }
+
+  .image-block { width: 100%; justify-content: center; padding: 0; margin: 0 auto; }
 
   .image-block img {
     width: auto;
@@ -246,193 +287,171 @@ a {
     max-height: 48.3vh;
     max-width: 92vw;
     object-fit: contain;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    margin-left: 0rem;
-    margin-top: -38rem;
+    border-radius: var(--radius-img);
+    margin: 0 0 1.4rem 0;
   }
 
   .info-block {
     position: relative;
-    width: 92vw;
-    max-width: 600px;
-    padding: 0 1rem;
-    font-size: 0.78rem;
-    line-height: 1.45;
+    width: 92vw; max-width: 600px;
+    padding: 0 var(--space-2);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
     text-align: left;
     margin: 0 auto;
-    margin-left: 2rem;
-    margin-top: -27rem;
+    top: 0; right: 0; transform: none;
+    text-wrap: pretty;
+    hyphens: auto;
   }
 
-  .info-block h1 {
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .info-block p {
-    font-size: 0.75rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .nav-buttons {
-    position: fixed;
-    bottom: 27px;
-    left: 290px;
-    display: flex;
-    gap: 1rem;
-    z-index: 100;
-  }
-
-  .nav-buttons a {
-    font-size: 1rem;
-    color: #aaa;
-    padding: 0.7rem;
-  }
-
-  .back-button {
-    position: fixed;
-    bottom: 5px;
-    left: 280px;
-    font-size: 0.7rem;
-    color: grey;
-    z-index: 100;
-  }
+  .info-block h1 { font-size: 0.85rem; margin-bottom: 0.8rem; }
+  .info-block p  { font-size: var(--font-scale-xs); margin-bottom: 0.7rem; }
 
   .back-link {
     position: fixed;
-    top: 1rem;
-    right: 3rem;
+    top: calc(0.5rem + env(safe-area-inset-top));
+    right: calc(1rem + env(safe-area-inset-right));
+    z-index: 1600; /* über der Top-Bar */
     font-size: 0.7rem;
-    z-index: 10;
   }
 
-#overlayImage {
-  max-width: 95vw;
-  max-height: 80vh;
+  #overlayImage { max-width: 95vw; max-height: 80vh; }
+  #closeOverlay {
+    position: absolute; top: 12px; right: 12px;
+    width: 30px; height: 30px; background: none; border: none;
+    font-size: 2rem; color: rgba(30,30,30,0.65); cursor: pointer; z-index: 1000; line-height: 1;
+  }
+  #closeOverlay:hover { color: #111; }
 }
 
-#closeOverlay {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 30px;
-  height: 30px;
-  background: none;
-  border: none;
-  font-size: 2rem; /* Größe des X */
-  color: rgba(30, 30, 30, 0.65); /* dunkles Grau */
-  cursor: pointer;
-  z-index: 1000;
-  line-height: 1;
-}
+/* ===================== MOBILE LANDSCAPE (≤896px) — inkl. Balken ===================== */
+@media (max-width: 896px) and (orientation: landscape) {
+  /* Top-/Bottom-Balken NUR auf Mobile-Landscape */
+  body::before,
+  body::after{
+    content: "";
+    position: fixed;
+    left: 0; right: 0;
+    z-index: 1400;
+    background: var(--bg);
+    pointer-events: none;
+  }
+  body::before{ top: 0; height: 56px; box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+  body::after { bottom: 0; height: calc(60px + var(--safe-bottom)); box-shadow: 0 -1px 0 rgba(0,0,0,.06); }
 
-#closeOverlay:hover {
-  color: #111; /* dunkler beim Hover */
-}
+  :root { --pag-h: 60px; }
 
-}
-
-
-/* ========== MOBILE LANDSCAPE ========== */
-@media (max-width: 768px) and (orientation: landscape) {
+  .page-wrapper,
   .explore-container {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    gap: 2rem;
+    padding-bottom: calc(5.5rem + var(--safe-bottom) + var(--pag-h));
+    min-height: 100svh;
   }
 
-  .image-block {
-    width: 50%;
-    justify-content: flex-end;
-    padding-right: 1rem;
+  .page-wrapper{
+    padding-top: calc(1rem + 56px); /* unter Top-Bar starten */
   }
+
+  .explore-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    justify-items: center;
+    padding-top: 1rem;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+  }
+
+  .image-block { width: 100%; justify-content: center; padding: 0; margin: 0; }
 
   .image-block img {
-    position: relative;
-    left: -3vw;
-    top: -57px;
-    max-height: 75vh;
-    max-width: 75vh;
+    max-height: 60vh;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-img);
+    margin: 0;
+    transform: none;
   }
 
   .info-block {
     position: relative;
-    top: 30px;
-    left: 5vw;
-    width: 45%;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    width: 100%;
+    max-width: 520px;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    padding: 0;
+    margin-bottom: 2.25rem;  /* Extra-Abstand zum Pagination-Safe-Zone */
+    top: 0; left: 0; transform: none;
+    text-align: left;
+  }
+  .info-block p:last-of-type { margin-bottom: 2.25rem; }
+
+  .back-link { position: fixed; top: 10px; left: 10px; font-size: 0.7rem; z-index: 1600; }
+
+  .pagination { bottom: calc(18px + var(--safe-bottom)); }
+}
+
+/* ===================== DESKTOP (≥1024px): Referenz-Look, mittig & leicht nach links versetzt ===================== */
+/* Feintuning-Variablen für die Desktop-Bühne */
+:root{
+  --stage-pad-left: 8vw;   /* Abstand der Gruppe vom linken Rand */
+  --stage-pad-right: 14vw; /* mehr Luft rechts -> schiebt die Gruppe nach links */
+  --text-lift: -8%;        /* Textblock minimal nach oben (negativ = nach oben) */
+}
+
+@media (min-width: 1024px) {
+  body { overflow: hidden; } /* optional: Desktop ohne Scrollen */
+
+  .page-wrapper {
+    height: 100vh;
+    padding-bottom: calc(5rem + var(--pag-h) + var(--safe-bottom));
+    /* KEINE Top-Bar auf Desktop -> normaler Top-Padding bleibt */
+  }
+
+  /* Gruppe (Bild + Text) zentriert, mit asymmetrischer Bühne */
+  .explore-container {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 75vh) 400px; /* Bild | Text */
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    column-gap: 6vw;
+    row-gap: 0;
+    padding: 0 var(--stage-pad-right)
+             calc(3rem + var(--pag-h) + var(--safe-bottom))
+             var(--stage-pad-left);
+  }
+
+  .image-block { justify-self: end; align-self: center; margin: 0; padding: 0; }
+  .image-block img { margin: 0; }
+
+  .info-block {
+    position: relative;
+    top: auto; right: auto; transform: none;
+    align-self: center;
+    translate: 0 var(--text-lift);
     margin: 0;
-  }
-
-  .info-block h1 {
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .info-block p {
-    font-size: 0.8rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .nav-buttons {
-    bottom: 20px;
-    right: 32px;
-  }
-
-  .back-button {
-    bottom: 10px;
-    right: 20px;
-    font-size: 0.75rem;
+    max-width: 36ch;
+    text-align: left;
   }
 
   .back-link {
-    bottom: 50px;
-    right: 50px;
-    font-size: 0.7rem;
+    position: fixed;
+    top: var(--space-6);
+    right: max(var(--stage-pad-right), 3vw);
+    z-index: 100; /* Desktop ohne Top-Bar */
   }
-
-#imageOverlay {
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  padding: 1rem;
-  display: none;
-  justify-content: center;
-  align-items: center;
 }
 
-#overlayImage {
-  max-width: 95vw;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 10px;
-  color: rgba(30, 30, 30, 0.65); /* dunkles Grau */
-}
-/* >> HIER: Querformat Close-Button angepasst << */
-#closeOverlay {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 30px;
-  height: 30px;
-  background: none;
-  border: none;
-  font-size: 1.6rem; /* kleiner als Portrait */
-  color: rgba(30, 30, 30, 0.65);
-  cursor: pointer;
-  z-index: 1000;
-  line-height: 1;
+/* Kompakter auf schmalen Desktops */
+@media (min-width: 1024px) and (max-width: 1280px){
+  .explore-container{ column-gap: 4vw; }
+  .info-block{ max-width: 34ch; }
 }
 
-#closeOverlay:hover {
-  color: #111;
+/* Bewegungsreduktion respektieren */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
-
-
-}
-
-
-
