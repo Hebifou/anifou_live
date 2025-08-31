@@ -849,7 +849,7 @@ button.arrow-btn:hover {
 
   .dropdown-content li a {
     font-size: 0.8rem;
-    padding: 0.3rem 0.8rem;
+    padding: 0.3rem 0rem;
     width: 100%;
     display: block;
     text-align: left;
@@ -1084,3 +1084,26 @@ button.arrow-btn:hover {
   #handle-inner { cy: 43; }
 }
 
+@media (max-width: 1024px) {
+  /* Nur "Projects" (dropdown-toggle) wie die anderen Nav-Links ausrichten */
+  .dropdown-toggle {
+    width: auto;          /* nicht 100% */
+    text-align: center;   /* wie About/Contact */
+    padding: 0.4rem 0.8rem;
+  }
+}
+/* Hero-Text für alle mobilen Devices etwas nach unten schieben */
+@media (max-width: 1024px) {
+  .hero,
+  .clean-hero {
+    margin-top: 11rem; /* nach Bedarf 3rem / 5rem anpassen */
+  }
+}
+
+/* Extra-Feinjustierung für Landscape */
+@media (max-width: 1024px) and (orientation: landscape) {
+  .hero,
+  .clean-hero {
+    margin-top: 3rem; /* etwas mehr Platz in Landscape */
+  }
+}
