@@ -16,7 +16,7 @@
   --text-weak: #555;
   --text-strong: #111;
 
-  --radius-img: 10px; /* Bildabrundung — unverändert */
+  --radius-img: 10px;
 
   /* Pagination/Footer */
   --pag-h: 56px;                                   /* Höhe der Pagination inkl. Luft (Default/Desktop) */
@@ -89,7 +89,7 @@ a { text-decoration: none; color: inherit; }
   padding: 0 0 2vh 0;
 }
 
-/* ======== Bildgrößen & Rundung UNVERÄNDERT ======== */
+/* ======== Bildgrößen & Rundung ======== */
 .image-block img {
   max-height: 75vh;   /* Desktop */
   max-width: 75vh;    /* Desktop */
@@ -98,12 +98,12 @@ a { text-decoration: none; color: inherit; }
   object-fit: contain;
   border-radius: var(--radius-img);
   display: block;
-  margin: 0;          /* Position steuert das Grid */
-  aspect-ratio: auto; /* optional: Verhältnis setzen (z.B. 3/2) für noch weniger Shift */
+  margin: 0;
+  aspect-ratio: auto;
 }
 
+/* ----- Info-Block: Default (für kleinere Breakpoints wird überschrieben) ----- */
 .info-block {
-  /* Standard (auf Desktop & Mobile-Breakpoints unterschiedlich überschrieben) */
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -246,7 +246,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ===================== MOBILE PORTRAIT (≤768px) — inkl. Balken ===================== */
 @media (max-width: 768px) and (orientation: portrait) {
-  /* Top-/Bottom-Balken NUR auf Mobile */
   body::before,
   body::after{
     content: "";
@@ -266,7 +265,6 @@ a { text-decoration: none; color: inherit; }
   }
 
   .page-wrapper{
-    /* unter der Top-Bar starten */
     padding-top: calc(1.25rem + 48px + env(safe-area-inset-top));
   }
 
@@ -312,7 +310,7 @@ a { text-decoration: none; color: inherit; }
     position: fixed;
     top: calc(0.5rem + env(safe-area-inset-top));
     right: calc(1rem + env(safe-area-inset-right));
-    z-index: 1600; /* über der Top-Bar */
+    z-index: 1600;
     font-size: 0.7rem;
   }
 
@@ -327,7 +325,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ===================== MOBILE LANDSCAPE (≤896px) — inkl. Balken ===================== */
 @media (max-width: 896px) and (orientation: landscape) {
-  /* Top-/Bottom-Balken NUR auf Mobile-Landscape */
   body::before,
   body::after{
     content: "";
@@ -349,7 +346,7 @@ a { text-decoration: none; color: inherit; }
   }
 
   .page-wrapper{
-    padding-top: calc(1rem + 56px); /* unter Top-Bar starten */
+    padding-top: calc(1rem + 56px);
   }
 
   .explore-container {
@@ -380,7 +377,7 @@ a { text-decoration: none; color: inherit; }
     font-size: 0.86rem;
     line-height: 1.45;
     padding: 0;
-    margin-bottom: 2.25rem;  /* Extra-Abstand zum Pagination-Safe-Zone */
+    margin-bottom: 2.25rem;
     top: 0; left: 0; transform: none;
     text-align: left;
   }
@@ -391,57 +388,46 @@ a { text-decoration: none; color: inherit; }
   .pagination { bottom: calc(18px + var(--safe-bottom)); }
 }
 
-/* ===================== DESKTOP (≥1024px): Referenz-Look, mittig & leicht nach links versetzt ===================== */
-/* Feintuning-Variablen für die Desktop-Bühne */
-:root{
-  --stage-pad-left: 8vw;   /* Abstand der Gruppe vom linken Rand */
-  --stage-pad-right: 14vw; /* mehr Luft rechts -> schiebt die Gruppe nach links */
-  --text-lift: -8%;        /* Textblock minimal nach oben (negativ = nach oben) */
-}
-
+/* ===================== DESKTOP (≥1024px): Gruppe mittig ===================== */
 @media (min-width: 1024px) {
-  body { overflow: hidden; } /* optional: Desktop ohne Scrollen */
+  body { overflow: hidden; }
 
   .page-wrapper {
     height: 100vh;
-    padding-bottom: calc(5rem + var(--pag-h) + var(--safe-bottom));
-    /* KEINE Top-Bar auf Desktop -> normaler Top-Padding bleibt */
+    padding: 0; /* keine Offsets */
   }
 
-  /* Gruppe (Bild + Text) zentriert, mit asymmetrischer Bühne */
   .explore-container {
     position: fixed;
     inset: 0;
     display: grid;
-    grid-template-columns: minmax(0, 75vh) 400px; /* Bild | Text */
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    column-gap: 6vw;
-    row-gap: 0;
-    padding: 0 var(--stage-pad-right)
-             calc(3rem + var(--pag-h) + var(--safe-bottom))
-             var(--stage-pad-left);
+    grid-template-columns: max-content max-content; /* Bild | Text */
+    place-content: center;  /* horizontal + vertikal zentriert */
+    place-items: center;
+    column-gap: clamp(32px, 6vw, 96px);
+    padding: 0;
   }
 
-  .image-block { justify-self: end; align-self: center; margin: 0; padding: 0; }
+  .image-block { margin: 0; padding: 0; }
   .image-block img { margin: 0; }
 
+  /* WICHTIG: globale Offsets neutralisieren */
   .info-block {
     position: relative;
-    top: auto; right: auto; transform: none;
-    align-self: center;
-    translate: 0 var(--text-lift);
-    margin: 0;
+    top: auto;
+    right: auto;
+    margin-right: 0;
+    transform: none;
     max-width: 36ch;
     text-align: left;
+    z-index: auto;
   }
 
   .back-link {
     position: fixed;
     top: var(--space-6);
-    right: max(var(--stage-pad-right), 3vw);
-    z-index: 100; /* Desktop ohne Top-Bar */
+    right: var(--space-6);
+    z-index: 100;
   }
 }
 
