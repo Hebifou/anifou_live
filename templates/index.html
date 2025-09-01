@@ -6,11 +6,17 @@
 {% endblock %}
 
 {% block content %}
-<section class="hero clean-hero about-hero">
-  <p>
-    {{ _('With a background in the cultural sector - where I founded and led ventures - and shaped by studies in data science, with a focus on machine learning, deep learning, computer vision, and natural language processing, I bridge perspectival thinking with algorithmic systems.') }}
-    <br><br>
-    {{ _('In my projects, I explore how data shapes, shifts, and reveals the structural dynamics of perception, language, and environment.') }}
-  </p>
+<section class="about">
+  <div class="about-content">
+    <img src="{{ url_for('static', filename='projects/About/about.jpg') }}" alt="Portrait" class="about-img" />
+    <div class="about-text">
+      <p>
+        {{ _('With a background in the cultural sector - where I founded and led ventures - and shaped by studies in data science, with a focus on machine learning, deep learning, computer vision, and natural language processing, I bridge perspectival thinking with algorithmic systems.') }}
+      </p>
+      <p>
+        {{ _('In my projects, I explore how data shapes, shifts, and reveals the structural dynamics of perception, language, and environment.') }}
+      </p>
+    </div>
+  </div>
 </section>
 {% endblock %}

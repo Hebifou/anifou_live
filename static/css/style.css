@@ -1107,3 +1107,41 @@ button.arrow-btn:hover {
     margin-top: 3rem; /* etwas mehr Platz in Landscape */
   }
 }
+
+/* ===================== About (zentriert mit Flexbox) ===================== */
+.about {
+  display: flex;
+  justify-content: center;   /* horizontal zentrieren */
+  align-items: center;       /* vertikal zentrieren */
+  min-height: calc(100vh - 80px); /* gesamte Höhe minus Navbar (ca. 80px) */
+  padding: 2rem 1rem;
+  text-align: center;
+  transform: translateY(-55px);
+}
+
+.about-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 2rem;
+  filter: grayscale(100%) contrast(95%);
+  opacity: 0.95;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .about-img { width: 200px; height: 200px; }
+}
