@@ -346,7 +346,11 @@ button.arrow-btn:hover {
 .contact a:hover { text-decoration: underline; }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
-  .contact a { font-size: 0.75rem; top: -2rem; }
+  .contact a { font-size: 0.75rem; top: 0rem; }
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .contact a { font-size: 0.75rem; top: 8rem; }
 }
 
 /* -------------------------- */
