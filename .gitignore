@@ -1,0 +1,52 @@
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.sqlite3
+*.log
+
+# === Environment ===
+.env
+.venv/
+venv/
+ENV/
+env/
+*.env
+
+# === OS / IDE Files ===
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# === Certificates / Keys ===
+cert.pem
+key.pem
+
+# === Flask / Deployment ===
+instance/
+*.db
+*.bak
+*.pid
+
+# === Local build artifacts ===
+*.egg-info/
+dist/
+build/
+*.spec
+
+# === Cache / Temp ===
+.cache/
+__pycache__/
+.tmp/
+*.swp
+
+# === Personal notes or test files ===
+test_*.py
+old_*.py
+notes.txt
+
+# === Optional (macOS metadata) ===
+*.DS_Store
