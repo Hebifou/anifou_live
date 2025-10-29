@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Projekte") }}{% endblock %}
+
+{% block content %}
+<div class="project-overview">
+  <h1>{{ _("Projekte") }}</h1>
+  <ul class="project-list clean-list">
+    <li><a href="{{ url_for('projekt', projektname='drei_komma_5', lang=get_locale()) }}">/ –3.5</a></li>
+    <li><a href="{{ url_for('projekt', projektname='plastic_vs_profit', lang=get_locale()) }}">/ {{ _("Plastic vs. Profit") }}</a></li>
+    <li><a href="{{ url_for('projekt', projektname='HTIF', lang=get_locale()) }}">/ {{ _("HTIF") }}</a></li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% set lang = get_locale() %}
+{% block title %}Life in Plastic{% endblock %}
+
+{% block meta_description %}
+  <meta name="description" content="Life In Plastic explores the conflict between corporate profit and environmental responsibility. Featuring animated data on global plastic pollution." />
+{% endblock %}
+
+{% block content %}
+<section class="project life-in-plastic">
+
+  <hr class="fade-in-hr">
+
+  <!-- Video -->
+  <div class="life-in-plastic-video">
+    <video controls autoplay muted loop>
+      {% if lang == 'en' %}
+        <source src="{{ url_for('static', filename='projects/LifeInPlastic/videos/plastic_pollution_animation_en.mp4') }}" type="video/mp4">
+      {% else %}
+        <source src="{{ url_for('static', filename='projects/LifeInPlastic/videos/plastic_pollution_animation.mp4') }}" type="video/mp4">
+      {% endif %}
+      Your browser does not support the HTML5 video element.
+    </video>
+  </div>
+
+  <hr class="fade-in-hr">
+
+  <!-- Textbereich -->
+  <div class="text-section">
+
+    <p>Life In Plastic<p>
+
+    <p>
+      This project explores the conflict between economic interests and ecological responsibility.
+    </p>
+
+    <p>
+      The animation illustrates the growing burden of plastic pollution in the world’s oceans. It questions the relationship between increasing consumption, corporate profit, and environmental accountability.
+    </p>
+
+    <p>Facts on plastic pollution and corporate impact:</p>
+
+    <p>
+      Plastic is not only an environmental issue – it is deeply embedded in global economic systems.
+      Multinational corporations such as Walmart, Coca-Cola, Nestlé, and PepsiCo use vast amounts of plastic for packaging, especially for private label products.
+      This visualization is based on publicly available data and shows a projection of plastic volumes through 2090, assuming a “business-as-usual” scenario (i.e. no major regulations or behavioral changes).
+    </p>
+
+    <p>Key figures:</p>
+    <ul>
+      <li>
+        In 2020, approximately 367 million tons of plastic were produced globally. Around 23% (~86 million tons) ended up in the oceans.<br>
+        <em>Sources:</em>
+        <a href="https://www.ellenmacarthurfoundation.org" target="_blank">Ellen MacArthur Foundation</a>,
+        <a href="https://www.noaa.gov/education/resource-collections/ocean-coasts/ocean-pollution" target="_blank">NOAA</a>,
+        <a href="https://theoceancleanup.com" target="_blank">The Ocean Cleanup</a>
+      </li>
+      <li>
+        Walmart reported plastic packaging usage of approximately 1.2 million tons in the same year. No updated figures have been published since.<br>
+        <em>Sources:</em>
+        <a href="https://www.ellenmacarthurfoundation.org/global-commitment-2021/signatory-reports/ppu/walmart-inc" target="_blank">
+          Global Commitment Report 2021
+        </a>
+      </li>
+      <li>
+        Walmart has publicly committed to reducing plastic use but stated in early 2025 that it is unlikely to meet the goals of the US Plastics Pact by 2025.<br>
+        <em>Sources:</em>
+        <a href="https://usplasticspact.org" target="_blank">US Plastics Pact</a>
+      </li>
+      <li>
+        Without regulatory action, global plastic waste could exceed 1 billion tons by 2090.<br>
+        <em>Sources:</em>
+        <a href="https://www.noaa.gov/education/resource-collections/ocean-coasts/ocean-pollution" target="_blank">NOAA</a>,
+        <a href="https://theoceancleanup.com" target="_blank">The Ocean Cleanup</a>
+      </li>
+      <li>
+        The visualization focuses on so-called garbage gyres in the Pacific, Atlantic, and Indian Oceans.<br>
+        <em>Sources:</em>
+        <a href="https://theoceancleanup.com/great-pacific-garbage-patch/" target="_blank">The Ocean Cleanup</a>,
+        <a href="https://oceanservice.noaa.gov/podcast/mar18/nop14-ocean-garbage-patches.html" target="_blank">NOAA</a>
+      </li>
+    </ul>
+
+    <p><strong>Additional Note:</strong><br>
+      According to Wikipedia, Walmart heiress Alice Walton is among the twenty richest people in the world.<br>
+      <a href="https://de.wikipedia.org/wiki/Alice_Walton" target="_blank" rel="noopener noreferrer">Alice Walton – Wikipedia</a>
+    </p>
+
+    <p><strong>Further Reading:</strong><br>
+      A detailed analysis with sources, methodology, and legal context can be found in the PDF:<br>
+      <strong>“Life In Plastic – Plastic Pollution, Corporate Profits & Projections to 2090”</strong><br>
+      <a href="{{ url_for('static', filename='reports/LifeInPlastic_Bericht.pdf') }}" target="_blank" rel="noopener noreferrer">
+        [Read the full report (DE | EN) here on our website.]
+      </a>
+    </p>
+
+  </div>
+
+</section>
+{% endblock %}

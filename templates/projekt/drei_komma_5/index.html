@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive simulation of myopia from 0 to –3.5 diopters." />
+  <title>{{ _('–3.5 Myopia Simulation') }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: #333333;
+      text-align: center;
+      background: #eaeaea;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #333333;
+      text-decoration: none;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      color: #eaeaea;
+      opacity: 0.85;
+      font-weight: 400;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+
+    .logo-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #eaeaea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1.5s ease;
+    }
+
+    .logo-screen img {
+      width: 80vw;
+      max-width: 600px;
+      height: auto;
+    }
+
+    main.sim-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+      margin-top: 3rem;
+    }
+
+    main.sim-container h1 {
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+
+    .sim-img-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sim-img {
+      width: 100%;
+      max-width: 75%;
+      max-height: 80vh;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .progress {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #333333;
+      margin-top: 0.2rem;
+    }
+
+    #stage-container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #stage {
+      width: 100%;
+      height: 60px;
+    }
+
+    #track-inner {
+      fill: #2c2c2c;
+    }
+
+    #track-fill {
+      fill: #333;
+      transition: width 0.3s ease;
+    }
+
+    #handle-inner {
+      fill: #333;
+      transition: cx 0.3s ease;
+    }
+
+    .gallery-link {
+      margin-top: -0.5rem;
+    }
+
+    .gallery-link a {
+      font-weight: 500;
+      font-size: 0.7rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #eaeaea;
+      transition: all 0.25s ease;
+    }
+
+    .gallery-link a:hover {
+      background-color: #eaeaea;
+      border-color: #bbb;
+    }
+
+    .hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+  /* === MOBILE BREAKPOINTS === */
+  @media (max-width: 1023px) {
+    main.sim-container {
+      padding: 2rem 1rem;
+      gap: 1.2rem;
+    }
+
+    main.sim-container h1 {
+      font-size: 0.7rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .sim-img {
+      width: 75%;
+      max-width: 420px;
+    }
+
+    .progress {
+      font-size: 0.5rem;
+    }
+
+    #stage {
+      height: 60px;
+      max-width: 50%;
+    }
+
+    .gallery-link a {
+      font-size: 0.5rem;
+      padding: 0.5rem 1.2rem;
+    }
+
+    .logo-screen img {
+      width: 85vw;
+      max-width: 480px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    main.sim-container h1 {
+      font-size: 0.7rem;
+    }
+
+    .sim-img {
+      width: 75%;
+      max-width: 360px;
+    }
+
+    .progress {
+      font-size: 0.5rem;
+    }
+
+    .gallery-link a {
+      font-size: 0.5rem;
+    }
+
+    #stage {
+      height: 55px;
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sim-img {
+      width: 75%;
+      max-width: 340px;
+    }
+
+    main.sim-container h1 {
+      font-size: 0.7rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+
+    }
+
+    .progress {
+      font-size: 0.5rem;
+    }
+    #stage {
+      height: 55px;
+      width: 50%;
+    }
+
+    .gallery-link a {
+      font-size: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="back-link" aria-label="{{ _('Zurück zur Startseite') }}">{{ _('Back') }}</a>
+
+  <div class="logo-screen" id="logoScreen" role="presentation" aria-hidden="true">
+    <img src="/static/projects/drei_komma_5/img/logos/-3.5_LOGO.png" alt="{{ _('Logo') }}">
+  </div>
+
+  <main class="sim-container hidden" id="simContent">
+    <h1>{{ _('How I See – Myopia Simulation (0 to -3.5 dpt)') }}</h1>
+
+    <div class="sim-img-wrapper">
+      <img id="myopieImage"
+           src="/static/projects/drei_komma_5/img/simulation/Hand/desktop/sim_IMG_8001_prep_for_sim_0.0dpt_16bit.jpg"
+           class="sim-img"
+           alt="{{ _('Myopie-Simulation – Hand') }}">
+    </div>
+
+    <section class="controls" aria-label="{{ _('Simulation Steuerung') }}">
+      <div id="stage-container">
+        <div class="progress">
+          <span id="progress-value">0.0</span> dpt
+        </div>
+        <svg id="stage" viewBox="0 0 600 10" width="600" height="10" role="slider"
+             aria-valuemin="0" aria-valuemax="3.5" aria-valuenow="0" aria-label="{{ _('Dioptrien Simulation') }}">
+          <g id="slider-group">
+            <rect id="slider-inner" x="0" y="0" width="600" height="10" fill="none" />
+            <g id="track-group">
+              <rect id="track-inner" x="20" y="3" width="560" height="1" rx="0.5" ry="0.5" />
+              <rect id="track-fill" x="20" y="3" width="0" height="1" rx="0.5" ry="0.5" />
+            </g>
+            <g id="handle-group">
+              <circle id="handle-inner" cx="20" cy="5" r="3" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <footer class="gallery-link">
+      <a href="{{ url_for('gallery_preview') }}" role="button" aria-label="{{ _('Gallery') }}">
+        {{ _('Gallery') }}
+      </a>
+    </footer>
+  </main>
+
+  <script>
+    const image = document.getElementById("myopieImage");
+    const progressText = document.getElementById("progress-value");
+    const handle = document.getElementById("handle-inner");
+    const trackFill = document.getElementById("track-fill");
+    const svg = document.getElementById("stage");
+
+    const steps = ["0.0", "0.5", "1.0", "1.5", "2.0", "2.5", "3.0", "3.5"];
+    const imageId = "8001";
+    const folder = "Hand";
+
+    const trackStart = 20;
+    const trackEnd = 580;
+    const stepWidth = (trackEnd - trackStart) / (steps.length - 1);
+    let currentStep = 0;
+
+    function updateVisual() {
+      const cx = trackStart + currentStep * stepWidth;
+      handle.setAttribute("cx", cx);
+      trackFill.setAttribute("width", cx - trackStart);
+      progressText.textContent = steps[currentStep] === "0.0" ? "0.0" : `–${steps[currentStep]}`;
+      const val = steps[currentStep];
+      image.src = `/static/projects/drei_komma_5/img/simulation/${folder}/desktop/sim_IMG_${imageId}_prep_for_sim_${val}dpt_16bit.jpg`;
+    }
+
+    function getMouseX(e) {
+      const pt = svg.createSVGPoint();
+      pt.x = e.clientX;
+      pt.y = e.clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse()).x;
+    }
+
+    function getTouchX(e) {
+      const pt = svg.createSVGPoint();
+      pt.x = e.touches[0].clientX;
+      pt.y = e.touches[0].clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse()).x;
+    }
+
+    let dragging = false;
+
+    svg.addEventListener("click", e => {
+      const x = Math.max(trackStart, Math.min(getMouseX(e), trackEnd));
+      currentStep = Math.round((x - trackStart) / stepWidth);
+      updateVisual();
+    });
+
+    svg.addEventListener("mousedown", e => {
+      e.preventDefault();
+      dragging = true;
+    });
+
+    document.addEventListener("mouseup", () => dragging = false);
+    document.addEventListener("mousemove", e => {
+      if (!dragging) return;
+      const x = Math.max(trackStart, Math.min(getMouseX(e), trackEnd));
+      const newIndex = Math.round((x - trackStart) / stepWidth);
+      if (newIndex !== currentStep) {
+        currentStep = newIndex;
+        updateVisual();
+      }
+    });
+
+    svg.addEventListener("touchstart", e => {
+      e.preventDefault();
+      dragging = true;
+    }, { passive: false });
+
+    document.addEventListener("touchend", () => dragging = false);
+    document.addEventListener("touchcancel", () => dragging = false);
+    document.addEventListener("touchmove", e => {
+      if (!dragging) return;
+      const x = Math.max(trackStart, Math.min(getTouchX(e), trackEnd));
+      const newIndex = Math.round((x - trackStart) / stepWidth);
+      if (newIndex !== currentStep) {
+        currentStep = newIndex;
+        updateVisual();
+      }
+    }, { passive: false });
+
+    window.addEventListener("load", () => {
+      const logo = document.getElementById("logoScreen");
+      const content = document.getElementById("simContent");
+      setTimeout(() => {
+        logo.style.opacity = "0";
+        setTimeout(() => {
+          logo.style.display = "none";
+          content.classList.remove("hidden");
+          updateVisual();
+        }, 1500);
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>

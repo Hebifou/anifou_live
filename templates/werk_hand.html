@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Explore – Hand</title>
+  <meta name="description" content="Fine art work 'Hand' by Anifou – a myopia simulation capturing the invisible spaces and quiet secrets of urban life. Edition 1/5." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_werke.css') }}">
+</head>
+<body>
+
+  <a class="back-link" href="/">Back</a>
+
+  <div class="page-wrapper">
+    <div class="explore-container">
+      <div class="image-block">
+        <img id="mainImage" src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Hand.jpg') }}" alt="Hand Werk" />
+      </div>
+
+      <div class="info-block">
+        <p>Hand</p>
+        <p>Rio de Janeiro, Brazil</p>
+        <p>Myopia Simulation</p>
+        <p>66.3 × 100 cm</p>
+        <p>Fine Art Giclée on Hahnemühle Photo Rag</p>
+        <p>1/5</p>
+        <p>A moment on invisible spaces –</br>
+        and secrets of urban life.
+        <p>
+          <a class="pdf-link" href="{{ url_for('static', filename='reports/Projektbericht.pdf') }}" target="_blank" rel="noopener noreferrer">
+            Project Insights (DE | EN)
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Pagination Dots (8 Stück; Hand ist #5 aktiv) -->
+    <nav class="pagination" aria-label="Werk-Navigation">
+      <ul class="pagination__list">
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/byblos" aria-label="Werk 1 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/beirut" aria-label="Werk 2 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/delphi" aria-label="Werk 3 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/rio" aria-label="Werk 4 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link is-active" aria-current="page" href="/galerie/hand" aria-label="Werk 5 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/2brothers" aria-label="Werk 6 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/demo" aria-label="Werk 7 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/gibran" aria-label="Werk 8 von 8"></a></li>
+      </ul>
+    </nav>
+    <!-- /Pagination -->
+  </div>
+
+  <div id="imageOverlay">
+    <button id="closeOverlay" aria-label="Schließen">&times;</button>
+    <img id="overlayImage" src="" alt="Vergrößertes Bild" />
+  </div>
+
+  <script>
+    // Hand ist Werk 5 → prev = Rio, next = Two Brothers
+    const prevUrl = "/galerie/rio";
+    const nextUrl = "/galerie/2brothers";
+
+    // Keyboard-Navigation
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "ArrowLeft" && prevUrl) window.location.href = prevUrl;
+      if (event.key === "ArrowRight" && nextUrl) window.location.href = nextUrl;
+      if (event.key === "Escape") {
+        const overlay = document.getElementById('imageOverlay');
+        if (overlay && overlay.style.display === 'flex') overlay.style.display = 'none';
+      }
+    });
+
+    // Swipe-Gesten (mobile)
+    (function addSwipeNavigation() {
+      let startX = 0, startY = 0, isMoving = false;
+      const area = document.body;
+
+      area.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY; isMoving = true;
+      }, {passive: true});
+
+      area.addEventListener('touchend', (e) => {
+        if (!isMoving) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        isMoving = false;
+
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0 && nextUrl) window.location.href = nextUrl;
+          if (dx > 0 && prevUrl) window.location.href = prevUrl;
+        }
+      }, {passive: true});
+    })();
+
+    // Overlay
+    const mainImage = document.getElementById('mainImage');
+    const imageOverlay = document.getElementById('imageOverlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const closeOverlay = document.getElementById('closeOverlay');
+
+    mainImage.addEventListener('click', () => {
+      overlayImage.src = mainImage.src;
+      imageOverlay.style.display = 'flex';
+      document.documentElement.style.overflow = 'hidden';
+    });
+
+    function closeOverlayFn() {
+      imageOverlay.style.display = 'none';
+      document.documentElement.style.overflow = '';
+    }
+
+    closeOverlay.addEventListener('click', closeOverlayFn);
+    imageOverlay.addEventListener('click', (e) => {
+      if (e.target === imageOverlay) closeOverlayFn();
+    });
+  </script>
+</body>
+</html>

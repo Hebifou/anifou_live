@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ _('Preview') }}</title>
+  <meta name="description" content="Preview of selected images from the –3.5 visual gallery. Navigate through scenes of perception, memory, and loss." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+
+      height: 100%;
+      background-color: #111;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+      color: #e7e7e7;
+      letter-spacing: 0.01em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #galleryImage {
+      max-width: 88%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255,255,255,0.03);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 1;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .fade-out {
+      opacity: 0;
+      transform: scale(0.985);
+    }
+
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      left: 17px;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.85);
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      background-color: rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px) saturate(180%);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .back-button:hover {
+      color: #fff;
+      border-color: #fff;
+      background-color: rgba(255,255,255,0.07);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(255,255,255,0.08);
+    }
+
+    .nav-buttons {
+      position: fixed;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 15;
+    }
+
+    .nav-buttons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      background-color: rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px);
+      color: rgba(255,255,255,0.8);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-buttons a:hover {
+      color: #fff;
+      border-color: #fff;
+      background-color: rgba(255,255,255,0.07);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(255,255,255,0.12);
+    }
+
+    .nav-buttons i {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .back-button {
+        font-size: 0.7rem;
+        left: 20px;
+        bottom: 20px;
+      }
+
+      .nav-buttons a {
+        width: 36px;
+        height: 36px;
+      }
+
+      .nav-buttons i {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+      #galleryImage {
+        max-width: 90%;
+        max-height: 75%;
+        margin-bottom: 17vh;
+      }
+
+      .nav-buttons {
+        top: auto;
+        bottom: 60px;
+        right: 20px;
+        flex-direction: row;
+        transform: none;
+      }
+
+      .nav-buttons a {
+        width: 16px;
+        height: 16px;
+      }
+
+      .nav-buttons i {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+      .gallery-container {
+        align-items: flex-start;
+        padding-top: 3vh;
+        position: relative;
+      }
+
+      #galleryImage {
+        position: absolute;
+        top: 10rem;
+        max-height: 85vh;
+        max-width: 90vw;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        left: auto;
+        bottom: auto;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        border-radius: 20px;
+        background-color: rgba(255,255,255,0.05);
+        backdrop-filter: blur(4px);
+        opacity: 0.85;
+      }
+
+      .nav-buttons {
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="gallery-container">
+    <img id="galleryImage"
+         src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Byblos.jpg') }}"
+         alt="{{ _('Gallery preview image') }}"
+         draggable="false" />
+
+    <a id="exploreBtn" class="back-button" href="{{ url_for('gallery_werk', werk='byblos') }}">{{ _('Explore all') }}</a>
+
+<!--
+    <div class="nav-buttons">
+      <a id="prevBtn" aria-label="{{ _('Vorheriges Bild') }}"><i data-lucide="arrow-left"></i></a>
+      <a id="nextBtn" aria-label="{{ _('Nächstes Bild') }}"><i data-lucide="arrow-right"></i></a>
+    </div>
+    -->
+  </div>
+
+
+  <script>
+    const locale = "{{ get_locale() }}";
+
+    const images = [
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Byblos.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='byblos') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Gibran.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='gibran') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='demo') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Beirut.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='beirut') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Delphi.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='delphi') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_TwoBrothersAndTheSea.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='2brothers') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Rio.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='rio') }}"
+      },
+      {
+        src: "{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_Hand.jpg') }}",
+        link: "{{ url_for('gallery_werk', werk='hand') }}"
+      }
+    ];
+
+
+
+    let currentIndex = 0;
+
+    const galleryImage = document.getElementById("galleryImage");
+    const exploreBtn = document.getElementById("exploreBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function updateImage(index) {
+      galleryImage.classList.add("fade-out");
+      setTimeout(() => {
+        galleryImage.src = images[index].src;
+        exploreBtn.href = images[index].link;
+        galleryImage.classList.remove("fade-out");
+      }, 400);
+    }
+
+    prevBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage(currentIndex);
+    });
+
+    nextBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage(currentIndex);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage(currentIndex);
+      }
+      if (event.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage(currentIndex);
+      }
+    });
+
+    updateImage(currentIndex);
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

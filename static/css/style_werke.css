@@ -1,0 +1,443 @@
+/* ===================== Design-Variablen ===================== */
+:root {
+  --font-base: 1rem;          /* Basis-Textgröße (Desktop) */
+  --font-scale-sm: 0.9rem;    /* Info-Text Desktop */
+  --font-scale-xs: 0.75rem;   /* Kleintext / Mobile */
+  --content-max: 100vw;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+
+  --bg: #eaeaea;
+  --text: #333;
+  --text-weak: #555;
+  --text-strong: #111;
+
+  --radius-img: 10px;
+
+  /* Pagination/Footer */
+  --pag-h: 56px;                                   /* Höhe der Pagination inkl. Luft (Default/Desktop) */
+  --safe-bottom: env(safe-area-inset-bottom, 0px); /* iOS Safe Area */
+
+  /* (nur Mobile genutzt) Bühnenbalken-Höhen */
+  --chrome-top: 56px;
+  --chrome-bottom: 72px;
+}
+
+/* ===================== BASE STYLES ===================== */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--font-base);
+  scrollbar-gutter: stable both-edges; /* verhindert Layout-Shift durch Scrollbar */
+}
+
+/* Anti-Jump Guards */
+html { overflow-anchor: none; }
+body { overscroll-behavior: none; }
+
+a { text-decoration: none; color: inherit; }
+
+.back-link {
+  position: absolute;                 /* Desktop-Default; Mobile wird unten überschrieben */
+  top: var(--space-6);
+  right: var(--space-6);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-weak);
+  z-index: 100;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+}
+.back-link:hover { text-decoration: underline; }
+.back-link:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+
+.page-wrapper {
+  max-width: var(--content-max);
+  padding: var(--space-4) var(--space-2)
+           calc(5rem + var(--pag-h) + var(--safe-bottom)); /* genug Luft über den fixen Dots */
+  overflow: visible;
+}
+
+.explore-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  min-height: 100svh;
+  padding-top: 0;
+  gap: var(--space-3);
+  padding-bottom: calc(3rem + var(--pag-h) + var(--safe-bottom));
+}
+
+.image-block {
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0 2vh 0;
+}
+
+/* ======== Bildgrößen & Rundung ======== */
+.image-block img {
+  max-height: 75vh;   /* Desktop */
+  max-width: 75vh;    /* Desktop */
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  border-radius: var(--radius-img);
+  display: block;
+  margin: 0;
+  aspect-ratio: auto;
+}
+
+/* ----- Info-Block: Default (für kleinere Breakpoints wird überschrieben) ----- */
+.info-block {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 7vw;
+  width: 400px;
+  max-width: 36ch;
+  margin-right: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--text-strong);
+  z-index: 10;
+  text-align: left;
+}
+
+.info-block h1 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.info-block p {
+  font-size: var(--font-scale-sm);
+  font-weight: 400;
+  line-height: 1.35;
+  margin-bottom: 0.4rem;
+}
+.info-block p:last-of-type { margin-bottom: 1.75rem; }
+
+/* Labels/Links */
+.label { font-weight: 600; color: #444; }
+.pdf-link { text-decoration: underline; color: #444; }
+.pdf-link:hover { color: #000; }
+
+/* Alte Navigation ausblenden */
+.nav-buttons, .back-button { display: none !important; }
+
+/* ===================== OVERLAY ===================== */
+#imageOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(248, 248, 248, 0.97);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: var(--space-4);
+  animation: fadeIn 0.3s ease-out;
+}
+
+#overlayImage {
+  max-width: 94vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+#overlayImage:hover { transform: scale(1.01); }
+
+#closeOverlay {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+#closeOverlay svg {
+  width: 24px; height: 24px;
+  stroke: rgba(30, 30, 30, 0.65);
+  stroke-width: 2; fill: none;
+  transition: stroke 0.3s ease;
+}
+#closeOverlay:hover svg { stroke: #111; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===================== Pagination Dots (fix bottom) ===================== */
+.pagination {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + var(--safe-bottom));
+  transform: translateX(-50%);
+  z-index: 1500;
+  pointer-events: none;
+}
+.pagination__list { pointer-events: auto; }
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination__item { display: inline-block; }
+
+.pagination__link {
+  display: block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #555;
+  background: transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.pagination__link:hover { transform: scale(1.2); }
+
+.pagination__link.is-active,
+.pagination__link[aria-current="page"] {
+  background-color: #111;
+  border-color: #111;
+}
+
+/* ===================== MOBILE COMMON (≤768px) ===================== */
+@media (max-width: 768px) {
+  :root { --pag-h: 64px; }
+
+  html { font-size: 15px; }
+
+  #overlayImage { max-width: 95vw; max-height: 80vh; }
+
+  #closeOverlay { top: 16px; right: 16px; width: 32px; height: 32px; }
+  #closeOverlay svg { width: 22px; height: 22px; }
+
+  .pagination__link { width: 14px; height: 14px; }
+  .pagination__list { gap: 10px; }
+}
+
+/* ===================== MOBILE PORTRAIT (≤768px) — inkl. Balken ===================== */
+@media (max-width: 768px) and (orientation: portrait) {
+  body::before,
+  body::after{
+    content: "";
+    position: fixed;
+    left: 0; right: 0;
+    z-index: 1400;
+    background: var(--bg);
+    pointer-events: none;
+  }
+  body::before{ top: 0; height: calc(48px + env(safe-area-inset-top)); box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+  body::after { bottom: 0; height: calc(68px + env(safe-area-inset-bottom)); box-shadow: 0 -1px 0 rgba(0,0,0,.06); }
+
+  .page-wrapper,
+  .explore-container {
+    padding-bottom: calc(5.5rem + var(--safe-bottom) + var(--pag-h));
+    min-height: 100svh;
+  }
+
+  .page-wrapper{
+    padding-top: calc(1.25rem + 48px + env(safe-area-inset-top));
+  }
+
+  .explore-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    justify-items: center;
+    padding-top: var(--space-4);
+    row-gap: var(--space-4);
+  }
+
+  .image-block { width: 100%; justify-content: center; padding: 0; margin: 0 auto; }
+
+  .image-block img {
+    width: auto;
+    height: auto;
+    max-height: 48.3vh;
+    max-width: 92vw;
+    object-fit: contain;
+    border-radius: var(--radius-img);
+    margin: 0 0 1.4rem 0;
+  }
+
+  .info-block {
+    position: relative;
+    width: 92vw; max-width: 600px;
+    padding: 0 var(--space-2);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+    text-align: left;
+    margin: 0 auto;
+    top: 0; right: 0; transform: none;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+
+  .info-block h1 { font-size: 0.85rem; margin-bottom: 0.8rem; }
+  .info-block p  { font-size: var(--font-scale-xs); margin-bottom: 0.7rem; }
+
+  .back-link {
+    position: fixed;
+    top: calc(0.5rem + env(safe-area-inset-top));
+    right: calc(1rem + env(safe-area-inset-right));
+    z-index: 1600;
+    font-size: 0.7rem;
+  }
+
+  #overlayImage { max-width: 95vw; max-height: 80vh; }
+  #closeOverlay {
+    position: absolute; top: 12px; right: 12px;
+    width: 30px; height: 30px; background: none; border: none;
+    font-size: 2rem; color: rgba(30,30,30,0.65); cursor: pointer; z-index: 1000; line-height: 1;
+  }
+  #closeOverlay:hover { color: #111; }
+}
+
+/* ===================== MOBILE LANDSCAPE (≤896px) — inkl. Balken ===================== */
+@media (max-width: 896px) and (orientation: landscape) {
+  body::before,
+  body::after{
+    content: "";
+    position: fixed;
+    left: 0; right: 0;
+    z-index: 1400;
+    background: var(--bg);
+    pointer-events: none;
+  }
+  body::before{ top: 0; height: 56px; box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+  body::after { bottom: 0; height: calc(60px + var(--safe-bottom)); box-shadow: 0 -1px 0 rgba(0,0,0,.06); }
+
+  :root { --pag-h: 60px; }
+
+  .page-wrapper,
+  .explore-container {
+    padding-bottom: calc(5.5rem + var(--safe-bottom) + var(--pag-h));
+    min-height: 100svh;
+  }
+
+  .page-wrapper{
+    padding-top: calc(1rem + 56px);
+  }
+
+  .explore-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    justify-items: center;
+    padding-top: 1rem;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+  }
+
+  .image-block { width: 100%; justify-content: center; padding: 0; margin: 0; }
+
+  .image-block img {
+    max-height: 60vh;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-img);
+    margin: 0;
+    transform: none;
+  }
+
+  .info-block {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    padding: 0;
+    margin-bottom: 2.25rem;
+    top: 0; left: 0; transform: none;
+    text-align: left;
+  }
+  .info-block p:last-of-type { margin-bottom: 2.25rem; }
+
+  .back-link { position: fixed; top: 10px; left: 10px; font-size: 0.7rem; z-index: 1600; }
+
+  .pagination { bottom: calc(18px + var(--safe-bottom)); }
+}
+
+/* ===================== DESKTOP (≥1024px): Gruppe mittig ===================== */
+@media (min-width: 1024px) {
+  body { overflow: hidden; }
+
+  .page-wrapper {
+    height: 100vh;
+    padding: 0; /* keine Offsets */
+  }
+
+  .explore-container {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    grid-template-columns: max-content max-content; /* Bild | Text */
+    place-content: center;  /* horizontal + vertikal zentriert */
+    place-items: center;
+    column-gap: clamp(32px, 6vw, 96px);
+    padding: 0;
+  }
+
+  .image-block { margin: 0; padding: 0; }
+  .image-block img { margin: 0; }
+
+  /* WICHTIG: globale Offsets neutralisieren */
+  .info-block {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-right: 0;
+    transform: none;
+    max-width: 36ch;
+    text-align: left;
+    z-index: auto;
+  }
+
+  .back-link {
+    position: fixed;
+    top: var(--space-6);
+    right: var(--space-6);
+    z-index: 100;
+  }
+}
+
+/* Kompakter auf schmalen Desktops */
+@media (min-width: 1024px) and (max-width: 1280px){
+  .explore-container{ column-gap: 4vw; }
+  .info-block{ max-width: 34ch; }
+}
+
+/* Bewegungsreduktion respektieren */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,211 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: ANIFOU SITE\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-09 18:01+0200\n"
+"PO-Revision-Date: 2025-07-09 00:00+0000\n"
+"Last-Translator: Du\n"
+"Language: de\n"
+"Language-Team: Deutsch\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#~ msgid "Über mich"
+#~ msgstr "Über mich"
+
+#~ msgid "Fouani"
+#~ msgstr ""
+
+# --- Navigation ---
+#~ msgid "Projekte"
+#~ msgstr "Projekte"
+
+#~ msgid "Life In Plastic"
+#~ msgstr ""
+
+#~ msgid "HTIF"
+#~ msgstr ""
+
+#~ msgid "Kontakt"
+#~ msgstr "Kontakt"
+
+#~ msgid "Galerie"
+#~ msgstr "Galerie"
+
+#~ msgid "Zurück zur Galerie"
+#~ msgstr "Zurück zur Galerie"
+
+# --- Navigation ---
+#~ msgid "Projektbericht"
+#~ msgstr "Projekte"
+
+#~ msgid "Galeriebild"
+#~ msgstr "Galerie"
+
+#~ msgid "EXPLORE"
+#~ msgstr ""
+
+#~ msgid "Vorheriges Bild"
+#~ msgstr ""
+
+#~ msgid "Nächstes Bild"
+#~ msgstr ""
+
+#~ msgid "Großes Bild"
+#~ msgstr ""
+
+#~ msgid "Demo Bar"
+#~ msgstr ""
+
+#~ msgid "Beirut"
+#~ msgstr ""
+
+#~ msgid "Myopie-Simulation"
+#~ msgstr ""
+
+#~ msgid "tba"
+#~ msgstr ""
+
+#~ msgid "Fine Art Giclée auf Hahnemühle Photo Rag"
+#~ msgstr ""
+
+#~ msgid "1/5"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Zwischen Palmen, urbaner Struktur und "
+#~ "abstrahierender Reduktion. Die Szene ist "
+#~ "entrückt. Der Blick taucht ein in "
+#~ "Tiefe, Dunkelheit – wenn sich die "
+#~ "Perspektiven verschieben."
+#~ msgstr ""
+
+#~ msgid "Ort"
+#~ msgstr ""
+
+#~ msgid "Technik"
+#~ msgstr ""
+
+#~ msgid "Format"
+#~ msgstr ""
+
+#~ msgid "Druck"
+#~ msgstr ""
+
+#~ msgid "Edition"
+#~ msgstr ""
+
+#~ msgid "Galerie Preview"
+#~ msgstr "Galerie"
+
+#~ msgid "Galerievorschau Bild"
+#~ msgstr ""
+
+#~ msgid "Alle ansehen"
+#~ msgstr "Alle ansehen"
+
+# --- Intro/About Me ---
+#~ msgid ""
+#~ "Mit einem Hintergrund im Kulturbereich, "
+#~ "in dem ich Unternehmen gegründet und "
+#~ "geführt habe, und einem Studium der "
+#~ "Datenwissenschaft – mit Schwerpunkten in "
+#~ "Machine Learning, Deep Learning, Computer "
+#~ "Vision und Natural Language Processing –"
+#~ " verbinde ich perspektivisches Denken mit"
+#~ " algorithmischen Systemen."
+#~ msgstr ""
+#~ "Mit einem Hintergrund im Kulturbereich, "
+#~ "in dem ich Unternehmen gegründet und "
+#~ "geführt habe, und einem Studium der "
+#~ "Datenwissenschaft – mit Schwerpunkten in "
+#~ "Machine Learning, Deep Learning, Computer "
+#~ "Vision und Natural Language Processing –"
+#~ " verbinde ich perspektivisches Denken mit"
+#~ " algorithmischen Systemen."
+
+#~ msgid ""
+#~ "In meinen Projekten analysiere ich, wie"
+#~ " sich Wahrnehmung, Sprache und Umwelt "
+#~ "durch Daten formen, verschieben oder "
+#~ "sichtbar machen lassen."
+#~ msgstr ""
+#~ "In meinen Projekten analysiere ich, wie"
+#~ " sich Wahrnehmung, Sprache und Umwelt "
+#~ "durch Daten formen, verschieben oder "
+#~ "sichtbar machen lassen."
+
+#~ msgid "Plastic vs. Profit"
+#~ msgstr ""
+
+#~ msgid "Explore – Two Brothers & The Sea"
+#~ msgstr ""
+
+#~ msgid "Zurück"
+#~ msgstr "Zurück"
+
+#~ msgid "Two Brothers & The Sea Werk"
+#~ msgstr ""
+
+#~ msgid "Two Brothers & The Sea"
+#~ msgstr ""
+
+#~ msgid "Rio de Janeiro, Brasilien"
+#~ msgstr ""
+
+#~ msgid "75 × 100 cm"
+#~ msgstr ""
+
+#~ msgid "Ipanema. Weites, tiefes Licht im Dunst – und Ruhe."
+#~ msgstr ""
+
+#~ msgid "Projektbericht (DE | EN)"
+#~ msgstr ""
+
+#~ msgid "Schließen"
+#~ msgstr ""
+
+#~ msgid "Vergrößertes Bild"
+#~ msgstr ""
+
+#~ msgid "Explore – Beirut"
+#~ msgstr ""
+
+#~ msgid "Beirut Werk"
+#~ msgstr ""
+
+#~ msgid "Vorheriges Werk"
+#~ msgstr ""
+
+#~ msgid "Nächstes Werk"
+#~ msgstr ""
+
+#~ msgid "–3.5 Simulation – Hand"
+#~ msgstr ""
+
+#~ msgid "Zurück zur Startseite"
+#~ msgstr "Zurück zur Galerie"
+
+# --- Navigation ---
+#~ msgid "Projektlogo"
+#~ msgstr "Projekte"
+
+#~ msgid "How I See – Myopie-Simulation (0 bis –3.5 dpt)"
+#~ msgstr ""
+
+#~ msgid "Myopie-Simulation – Hand"
+#~ msgstr ""
+
+#~ msgid "Simulation Steuerung"
+#~ msgstr ""
+
+#~ msgid "Dioptrien Simulation"
+#~ msgstr ""
+
+#~ msgid "Zur Galerie"
+#~ msgstr "Galerie"
+
