@@ -13,10 +13,16 @@ html, body {
   text-rendering: geometricPrecision;
 }
 
+/* FIX: erzwingt Desktop-Schriftfarbe auf Mobile */
+@media (max-width: 1024px) {
+  body[data-page] .page-wrapper {
+    color: rgba(25, 25, 25, 0.9);
+  }
+}
+
 /* Vererbung aktivieren – greift auch in Simulation, Buttons, Inputs etc. */
 *, *::before, *::after {
   font-family: inherit;
-  color: inherit;
 }
 
 /* Responsive Font-Anpassung */
