@@ -183,21 +183,3 @@ button.arrow-btn:hover {
   }
 }
 
-/* ---------- D) Dark Mode ---------- */
-@media (prefers-color-scheme: dark) {
-  .sim-container {
-    background-color: #121212;
-    color: rgba(245, 245, 245, 0.88);
-  }
-
-  .gallery-link a,
-  button.arrow-btn {
-    color: rgba(245, 245, 245, 0.88);
-  }
-
-  button.arrow-btn:hover {
-    background: rgba(245, 245, 245, 0.88);
-    color: #121212;
-  }
-}
-

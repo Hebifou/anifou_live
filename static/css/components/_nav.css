@@ -45,6 +45,7 @@ nav.main-nav{
   align-items: center;
   justify-content: center;
   height: 100%;
+  color: rgba(25, 25, 25, 0.9);
 }
 
 .dropdown-content{
