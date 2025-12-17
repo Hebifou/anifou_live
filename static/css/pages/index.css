@@ -153,18 +153,21 @@ body[data-page="index"] .hero.clean-hero.about-hero {
 /* -------------------------------------
    DARK MODE
 ------------------------------------- */
-
 @media (prefers-color-scheme: dark) {
   [data-page="index"] {
-    background-color: #121212;
-    color: rgba(245, 245, 245, 0.9);
+    background-color: #eaeaea;
+    color: rgba(25, 25, 25, 0.9);
   }
 
   [data-page="index"] .about-hero a {
-    color: rgba(245, 245, 245, 0.9);
+    color: rgba(25, 25, 25, 0.9);
   }
 
   [data-page="index"] .site-footer {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 }
+
+
+
+
