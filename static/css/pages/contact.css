@@ -130,24 +130,3 @@
   }
 }
 
-/* -------------------------------------
-   DARK MODE
-------------------------------------- */
-
-@media (prefers-color-scheme: dark) {
-  [data-page="kontakt"],
-  [data-page="contact"] {
-    background-color: #121212;
-    color: rgba(245, 245, 245, 0.9);
-  }
-
-  [data-page="kontakt"] .contact-link a,
-  [data-page="contact"] .contact-link a {
-    color: rgba(245, 245, 245, 0.9);
-  }
-
-  [data-page="kontakt"] .site-footer,
-  [data-page="contact"] .site-footer {
-    opacity: 0.6;
-  }
-}

@@ -120,21 +120,3 @@
   }
 }
 
-/* -------------------------------------
-   DARK MODE
-------------------------------------- */
-
-@media (prefers-color-scheme: dark) {
-  [data-page="how_the_internet_feels"] {
-    background-color: #121212;
-    color: rgba(245, 245, 245, 0.9);
-  }
-
-  [data-page="how_the_internet_feels"] .htif-links a {
-    color: rgba(245, 245, 245, 0.9);
-  }
-
-  [data-page="how_the_internet_feels"] .site-footer {
-    opacity: 0.6;
-  }
-}

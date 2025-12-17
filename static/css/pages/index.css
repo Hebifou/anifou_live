@@ -150,36 +150,4 @@ body[data-page="index"] .hero.clean-hero.about-hero {
   }
 }
 
-/* -------------------------------------
-   DARK MODE
-------------------------------------- */
-@media (prefers-color-scheme: dark) {
-  [data-page="index"] {
-    background-color: #eaeaea;
-    color: rgba(25, 25, 25, 0.9);
-  }
-
-  [data-page="index"] .about-hero a {
-    color: rgba(25, 25, 25, 0.9);
-  }
-
-  [data-page="index"] .site-footer {
-    opacity: 0.7;
-  }
-}
-
-/* === FORCE DESKTOP COLORS ON MOBILE (INDEX) === */
-@media (max-width: 768px) {
-  [data-page="index"],
-  [data-page="index"] p,
-  [data-page="index"] h1,
-  [data-page="index"] h2,
-  [data-page="index"] h3,
-  [data-page="index"] a,
-  [data-page="index"] span {
-    color: rgba(25, 25, 25, 0.9);
-  }
-}
-
-
 

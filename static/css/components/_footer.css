@@ -52,17 +52,3 @@
   }
 }
 
-/* --- Dark Mode --- */
-@media (prefers-color-scheme: dark) {
-  .site-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(245, 245, 245, 0.9);
-    opacity: 0.7;
-  }
-  .site-footer a {
-    color: rgba(245, 245, 245, 0.9);
-  }
-  .site-footer a:hover {
-    opacity: 0.6;
-  }
-}
