@@ -1,0 +1,1184 @@
+/* =====================================================================
+   Anifou – Responsive CSS (Desktop preserved, Mobile flattened & non-overlapping)
+====================================================================== */
+
+/* =====================================================
+   00) RESET & TOKENS  (kept as in original + tokenized)
+===================================================== */
+:root{
+  /* Farben (Basis) */
+  --c-bg: #eaeaea;
+  --c-text: #333333;
+  --c-text-weak: #555555;
+  --c-border: rgba(0,0,0,.08);
+  --c-surface: #ffffff;
+
+  /* Neue Farb-Tokens für feste Werte (jetzt dynamisch) */
+  --c-black: #000000;
+  --c-white: #ffffff;
+  --c-ink-strong: #222222;
+  --c-mid: #444444;
+  --c-mid-weak: #666666;
+  --c-divider: #eeeeee;
+  --c-hover: #dcdcdc;
+  --c-shadow: rgba(0,0,0,.10);
+  --c-border-weak: rgba(0,0,0,.15);
+
+  /* High-end Typo Farben (Desktop only Sektion nutzt diese) */
+  --c-typo-body: #2a2a2a;
+  --c-typo-heading: #111111;
+  --c-typo-paragraph: #333333;
+  --c-typo-link: #000000;
+  --c-typo-link-hover: #555555;
+
+  /* Typo */
+  --ff-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --lh-base: 1.6;
+
+  /* Skalen */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+
+  /* Radien & Schatten (neu tokenized) */
+  --radius-xs: 5px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --shadow-soft: 0 0 12px var(--c-shadow);
+
+  /* Chrome */
+  --nav-h: 64px;
+  --footer-h: 48px;
+
+  /* Breiten */
+  --w-tight: 36ch;
+  --w-read: 60ch;
+  --w-wide: 800px;
+
+  /* Slider */
+  --slider-h: 60px;
+  --slider-track-h: 3px;
+  --slider-handle-r: 8;
+  --slider-track-color: #555555;
+  --slider-fill-color: #000000;
+  --slider-handle-fill: #000000;
+  --slider-handle-stroke: #000000;
+
+  /* Hero Margins */
+  --mt-hero-d: 0rem;    /* Desktop */
+
+  /* === Mobile-Landscape: Privacy – anpassbare Breiten/Typo (Defaults) === */
+  --ml-privacy-box-maxw: none;  /* Gesamtbox: none = volle Breite */
+  --ml-privacy-p-maxw: 46ch;    /* Zeilenlänge Absätze */
+  --ml-privacy-h1: .85rem;      /* Überschriftgröße */
+  --ml-privacy-p: .78rem;       /* Absatzgröße */
+  --ml-privacy-line: 1.65;      /* Zeilenhöhe */
+  --ml-privacy-px: 16px;        /* Innenabstand links/rechts */
+}
+
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
+html, body{ height: 100%; }
+
+/* A) Desktop (Default) */
+body{
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: var(--lh-base);
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+a{ color: var(--c-text); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* B) Mobile Portrait (tokens only) */
+@media (max-width: 768px) and (orientation: portrait){
+  :root{
+    --nav-h: 56px;
+    --w-read: 50ch;
+  }
+}
+
+/* C) Mobile Landscape (tokens only) */
+@media (max-width: 768px) and (orientation: landscape){
+  :root{
+    --nav-h: 56px;
+    --w-read: min(46ch, 92vw);
+  }
+}
+
+/* =====================================================
+   10) LAYOUT & WRAPPER
+===================================================== */
+/* A) Desktop */
+.page-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--space-8) var(--space-5);
+}
+.container{ width: min(100%, var(--w-wide)); margin-inline: auto; padding-inline: var(--space-5); }
+.read{ width: min(100%, var(--w-read)); margin-inline: auto; }
+.tight{ width: min(100%, var(--w-tight)); margin-inline: auto; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .page-wrapper{ padding: var(--space-6) var(--space-4); align-items: flex-start; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .page-wrapper{ padding: var(--space-5) var(--space-4); align-items: flex-start; }
+}
+
+/* =====================================================
+   20) NAVIGATION (Burger, Navbar, Dropdown)
+===================================================== */
+/* A) Desktop */
+.burger{ display: none; }
+nav.main-nav{
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: center;
+  background: transparent; border-bottom: none; box-shadow: none; margin: 0;
+}
+.navbar{ list-style: none; margin: 0; padding: 0 var(--space-7); display: flex; align-items: center; justify-content: center; gap: var(--space-7); }
+.navbar li{ position: relative; display: flex; align-items: center; }
+.navbar a, .dropdown-toggle{
+  font-size: .9rem; letter-spacing: .01em; font-weight: 300;
+  padding: .4rem .8rem; background: none; border: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; height: 100%;
+}
+.dropdown-content{
+  display: none; position: absolute; inset-inline-start: 0; top: 100%;
+  background: var(--c-bg); border-radius: var(--radius-sm); min-width: 200px; width: 220px; z-index: 1000;
+  font-size: .75rem; padding: .2rem 0; box-shadow: none;
+}
+.dropdown-content li{ list-style: none; }
+.dropdown-content li a{ display: block; padding: .1rem 1rem; font-size: .75rem; color: var(--c-ink-strong); }
+.dropdown-content li a:hover{ background: var(--c-hover); }
+.dropdown.is-open .dropdown-content{ display: block; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .burger{ display: block; font-size: 1.8rem; padding: .5rem 1rem; cursor: pointer; }
+  .navbar{ flex-direction: column; align-items: flex-start; padding: 1rem; gap: .5rem; }
+  .dropdown-toggle{ font-size: .9rem; padding: .4rem .6rem; width: 100%; text-align: left; }
+  .dropdown-content{ position: static; background: transparent; box-shadow: none; padding: 0; margin-top: .2rem; }
+  .dropdown-content li a{ font-size: .8rem; padding: .3rem 0; background: transparent; }
+  .mobile-menu{ display: none; flex-direction: column; width: 100%; }
+  .mobile-menu.active{
+    display: flex;
+    position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 999;
+    background: var(--c-bg); padding: 1rem 1.25rem; gap: .75rem;
+    height: calc(100dvh - var(--nav-h) - var(--footer-h)); overflow: auto;
+  }
+  .mobile-menu.active li{ width: 100%; }
+  .mobile-menu.active a, .mobile-menu.active .dropdown-toggle{ justify-content: flex-start; width: 100%; padding: .6rem .2rem; font-size: 1rem; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .burger{ display: block; font-size: 1.8rem; padding: .5rem 1rem; cursor: pointer; }
+  .navbar{ flex-direction: column; align-items: flex-start; padding: .75rem; gap: .5rem; }
+  .dropdown-toggle{ font-size: .9rem; padding: .4rem .6rem; width: 100%; text-align: left; }
+  .dropdown-content{ position: static; background: transparent; box-shadow: none; padding: 0; margin-top: .2rem; }
+  .mobile-menu{ display: none; flex-direction: column; width: 100%; }
+  .mobile-menu.active{
+    display: flex;
+    position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 999;
+    background: var(--c-bg); padding: .75rem 1rem; gap: .5rem;
+    height: calc(100dvh - var(--nav-h) - var(--footer-h)); overflow: auto;
+  }
+}
+
+/* =====================================================
+   30) HERO / INTRO
+===================================================== */
+/* A) Desktop only (mobile removed to avoid overlap) */
+.hero, .clean-hero{
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center;
+  margin: 0 auto; padding: 0 var(--space-5); width: min(100%, var(--w-wide));
+  margin-top: var(--mt-hero-d);
+}
+.clean-hero h1{ font-size: 1rem; font-weight: 500; line-height: var(--lh-base); margin-bottom: var(--space-6); }
+.clean-hero p{ font-size: 1rem; line-height: var(--lh-base); margin: 0 auto var(--space-5); width: min(100%, 60ch); }
+
+/* =====================================================
+   40) MYOPIE-SIMULATION
+===================================================== */
+/* A) Desktop */
+.sim-container{ display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; max-width: 850px; margin: 0 auto; padding: 30px 1rem 20px; text-align: center; }
+.sim-img{ max-width: 100%; max-height: 500px; object-fit: contain; border-radius: var(--radius-md); box-shadow: var(--shadow-soft); margin-top: 1.5rem; }
+.controls{ display: flex; align-items: center; justify-content: center; gap: 2rem; width: 100%; max-width: 700px; margin-top: 1.5rem; }
+.progress{ font-size: 1rem; text-align: center; margin-top: .5rem; }
+.gallery-link{ margin-top: 1.5rem; }
+.gallery-link a{ font-weight: 700; font-size: 1rem; background: transparent; border: none; color: var(--c-ink-strong); padding: .5rem 1.2rem; }
+#stage-container{ width: 100%; max-width: 600px; height: var(--slider-h); margin: 0 auto; }
+#stage{ width: 100%; height: var(--slider-h); }
+#slider-inner{ fill: none; }
+#track-inner, #track-fill{ height: var(--slider-track-h); y: 33; rx: 1.5; ry: 1.5; }
+#track-inner{ fill: var(--slider-track-color); }
+#track-fill{ fill: var(--slider-fill-color); }
+#handle-inner{ r: var(--slider-handle-r); cy: 34; fill: var(--slider-handle-fill); stroke: var(--slider-handle-stroke); stroke-width: 1.5; }
+button.arrow-btn{ border: none; background: none; font-size: 1.8rem; cursor: pointer; }
+button.arrow-btn:hover{ background: var(--c-ink-strong); color: var(--c-white); }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .sim-container{ padding: 2rem 1rem 3rem; }
+  .sim-img{ width: 100% !important; height: auto !important; max-height: 280px; margin: 1rem 0 !important; border-radius: 0 !important; box-shadow: none !important; object-fit: contain !important; }
+  .controls{ flex-direction: column; gap: 1rem; margin-top: 1rem; }
+  #stage-container{ padding: 0 .5rem; width: 100%; }
+  .progress{ margin-bottom: .5rem; font-size: 1rem; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .sim-container{ padding: 1.5rem 1rem 2rem; }
+  .sim-img{ width: 100% !important; height: auto !important; max-height: 300px; margin: 1rem 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+  .controls{ flex-direction: column; gap: .8rem; margin-top: 1rem; }
+  #stage-container{ padding: 0 .5rem; width: 100%; }
+}
+
+/* =====================================================
+   50) CONTENT-BLÖCKE (Video/Text/Project)
+===================================================== */
+/* A) Desktop */
+.video-container{ text-align: center; margin: var(--space-7) auto; padding: 0 var(--space-5); }
+.video-container video{ width: 100%; max-width: 800px; border-radius: var(--radius-md); }
+.project-title{ font-size: 1.2rem; font-weight: 400; margin: var(--space-8) auto var(--space-3); padding: 0 var(--space-5); text-align: left; max-width: var(--w-wide); }
+.project-lead{ font-size: .95rem; margin: 0 auto var(--space-7); padding: 0 var(--space-5); text-align: left; max-width: var(--w-wide); color: var(--c-text); }
+.video-info{ max-width: var(--w-wide); margin: var(--space-6) auto var(--space-7); padding: 0 var(--space-5); font-size: .9rem; text-align: left; }
+.text-section{ max-width: var(--w-wide); margin: var(--space-7) auto; padding: 0 var(--space-5); text-align: left; font-size: .9rem; }
+.text-section strong{ font-weight: 500; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .video-container{ margin: var(--space-6) auto; padding-inline: 1rem; }
+  .project-title{ margin: var(--space-7) auto var(--space-3); }
+  .project-lead, .video-info, .text-section{ padding-inline: 1rem; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .video-container{ margin: var(--space-5) auto; padding-inline: 1rem; }
+  .project-title{ margin: var(--space-6) auto var(--space-3); }
+  .project-lead, .video-info, .text-section{ padding-inline: 1rem; }
+}
+
+/* =====================================================
+   60) BUTTONS & BACK-LINK
+===================================================== */
+/* A) Desktop */
+.button{ padding: .6rem 1.2rem; background: var(--c-black); color: var(--c-white); border-radius: var(--radius-xs); font-weight: 700; transition: filter .2s ease; display: inline-block; }
+.button:hover{ filter: brightness(.9); }
+.back-link{ position: fixed; top: .6rem; right: .8rem; font-size: .65rem; text-transform: uppercase; color: var(--c-text-weak); z-index: 1000; letter-spacing: .05em; opacity: .8; }
+.back-link:hover{ text-decoration: underline; opacity: 1; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .button{ font-size: .95rem; }
+  .back-link{ position: static; display: block; margin: 1rem auto; font-size: .75rem; text-align: center; color: var(--c-mid-weak); padding: .2rem 0; opacity: .9; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .button{ font-size: .9rem; }
+  .back-link{ position: relative; top: auto; right: auto; display: block; margin: .5rem 0 0 auto; font-size: .75rem; }
+}
+
+/* =====================================================
+   70) FOOTER
+===================================================== */
+/* A) Desktop */
+.site-footer{ border-top: 1px solid var(--c-border); margin-top: var(--space-4); padding: 12px 0; font-size: 10px; color: var(--c-mid); }
+.site-footer .footer-nav{ display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; justify-content: center; margin: 0; padding: 0 16px; }
+.site-footer a{ color: inherit; text-decoration: none; border-bottom: 1px solid var(--c-border-weak); }
+.site-footer a:hover{ border-bottom-color: currentColor; }
+.site-footer .footer-nav span{ opacity: .6; margin: 0 .15rem; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .site-footer{ font-size: 10px; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .site-footer{ font-size: 10px; }
+}
+
+/* =====================================================
+   80) PAGE-SCOPES (Life in Plastic)
+===================================================== */
+/* A) Desktop */
+.project.life-in-plastic .project-header{ max-width: 700px; margin: 3rem auto 2rem; padding: 0 1rem; text-align: left; }
+.project.life-in-plastic .project-header h1{ font-size: .85rem; font-weight: 400; margin-bottom: .4rem; letter-spacing: .01em; color: var(--c-ink-strong); }
+.project.life-in-plastic .project-header p{ font-size: .85rem; font-weight: 300; color: var(--c-text-weak); margin-top: .2rem; line-height: 1.8; }
+.project.life-in-plastic hr{ border: none; border-top: 1px solid var(--c-divider); max-width: 700px; margin: 2.5rem auto; opacity: .4; }
+.life-in-plastic-video{ max-width: var(--w-wide); margin: 1.5rem auto; aspect-ratio: 16/9; overflow: hidden; position: relative; }
+.life-in-plastic-video video{ width: 100%; height: 100%; object-fit: contain; display: block; }
+.project.life-in-plastic .text-section{ max-width: 830px; margin: 2.5rem auto; padding: 0 1rem; font-size: .9rem; line-height: 1.7; }
+.project.life-in-plastic .text-section p,
+.project.life-in-plastic .text-section li,
+.project.life-in-plastic h1, .project.life-in-plastic h2, .project.life-in-plastic h3,
+.project.life-in-plastic p, .project.life-in-plastic li, .project.life-in-plastic ul,
+.project.life-in-plastic ol, .project.life-in-plastic a{ font-size: 1rem; line-height: 1.6; font-weight: 300; color: var(--c-text); }
+.fade-in{ opacity: 0; transform: translateY(20px); animation: fadeUp .8s ease-out forwards; }
+@keyframes fadeUp{ to{ opacity: 1; transform: translateY(0); } }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .project.life-in-plastic .project-header,
+  .project.life-in-plastic .text-section,
+  .project.life-in-plastic .life-in-plastic-video{ max-width: 38ch; margin-inline: auto; padding-inline: 1rem; }
+  .project.life-in-plastic .project-header h1,
+  .project.life-in-plastic .project-header p,
+  .project.life-in-plastic .text-section p,
+  .project.life-in-plastic .text-section li{ font-size: clamp(.9rem, .9rem + .2vw, 1rem); line-height: 1.6; }
+  .project.life-in-plastic .life-in-plastic-video{ width: 100%; aspect-ratio: 16/9; }
+  .project.life-in-plastic .life-in-plastic-video video{ width: 100%; height: auto; object-fit: contain; display: block; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .project.life-in-plastic .project-header,
+  .project.life-in-plastic .text-section,
+  .project.life-in-plastic .life-in-plastic-video{ max-width: min(640px, 92vw); margin-inline: auto; padding-inline: 1rem; }
+  .project.life-in-plastic .text-section{ line-height: 1.5; }
+  .project.life-in-plastic .life-in-plastic-video{ width: 100%; aspect-ratio: 16/9; }
+}
+
+/* =====================================================
+   90) STATIC PAGES (Privacy / Imprint) via data-page
+===================================================== */
+/* A) Desktop only (mobile variants moved to cleanup layer) */
+[data-page="privacy"] .page-wrapper,
+[data-page="imprint"] .page-wrapper{
+  display:flex; align-items:center; justify-content:center;
+  min-height: calc(100vh - var(--nav-h) - var(--footer-h));
+  padding-block: 0;
+}
+[data-page="privacy"] .clean-hero, [data-page="privacy"] .textblock{
+  max-width: 44ch; margin: 0 auto 0; text-align: center;
+}
+[data-page="privacy"] .clean-hero h1, [data-page="privacy"] .textblock h1{
+  font-size: .95rem; line-height: 1.6; margin: 0 0 .8rem; font-weight: 500;
+}
+[data-page="privacy"] .clean-hero p, [data-page="privacy"] .clean-hero li,
+[data-page="privacy"] .textblock p, [data-page="privacy"] .textblock li{
+  font-size: .90rem; line-height: 1.6; margin: .4rem auto; max-width: 44ch;
+}
+[data-page="imprint"] .clean-hero, [data-page="imprint"] .textblock{ max-width: 50ch; text-align: center; }
+[data-page="imprint"] .clean-hero h1, [data-page="imprint"] .textblock h1{ font-size: .95rem; line-height: 1.6; margin: 0 0 .7rem; font-weight: 500; }
+[data-page="imprint"] .clean-hero p, [data-page="imprint"] .clean-hero li, [data-page="imprint"] .textblock p, [data-page="imprint"] .textblock li{ font-size: .88rem; line-height: 1.6; margin: .35rem auto; max-width: 50ch; }
+
+/* =====================================================
+   95) GLOBAL MODES (no-scroll / no-footer)
+===================================================== */
+/* A) Desktop */
+html.no-scroll, body.no-scroll{ overflow: hidden !important; overscroll-behavior: none; height: 100%; }
+body.no-scroll .main-nav{ position: fixed; inset-inline: 0; top: 0; height: var(--nav-h); z-index: 20; background: transparent; margin: 0; }
+body.no-scroll .burger{ position: fixed; top: 8px; left: 12px; z-index: 21; }
+body.no-scroll .site-footer{ position: fixed; inset-inline: 0; bottom: 0; background: transparent; padding-bottom: max(12px, env(safe-area-inset-bottom, 0px)); z-index: 10; }
+body.no-scroll main{ height: 100dvh; }
+@supports not (height: 100dvh){ body.no-scroll main{ height: 100vh; } }
+body.no-scroll .page-wrapper{ min-height: calc(100dvh - var(--nav-h) - var(--footer-h)); padding: 0 20px; display: flex; align-items: center; justify-content: center; }
+@supports not (height: 100dvh){ body.no-scroll .page-wrapper{ min-height: calc(100vh - var(--nav-h) - var(--footer-h)); } }
+body.no-scroll .page-wrapper > *:first-child{ margin-top: 0 !important; }
+body.no-scroll .page-wrapper > *:last-child{ margin-bottom: 0 !important; }
+/* FIX: kein Margin-Reset mehr, damit Mobile-Margins greifen */
+body.no-scroll .hero,
+body.no-scroll .clean-hero{
+  min-height: 0 !important; height: auto !important;
+  /* margin NICHT anfassen! */ padding: 0 20px !important; transform: none !important;
+}
+body.no-footer .site-footer{ display: none; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  body.no-scroll .page-wrapper{ padding: 0 12px; padding-bottom: calc(var(--footer-h) + 8px); }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  body.no-scroll .page-wrapper{ padding: 0 12px; }
+}
+
+/* =====================================================
+   99) SMALL UTILITIES
+===================================================== */
+/* A) Desktop */
+.hidden{ visibility: hidden; opacity: 0; }
+.fade-in{ visibility: visible; opacity: 1; transition: opacity 1s ease-in; }
+.u-center{ text-align: center; }
+.u-center h1, .u-center h2, .u-center p, .u-center li{ text-align: inherit; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .u-center{ text-align: center; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .u-center{ text-align: center; }
+}
+
+/* =====================================================
+   100) DYNAMISCHE MOBILE ANPASSUNG (kept)
+===================================================== */
+@media (max-width: 480px){
+  html{
+    font-size: clamp(12px, 3.2vw, 15px);
+  }
+
+  .clean-hero,
+  .textblock,
+  .project-title,
+  .project-lead,
+  .text-section{
+    padding-inline: clamp(8px, 4vw, 16px);
+  }
+
+  .clean-hero h1,
+  .textblock h1{
+    font-size: clamp(0.75rem, 2.8vw, 1rem);
+  }
+
+  .clean-hero p,
+  .textblock p{
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    line-height: 1.6;
+  }
+
+  .button{
+    font-size: clamp(0.8rem, 2.6vw, 1rem);
+    padding: .5rem 1rem;
+  }
+
+  .site-footer{
+    font-size: clamp(9px, 2.2vw, 11px);
+    padding-block: 10px;
+  }
+}
+
+/* =====================================================
+   100) HIGH-END TYPOGRAPHY – Desktop only (kept, tokenized)
+===================================================== */
+@media (min-width: 769px){
+  [data-page="privacy"] .clean-hero,
+  [data-page="imprint"] .clean-hero,
+  [data-page="privacy"] .textblock,
+  [data-page="imprint"] .textblock{
+    max-width: 60ch;
+    margin-inline: auto;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 0.6rem;
+    color: var(--c-typo-body);
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+  }
+
+  [data-page="privacy"] .clean-hero h1,
+  [data-page="imprint"] .clean-hero h1,
+  [data-page="privacy"] .textblock h1,
+  [data-page="imprint"] .textblock h1{
+    font-size: 0.6rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    color: var(--c-typo-heading);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  [data-page="privacy"] .clean-hero p,
+  [data-page="imprint"] .clean-hero p,
+  [data-page="privacy"] .textblock p,
+  [data-page="imprint"] .textblock p{
+    margin-bottom: 1rem;
+    font-size: 0.6rem;
+    line-height: 1.75;
+    color: var(--c-typo-paragraph);
+  }
+
+  [data-page="privacy"] .clean-hero a,
+  [data-page="imprint"] .clean-hero a,
+  [data-page="privacy"] .textblock a,
+  [data-page="imprint"] .textblock a{
+    color: var(--c-typo-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  [data-page="privacy"] .clean-hero a:hover,
+  [data-page="imprint"] .clean-hero a:hover,
+  [data-page="privacy"] .textblock a:hover,
+  [data-page="imprint"] .textblock a:hover{
+    color: var(--c-typo-link-hover);
+  }
+
+  [data-page="privacy"] .page-wrapper,
+  [data-page="imprint"] .page-wrapper{
+    border-radius: var(--radius-lg);
+    padding: 4rem 3rem;
+    margin: 2rem auto;
+    width: fit-content;
+  }
+
+  .site-footer{
+    border-top: 1px solid var(--c-border);
+    font-size: 11px;
+    opacity: 0.8;
+  }
+}
+
+/* =====================================================================
+   MOBILE CLEANUP LAYER (flattened, non-overlapping)
+   Visual parity with previous mobile; Desktop untouched.
+   Portrait <=768px, Landscape <=1024px. Ranges are exclusive.
+====================================================================== */
+
+/* Portrait foundation up to 768px */
+@media (max-width: 768px) and (orientation: portrait){
+  :root{
+    --m-pad-x: 1rem;
+    --m-max: 40ch;
+    --m-mt: 9rem;
+    --m-fs: 1rem;
+    --m-lh: 1.65;
+  }
+  .hero, .clean-hero, .textblock{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--m-pad-x);
+    max-width: var(--m-max);
+    margin: 0 auto;
+  }
+  .hero{ margin-top: var(--m-mt) !important; }
+  .clean-hero{ margin-top: var(--m-mt) !important; }
+  .clean-hero h1, .textblock h1{ font-size: calc(var(--m-fs) + 0.05rem); line-height: var(--m-lh); margin-bottom: .9rem; }
+  .clean-hero p, .textblock p{ font-size: var(--m-fs); line-height: var(--m-lh); margin: 0 auto 1rem; max-width: var(--m-max); }
+}
+
+/* Landscape foundation up to 1024px */
+@media (max-width: 1024px) and (orientation: landscape){
+  :root{
+    --m-pad-x: 1rem;
+    --m-max: 48ch;
+    --m-mt: 5.5rem;
+    --m-fs: .95rem;
+    --m-lh: 1.6;
+  }
+  .hero, .clean-hero, .textblock{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--m-pad-x);
+    max-width: var(--m-max);
+    margin: 0 auto;
+  }
+  .hero{ margin-top: var(--m-mt) !important; }
+  .clean-hero{ margin-top: var(--m-mt) !important; }
+  .clean-hero h1, .textblock h1{ font-size: calc(var(--m-fs) + 0.05rem); line-height: var(--m-lh); margin-bottom: .9rem; }
+  .clean-hero p, .textblock p{ font-size: var(--m-fs); line-height: var(--m-lh); margin: 0 auto 1rem; max-width: var(--m-max); }
+}
+
+/* ===== Portrait: non-overlapping ranges ===== */
+@media (max-width: 380px) and (orientation: portrait){
+  body[data-page="index"]{   --m-mt: 8.5rem; --m-max: 34ch; --m-fs: 1.2rem;  --m-lh: 1.65; }
+  body[data-page="about"]{   --m-mt: 9rem;  --m-max: 34ch; --m-fs: 1rem;  --m-lh: 1.60; }
+  body[data-page="projects"]{--m-mt: 8.5rem; --m-max: 36ch; --m-fs: .98rem;--m-lh: 1.60; }
+  body[data-page="privacy"]{ --m-mt: 8rem;  --m-max: 36ch; --m-fs: .90rem;--m-lh: 1.55; }
+  body[data-page="imprint"]{ --m-mt: 8rem;  --m-max: 36ch; --m-fs: .95rem;--m-lh: 1.60; }
+}
+@media (min-width: 381px) and (max-width: 450px) and (orientation: portrait){
+  body[data-page="index"]{   --m-mt: 9.5rem; --m-max: 40ch; --m-fs: 1.05rem; --m-lh: 1.70; }
+  body[data-page="about"]{   --m-mt: 10rem; --m-max: 40ch; --m-fs: 1.05rem; --m-lh: 1.70; }
+  body[data-page="projects"]{--m-mt: 9.5rem; --m-max: 40ch; --m-fs: 1.02rem; --m-lh: 1.70; }
+  body[data-page="privacy"]{ --m-mt: 9rem;  --m-max: 40ch; --m-fs: .95rem; --m-lh: 1.60; }
+  body[data-page="imprint"]{ --m-mt: 9rem;  --m-max: 40ch; --m-fs: 1rem;  --m-lh: 1.65; }
+}
+@media (min-width: 451px) and (max-width: 599px) and (orientation: portrait){
+  body[data-page="index"]{   --m-mt: 9rem;  --m-max: 38ch; --m-fs: 1.05rem; --m-lh: 1.75; }
+  body[data-page="about"]{   --m-mt: 10rem; --m-max: 38ch; --m-fs: 1.05rem; --m-lh: 1.75; }
+  body[data-page="projects"]{--m-mt: 9.5rem; --m-max: 40ch; --m-fs: 1.02rem; --m-lh: 1.70; }
+  body[data-page="privacy"]{ --m-mt: 9rem;  --m-max: 40ch; --m-fs: .95rem; --m-lh: 1.65; }
+  body[data-page="imprint"]{ --m-mt: 9rem;  --m-max: 42ch; --m-fs: 1rem;  --m-lh: 1.70; }
+}
+@media (min-width: 600px) and (max-width: 768px) and (orientation: portrait){
+  body[data-page="index"]{   --m-mt: 11rem; --m-max: 44ch; --m-fs: 1.10rem; --m-lh: 1.80; }
+  body[data-page="about"]{   --m-mt: 12rem; --m-max: 44ch; --m-fs: 1.10rem; --m-lh: 1.80; }
+  body[data-page="projects"]{--m-mt: 11rem; --m-max: 46ch; --m-fs: 1.08rem; --m-lh: 1.80; }
+  body[data-page="privacy"]{ --m-mt: 10.5rem;--m-max: 46ch; --m-fs: 1.00rem; --m-lh: 1.75; }
+  body[data-page="imprint"]{ --m-mt: 10.5rem;--m-max: 46ch; --m-fs: 1.05rem; --m-lh: 1.75; }
+}
+
+/* ===== Landscape: non-overlapping ranges ===== */
+@media (max-width: 670px) and (orientation: landscape){
+  body[data-page="index"]{   --m-mt: 4.5rem; --m-max: 80ch; --m-fs: .92rem; --m-lh: 1.55; }
+  body[data-page="about"]{   --m-mt: 4rem;  --m-max: 44ch; --m-fs: .90rem; --m-lh: 1.55; }
+  body[data-page="projects"]{--m-mt: 4.2rem; --m-max: 44ch; --m-fs: .92rem; --m-lh: 1.55; }
+  body[data-page="privacy"]{ --m-mt: 4.2rem; --m-max: 90ch; --m-fs: 0.6rem; --m-lh: 1.20; }
+  body[data-page="imprint"]{ --m-mt: 4.2rem; --m-max: 44ch; --m-fs: .92rem; --m-lh: 1.55; }
+}
+@media (min-width: 671px) and (max-width: 800px) and (orientation: landscape){
+  body[data-page="index"]{   --m-mt: 5rem;  --m-max: 46ch; --m-fs: .95rem; --m-lh: 1.60; }
+  body[data-page="about"]{   --m-mt: 4.5rem; --m-max: 46ch; --m-fs: .95rem; --m-lh: 1.60; }
+  body[data-page="projects"]{--m-mt: 4.8rem; --m-max: 48ch; --m-fs: .95rem; --m-lh: 1.60; }
+  body[data-page="privacy"]{ --m-mt: 4.8rem; --m-max: 46ch; --m-fs: .90rem; --m-lh: 1.55; }
+  body[data-page="imprint"]{ --m-mt: 4.8rem; --m-max: 46ch; --m-fs: .95rem; --m-lh: 1.60; }
+}
+@media (min-width: 801px) and (max-width: 1024px) and (orientation: landscape){
+  body[data-page="index"]{   --m-mt: 6rem;  --m-max: 52ch; --m-fs: 1rem;  --m-lh: 1.65; }
+  body[data-page="about"]{   --m-mt: 6rem;  --m-max: 52ch; --m-fs: 1rem;  --m-lh: 1.65; }
+  body[data-page="projects"]{--m-mt: 6rem;  --m-max: 54ch; --m-fs: 1rem;  --m-lh: 1.65; }
+  body[data-page="privacy"]{ --m-mt: 6rem;  --m-max: 90ch; --m-fs: .6rem; --m-lh: 1.60; }
+  body[data-page="imprint"]{ --m-mt: 9rem;  --m-max: 52ch; --m-fs: 1rem;  --m-lh: 1.65; }
+}
+
+/* Static-page typography knobs (privacy) */
+@media (max-width: 1024px){
+  [data-page="privacy"] .clean-hero,
+  [data-page="privacy"] .textblock{
+    max-width: var(--ml-privacy-p-maxw, var(--m-max));
+    padding-inline: var(--ml-privacy-px, var(--m-pad-x));
+  }
+  @media (orientation: portrait){
+    [data-page="privacy"] .clean-hero p,
+    [data-page="privacy"] .textblock p{
+      font-size: var(--ml-privacy-p, var(--m-fs));
+      line-height: var(--ml-privacy-line, var(--m-lh));
+    }
+  }
+  @media (orientation: landscape){
+    [data-page="privacy"] .clean-hero p,
+    [data-page="privacy"] .textblock p{
+      font-size: var(--ml-privacy-p, var(--m-fs));
+      line-height: var(--ml-privacy-line, var(--m-lh));
+    }
+  }
+}
+
+/* =====================================================
+   Scroll Through Header & Footer (Landscape Only)
+   Text "verschwindet" elegant hinter Kopf & Fuß
+===================================================== */
+@media (orientation: landscape) and (max-width: 1024px) {
+  /* Scroll aktiv halten */
+  html.no-scroll,
+  body.no-scroll {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    overscroll-behavior: contain;
+  }
+
+  /* Kopf- & Fußbereich fixieren */
+  body.no-scroll .main-nav,
+  body.no-scroll .site-footer {
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: var(--c-bg);
+    border-color: var(--c-border);
+  }
+
+  body.no-scroll .main-nav {
+    top: 0;
+    height: var(--nav-h);
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  body.no-scroll .site-footer {
+    bottom: 0;
+    border-top: 1px solid var(--c-border);
+    height: var(--footer-h);
+    opacity: 1;
+  }
+
+  /* Inhalt läuft "darunter" hindurch */
+  body.no-scroll main {
+    position: relative;
+    z-index: 0;
+    padding-top: var(--nav-h);
+    padding-bottom: var(--footer-h);
+    height: auto !important;
+    min-height: 100dvh !important;
+  }
+
+  /* Der Text darf optisch hinter die Leisten laufen */
+  [data-page="privacy"] .clean-hero,
+  [data-page="privacy"] .textblock,
+  [data-page="imprint"] .clean-hero,
+  [data-page="imprint"] .textblock {
+    position: relative;
+    z-index: 0;
+    padding-inline: 1rem;
+    max-width: var(--m-max, 46ch);
+  }
+
+  /* Optionale sanfte Überblendung: Inhalt verblasst hinter Footer/Header */
+  body.no-scroll main::before,
+  body.no-scroll main::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 60px;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  body.no-scroll main::before {
+    top: 0;
+    background: linear-gradient(var(--c-bg) 40%, transparent);
+  }
+
+  body.no-scroll main::after {
+    bottom: 0;
+    background: linear-gradient(transparent, var(--c-bg) 60%);
+  }
+}
+/* =====================================================
+   FINAL BURGER FIX + RESPONSIVE MENU BEHAVIOR
+   Portrait ≤768px & Landscape ≤1024px
+   → Einheitliche, saubere Logik
+===================================================== */
+
+/* === Gemeinsame Basis für beide Orientierungen === */
+@media (max-width: 1024px) {
+
+  /* --- Burger-Button --- */
+  .burger {
+    display: block !important;
+    position: fixed !important;
+    top: 1rem;
+    left: 1rem;
+    z-index: 12000 !important; /* über allem */
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--c-text, #222);
+    font-size: 1.8rem;
+    line-height: 1;
+    transition: opacity 0.25s ease;
+  }
+  .burger:hover { opacity: 0.7; }
+
+  /* --- Sicherstellen, dass nichts den Burger verdeckt --- */
+  html, body, .page-wrapper, .main-nav {
+    overflow: visible !important;
+  }
+
+  /* --- Mobile Menü Overlay --- */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--c-bg, #fafafa);
+    z-index: 11900;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: calc(var(--nav-h) + 1rem) 1.5rem 2rem;
+    gap: 0.75rem;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-menu a,
+  .mobile-menu .dropdown-toggle {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    padding: 0.4rem 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-menu a:hover {
+    opacity: 1;
+  }
+
+  /* --- Kein Scrollen, wenn Menü offen --- */
+  body.menu-open {
+    overflow: hidden !important;
+    height: 100dvh;
+  }
+
+  body.menu-open .burger {
+    z-index: 13000 !important; /* bleibt über Overlay */
+  }
+
+  /* --- Navigation-Link-Farben angleichen --- */
+  nav.main-nav a,
+  nav.main-nav .dropdown-toggle {
+    color: var(--c-text-weak) !important;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  nav.main-nav a:hover,
+  nav.main-nav .dropdown-toggle:hover {
+    color: var(--c-text) !important;
+    opacity: 1;
+  }
+
+  nav.main-nav a.active,
+  nav.main-nav a[aria-current="page"],
+  nav.main-nav li.active a {
+    color: var(--c-text-weak) !important;
+    font-weight: 300 !important;
+    opacity: 0.85 !important;
+    text-decoration: none !important;
+  }
+}
+
+/* =====================================================
+   LANDSCAPE BURGER MENU – GLEICHE HIERARCHIE WIE PORTRAIT
+   (Unterpunkte eingerückt unter "Projects")
+===================================================== */
+@media (orientation: landscape) and (max-width: 1024px) {
+
+  /* Menü mittig zentriert im Viewport */
+  .mobile-menu {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 0 2rem;
+    min-height: 100dvh;
+  }
+
+  /* Hauptnavigation vertikal gestapelt */
+  .mobile-menu .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Hauptpunkte (About, Projects, Contact) */
+  .mobile-menu .navbar > li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .mobile-menu .navbar > li > a,
+  .mobile-menu .navbar > li > .dropdown-toggle {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--c-text);
+  }
+
+  /* Unterpunkte (leicht eingerückt unter "Projects") */
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    margin-top: 0.2rem;
+    margin-left: 1.25rem; /* Einrückung */
+    padding: 0;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content a {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.85;
+    color: var(--c-text-weak);
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content a:hover {
+    opacity: 1;
+    color: var(--c-text);
+  }
+
+  /* Einheitlicher Zeilenabstand */
+  .mobile-menu a,
+  .mobile-menu .dropdown-toggle {
+    line-height: 1.5;
+  }
+
+  /* Dropdowns immer offen im Landscape */
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    display: flex !important;
+  }
+
+  /* Leichte Zentrierung für gesamte Liste */
+  .mobile-menu .navbar {
+    transform: translateY(-1rem);
+  }
+
+  /* Burger sichtbar & fixiert */
+  .burger {
+    position: fixed !important;
+    top: 1rem;
+    left: 1rem;
+    z-index: 12000 !important;
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  .mobile-menu.active {
+    display: flex;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: var(--c-bg);
+    padding: .75rem 1rem;
+    gap: .5rem;
+    height: calc(100dvh - var(--nav-h) - var(--footer-h));
+    overflow: auto;
+  }
+}
+/* === Einheitliches Styling für alle Navigationslinks im mobilen Menü === */
+@media (max-width: 1024px) {
+  nav.main-nav a,
+  nav.main-nav .dropdown-toggle,
+  nav.main-nav a.active,
+  nav.main-nav a[aria-current="page"],
+  nav.main-nav li.active a {
+    color: var(--c-text) !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+  }
+}
+/* =====================================================
+   FINAL FIX: Fullscreen Burger-Overlay (Portrait & Landscape)
+   → Füllt immer den gesamten Viewport, unabhängig von Header/Footer
+===================================================== */
+@media (max-width: 1024px) {
+  .mobile-menu.active {
+    position: fixed !important;
+    inset: 0 !important; /* ersetzt top/right/bottom/left */
+    height: 100dvh !important; /* garantiert volle Höhe */
+    min-height: 100dvh !important;
+    background: var(--c-bg);
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 2rem !important; /* schöner vertikaler Rhythmus */
+    gap: 1rem;
+    z-index: 12000;
+    overflow-y: auto;
+  }
+
+  body.menu-open {
+    overflow: hidden !important;
+    height: 100dvh !important;
+  }
+
+  /* Burger bleibt über Overlay */
+  .burger {
+    z-index: 13000 !important;
+  }
+}
+/* === Fix: "Projects" bündig mit About & Contact, nur Unterpunkte eingerückt === */
+@media (max-width: 1024px) {
+  /* Hauptlink "Projects" bündig lassen */
+  .mobile-menu .navbar > li.dropdown > .dropdown-toggle {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Nur Unterpunkte unter "Projects" leicht einrücken */
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    margin-left: 1.25rem !important;
+  }
+}
+/* === FINAL FIX: Kein Einrücken oder Springen von "Projects" beim Klick === */
+@media (max-width: 1024px) {
+  /* Verhindert, dass sich das Layout beim Öffnen verändert */
+  .mobile-menu .navbar > li.dropdown {
+    position: relative;
+  }
+
+  /* Dropdown wird absolut unter dem Parent positioniert */
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    position: relative; /* bleibt im Flow, aber ohne margin-shift */
+    margin-left: 1.25rem !important; /* Unterpunkte leicht eingerückt */
+  }
+
+  /* Wichtig: kein Padding/Margin-Shift beim Aktivieren */
+  .mobile-menu .navbar > li.dropdown.is-open > .dropdown-toggle {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Verhindert kleine Zeilenverschiebungen */
+  .mobile-menu .navbar > li.dropdown > .dropdown-toggle {
+    display: inline-block;
+    transform: translateX(0); /* kein optisches Verrutschen */
+  }
+}
+/* === STABIL-FIX: Verhindert sichtbares Einrücken von "Projects" beim Öffnen === */
+@media (max-width: 1024px) {
+  /* Eltern-Element bleibt in fester Breite */
+  .mobile-menu .navbar > li.dropdown {
+    display: block;
+    width: 100%;
+  }
+
+  /* "Projects" wird als Block-Element behandelt, ohne Layout-Shift */
+  .mobile-menu .navbar > li.dropdown > .dropdown-toggle {
+    display: block;
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Dropdown-Inhalt nimmt keinen Einfluss mehr auf die Position von "Projects" */
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;  /* <- entscheidend */
+    left: 0;
+    top: 100%;           /* genau unter "Projects" */
+    margin-left: 1.25rem !important;
+    gap: 0.3rem;
+    padding-top: 0.2rem;
+  }
+
+  /* Im Landscape bleibt alles innerhalb des Menüs sichtbar */
+  .mobile-menu {
+    position: relative;
+  }
+}
+/* =====================================================
+   BURGER-POSITION & SCALE – Landscape mid-range (iPhone XR / Plus)
+===================================================== */
+@media (min-width: 801px) and (max-width: 900px) and (orientation: landscape) {
+  .burger {
+    top: 0.9rem !important;       /* leicht nach unten versetzt */
+    left: 1.25rem !important;     /* etwas weiter vom Rand entfernt */
+    font-size: 1.9rem !important; /* harmonische Größe für diesen Viewport */
+    opacity: 0.95;
+    transform: none !important;   /* absolute Ruhe – kein Sprung */
+  }
+
+  /* Wenn Menü aktiv ist, bleibt der Button überlagert und sichtbar */
+  body.menu-open .burger {
+    z-index: 13000 !important;
+    opacity: 1 !important;
+  }
+
+  /* Menü-Innenabstand etwas luftiger */
+  .mobile-menu.active {
+    padding: 4rem 2.5rem !important;
+  }
+}
+
+/* === FIX: Landscape Burger zeigt Unterpunkte wie Portrait (vertikal eingerückt) === */
+@media (orientation: landscape) and (max-width: 1024px) {
+  .mobile-menu .navbar > li.dropdown {
+    display: flex;
+    flex-direction: column; /* vertikal wie Portrait */
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    display: flex !important;
+    flex-direction: column; /* untereinander */
+    align-items: flex-start;
+    position: static !important;
+    margin-left: 1.25rem !important;
+    margin-top: 0.25rem;
+    gap: 0.25rem;
+    padding: 0;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content a {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.85;
+    color: var(--c-text-weak);
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content a:hover {
+    opacity: 1;
+    color: var(--c-text);
+  }
+}
+/* =====================================================
+   ✅ FINAL FIX: Dropdowns sichtbar & vertikal in Landscape
+   (überschreibt alle früheren Konflikte)
+===================================================== */
+@media (orientation: landscape) and (max-width: 1024px) {
+  .mobile-menu .navbar > li.dropdown {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.3rem !important;
+    position: relative !important;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content {
+    display: flex !important;
+    flex-direction: column !important;
+    position: static !important; /* sichtbar im Flow */
+    margin-left: 1.25rem !important;
+    margin-top: 0.3rem !important;
+    padding: 0 !important;
+    gap: 0.25rem !important;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content a {
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    color: var(--c-text-weak) !important;
+    opacity: 0.85 !important;
+  }
+
+  .mobile-menu .navbar > li.dropdown .dropdown-content a:hover {
+    opacity: 1 !important;
+    color: var(--c-text) !important;
+  }
+}

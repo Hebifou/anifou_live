@@ -2,121 +2,82 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Explore – Two Brothers & The Sea</title>
-  <meta name="description" content="Artwork detail: 'Two Brothers & The Sea' – myopia simulation based on a scene in Rio de Janeiro. Edition 1/5, Fine Art Giclée print." />
+  <title>Explore – Two Brothers &amp; The Sea</title>
+  <meta name="description" content="Fine art work 'Two Brothers & The Sea' by Anifou – deep light in the haze and silence. Myopia Simulation. Edition 1/5." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style_werke.css') }}">
 </head>
+
 <body>
 
   <a class="back-link" href="/">Back</a>
 
   <div class="page-wrapper">
     <div class="explore-container">
-      <div class="image-block querformat">
-        <img id="mainImage"
-             src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_TwoBrothersAndTheSea.jpg') }}"
-             alt="Two Brothers & The Sea Werk" />
+
+      <div class="image-block">
+        <img
+          id="mainImage"
+          class="is-portrait"
+          src="{{ url_for('static', filename='projects/drei_komma_5/img/galerie/desktop/IMG_TwoBrothersAndTheSea.jpg') }}"
+          alt="Two Brothers & The Sea – Fine Art Print"
+        />
       </div>
 
       <div class="info-block">
-        <p>Two Brothers & The Sea</p>
+        <p>Two Brothers &amp; The Sea</p>
         <p>Rio de Janeiro, Brazil</p>
         <p>Myopia Simulation</p>
         <p>75 × 100 cm</p>
         <p>Fine Art Giclée on Hahnemühle Photo Rag</p>
         <p>1/5</p>
-        <p>Ipanema. Deep light in the haze – and silence.</p>
+
         <p>
-          <a class="pdf-link" href="{{ url_for('static', filename='reports/Projektbericht.pdf') }}" target="_blank" rel="noopener noreferrer">
+          Ipanema. Deep light in the haze –<br>
+          and silence.
+        </p>
+
+        <p>
+          <a class="pdf-link"
+             href="{{ url_for('how_i_see_context_pdf') }}"
+             target="_blank"
+             rel="noopener noreferrer">
             Project Insights (DE | EN)
           </a>
         </p>
       </div>
+
     </div>
 
-    <!-- Pagination Dots (8 Stück; Two Brothers ist #6 aktiv) -->
+    <!-- Pagination (Two Brothers = Werk 6) -->
     <nav class="pagination" aria-label="Werk-Navigation">
       <ul class="pagination__list">
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/byblos" aria-label="Werk 1 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/beirut" aria-label="Werk 2 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/delphi" aria-label="Werk 3 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/rio" aria-label="Werk 4 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/hand" aria-label="Werk 5 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link is-active" aria-current="page" href="/galerie/2brothers" aria-label="Werk 6 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/demo" aria-label="Werk 7 von 8"></a></li>
-        <li class="pagination__item"><a class="pagination__link" href="/galerie/gibran" aria-label="Werk 8 von 8"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/byblos"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/beirut"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/delphi"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/rio"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/hand"></a></li>
+        <li class="pagination__item">
+          <a class="pagination__link is-active" aria-current="page" href="/galerie/2brothers"></a>
+        </li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/demo"></a></li>
+        <li class="pagination__item"><a class="pagination__link" href="/galerie/gibran"></a></li>
       </ul>
     </nav>
-    <!-- /Pagination -->
-  </div>
 
-  <div id="imageOverlay">
-    <button id="closeOverlay" aria-label="Schließen">&times;</button>
-    <img id="overlayImage" src="" alt="Vergrößertes Bild" />
   </div>
 
   <script>
-    // Two Brothers ist Werk 6 → prev = Hand, next = Demo
     const prevUrl = "/galerie/hand";
     const nextUrl = "/galerie/demo";
 
-    // Keyboard-Navigation
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft" && prevUrl) window.location.href = prevUrl;
       if (event.key === "ArrowRight" && nextUrl) window.location.href = nextUrl;
-      if (event.key === "Escape") {
-        const overlay = document.getElementById('imageOverlay');
-        if (overlay && overlay.style.display === 'flex') overlay.style.display = 'none';
-      }
-    });
-
-    // Swipe-Gesten (mobile)
-    (function addSwipeNavigation() {
-      let startX = 0, startY = 0, isMoving = false;
-      const area = document.body;
-
-      area.addEventListener('touchstart', (e) => {
-        const t = e.touches[0];
-        startX = t.clientX; startY = t.clientY; isMoving = true;
-      }, {passive: true});
-
-      area.addEventListener('touchend', (e) => {
-        if (!isMoving) return;
-        const t = e.changedTouches[0];
-        const dx = t.clientX - startX;
-        const dy = t.clientY - startY;
-        isMoving = false;
-
-        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
-          if (dx < 0 && nextUrl) window.location.href = nextUrl;
-          if (dx > 0 && prevUrl) window.location.href = prevUrl;
-        }
-      }, {passive: true});
-    })();
-
-    // Overlay
-    const mainImage = document.getElementById('mainImage');
-    const imageOverlay = document.getElementById('imageOverlay');
-    const overlayImage = document.getElementById('overlayImage');
-    const closeOverlay = document.getElementById('closeOverlay');
-
-    mainImage.addEventListener('click', () => {
-      overlayImage.src = mainImage.src;
-      imageOverlay.style.display = 'flex';
-      document.documentElement.style.overflow = 'hidden';
-    });
-
-    function closeOverlayFn() {
-      imageOverlay.style.display = 'none';
-      document.documentElement.style.overflow = '';
-    }
-
-    closeOverlay.addEventListener('click', closeOverlayFn);
-    imageOverlay.addEventListener('click', (e) => {
-      if (e.target === imageOverlay) closeOverlayFn();
     });
   </script>
+
 </body>
 </html>

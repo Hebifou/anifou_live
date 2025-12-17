@@ -1,0 +1,21 @@
+   60) BUTTONS & BACK-LINK
+===================================================== */
+/* A) Desktop */
+.button{ padding: .6rem 1.2rem; background: var(--c-black); color: var(--c-white); border-radius: var(--radius-xs); font-weight: 700; transition: filter .2s ease; display: inline-block; }
+.button:hover{ filter: brightness(.9); }
+.back-link{ position: fixed; top: .6rem; right: .8rem; font-size: .65rem; text-transform: uppercase; color: var(--c-text-weak); z-index: 1000; letter-spacing: .05em; opacity: .8; }
+.back-link:hover{ text-decoration: underline; opacity: 1; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .button{ font-size: .95rem; }
+  .back-link{ position: static; display: block; margin: 1rem auto; font-size: .75rem; text-align: center; color: var(--c-mid-weak); padding: .2rem 0; opacity: .9; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .button{ font-size: .9rem; }
+  .back-link{ position: relative; top: auto; right: auto; display: block; margin: .5rem 0 0 auto; font-size: .75rem; }
+}
+
+/* =====================================================

@@ -1,0 +1,170 @@
+/* =====================================================
+   INDEX / ABOUT – High-End Editorial Layout
+===================================================== */
+
+/* Seite + Typo */
+[data-page="index"] {
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+
+/* -------------------------------------
+   MAIN LAYOUT – Golden Ratio Positioning
+------------------------------------- */
+
+[data-page="index"] main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--nav-h, 80px) - var(--footer-h, 60px));
+  padding-inline: 2rem;
+
+  /* Vertikale Platzierung nach goldenem Schnitt */
+  padding-top: 18vh; /* ≈ 38% – optisch perfekt ausbalanciert */
+}
+
+/* -------------------------------------
+   HERO BLOCK – Typo & Rhythmus
+------------------------------------- */
+
+[data-page="index"] .about-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+  max-width: 62ch; /* ideale Lesebreite */
+  margin: 0 auto;
+  padding: 0 1rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInInfo 1.2s ease-out forwards;
+}
+
+/* -------------------------------------
+   TEXT STYLE
+------------------------------------- */
+
+[data-page="index"] .about-hero p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+[data-page="index"] .about-hero p + p {
+  margin-top: 1.3rem;
+}
+
+/* Dezente Variation in Opazität für Tiefe */
+[data-page="index"] .about-hero p:first-child {
+  opacity: 0.92;
+}
+
+[data-page="index"] .about-hero p:last-child {
+  opacity: 0.85;
+}
+
+/* -------------------------------------
+   LINKS
+------------------------------------- */
+
+[data-page="index"] .about-hero a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+[data-page="index"] .about-hero a:hover {
+  opacity: 0.6;
+}
+
+/* -------------------------------------
+   FOOTER – Feine Zurückhaltung
+------------------------------------- */
+
+/* --- Footer (wie About) --- */
+[data-page="index"] .site-footer {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.7;
+  border-top: none;
+  letter-spacing: 0.02em;
+}
+
+/* -------------------------------------
+   FADE-IN ANIMATION
+------------------------------------- */
+
+@keyframes fadeInInfo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------
+   OVERRIDES – Fix global conflicts
+------------------------------------- */
+/* Diese Sektion überschreibt globale 100vh + Flex-Center-Regeln
+   aus style.css (Abschnitt 104), die den Text zu tief zentrieren. */
+
+body[data-page="index"] main,
+body[data-page="index"] .hero.clean-hero.about-hero {
+  justify-content: flex-start !important; /* entfernt harte Zentrierung */
+  align-items: center !important;
+  padding-top: 15vh !important; /* optische Mitte (etwas höher als golden ratio) */
+  height: auto !important; /* verhindert erzwungene 100vh */
+  min-height: 100vh !important; /* erhält volle Bildschirmhöhe */
+}
+
+/* -------------------------------------
+   RESPONSIVE ADJUSTMENTS
+------------------------------------- */
+
+/* Kleine Screens – Text leicht größer, mehr Luft */
+@media (max-width: 768px) {
+  [data-page="index"] main {
+    padding-top: 12vh;
+  }
+
+  [data-page="index"] .about-hero {
+    max-width: 55ch;
+    line-height: 1.65;
+  }
+
+  [data-page="index"] .about-hero p {
+    font-size: 1rem;
+  }
+}
+
+/* -------------------------------------
+   DARK MODE
+------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  [data-page="index"] {
+    background-color: #121212;
+    color: rgba(245, 245, 245, 0.9);
+  }
+
+  [data-page="index"] .about-hero a {
+    color: rgba(245, 245, 245, 0.9);
+  }
+
+  [data-page="index"] .site-footer {
+    opacity: 0.6;
+  }
+}

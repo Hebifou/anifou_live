@@ -1,0 +1,123 @@
+/* =====================================================
+   LIFE IN PLASTIC – Harmonized with About Page
+   (CONTENT ONLY – no navigation styling)
+===================================================== */
+
+/* --- Grundlayout --- */
+body[data-page="life_in_plastic"],
+body[data-page="project.life_in_plastic"] {
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+
+/* --- Struktur --- */
+body[data-page="life_in_plastic"] main,
+body[data-page="project.life_in_plastic"] main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - var(--nav-h, 80px));
+  padding-inline: 2rem;
+  padding-top: 15vh;
+  position: static;
+  overflow: visible;
+}
+
+/* --- Inhalt / HERO (Fade wie About & HTIF) --- */
+body[data-page="life_in_plastic"] .page-wrapper,
+body[data-page="project.life_in_plastic"] .page-wrapper {
+  max-width: 72ch;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  line-height: 1.7;
+  font-size: 1rem;
+
+  /* 🔥 EINZIGER Einstiegspunkt für die Seite */
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInInfo 1.2s ease-out forwards;
+}
+
+/* --- Text --- */
+body[data-page="life_in_plastic"] main p,
+body[data-page="project.life_in_plastic"] main p {
+  margin-bottom: 1.3rem;
+  max-width: 65ch;
+  margin-inline: auto;
+  text-align: left;
+}
+
+/* --- Listen (NUR CONTENT, NICHT NAV) --- */
+body[data-page="life_in_plastic"] main ul,
+body[data-page="project.life_in_plastic"] main ul {
+  list-style-position: inside;
+  margin: 0 auto 1.4rem;
+  padding-left: 0;
+  max-width: 63ch;
+  text-align: left;
+}
+
+body[data-page="life_in_plastic"] main li,
+body[data-page="project.life_in_plastic"] main li {
+  margin-bottom: 0.7rem;
+  text-indent: -0.6rem;
+  padding-left: 0.6rem;
+}
+
+/* --- Video --- */
+body[data-page="life_in_plastic"] .life-in-plastic-video,
+body[data-page="project.life_in_plastic"] .life-in-plastic-video {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body[data-page="life_in_plastic"] .life-in-plastic-video video,
+body[data-page="project.life_in_plastic"] .life-in-plastic-video video {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Footer (gleiches Design wie Kontakt, aber fließend) --- */
+body[data-page="life_in_plastic"] .site-footer,
+body[data-page="project.life_in_plastic"] .site-footer {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+  margin-top: 3rem;
+}
+
+/* --- Zusätzliche, optionale Fades (dürfen bleiben) --- */
+.fade-in-hr {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInInfo 1.2s ease-out forwards;
+}
+
+/* --- Animation (identisch zu About & HTIF) --- */
+@keyframes fadeInInfo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

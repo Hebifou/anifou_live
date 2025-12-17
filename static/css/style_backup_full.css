@@ -3,13 +3,13 @@
    (automatisch geladen in base.html)
 ====================================================================== */
 
-/* === BASE === */
+/* === Base Layer === */
 @import url("base/_tokens.css");
 @import url("base/_reset.css");
 @import url("base/_layout.css");
 @import url("base/_utilities.css");
 
-/* === COMPONENTS === */
+/* === Components === */
 @import url("components/_nav.css");
 @import url("components/_hero.css");
 @import url("components/_simulation.css");
@@ -17,8 +17,8 @@
 @import url("components/_buttons.css");
 @import url("components/_footer.css");
 
-/* === PAGES === */
-/* Entfernt: _life-in-plastic.css wird dynamisch über base.html geladen */
+/* === Pages === */
+@import url("pages/_life-in-plastic.css");
 @import url("pages/_privacy.css");
 @import url("pages/_imprint.css");
 @import url("pages/_responsive.css");

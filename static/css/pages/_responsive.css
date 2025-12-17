@@ -1,0 +1,540 @@
+/* =====================================================
+   98) GLOBAL FONT & COLOR BASELINE
+   Einheitlicher Look für alle Seiten & Components
+===================================================== */
+html, body {
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+/* Vererbung aktivieren – greift auch in Simulation, Buttons, Inputs etc. */
+*, *::before, *::after {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Responsive Font-Anpassung */
+@media (max-width: 768px) {
+  html { font-size: clamp(14px, 2vw, 16px); }
+}
+
+/* =====================================================
+   99) SMALL UTILITIES
+===================================================== */
+.hidden { visibility: hidden; opacity: 0; }
+.fade-in { visibility: visible; opacity: 1; transition: opacity 1s ease-in; }
+.u-center { text-align: center; }
+.u-center h1, .u-center h2, .u-center p, .u-center li { text-align: inherit; }
+
+/* =====================================================
+   100) DYNAMISCHE MOBILE ANPASSUNG
+===================================================== */
+@media (max-width: 480px) {
+  html { font-size: clamp(12px, 3.2vw, 15px); }
+
+  .clean-hero, .textblock, .project-title, .project-lead, .text-section {
+    padding-inline: clamp(8px, 4vw, 16px);
+  }
+
+  .clean-hero h1, .textblock h1 { font-size: clamp(0.75rem, 2.8vw, 1rem); }
+  .clean-hero p, .textblock p { font-size: clamp(0.7rem, 2.5vw, 0.9rem); line-height: 1.6; }
+
+  .button { font-size: clamp(0.8rem, 2.6vw, 1rem); padding: .5rem 1rem; }
+
+  .site-footer {
+    font-size: clamp(9px, 2.2vw, 11px);
+    padding-block: 10px;
+  }
+}
+
+/* =====================================================
+   101) HIGH-END TYPOGRAPHY – Desktop only
+===================================================== */
+@media (min-width: 769px) {
+  [data-page="privacy"] .clean-hero,
+  [data-page="imprint"] .clean-hero,
+  [data-page="privacy"] .textblock,
+  [data-page="imprint"] .textblock {
+    max-width: 60ch;
+    margin-inline: auto;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 0.6rem;
+    color: var(--c-typo-body);
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+  }
+
+  [data-page="privacy"] .clean-hero h1,
+  [data-page="imprint"] .clean-hero h1,
+  [data-page="privacy"] .textblock h1,
+  [data-page="imprint"] .textblock h1 {
+    font-size: 0.6rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    color: var(--c-typo-heading);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  [data-page="privacy"] .clean-hero p,
+  [data-page="imprint"] .clean-hero p,
+  [data-page="privacy"] .textblock p,
+  [data-page="imprint"] .textblock p {
+    margin-bottom: 1rem;
+    font-size: 0.6rem;
+    line-height: 1.75;
+    color: var(--c-typo-paragraph);
+  }
+
+  [data-page="privacy"] .clean-hero a,
+  [data-page="imprint"] .clean-hero a,
+  [data-page="privacy"] .textblock a,
+  [data-page="imprint"] .textblock a {
+    color: var(--c-typo-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  [data-page="privacy"] .clean-hero a:hover,
+  [data-page="imprint"] .clean-hero a:hover,
+  [data-page="privacy"] .textblock a:hover,
+  [data-page="imprint"] .textblock a:hover {
+    color: var(--c-typo-link-hover);
+  }
+
+  [data-page="privacy"] .page-wrapper,
+  [data-page="imprint"] .page-wrapper {
+    border-radius: var(--radius-lg);
+    padding: 4rem 3rem;
+    margin: 2rem auto;
+    width: fit-content;
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--c-border);
+    font-size: 11px;
+    opacity: 0.8;
+  }
+}
+
+/* =====================================================
+   102) MOBILE FOUNDATION (Portrait & Landscape)
+===================================================== */
+@media (max-width: 1024px) {
+  :root {
+    --m-pad-x: 1rem;
+    --m-max: 44ch;
+    --m-mt: 9rem;
+    --m-fs: 1rem;
+    --m-lh: 1.65;
+  }
+
+  .hero, .clean-hero, .textblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-inline: var(--m-pad-x);
+    max-width: var(--m-max);
+    margin: 0 auto;
+  }
+
+  .clean-hero h1, .textblock h1 {
+    font-size: calc(var(--m-fs) + 0.05rem);
+    line-height: var(--m-lh);
+    margin-bottom: .9rem;
+  }
+
+  .clean-hero p, .textblock p {
+    font-size: var(--m-fs);
+    line-height: var(--m-lh);
+    margin: 0 auto 1rem;
+    max-width: var(--m-max);
+  }
+
+  .hero, .clean-hero { margin-top: var(--m-mt) !important; }
+}
+
+/* =====================================================
+   103) BURGER & MOBILE MENU
+===================================================== */
+@media (max-width: 1024px) {
+  .burger {
+    display: block !important;
+    position: fixed !important;
+    top: 1rem;
+    left: 1rem;
+    z-index: 13000 !important;
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--c-text, #222);
+    font-size: 1.8rem;
+    transition: opacity 0.25s ease;
+  }
+
+  .burger:hover { opacity: 0.7; }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--c-bg, #fafafa);
+    z-index: 12000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 2rem;
+    gap: 1rem;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-menu a,
+  .mobile-menu .dropdown-toggle {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    padding: 0.4rem 0;
+    line-height: 1.5;
+    transition: opacity 0.2s ease;
+  }
+
+  .mobile-menu a:hover { opacity: 1; }
+
+  body.menu-open { overflow: hidden !important; height: 100dvh; }
+}
+
+/* =====================================================
+   104) ABOUT SECTION – Fullscreen, centered
+===================================================== */
+body[data-page="index"] {
+  background-color: #f4f4f4;
+  overflow: hidden;
+}
+
+body[data-page="index"] main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+body[data-page="index"] .hero.clean-hero.about-hero {
+  position: relative;
+  background-color: #eaeaea;
+  color: var(--c-text, #222);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 !important;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+body[data-page="index"] .hero.clean-hero.about-hero p {
+  max-width: 720px;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   105) TYPOGRAPHY – Global Inter Style (Unified)
+===================================================== */
+html, body {
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+
+/* Einheitliche Typografie */
+h1, h2, h3, h4, h5, h6, p, a, li {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Dezente Übergänge / Fokus */
+a:hover, button:hover {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+/* Textblöcke ruhig atmen lassen */
+p {
+  margin: 0 auto 1.6rem;
+  max-width: 70ch;
+}
+
+
+/* =====================================================
+   106) DESKTOP NAVIGATION – bündig unter "Projects"
+===================================================== */
+@media (min-width: 1025px) {
+  nav.main-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    background: transparent;
+  }
+
+  nav.main-nav ul.navbar {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav.main-nav a,
+  nav.main-nav .dropdown-toggle {
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--c-text, #222);
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+  }
+
+  nav.main-nav a:hover,
+  nav.main-nav .dropdown-toggle:hover { opacity: 1; }
+
+  /* Dropdown unter "Projects" bündig links am P */
+  nav.main-nav li.dropdown {
+    position: relative !important;
+    text-align: left !important;
+  }
+
+  nav.main-nav li.dropdown > .dropdown-content {
+    position: absolute !important;
+    top: calc(100% + 0.35rem) !important;
+    left: 0 !important;
+    transform: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    text-align: left !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  nav.main-nav li.dropdown:hover > .dropdown-content,
+  nav.main-nav li.dropdown.is-open > .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav.main-nav li.dropdown > .dropdown-content a {
+    display: block !important;
+    text-align: left !important;
+    padding: 0.25rem 0 !important;
+    margin: 0 !important;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--c-text, #222);
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  nav.main-nav li.dropdown > .dropdown-content a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* Burger nur mobil */
+  .burger { display: none !important; }
+}
+/* --- Desktop: Dropdown bündig am "P" + kleinere Item-Schrift --- */
+@media (min-width: 1025px) {
+  /* Der <li> um "Projects" dient als Anker; schrumpft auf Content-Breite */
+  nav.main-nav li.dropdown {
+    position: relative;
+    display: inline-block;              /* kein Strecken durch Flex */
+    text-align: left;
+  }
+
+  /* Der Trigger schrumpft ebenfalls auf Textbreite (kein Padding-Offset) */
+  nav.main-nav li.dropdown > .dropdown-toggle {
+    display: inline-block;
+    padding-left: 0;                     /* falls vorher Padding da war */
+    padding-right: 0;
+  }
+
+  /* Dropdown-Kasten exakt an die linke Textkante vom Trigger */
+  nav.main-nav li.dropdown > .dropdown-content {
+    left: 0;                             /* Start genau am "P" */
+    right: auto;
+    transform: none;
+    margin-left: 0;
+  }
+
+  /* Kleinere Typo für Unterpunkte (anpassbar) */
+  nav.main-nav li.dropdown > .dropdown-content a {
+    font-size: 0.80rem;                  /* Annahme: so klein gewünscht */
+    line-height: 1.5;
+  }
+}
+/* --- FIX: Dropdown ohne Hover-Lücke + Unterstreichung & Spacing (Desktop) --- */
+@media (min-width: 1025px) {
+  /* 1) Lücke schließen: Content direkt unter dem Trigger platzieren */
+  nav.main-nav li.dropdown > .dropdown-content {
+    top: 100% !important;                 /* überschreibt calc(100% + 0.35rem) */
+  }
+  /* Optischer Abstand bleibt, aber als "Hover-Brücke" klick-/hoverbar */
+  nav.main-nav li.dropdown > .dropdown-content::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: -0.35rem;
+    height: 0.35rem;
+  }
+
+  /* 2) Kleinere Schrift + gleichmäßige Klickfläche/Abstände für Unterordner */
+  nav.main-nav li.dropdown > .dropdown-content a {
+    display: block !important;            /* ganze Zeile klickbar */
+    font-size: 0.80rem !important;        /* kleinere Typo, wie gewünscht */
+    line-height: 1.4 !important;
+    padding: 0.30rem 0 !important;        /* vertikaler Abstand wie im Screenshot */
+    text-decoration: none !important;
+    text-underline-offset: 2px !important;
+    opacity: 0.9;                          /* wie bisher */
+  }
+
+  /* 3) Interaktion: Unterstreichen bei Hover & Tastaturfokus */
+  nav.main-nav li.dropdown > .dropdown-content a:hover,
+  nav.main-nav li.dropdown > .dropdown-content a:focus-visible {
+    text-decoration: underline !important;
+    opacity: 1 !important;
+  }
+
+  /* (Optional, falls der Trigger zu breit ist) */
+  nav.main-nav li.dropdown,
+  nav.main-nav li.dropdown > .dropdown-toggle {
+    display: inline-block !important;     /* linke Kante = „P“ von Projects */
+  }
+}
+/* --- Globaler Seitenhintergrund: #eaeaea --- */
+:root {
+  --c-bg: #eaeaea;               /* wird bereits an einigen Stellen referenziert */
+}
+
+html, body {
+  background-color: var(--c-bg);
+}
+
+/* Index-spezifische Bereiche auf die Variable umstellen */
+body[data-page="index"] {
+  background-color: var(--c-bg);
+}
+
+body[data-page="index"] .hero.clean-hero.about-hero {
+  background-color: var(--c-bg);
+}
+/* --- Container/Content ebenfalls in #eaeaea --- */
+:root { --c-bg: #eaeaea; }
+
+/* Variante A – gezielt für Projektseiten (empfohlen) */
+[data-page="project"] main,
+[data-page="project"] .page-wrapper,
+[data-page="project"] .content,
+[data-page="project"] .textblock,
+[data-page="project"] .text-section {
+  background-color: var(--c-bg) !important;
+}
+
+/* Variante B – falls deine Templates kein data-page setzen
+   (wirkt global auf die üblichen Wrapper) */
+main,
+.page-wrapper,
+.content {
+  background-color: var(--c-bg) !important;
+  /* falls irgendwo Padding/Radius genutzt wird, bleibt der Look gleich */
+}
+/* Globaler Font: Inter überall */
+html { font-family: 'Inter', sans-serif; }
+:where(body, button, input, select, textarea) { font: inherit; }
+
+/* =====================================================
+   PROJECTS DROPDOWN – Vertical Rhythm Alignment
+   (gleiche optische Balance wie About)
+===================================================== */
+@media (min-width: 1025px) {
+  nav.main-nav li.dropdown > .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: -1rem;          /* identischer Zeilenrhythmus wie About (line-height: 1.7) */
+    padding: 0.6rem 1.2rem; /* dezenter Innenabstand oben/unten für Gleichgewicht */
+    transform: translateY(-1px); /* optische Feinkorrektur – zentriert unter „Projects“ */
+  }
+
+  nav.main-nav li.dropdown > .dropdown-content a {
+    font-size: 0.85rem;
+    line-height: 1.65;     /* exakt typografisch abgestimmt mit About */
+    letter-spacing: 0.01em;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: rgba(25, 25, 25, 0.9);
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+  }
+
+  nav.main-nav li.dropdown > .dropdown-content a:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}

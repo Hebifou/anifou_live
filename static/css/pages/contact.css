@@ -1,0 +1,153 @@
+/* =====================================================
+   CONTACT PAGE – Editorial Layout (based on About)
+===================================================== */
+
+[data-page="kontakt"],
+[data-page="contact"] {
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+
+/* -------------------------------------
+   MAIN LAYOUT – Golden Ratio Positioning
+------------------------------------- */
+
+[data-page="kontakt"] main,
+[data-page="contact"] main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--nav-h, 80px) - var(--footer-h, 60px));
+  padding-inline: 2rem;
+  padding-top: 18vh; /* harmonisch wie About */
+}
+
+/* -------------------------------------
+   CONTACT HERO – Centered Editorial Block
+------------------------------------- */
+
+[data-page="kontakt"] .contact-hero,
+[data-page="contact"] .contact-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+  max-width: 62ch;
+  margin: 0 auto;
+  padding: 0 1rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInInfo 1.2s ease-out forwards;
+}
+
+/* -------------------------------------
+   TEXT
+------------------------------------- */
+
+[data-page="kontakt"] .contact-hero p,
+[data-page="contact"] .contact-hero p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.9;
+}
+
+[data-page="kontakt"] .contact-hero p + p,
+[data-page="contact"] .contact-hero p + p {
+  margin-top: 1.3rem;
+}
+
+/* -------------------------------------
+   EMAIL LINK
+------------------------------------- */
+
+[data-page="kontakt"] .contact-link a,
+[data-page="contact"] .contact-link a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.25s ease;
+}
+
+[data-page="kontakt"] .contact-link a:hover,
+[data-page="contact"] .contact-link a:hover {
+  opacity: 0.6;
+}
+
+/* -------------------------------------
+   FOOTER
+------------------------------------- */
+
+[data-page="kontakt"] .site-footer,
+[data-page="contact"] .site-footer {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+/* -------------------------------------
+   FADE-IN ANIMATION
+------------------------------------- */
+
+@keyframes fadeInInfo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------
+   RESPONSIVE
+------------------------------------- */
+
+@media (max-width: 768px) {
+  [data-page="kontakt"] main,
+  [data-page="contact"] main {
+    padding-top: 12vh;
+  }
+
+  [data-page="kontakt"] .contact-hero,
+  [data-page="contact"] .contact-hero {
+    max-width: 55ch;
+    line-height: 1.65;
+  }
+
+  [data-page="kontakt"] .contact-hero p,
+  [data-page="contact"] .contact-hero p {
+    font-size: 1rem;
+  }
+}
+
+/* -------------------------------------
+   DARK MODE
+------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  [data-page="kontakt"],
+  [data-page="contact"] {
+    background-color: #121212;
+    color: rgba(245, 245, 245, 0.9);
+  }
+
+  [data-page="kontakt"] .contact-link a,
+  [data-page="contact"] .contact-link a {
+    color: rgba(245, 245, 245, 0.9);
+  }
+
+  [data-page="kontakt"] .site-footer,
+  [data-page="contact"] .site-footer {
+    opacity: 0.6;
+  }
+}

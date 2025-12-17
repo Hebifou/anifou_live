@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}">
+<html lang="{{ get_locale() }}" class="{% if no_scroll %}no-scroll{% endif %}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,12 +9,14 @@
 
   <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='projects/drei_komma_5/img/logos/IMG_1918.jpg') }}">
 
+  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Anifou" />
   <meta property="og:description" content="Exploring perception, culture, and language through data science and machine learning." />
   <meta property="og:image" content="https://www.anifou.com/static/projects/drei_komma_5/img/logos/IMG_1918.jpg" />
   <meta property="og:url" content="https://www.anifou.com/" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,89 +28,103 @@
   }
   </script>
 
+  <!-- ---------- GLOBAL STYLES ---------- -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      font-size: 14px;
-      color: #333333;
-      background-color: #eaeaea;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a, p, h1, h2, h3, h4, h5, h6, li, ul, ol, span, div, strong, em {
-      color: #333333 !important;
-    }
-
-    a:hover {
-      color: #333333 !important;
-    }
-
-    .textblock,
-    .contact,
-    .quelle,
-    blockquote {
-      color: #333333 !important;
-    }
-  </style>
+  <!-- ---------- PAGE-SPECIFIC STYLES ---------- -->
+  {% block page_css %}
+    {% set css_map = {
+      'imprint': 'css/imprint.css',
+      'privacy': 'css/privacy.css',
+      'kontakt': 'css/pages/contact.css',
+      'contact': 'css/pages/contact.css',
+      'project.life_in_plastic': 'css/pages/_life-in-plastic.css',
+      'life_in_plastic': 'css/pages/_life-in-plastic.css',
+      'how_the_internet_feels': 'css/pages/htif.css',
+      'minus_three_point_five': 'css/minus_three_point_five.css'
+    } %}
+    {% if request.endpoint in css_map %}
+      <!-- 💡 Cache-Busting für sauberes Reload -->
+      <link rel="stylesheet" href="{{ url_for('static', filename=css_map[request.endpoint]) }}?v=5">
+    {% endif %}
+  {% endblock %}
 </head>
-<body>
 
-<div class="burger" id="burger">&#9776;</div>
+<body
+  class="{% if hide_footer %}no-footer{% endif %}{% if no_scroll %} no-scroll{% endif %}"
+  data-page="{{ request.endpoint }}"
+>
+  <!-- =====================================================
+       NAVIGATION
+  ====================================================== -->
+  <div class="burger" id="burger">&#9776;</div>
 
-<nav class="main-nav">
-  <ul class="navbar mobile-menu" id="mobileMenu">
-    <li><a href="{{ url_for('index') }}">{{ _('About') }}</a></li>
-    <li class="dropdown">
-      <button class="dropdown-toggle">{{ _('Projects') }}</button>
-      <ul class="dropdown-content">
-        <li><a href="{{ url_for('minus_three_point_five') }}">–3.5</a></li>
-        <li><a href="{{ url_for('life_in_plastic') }}">{{ _('Life In Plastic') }}</a></li>
-        <li><a href="{{ url_for('how_the_internet_feels') }}">{{ _('How The Internet Feels') }}</a></li>
-      </ul>
-    </li>
-    <li><a href="{{ url_for('kontakt') }}">{{ _('Contact') }}</a></li>
-  </ul>
-</nav>
+  <nav class="main-nav">
+    <ul class="navbar mobile-menu" id="mobileMenu">
+      <li><a href="{{ url_for('index') }}">{{ _('About') }}</a></li>
+      <li class="dropdown">
+        <button class="dropdown-toggle">{{ _('Projects') }}</button>
+        <ul class="dropdown-content">
+          <li><a href="{{ url_for('minus_three_point_five') }}">–3.5</a></li>
+          <li><a href="{{ url_for('life_in_plastic') }}">{{ _('Life In Plastic') }}</a></li>
+          <li><a href="{{ url_for('how_the_internet_feels') }}">{{ _('How The Internet Feels') }}</a></li>
+        </ul>
+      </li>
+      <li><a href="{{ url_for('kontakt') }}">{{ _('Contact') }}</a></li>
+    </ul>
+  </nav>
 
-<main>
-  <div class="page-wrapper">
-    {% block content %}{% endblock %}
-  </div>
-</main>
+  <!-- =====================================================
+       MAIN CONTENT
+  ====================================================== -->
+  <main>
+    <div class="page-wrapper">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach(dropdown => {
-      const toggle = dropdown.querySelector(".dropdown-toggle");
-      const menu = dropdown.querySelector(".dropdown-content");
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="{{ url_for('imprint') }}" class="imprint">Imprint</a>
+      <span>·</span>
+      <a href="{{ url_for('privacy') }}" class="privacy-link">Privacy</a>
+    </nav>
+  </footer>
 
-      toggle.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelectorAll(".dropdown-content").forEach(m => {
-          if (m !== menu) m.style.display = "none";
+  <!-- =====================================================
+       INTERACTIONS / SCRIPTS
+  ====================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Dropdown handling
+      const dropdowns = document.querySelectorAll(".dropdown");
+      dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector(".dropdown-toggle");
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelectorAll(".dropdown.is-open").forEach(d => {
+            if (d !== dropdown) d.classList.remove("is-open");
+          });
+          dropdown.classList.toggle("is-open");
         });
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        dropdown.addEventListener("mouseleave", function () {
+          dropdown.classList.remove("is-open");
+        });
       });
 
-      dropdown.addEventListener("mouseleave", function () {
-        menu.style.display = "none";
+      // Burger / Mobile menu
+      const burger = document.getElementById("burger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      burger?.addEventListener("click", function () {
+        mobileMenu?.classList.toggle("active");
       });
     });
+  </script>
 
-    const burger = document.getElementById("burger");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    burger?.addEventListener("click", function () {
-      mobileMenu?.classList.toggle("active");
-    });
-  });
-</script>
-
+  {% block page_scripts %}{% endblock %}
 </body>
 </html>

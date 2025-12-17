@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Imprint{% endblock %}
+
+{% block meta_description %}
+  <meta name="description" content="Imprint for Anifou – provider information and contact details." />
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/imprint.css') }}?v=2">
+{% endblock %}
+
+{% block content %}
+<main>
+  <section class="imprint-hero">
+    <p>Imprint</p>
+    <p>
+      Hiba Fouani<br>
+      E-mail: <a href="mailto:mail@anifou.com">mail@anifou.com</a>
+    </p>
+    <p>
+      For privacy reasons, the postal address is not published.<br>
+      Please contact via e-mail for business and legal inquiries.
+    </p>
+  </section>
+</main>
+{% endblock %}

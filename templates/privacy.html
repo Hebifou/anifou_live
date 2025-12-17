@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy{% endblock %}
+
+{% block meta_description %}
+  <meta name="description" content="Privacy Policy for Anifou – information on data processing, hosting, cookies, and contact." />
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/privacy.css') }}?v=2">
+{% endblock %}
+
+{% block content %}
+<main>
+  <section class="privacy-hero">
+    <p>Privacy Policy</p>
+
+    <p>
+      We process personal data only insofar as necessary to operate this website and to communicate with you.
+      No analytics tools, tracking pixels, or third-party marketing cookies are used.
+    </p>
+
+    <p>
+      Controller: Hiba Fouani,
+      <a href="mailto:mail@anifou.com">mail@anifou.com</a>
+    </p>
+
+    <p>
+      Hosting & Delivery<br>
+      This website is hosted via Render, with the domain provided by 1&1 IONOS and code hosted on GitHub.
+      Standard server logs (such as IP address, timestamp, requested URL, referrer, and user agent)
+      may be collected automatically for technical operation and security.
+      Logs are deleted or anonymized once no longer required.
+    </p>
+
+    <p>
+      Cookies<br>
+      Only essential, session-based cookies may be set if required for basic functionality.
+      No analytics, profiling, or advertising cookies are used.
+    </p>
+
+    <p>
+      Contact<br>
+      If you contact us by e-mail, we process your message and the personal data you provide
+      solely for the purpose of responding. Data are retained only as long as necessary
+      to handle your inquiry or comply with legal obligations.
+    </p>
+
+    <p>
+      Legal Bases<br>
+      Processing is based on legitimate interests in providing and securing this website (Art. 6 (1)(f) GDPR)
+      and, when responding to messages, on contractual or pre-contractual necessity (Art. 6 (1)(b) GDPR).
+    </p>
+
+    <p class="last-updated">
+      Last updated: {{ today }}
+    </p>
+  </section>
+</main>
+{% endblock %}

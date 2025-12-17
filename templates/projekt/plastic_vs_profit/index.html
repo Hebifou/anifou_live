@@ -7,13 +7,14 @@
 {% endblock %}
 
 {% block content %}
-<section class="project life-in-plastic">
 
+  <!-- ==========================================
+       INTRO ANIMATION + VIDEO SECTION
+  =========================================== -->
   <hr class="fade-in-hr">
 
-  <!-- Video -->
   <div class="life-in-plastic-video">
-    <video controls autoplay muted loop>
+    <video controls autoplay muted loop playsinline>
       {% if lang == 'en' %}
         <source src="{{ url_for('static', filename='projects/LifeInPlastic/videos/plastic_pollution_animation_en.mp4') }}" type="video/mp4">
       {% else %}
@@ -25,10 +26,11 @@
 
   <hr class="fade-in-hr">
 
-  <!-- Textbereich -->
-  <div class="text-section">
-
-    <p>Life In Plastic<p>
+  <!-- ==========================================
+       TEXT SECTION (About-Style Layout)
+  =========================================== -->
+  <section class="text-section fade-in-hr">
+    <p>Life In Plastic</p>
 
     <p>
       This project explores the conflict between economic interests and ecological responsibility.
@@ -81,20 +83,18 @@
       </li>
     </ul>
 
-    <p><strong>Additional Note:</strong><br>
+    <p>Additional Note:<br>
       According to Wikipedia, Walmart heiress Alice Walton is among the twenty richest people in the world.<br>
       <a href="https://de.wikipedia.org/wiki/Alice_Walton" target="_blank" rel="noopener noreferrer">Alice Walton – Wikipedia</a>
     </p>
 
-    <p><strong>Further Reading:</strong><br>
+    <p>Further Reading:<br>
       A detailed analysis with sources, methodology, and legal context can be found in the PDF:<br>
       <strong>“Life In Plastic – Plastic Pollution, Corporate Profits & Projections to 2090”</strong><br>
-      <a href="{{ url_for('static', filename='reports/LifeInPlastic_Bericht.pdf') }}" target="_blank" rel="noopener noreferrer">
+      <a href="{{ url_for('life_in_plastic_context_pdf') }}" target="_blank" rel="noopener noreferrer">
         [Read the full report (DE | EN) here on our website.]
       </a>
     </p>
+  </section>
 
-  </div>
-
-</section>
 {% endblock %}

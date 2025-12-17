@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Legal — Imprint & Privacy{% endblock %}
+
+{% block meta_description %}
+<meta name="description" content="Imprint and Privacy Policy for Anifou." />
+{% endblock %}
+
+{% block content %}
+<section class="clean-hero" style="max-width:800px; margin:0 auto; text-align:center;">
+  <h1 id="imprint" style="margin-bottom:12px;">Imprint</h1>
+  <p style="margin:0 auto 18px; max-width:70ch;">
+    Provider:<br>
+    <!-- TODO: Fill in your real details -->
+    [Your Full Name / Company]<br>
+    [Street, No.] · [ZIP, City] · [Country]<br>
+    E-mail: <a href="mailto:mail@anifou.com">mail@anifou.com</a><br>
+    <!-- Optional fields (delete if not applicable) -->
+    VAT ID: [if any] · Responsible per § 18 MStV: [Name]
+  </p>
+
+  <h1 id="privacy" style="margin:10px 0 10px;">Privacy Policy</h1>
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    We process personal data only insofar as necessary to provide this website and to communicate with you.
+    No analytics, no tracking pixels, and no third-party marketing cookies are used.
+  </p>
+
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    <strong>Controller.</strong> [Your Full Name / Company], <a href="mailto:mail@anifou.com">mail@anifou.com</a>.
+  </p>
+
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    <strong>Hosting & Delivery.</strong> The domain is registered with 1&1 IONOS. The site is developed via GitHub and
+    deployed on Render. When you access this site, standard server logs may include IP address, timestamp, URL,
+    user agent, and referrer. These logs are used for operation and security and are deleted or anonymized when no
+    longer needed.
+  </p>
+
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    <strong>Cookies.</strong> We only use essential, session-based cookies if needed for site functionality (no
+    analytics/advertising cookies).
+  </p>
+
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    <strong>Contact.</strong> If you e-mail us, we will process your message and contact details to respond, and
+    retain them only as long as required by our correspondence or legal obligations.
+  </p>
+
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    <strong>Legal Bases.</strong> We process data to operate this website (Art. 6(1)(f) GDPR – legitimate interest),
+    and to respond to messages (Art. 6(1)(b)/6(1)(f) GDPR).
+  </p>
+
+  <p style="margin:0 auto 10px; max-width:72ch;">
+    <strong>Your Rights.</strong> You have rights of access, rectification, erasure, restriction, portability and objection
+    under GDPR. You also have the right to lodge a complaint with your supervisory authority.
+  </p>
+
+  <p style="margin:0 auto; max-width:72ch; opacity:.7;">
+    Last updated: {{ today|default('2025-01-01') }}
+  </p>
+</section>
+{% endblock %}

@@ -2,11 +2,22 @@
 {% block title %}{{ _('Contact') }}{% endblock %}
 
 {% block meta_description %}
-  <meta name="description" content="Get in touch with Anifou – send an email to fouani@anifou.com for inquiries or collaboration." />
+  <meta name="description" content="Get in touch with Anifou – send an email to mail@anifou.com for inquiries or collaboration." />
+{% endblock %}
+
+{% block page_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/contact.css') }}?v=2">
 {% endblock %}
 
 {% block content %}
-<section class="contact">
-  <p><a href="mailto:mail@anifou.com">mail@anifou.com</a></p>
-</section>
+<main>
+  <section class="contact-hero">
+    <p>
+      {{ _('For collaborations, inquiries, or thoughts, feel free to reach out:') }}
+    </p>
+    <p class="contact-link">
+      <a href="mailto:mail@anifou.com">mail@anifou.com</a>
+    </p>
+  </section>
+</main>
 {% endblock %}

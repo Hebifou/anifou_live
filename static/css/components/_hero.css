@@ -1,0 +1,124 @@
+   30) HERO / INTRO
+===================================================== */
+/* A) Desktop only (mobile removed to avoid overlap) */
+.hero, .clean-hero{
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center; text-align: center;
+  margin: 0 auto; padding: 0 var(--space-5); width: min(100%, var(--w-wide));
+  margin-top: var(--mt-hero-d);
+}
+.clean-hero h1{ font-size: 1rem; font-weight: 500; line-height: var(--lh-base); margin-bottom: var(--space-6); }
+.clean-hero p{ font-size: 1rem; line-height: var(--lh-base); margin: 0 auto var(--space-5); width: min(100%, 60ch); }
+
+/* =====================================================
+   HERO: About Section (zentriert, statisch, clean layout)
+===================================================== */
+.hero.clean-hero.about-hero {
+  position: relative;
+  background-color: #f4f4f4;
+  color: var(--c-text, #222);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+  padding-top: 5rem; /* Platz für Navbar */
+  box-sizing: border-box;
+  margin: 0;
+  overflow: hidden;
+  margin-top: 0 !important;
+  z-index: 0;
+}
+
+
+.hero.clean-hero.about-hero p {
+  max-width: 720px;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 auto;
+}
+
+/* Kein Scrollen auf About */
+body:has(.about-hero) {
+  overflow: hidden;
+}
+
+/* Footer unten mittig */
+.hero.clean-hero.about-hero + footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.hero.clean-hero.about-hero + footer a {
+  color: var(--c-text-weak, #555);
+  margin: 0 0.6rem;
+  text-decoration: none;
+}
+
+.hero.clean-hero.about-hero + footer a:hover {
+  text-decoration: underline;
+}
+/* Vollbild-Fix für About-Section innerhalb von main/base */
+body:has(.about-hero) main {
+  display: block;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+body:has(.about-hero) {
+  background-color: #f4f4f4;
+  overflow: hidden;
+}
+/* =========================
+   ABOUT – fixes & layout
+   ========================= */
+
+/* 1) Seite im Viewport ausrichten (Header + Footer einkalkulieren) */
+body[data-page="about"] main{
+  min-height: calc(100vh - var(--nav-h) - var(--footer-h));
+  display: grid;
+  place-items: center; /* zentriert den Inhalt perfekt */
+  padding: 0;
+  margin: 0;
+}
+
+/* 2) Hero: volle Breite, keine zusätzliche Höhe vom globalen Hero erben */
+.hero.clean-hero.about-hero{
+  width: 100vw !important;     /* volle Breite, globalen Wert überstimmen */
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 2rem !important;
+  background: #f4f4f4;
+  box-sizing: border-box;
+  min-height: auto !important; /* min-height:100vh aus globalem Hero neutralisieren */
+  display: block;              /* Grid zentriert, Hero muss nicht selbst flexen */
+  text-align: center;
+}
+
+/* 3) Textblock angenehm lesen */
+.hero.clean-hero.about-hero p{
+  max-width: 56ch;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* 4) Footer nur auf About fixieren und mittig zeigen */
+body[data-page="about"] .site-footer{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  text-align: center;
+  background: transparent;
+}
+
+/* 5) Optional: Scrollen nur auf About deaktivieren (wenn gewünscht) */
+body[data-page="about"]{
+  overflow: hidden;
+}

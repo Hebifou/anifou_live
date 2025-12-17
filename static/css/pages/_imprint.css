@@ -1,0 +1,131 @@
+/* =====================================================
+   IMPRINT PAGE – Editorial Layout (based on About)
+===================================================== */
+
+[data-page="imprint"] {
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+}
+
+/* -------------------------------------
+   MAIN LAYOUT – Golden Ratio Positioning
+------------------------------------- */
+
+[data-page="imprint"] main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - var(--nav-h, 80px) - var(--footer-h, 60px));
+  padding-inline: 2rem;
+  padding-top: 5vh; /* wie About */
+}
+
+/* -------------------------------------
+   HERO BLOCK
+------------------------------------- */
+
+[data-page="imprint"] .imprint-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+  max-width: 62ch;
+  margin: 0 auto;
+  padding: 0 1rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeInInfo 1.2s ease-out forwards;
+}
+
+/* -------------------------------------
+   HEADLINE
+------------------------------------- */
+
+[data-page="imprint"] .imprint-hero h1 {
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 -1rem 0;
+  opacity: 0.95;
+}
+
+/* -------------------------------------
+   TEXT
+------------------------------------- */
+
+[data-page="imprint"] .imprint-hero p {
+  font-size: 0.7rem;
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.9;
+}
+
+[data-page="imprint"] .imprint-hero p + p {
+  margin-top: -1rem;
+}
+
+/* -------------------------------------
+   LINKS
+------------------------------------- */
+
+[data-page="imprint"] .imprint-hero a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.25s ease;
+}
+
+[data-page="imprint"] .imprint-hero a:hover {
+  opacity: 0.6;
+}
+
+/* -------------------------------------
+   FOOTER
+------------------------------------- */
+
+[data-page="imprint"] .site-footer {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+/* -------------------------------------
+   ANIMATION
+------------------------------------- */
+
+@keyframes fadeInInfo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------
+   RESPONSIVE
+------------------------------------- */
+
+@media (max-width: 768px) {
+
+  [data-page="imprint"] main {
+    padding-top: 17vh;
+  }
+
+  [data-page="imprint"] .imprint-hero {
+    max-width: 42ch;
+    line-height: 1.2;
+    font-size: 0.5em; /* EINHEITLICH für alles */
+  }
+
+}

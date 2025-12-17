@@ -1,0 +1,26 @@
+   10) LAYOUT & WRAPPER
+===================================================== */
+/* A) Desktop */
+.page-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--space-8) var(--space-5);
+}
+.container{ width: min(100%, var(--w-wide)); margin-inline: auto; padding-inline: var(--space-5); }
+.read{ width: min(100%, var(--w-read)); margin-inline: auto; }
+.tight{ width: min(100%, var(--w-tight)); margin-inline: auto; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .page-wrapper{ padding: var(--space-6) var(--space-4); align-items: flex-start; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .page-wrapper{ padding: var(--space-5) var(--space-4); align-items: flex-start; }
+}
+
+/* =====================================================

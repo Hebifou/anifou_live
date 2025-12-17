@@ -1,0 +1,26 @@
+   50) CONTENT-BLÖCKE (Video/Text/Project)
+===================================================== */
+/* A) Desktop */
+.video-container{ text-align: center; margin: var(--space-7) auto; padding: 0 var(--space-5); }
+.video-container video{ width: 100%; max-width: 800px; border-radius: var(--radius-md); }
+.project-title{ font-size: 1.2rem; font-weight: 400; margin: var(--space-8) auto var(--space-3); padding: 0 var(--space-5); text-align: left; max-width: var(--w-wide); }
+.project-lead{ font-size: .95rem; margin: 0 auto var(--space-7); padding: 0 var(--space-5); text-align: left; max-width: var(--w-wide); color: var(--c-text); }
+.video-info{ max-width: var(--w-wide); margin: var(--space-6) auto var(--space-7); padding: 0 var(--space-5); font-size: .9rem; text-align: left; }
+.text-section{ max-width: var(--w-wide); margin: var(--space-7) auto; padding: 0 var(--space-5); text-align: left; font-size: .9rem; }
+.text-section strong{ font-weight: 500; }
+
+/* B) Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait){
+  .video-container{ margin: var(--space-6) auto; padding-inline: 1rem; }
+  .project-title{ margin: var(--space-7) auto var(--space-3); }
+  .project-lead, .video-info, .text-section{ padding-inline: 1rem; }
+}
+
+/* C) Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape){
+  .video-container{ margin: var(--space-5) auto; padding-inline: 1rem; }
+  .project-title{ margin: var(--space-6) auto var(--space-3); }
+  .project-lead, .video-info, .text-section{ padding-inline: 1rem; }
+}
+
+/* =====================================================

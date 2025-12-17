@@ -1,0 +1,203 @@
+/* =====================================================
+   40) MYOPIE-SIMULATION – Minimalist Consistent Layout
+   (angepasst an globalen Stil)
+===================================================== */
+
+/* ---------- A) Desktop ---------- */
+.sim-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 1rem 20px;
+  text-align: center;
+
+  /* Einheitlicher Look */
+  background-color: #eaeaea;
+  color: rgba(25, 25, 25, 0.9);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 300;
+}
+
+.sim-img {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  margin-top: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 1.5rem;
+}
+
+.progress {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: inherit;
+}
+
+.gallery-link {
+  margin-top: 1.5rem;
+}
+
+.gallery-link a {
+  font-weight: 400;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  color: rgba(25, 25, 25, 0.9);
+  padding: 0.5rem 1.2rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.gallery-link a:hover {
+  opacity: 0.6;
+}
+
+#stage-container {
+  width: 100%;
+  max-width: 600px;
+  height: var(--slider-h);
+  margin: 0 auto;
+}
+
+#stage {
+  width: 100%;
+  height: var(--slider-h);
+}
+
+#slider-inner {
+  fill: none;
+}
+
+#track-inner,
+#track-fill {
+  height: var(--slider-track-h);
+  y: 33;
+  rx: 1.5;
+  ry: 1.5;
+}
+
+#track-inner {
+  fill: var(--slider-track-color);
+}
+
+#track-fill {
+  fill: var(--slider-fill-color);
+}
+
+#handle-inner {
+  r: var(--slider-handle-r);
+  cy: 34;
+  fill: var(--slider-handle-fill);
+  stroke: var(--slider-handle-stroke);
+  stroke-width: 1.5;
+}
+
+button.arrow-btn {
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: rgba(25, 25, 25, 0.9);
+  transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+
+button.arrow-btn:hover {
+  background: rgba(25, 25, 25, 0.9);
+  color: #fff;
+}
+
+/* ---------- B) Mobile Portrait ---------- */
+@media (max-width: 768px) and (orientation: portrait) {
+  .sim-container {
+    padding: 2rem 1rem 3rem;
+    font-size: 1rem;
+  }
+
+  .sim-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 280px;
+    margin: 1rem 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    object-fit: contain !important;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  #stage-container {
+    padding: 0 0.5rem;
+    width: 100%;
+  }
+
+  .progress {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ---------- C) Mobile Landscape ---------- */
+@media (max-width: 768px) and (orientation: landscape) {
+  .sim-container {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .sim-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px;
+    margin: 1rem 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  #stage-container {
+    padding: 0 0.5rem;
+    width: 100%;
+  }
+}
+
+/* ---------- D) Dark Mode ---------- */
+@media (prefers-color-scheme: dark) {
+  .sim-container {
+    background-color: #121212;
+    color: rgba(245, 245, 245, 0.88);
+  }
+
+  .gallery-link a,
+  button.arrow-btn {
+    color: rgba(245, 245, 245, 0.88);
+  }
+
+  button.arrow-btn:hover {
+    background: rgba(245, 245, 245, 0.88);
+    color: #121212;
+  }
+}
+
