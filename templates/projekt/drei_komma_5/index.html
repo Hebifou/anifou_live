@@ -185,6 +185,18 @@
     @media (max-width: 480px) {
       .sim-img { max-width: 340px; }
     }
+
+    /* --- enable slider interaction (no visual change) --- */
+#stage {
+  pointer-events: auto;
+  touch-action: none;
+}
+
+#track-inner,
+#track-fill,
+#handle-inner {
+  pointer-events: all;
+}
   </style>
 </head>
 
@@ -258,6 +270,47 @@
         }, 1500);
       }, 2000);
     });
+
+      /* --- slider interaction only (no behavior change) --- */
+  const stage = document.getElementById("stage");
+  let dragging = false;
+
+  function setStepFromClientX(clientX) {
+    const rect = stage.getBoundingClientRect();
+    const scale = 600 / rect.width;   // viewBox width / CSS width
+    let x = (clientX - rect.left) * scale;
+    x = Math.max(trackStart, Math.min(trackEnd, x));
+    currentStep = Math.round((x - trackStart) / stepWidth);
+    updateVisual();
+  }
+
+  /* Mouse */
+  stage.addEventListener("mousedown", e => {
+    dragging = true;
+    setStepFromClientX(e.clientX);
+  });
+
+  window.addEventListener("mousemove", e => {
+    if (dragging) setStepFromClientX(e.clientX);
+  });
+
+  window.addEventListener("mouseup", () => {
+    dragging = false;
+  });
+
+  /* Touch */
+  stage.addEventListener("touchstart", e => {
+    dragging = true;
+    setStepFromClientX(e.touches[0].clientX);
+  }, { passive: false });
+
+  window.addEventListener("touchmove", e => {
+    if (dragging) setStepFromClientX(e.touches[0].clientX);
+  }, { passive: false });
+
+  window.addEventListener("touchend", () => {
+    dragging = false;
+  });
   </script>
 
 </body>

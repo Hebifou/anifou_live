@@ -15,7 +15,6 @@
   padding: 30px 1rem 20px;
   text-align: center;
 
-  /* Einheitlicher Look */
   background-color: #eaeaea;
   color: rgba(25, 25, 25, 0.9);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -78,6 +77,8 @@
 #stage {
   width: 100%;
   height: var(--slider-h);
+  pointer-events: auto;
+  touch-action: none;
 }
 
 #slider-inner {
@@ -90,6 +91,8 @@
   y: 33;
   rx: 1.5;
   ry: 1.5;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 #track-inner {
@@ -106,6 +109,12 @@
   fill: var(--slider-handle-fill);
   stroke: var(--slider-handle-stroke);
   stroke-width: 1.5;
+  pointer-events: all;
+  cursor: grab;
+}
+
+#handle-inner:active {
+  cursor: grabbing;
 }
 
 button.arrow-btn {
@@ -182,22 +191,3 @@ button.arrow-btn:hover {
     width: 100%;
   }
 }
-
-/* ---------- D) Dark Mode ---------- */
-@media (prefers-color-scheme: dark) {
-  .sim-container {
-    background-color: #121212;
-    color: rgba(245, 245, 245, 0.88);
-  }
-
-  .gallery-link a,
-  button.arrow-btn {
-    color: rgba(245, 245, 245, 0.88);
-  }
-
-  button.arrow-btn:hover {
-    background: rgba(245, 245, 245, 0.88);
-    color: #121212;
-  }
-}
-

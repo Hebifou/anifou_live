@@ -45,6 +45,7 @@ nav.main-nav{
   align-items: center;
   justify-content: center;
   height: 100%;
+  color: rgba(25, 25, 25, 0.9);
 }
 
 .dropdown-content{
@@ -132,6 +133,7 @@ nav.main-nav{
     display: flex;
     flex-direction: column;
     position: fixed;
+    padding-top: 2vh;
     inset: 0;
     width: 100vw;
     height: 100dvh;
@@ -150,6 +152,15 @@ nav.main-nav{
     font-size: 0.9rem;
     padding: .5rem 0;
     justify-content: flex-start;
+  }
+
+}
+/* C) Mobile Landscape – truly match Portrait geometry */
+@media (max-width: 768px) and (orientation: landscape) {
+
+  .navbar {
+    max-width: 430px;   /* effektive Portrait-Breite */
+    margin-left: 0;     /* bleibt links wie Portrait */
   }
 
 }
