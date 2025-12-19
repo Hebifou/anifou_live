@@ -155,12 +155,3 @@ nav.main-nav{
   }
 
 }
-/* C) Mobile Landscape – truly match Portrait geometry */
-@media (max-width: 768px) and (orientation: landscape) {
-
-  .navbar {
-    max-width: 430px;   /* effektive Portrait-Breite */
-    margin-left: 0;     /* bleibt links wie Portrait */
-  }
-
-}
