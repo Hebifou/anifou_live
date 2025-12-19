@@ -147,3 +147,41 @@
   }
 }
 
+/* =====================================================
+   PRIVACY – MOBILE LANDSCAPE (FINAL)
+===================================================== */
+
+@media (orientation: landscape) {
+
+  /* Scroll global wieder erlauben */
+  html.no-scroll,
+  body.no-scroll[data-page="privacy"] {
+    overflow-y: auto;
+    height: auto;
+  }
+
+  /* MAIN: Top-Sicherheitszone + Scroll + Footer-Platz */
+  [data-page="privacy"] main {
+    overflow-y: auto;
+    padding-top: 5vh; /* ← DAS ist dein Regler */
+    padding-bottom: calc(var(--footer-h, 60px) + 2rem);
+  }
+
+  /* HERO: kein negatives Offset im Landscape */
+  [data-page="privacy"] .privacy-hero {
+    margin-top: 0;
+  }
+
+  /* FOOTER: fix, deckend */
+  [data-page="privacy"] .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: #eaeaea;
+    opacity: 1;
+    padding: 0.6rem 0;
+    z-index: 10;
+  }
+}
