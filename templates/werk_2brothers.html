@@ -69,6 +69,14 @@
 
   </div>
 
+  <!-- =====================================================
+       IMAGE FULLSCREEN OVERLAY
+  ====================================================== -->
+  <div class="image-overlay" id="imageOverlay">
+    <div class="image-overlay__close" id="overlayClose">×</div>
+    <img class="image-overlay__img" id="overlayImage" alt="">
+  </div>
+
   <script>
     const prevUrl = "/galerie/hand";
     const nextUrl = "/galerie/demo";
@@ -76,6 +84,36 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft" && prevUrl) window.location.href = prevUrl;
       if (event.key === "ArrowRight" && nextUrl) window.location.href = nextUrl;
+    });
+  </script>
+
+  <!-- =====================================================
+       OVERLAY LOGIC – HIGH END
+  ====================================================== -->
+  <script>
+    const mainImage = document.getElementById('mainImage');
+    const overlay = document.getElementById('imageOverlay');
+    const overlayImg = document.getElementById('overlayImage');
+    const overlayClose = document.getElementById('overlayClose');
+
+    mainImage.addEventListener('click', () => {
+      overlayImg.src = mainImage.src;
+      overlay.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeOverlay() {
+      overlay.classList.remove('is-active');
+      overlayImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    overlayClose.addEventListener('click', closeOverlay);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && overlay.classList.contains('is-active')) {
+        closeOverlay();
+      }
     });
   </script>
 

@@ -89,6 +89,7 @@ a { text-decoration: none; color: inherit; }
   object-fit: contain;
   border-radius: var(--radius-img);
   display: block;
+  cursor: pointer;
 }
 
 /* ===================== INFO BLOCK ===================== */
@@ -144,24 +145,6 @@ a { text-decoration: none; color: inherit; }
   border-color: #111;
 }
 
-/* ===================== OVERLAY ===================== */
-#imageOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(248, 248, 248, 0.97);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-}
-
-#overlayImage {
-  max-width: 94vw;
-  max-height: 92vh;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
 /* ===================== MOBILE ===================== */
 @media (max-width: 768px) {
 
@@ -183,7 +166,6 @@ a { text-decoration: none; color: inherit; }
     z-index: 1000;
   }
 
-  /* ⬇️ ERGÄNZUNG: Footer verhält sich wie Header */
   .pagination {
     left: 0;
     bottom: 0;
@@ -204,7 +186,7 @@ a { text-decoration: none; color: inherit; }
     height: 100vh;
     overflow-y: auto;
     padding:
-      calc(4.25rem + env(safe-area-inset-top) + 2px)
+      calc(15rem + env(safe-area-inset-top) + 2px)
       1.25rem
       calc(4.25rem + var(--safe-bottom) + 2px);
   }
@@ -223,16 +205,6 @@ a { text-decoration: none; color: inherit; }
     max-height: 70vh;
     object-fit: contain;
     border-radius: 8px;
-    display: block;
-  }
-
-  .pagination__list {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
   }
 
   .info-block {
@@ -240,10 +212,6 @@ a { text-decoration: none; color: inherit; }
     max-width: 88vw;
     margin: 0 auto;
     text-align: left;
-  }
-
-  .info-block p {
-    margin-bottom: 0.75rem;
   }
 }
 
@@ -259,14 +227,9 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 900px) and (orientation: landscape) {
 
   .explore-container {
-    /* Inhalt bewusst nach unten schieben */
     padding-top: calc(20rem + env(safe-area-inset-top));
     padding-bottom: calc(3.5rem + var(--safe-bottom));
-
-    /* Weniger vertikaler Druck */
     gap: 1.5rem;
-
-    /* Querformat fühlt sich besser etwas „freier“ an */
     align-items: center;
   }
 
@@ -277,16 +240,10 @@ a { text-decoration: none; color: inherit; }
   }
 
   .image-block img {
-    /* Proportionen bleiben IDENTISCH wie Hochformat */
     width: 100%;
     height: auto;
-
-    /* Wichtig: Höhe begrenzen, aber nicht verzerren */
     max-height: 65vh;
-
-    /* Gleiche runde Kanten wie Hochformat */
     border-radius: var(--radius-img);
-
     object-fit: contain;
   }
 
@@ -297,8 +254,53 @@ a { text-decoration: none; color: inherit; }
     line-height: 1.35;
   }
 
-  /* Optional: Pagination etwas luftiger */
   .pagination {
     padding: 0.6rem 0;
   }
+}
+
+/* =====================================================
+   IMAGE FULLSCREEN OVERLAY – HIGH END
+===================================================== */
+
+.image-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.image-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-overlay__img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius-img);
+}
+
+.image-overlay__close {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.image-overlay__close:hover {
+  opacity: 1;
 }
