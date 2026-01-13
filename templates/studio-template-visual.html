@@ -16,6 +16,9 @@
       --muted: #777;
       --max-width: 1200px;
       --gap: 2.5rem;
+
+      /* ✅ Placeholder thumbnail image */
+      --thumb-placeholder: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Delphi.jpg');
     }
 
     * {
@@ -69,10 +72,15 @@
       cursor: pointer;
     }
 
+    /* ✅ only functional change */
     .thumb {
       width: 100%;
       aspect-ratio: 4 / 5;
-      background: #ddd;
+      background-color: #ddd;
+      background-image: var(--thumb-placeholder);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       margin-bottom: 0.75rem;
     }
 

@@ -1,4 +1,3 @@
-<!-- studio-template-space.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,9 @@
       --line: #e5e5e5;
       --max-width: 1200px;
       --gap: 3rem;
+
+      /* ✅ Placeholder image */
+      --placeholder-image: url('/static/projects/drei_komma_5/img/galerie/desktop/uc.jpg');
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,10 +97,15 @@
 
     .meta ul li { margin-bottom: 0.25rem; }
 
+    /* ✅ only this block is functionally changed */
     .image {
       width: 100%;
       aspect-ratio: 4 / 3;
-      background: #ddd;
+      background-color: #ddd;
+      background-image: var(--placeholder-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     section.info {

@@ -17,6 +17,9 @@
       --accent: #ffffff;
       --max-width: 1200px;
       --gap: 3rem;
+
+      /* 🔹 Placeholder image */
+      --placeholder-image: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg');
     }
 
     * {
@@ -77,7 +80,11 @@
     .still {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: #1c1c1c;
+      background-color: #1c1c1c;
+      background-image: var(--placeholder-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .meta h2 {
