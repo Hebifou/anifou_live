@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Film Portfolio Template</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --text: #f5f5f5;
+      --muted: #9a9a9a;
+      --accent: #ffffff;
+      --max-width: 1200px;
+      --gap: 3rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      max-width: var(--max-width);
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .still {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #1c1c1c;
+    }
+
+    .meta h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .meta span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    section.info {
+      margin-top: 6rem;
+      max-width: 520px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 6rem auto 3rem;
+      padding: 0 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .project {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Charlie XY — Film</h1>
+    <nav>
+      <a href="#">Work</a>
+      <a href="#">Info</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="projects">
+
+      <div class="project">
+        <div class="still"></div>
+        <div class="meta">
+          <h2>Short Film I</h2>
+          <p>Director · Editor</p>
+          <span>2025 · Narrative</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="still"></div>
+        <div class="meta">
+          <h2>Visual Essay</h2>
+          <p>Cinematography</p>
+          <span>Experimental · 8 min</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="still"></div>
+        <div class="meta">
+          <h2>Documentary Study</h2>
+          <p>Camera · Editing</p>
+          <span>2024 · Non-fiction</span>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="info">
+      <p>
+        This page presents an example structure for a personal portfolio.
+        All content shown is placeholder material.
+        The final structure and tone are developed in dialogue.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>Film Portfolio Template</span>
+    <a href="mailto:mail@anifou.com">mail@anifou.com</a>
+  </footer>
+
+</body>
+</html>

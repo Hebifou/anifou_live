@@ -164,5 +164,21 @@ def how_i_see_context_pdf():
     )
 
 
+@app.route("/studio-template-visual")
+def studio_template_visual():
+    return render_template("studio-template-visual.html")
+
+
+@app.route("/studio-template-film")
+def studio_template_film():
+    return render_template("studio-template-film.html")
+
+
+@app.route("/studio-template-space")
+def studio_template_space():
+    return render_template("studio-template-space.html")
+
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5030)
