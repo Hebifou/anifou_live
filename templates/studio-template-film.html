@@ -18,7 +18,6 @@
       --max-width: 1200px;
       --gap: 3rem;
 
-      /* Placeholder image */
       --thumb: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg');
     }
 
@@ -41,18 +40,11 @@
       text-decoration: none;
     }
 
-    a:focus-visible {
-      outline: 1px solid var(--text);
-      outline-offset: 4px;
-    }
-
-    /* Layout */
     header,
     main,
     footer {
       max-width: var(--max-width);
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       padding: 0 1.5rem;
     }
 
@@ -80,7 +72,6 @@
       color: var(--text);
     }
 
-    /* Projects */
     .projects {
       display: flex;
       flex-direction: column;
@@ -101,19 +92,17 @@
       padding-top: 0;
     }
 
-    /* Still / Thumbnail */
     figure.still {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-color: #1c1c1c;
       background-image: var(--thumb);
       background-size: cover;
       background-position: center;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    /* Color overlay */
     figure.still::before {
       content: "";
       position: absolute;
@@ -122,19 +111,29 @@
       pointer-events: none;
     }
 
-    /* Play icon */
-    figure.still::after {
-      content: "▶";
+    .play {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
-      font-size: 2rem;
-      color: rgba(255, 255, 255, 0.7);
       pointer-events: none;
     }
 
-    /* Meta */
+    .play svg {
+      width: 64px;
+      height: 64px;
+    }
+
+    .play circle {
+      fill: none;
+      stroke: rgba(255,255,255,0.7);
+      stroke-width: 2;
+    }
+
+    .play polygon {
+      fill: rgba(255,255,255,0.7);
+    }
+
     .meta h2 {
       font-size: 1rem;
       font-weight: 400;
@@ -153,7 +152,6 @@
       color: var(--muted);
     }
 
-    /* Info */
     section.info {
       margin-top: 6rem;
       max-width: 520px;
@@ -161,7 +159,6 @@
       color: var(--muted);
     }
 
-    /* Footer */
     footer {
       margin-top: 6rem;
       margin-bottom: 3rem;
@@ -171,7 +168,6 @@
       color: var(--muted);
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
       article.project {
         grid-template-columns: 1fr;
@@ -190,6 +186,109 @@
         margin-right: 1.5rem;
       }
     }
+
+    /* =========================
+       VIDEO OVERLAY
+       ========================= */
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 1.5rem;
+    }
+
+    .video-overlay.active {
+      display: flex;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      background: black;
+    }
+
+    .video-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+    }
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .video-overlay {
+    padding: 0;
+  }
+
+  .video-container {
+    width: 100vw;
+    max-width: none;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .video-overlay {
+    padding: 0;
+  }
+
+  .video-container {
+    width: 100vw;
+    height: 100svh;
+    max-width: none;
+  }
+
+  .video-container video {
+    width: 100vw;
+    height: 100svh;
+    max-height: none;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 900px) {
+  .video-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,0.6);
+    background: none;
+    z-index: 1000;
+    touch-action: manipulation;
+  }
+
+  .video-close:hover {
+    color: rgba(255,255,255,0.85);
+  }
+}
+
   </style>
 </head>
 
@@ -205,44 +304,64 @@
 
 <main>
 
-  <section class="projects">
+<section class="projects">
 
-    <article class="project">
-      <figure class="still" aria-label="Film still from Short Film I"></figure>
-      <div class="meta">
-        <h2>Short Film I</h2>
-        <p>Director · Editor</p>
-        <span>2025 · Narrative</span>
+  <article class="project">
+    <figure class="still">
+      <div class="play">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="28"/>
+          <polygon points="45,38 45,62 62,50"/>
+        </svg>
       </div>
-    </article>
+    </figure>
+    <div class="meta">
+      <h2>Short Film I</h2>
+      <p>Director · Editor</p>
+      <span>2025 · Narrative</span>
+    </div>
+  </article>
 
-    <article class="project">
-      <figure class="still" aria-label="Film still from Visual Essay"></figure>
-      <div class="meta">
-        <h2>Visual Essay</h2>
-        <p>Cinematography</p>
-        <span>Experimental · 8 min</span>
+  <article class="project">
+    <figure class="still">
+      <div class="play">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="28"/>
+          <polygon points="45,38 45,62 62,50"/>
+        </svg>
       </div>
-    </article>
+    </figure>
+    <div class="meta">
+      <h2>Visual Essay</h2>
+      <p>Cinematography</p>
+      <span>Experimental · 8 min</span>
+    </div>
+  </article>
 
-    <article class="project">
-      <figure class="still" aria-label="Film still from Documentary Study"></figure>
-      <div class="meta">
-        <h2>Documentary Study</h2>
-        <p>Camera · Editing</p>
-        <span>2024 · Non-fiction</span>
+  <article class="project">
+    <figure class="still">
+      <div class="play">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="28"/>
+          <polygon points="45,38 45,62 62,50"/>
+        </svg>
       </div>
-    </article>
+    </figure>
+    <div class="meta">
+      <h2>Documentary Study</h2>
+      <p>Camera · Editing</p>
+      <span>2024 · Non-fiction</span>
+    </div>
+  </article>
 
-  </section>
+</section>
 
-  <section class="info">
-    <p>
-      This page shows an example structure for a student film portfolio.
-      All content is placeholder material.
-      Layout and content can be adapted depending on focus and studies.
-    </p>
-  </section>
+<section class="info">
+  <p>
+    Example content.
+    Structure and layout only.
+  </p>
+</section>
 
 </main>
 
@@ -250,6 +369,43 @@
   <span>Studio Template — Film</span>
   <a href="mailto:mail@anifou.com">mail@anifou.com</a>
 </footer>
+
+<div class="video-overlay" id="videoOverlay">
+  <div class="video-close" id="closeVideo">×</div>
+  <div class="video-container">
+    <video id="overlayVideo" controls playsinline preload="metadata">
+      <source src="video-demo.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("videoOverlay");
+  const video = document.getElementById("overlayVideo");
+  const closeBtn = document.getElementById("closeVideo");
+
+  document.querySelectorAll(".still").forEach(still => {
+    still.addEventListener("click", () => {
+      overlay.classList.add("active");
+      video.currentTime = 0;
+      video.play();
+    });
+  });
+
+  function closeVideo() {
+    video.pause();
+    overlay.classList.remove("active");
+  }
+
+  closeBtn.addEventListener("click", closeVideo);
+  overlay.addEventListener("click", e => {
+    if (e.target === overlay) closeVideo();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeVideo();
+  });
+</script>
 
 </body>
 </html>

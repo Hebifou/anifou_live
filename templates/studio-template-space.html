@@ -185,6 +185,57 @@
         margin-right: 1.5rem;
       }
     }
+
+    /* =========================
+       IMAGE OVERLAY (ADDITION)
+       ========================= */
+
+    .image-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.96);
+      z-index: 999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .image-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .image-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+
+      transform: scale(0.96);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .image-overlay.active img {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .image-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
   </style>
 </head>
 
@@ -245,9 +296,8 @@
 
   <section class="info">
     <p>
-      This page shows an example structure for a student portfolio
-      focused on space, material, and process.
-      All content is placeholder material and can be adapted.
+      Example content.
+      Structure and layout only.
     </p>
   </section>
 
@@ -257,6 +307,50 @@
   <span>Studio Template — Space</span>
   <a href="mailto:mail@anifou.com">mail@anifou.com</a>
 </footer>
+
+<!-- IMAGE OVERLAY -->
+<div class="image-overlay" id="imageOverlay">
+  <div class="image-close" id="closeImage">×</div>
+  <img id="overlayImage" alt="">
+</div>
+
+<script>
+  const overlay = document.getElementById("imageOverlay");
+  const overlayImage = document.getElementById("overlayImage");
+  const closeBtn = document.getElementById("closeImage");
+
+  document.querySelectorAll("figure.image").forEach(fig => {
+    fig.style.cursor = "pointer";
+
+    fig.addEventListener("click", () => {
+      const bg = getComputedStyle(fig).backgroundImage;
+      if (!bg || bg === "none") return;
+
+      const src = bg.slice(5, -2); // removes url("...")
+      overlayImage.src = src;
+      overlay.classList.add("active");
+    });
+  });
+
+  function closeOverlay() {
+    overlay.classList.remove("active");
+    overlayImage.src = "";
+  }
+
+  closeBtn.addEventListener("click", closeOverlay);
+
+  overlay.addEventListener("click", e => {
+    if (e.target === overlay) closeOverlay();
+  });
+
+  overlayImage.addEventListener("click", e => e.stopPropagation());
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && overlay.classList.contains("active")) {
+      closeOverlay();
+    }
+  });
+</script>
 
 </body>
 </html>

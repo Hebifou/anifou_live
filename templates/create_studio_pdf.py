@@ -87,21 +87,20 @@ def create_pdf():
 
     # ---------- Inhalt ----------
     story.append(Paragraph(
-        "Portfolio-Websites für kreative Studierende",
+        "Portfolio-Websites für Studierende",
         styles["TitleQuiet"]
     ))
 
     story.append(Paragraph(
-        "Schlichte, individuell angepasste Portfolio-Websites für Film, Kunst, Design, "
-        "Architektur und Handwerk. Geeignet für laufende Projekte, Abschlussarbeiten, "
+        "Individuell angepasste Portfolio-Websites für Film, Kunst, Design, "
+        "Architektur oder Handwerk. Geeignet für laufende Projekte, Abschlussarbeiten, "
         "Bewerbungen und Festivals.",
         styles["SubtitleQuiet"]
     ))
 
     story.append(Paragraph(
         "<b>Für wen?</b><br/>"
-        "Für Studierende und Kreative, die ihre Arbeiten übersichtlich und konzentriert "
-        "zeigen möchten – unabhängig von Studienphase oder Erfahrung.",
+        "Für Studierende und Kreative, die ihre Arbeiten online strukturiert einordnen möchten.",
         styles["BodyQuiet"]
     ))
 
@@ -135,7 +134,7 @@ def create_pdf():
     story.append(Paragraph(
         "<b>Zeit & Kosten</b><br/>"
         "Fertig in 3–5 Tagen<br/>"
-        "Kosten: 180–250 € (einmalig, je nach Umfang)",
+        "Kosten: ab 180 € (je nach Umfang)",
         styles["BodyQuiet"]
     ))
 
