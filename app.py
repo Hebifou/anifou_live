@@ -179,6 +179,9 @@ def studio_template_space():
     return render_template("studio-template-space.html")
 
 
+@app.route("/studio")
+def studio():
+    return render_template("studio.html")
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5030)

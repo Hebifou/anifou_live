@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Visual Portfolio Template</title>
+  <title>Studio Template — Visual</title>
 
+  <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #fafafa;
       --text: #111;
       --muted: #777;
+      --overlay: rgba(0, 0, 0, 0.06);
       --max-width: 1200px;
       --gap: 2.5rem;
 
-      /* ✅ Placeholder thumbnail image */
-      --thumb-placeholder: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Delphi.jpg');
+      --thumb: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Delphi.jpg');
     }
 
     * {
@@ -30,91 +31,119 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    header,
+    main,
+    footer {
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1.5rem;
     }
 
     header {
-      max-width: var(--max-width);
-      margin: 3rem auto 4rem;
-      padding: 0 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     header h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     nav a {
       margin-left: 2rem;
-      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    nav a:hover {
       color: var(--text);
-      font-size: 0.9rem;
     }
 
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem 6rem;
-    }
-
+    /* Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: var(--gap);
     }
 
-    .project {
+    article.project {
       cursor: pointer;
     }
 
-    /* ✅ only functional change */
-    .thumb {
+    /* Thumbnail */
+    figure.thumb {
+      position: relative;
       width: 100%;
       aspect-ratio: 4 / 5;
       background-color: #ddd;
-      background-image: var(--thumb-placeholder);
+      background-image: var(--thumb);
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
       margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    figure.thumb::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--overlay);
+      pointer-events: none;
     }
 
     .project h2 {
-      font-size: 0.95rem;
-      font-weight: 400;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      letter-spacing: -0.005em;
     }
 
     .project span {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 400;
       color: var(--muted);
     }
 
+    /* Info */
     section.info {
       margin-top: 6rem;
       max-width: 520px;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--muted);
     }
 
+    /* Footer */
     footer {
-      max-width: var(--max-width);
-      margin: 6rem auto 3rem;
-      padding: 0 1.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
+      margin-top: 6rem;
+      margin-bottom: 3rem;
       display: flex;
       justify-content: space-between;
-    }
-
-    footer a {
+      font-size: 0.75rem;
+      font-weight: 400;
       color: var(--muted);
-      text-decoration: none;
     }
 
+    /* Responsive */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -132,66 +161,70 @@
 
 <body>
 
-  <header>
-    <h1>Charlie XY</h1>
-    <nav>
-      <a href="#">Work</a>
-      <a href="#">Info</a>
-    </nav>
-  </header>
+<header>
+  <h1>Charlie XY</h1>
+  <nav aria-label="Primary">
+    <a href="#">Work</a>
+    <a href="#">Info</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="grid">
-      <div class="project">
-        <div class="thumb"></div>
-        <h2>Untitled Series</h2>
-        <span>2025</span>
-      </div>
+<main>
 
-      <div class="project">
-        <div class="thumb"></div>
-        <h2>Study I</h2>
-        <span>Photography</span>
-      </div>
+  <section class="grid">
 
-      <div class="project">
-        <div class="thumb"></div>
-        <h2>Project A</h2>
-        <span>Mixed Media</span>
-      </div>
+    <article class="project">
+      <figure class="thumb" aria-label="Untitled Series artwork"></figure>
+      <h2>Untitled Series</h2>
+      <span>2025</span>
+    </article>
 
-      <div class="project">
-        <div class="thumb"></div>
-        <h2>Series 02</h2>
-        <span>Visual Research</span>
-      </div>
+    <article class="project">
+      <figure class="thumb" aria-label="Study I photography"></figure>
+      <h2>Study I</h2>
+      <span>Photography</span>
+    </article>
 
-      <div class="project">
-        <div class="thumb"></div>
-        <h2>Archive</h2>
-        <span>Selected Works</span>
-      </div>
+    <article class="project">
+      <figure class="thumb" aria-label="Project A mixed media work"></figure>
+      <h2>Project A</h2>
+      <span>Mixed Media</span>
+    </article>
 
-      <div class="project">
-        <div class="thumb"></div>
-        <h2>Untitled</h2>
-        <span>2024</span>
-      </div>
-    </section>
+    <article class="project">
+      <figure class="thumb" aria-label="Series 02 visual research"></figure>
+      <h2>Series 02</h2>
+      <span>Visual Research</span>
+    </article>
 
-    <section class="info">
-      <p>
-        This page presents an example structure for a personal portfolio.
-        All content shown is placeholder material.
-        The final structure and tone are developed in dialogue.
-      </p>
-    </section>
-  </main>
+    <article class="project">
+      <figure class="thumb" aria-label="Archive selected works"></figure>
+      <h2>Archive</h2>
+      <span>Selected Works</span>
+    </article>
 
-  <footer>
-    <span>Visual Portfolio Template</span>
-    <a href="mailto:mail@anifou.com">mail@anifou.com</a>
-  </footer>
+    <article class="project">
+      <figure class="thumb" aria-label="Untitled artwork from 2024"></figure>
+      <h2>Untitled</h2>
+      <span>2024</span>
+    </article>
+
+  </section>
+
+  <section class="info">
+    <p>
+      This page shows an example structure for a visual portfolio.
+      All content is placeholder material and can be adapted
+      to different artistic focuses.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <span>Studio Template</span>
+  <a href="mailto:mail@anifou.com">mail@anifou.com</a>
+</footer>
 
 </body>
 </html>

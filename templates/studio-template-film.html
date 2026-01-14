@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Film Portfolio Template</title>
+  <title>Studio Template — Film</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +14,12 @@
       --bg: #0e0e0e;
       --text: #f5f5f5;
       --muted: #9a9a9a;
-      --accent: #ffffff;
+      --border: #1f1f1f;
       --max-width: 1200px;
       --gap: 3rem;
 
-      /* 🔹 Placeholder image */
-      --placeholder-image: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg');
+      /* Placeholder image */
+      --thumb: url('/static/projects/drei_komma_5/img/galerie/desktop/IMG_Demo.jpg');
     }
 
     * {
@@ -33,64 +33,112 @@
       color: var(--text);
       font-family: "Inter", sans-serif;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 1px solid var(--text);
+      outline-offset: 4px;
+    }
+
+    /* Layout */
+    header,
+    main,
+    footer {
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1.5rem;
     }
 
     header {
-      max-width: var(--max-width);
-      margin: 3rem auto 4rem;
-      padding: 0 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     header h1 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 400;
       letter-spacing: 0.02em;
     }
 
     nav a {
+      font-size: 0.8rem;
+      color: var(--muted);
       margin-left: 2rem;
-      text-decoration: none;
+    }
+
+    nav a:hover {
       color: var(--text);
-      font-size: 0.85rem;
     }
 
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem 6rem;
-    }
-
+    /* Projects */
     .projects {
       display: flex;
       flex-direction: column;
       gap: var(--gap);
     }
 
-    .project {
+    article.project {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 2rem;
       align-items: center;
-      cursor: pointer;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
     }
 
-    .still {
+    article.project:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    /* Still / Thumbnail */
+    figure.still {
+      position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       background-color: #1c1c1c;
-      background-image: var(--placeholder-image);
+      background-image: var(--thumb);
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      overflow: hidden;
     }
 
+    /* Color overlay */
+    figure.still::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 10, 15, 0.35);
+      pointer-events: none;
+    }
+
+    /* Play icon */
+    figure.still::after {
+      content: "▶";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+    }
+
+    /* Meta */
     .meta h2 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 400;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .meta p {
@@ -100,35 +148,32 @@
 
     .meta span {
       display: block;
+      margin-top: 0.75rem;
       font-size: 0.75rem;
       color: var(--muted);
-      margin-top: 0.75rem;
     }
 
+    /* Info */
     section.info {
       margin-top: 6rem;
       max-width: 520px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
 
+    /* Footer */
     footer {
-      max-width: var(--max-width);
-      margin: 6rem auto 3rem;
-      padding: 0 1.5rem;
-      font-size: 0.75rem;
-      color: var(--muted);
+      margin-top: 6rem;
+      margin-bottom: 3rem;
       display: flex;
       justify-content: space-between;
-    }
-
-    footer a {
+      font-size: 0.75rem;
       color: var(--muted);
-      text-decoration: none;
     }
 
-    @media (max-width: 800px) {
-      .project {
+    /* Responsive */
+    @media (max-width: 900px) {
+      article.project {
         grid-template-columns: 1fr;
       }
     }
@@ -150,59 +195,61 @@
 
 <body>
 
-  <header>
-    <h1>Charlie XY — Film</h1>
-    <nav>
-      <a href="#">Work</a>
-      <a href="#">Info</a>
-    </nav>
-  </header>
+<header>
+  <h1>Charlie XY</h1>
+  <nav aria-label="Primary">
+    <a href="#">Work</a>
+    <a href="#">Info</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="projects">
+<main>
 
-      <div class="project">
-        <div class="still"></div>
-        <div class="meta">
-          <h2>Short Film I</h2>
-          <p>Director · Editor</p>
-          <span>2025 · Narrative</span>
-        </div>
+  <section class="projects">
+
+    <article class="project">
+      <figure class="still" aria-label="Film still from Short Film I"></figure>
+      <div class="meta">
+        <h2>Short Film I</h2>
+        <p>Director · Editor</p>
+        <span>2025 · Narrative</span>
       </div>
+    </article>
 
-      <div class="project">
-        <div class="still"></div>
-        <div class="meta">
-          <h2>Visual Essay</h2>
-          <p>Cinematography</p>
-          <span>Experimental · 8 min</span>
-        </div>
+    <article class="project">
+      <figure class="still" aria-label="Film still from Visual Essay"></figure>
+      <div class="meta">
+        <h2>Visual Essay</h2>
+        <p>Cinematography</p>
+        <span>Experimental · 8 min</span>
       </div>
+    </article>
 
-      <div class="project">
-        <div class="still"></div>
-        <div class="meta">
-          <h2>Documentary Study</h2>
-          <p>Camera · Editing</p>
-          <span>2024 · Non-fiction</span>
-        </div>
+    <article class="project">
+      <figure class="still" aria-label="Film still from Documentary Study"></figure>
+      <div class="meta">
+        <h2>Documentary Study</h2>
+        <p>Camera · Editing</p>
+        <span>2024 · Non-fiction</span>
       </div>
+    </article>
 
-    </section>
+  </section>
 
-    <section class="info">
-      <p>
-        This page presents an example structure for a personal portfolio.
-        All content shown is placeholder material.
-        The final structure and tone are developed in dialogue.
-      </p>
-    </section>
-  </main>
+  <section class="info">
+    <p>
+      This page shows an example structure for a student film portfolio.
+      All content is placeholder material.
+      Layout and content can be adapted depending on focus and studies.
+    </p>
+  </section>
 
-  <footer>
-    <span>Film Portfolio Template</span>
-    <a href="mailto:mail@anifou.com">mail@anifou.com</a>
-  </footer>
+</main>
+
+<footer>
+  <span>Studio Template — Film</span>
+  <a href="mailto:mail@anifou.com">mail@anifou.com</a>
+</footer>
 
 </body>
 </html>
