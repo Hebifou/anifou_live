@@ -164,7 +164,7 @@ def how_i_see_context_pdf():
     )
 
 
-@app.route("/studio-template-visual")
+@app.route("/studio-template-kunst")
 def studio_template_visual():
     return render_template("studio-template-kunst.html")
 
@@ -174,7 +174,7 @@ def studio_template_film():
     return render_template("studio-template-film.html")
 
 
-@app.route("/studio-template-space")
+@app.route("/studio-template-objekt")
 def studio_template_space():
     return render_template("studio-template-objekt.html")
 
