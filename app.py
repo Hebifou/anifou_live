@@ -179,6 +179,10 @@ def studio_template_objekt():
     return render_template("studio-template-objekt.html")
 
 
+@app.route("/studio-de")
+def studio_de():
+    return render_template("studio_de.html")
+
 @app.route("/studio")
 def studio():
     return render_template("studio.html")
