@@ -163,6 +163,10 @@ def how_i_see_context_pdf():
         'context.pdf'
     )
 
+@app.route("/services")
+def services():
+    return render_template("services.html", hide_footer=True)
+
 
 @app.route("/studio-template-kunst")
 def studio_template_kunst():
@@ -172,7 +176,6 @@ def studio_template_kunst():
 @app.route("/studio-template-film")
 def studio_template_film():
     return render_template("studio-template-film.html")
-
 
 @app.route("/studio-template-objekt")
 def studio_template_objekt():
@@ -186,6 +189,7 @@ def studio_de():
 @app.route("/studio")
 def studio():
     return render_template("studio.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5030)

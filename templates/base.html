@@ -42,7 +42,8 @@
       'project.life_in_plastic': 'css/pages/_life-in-plastic.css',
       'life_in_plastic': 'css/pages/_life-in-plastic.css',
       'how_the_internet_feels': 'css/pages/htif.css',
-      'minus_three_point_five': 'css/minus_three_point_five.css'
+      'minus_three_point_five': 'css/minus_three_point_five.css',
+      'services': 'css/pages/services.css',
     } %}
     {% if request.endpoint in css_map %}
       <!-- 💡 Cache-Busting für sauberes Reload -->
@@ -71,6 +72,7 @@
           <li><a href="{{ url_for('how_the_internet_feels') }}">{{ _('How The Internet Feels') }}</a></li>
         </ul>
       </li>
+      <li><a href="{{ url_for('services') }}">Services</a></li>
       <li><a href="{{ url_for('kontakt') }}">{{ _('Contact') }}</a></li>
     </ul>
   </nav>
