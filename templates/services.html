@@ -1,23 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Data Analytics & Automation – Anifou{% endblock %}
 
-{% block meta_description %}
-  <meta name="description" content="Data Analytics & Automation. Data Integration, KPI Development, Dashboard Design, Reporting Automation and Workflow Automation." />
+{% block meta_description %} <meta
+name="description"
+content="Data Analytics & Automation. Simplify processes, save time and gain insights through dashboards, reporting and workflow automation."
+/>
 {% endblock %}
 
 {% block page_css %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/services.css') }}?v=5">
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/pages/services.css') }}?v=6"
+/>
 {% endblock %}
 
 {% block content %}
+
 <section class="services-hero">
-  <p>
-    Data Analytics & Automation — Data. Insights. Automation.
+
+  <p class="eyebrow">
+    Data Analytics & Automation
   </p>
 
-  <p>
+  <h1>
+    Simplify Processes.<br>
+    Save Time.
+  </h1>
+
+  <p class="services-list">
     Data Integration · KPI Development · Dashboard Design ·
-    Reporting Automation · Workflow Automation
+    Reporting Automation · Workflow Automation · Internal Tools
   </p>
+
 </section>
 {% endblock %}
