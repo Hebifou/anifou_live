@@ -82,7 +82,7 @@ body[data-page="services"] .page-wrapper {
 @media (max-width: 768px) {
 
   body[data-page="services"] .page-wrapper {
-    padding-top: 25vh !important;
+    padding-top: 30vh !important;
   }
 
   [data-page="services"] .services-hero {
