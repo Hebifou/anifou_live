@@ -136,29 +136,17 @@ body[data-page="index"] .hero.clean-hero.about-hero {
 
 /* Kleine Screens – Text leicht größer, mehr Luft */
 @media (max-width: 768px) {
-  body[data-page="index"] main {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding-top: 0vh !important;
-    padding-inline: 1.4rem !important;
-    box-sizing: border-box;
+  [data-page="index"] main {
+    padding-top: 12vh;
   }
 
   [data-page="index"] .about-hero {
-    width: 100%;
-    max-width: 36ch;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    text-align: center;
-    align-items: center;
+    max-width: 30ch;
     line-height: 1.65;
   }
 
   [data-page="index"] .about-hero p {
     font-size: 1rem;
-    line-height: 1.65;
   }
 }
 
