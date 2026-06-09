@@ -141,12 +141,12 @@ body[data-page="index"] .hero.clean-hero.about-hero {
   }
 
   [data-page="index"] .about-hero {
-    max-width: 30ch;
+    max-width: 55ch;
     line-height: 1.65;
   }
 
   [data-page="index"] .about-hero p {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 
