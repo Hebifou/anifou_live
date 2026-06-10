@@ -108,7 +108,7 @@ body[data-page="services"] .page-wrapper {
   }
 
   body[data-page="services"] .page-wrapper {
-    padding-top: calc(56px + 28vh) !important;
+    padding-top: calc(56px + 25vh) !important;
   }
 
   [data-page="services"] .services-hero {
