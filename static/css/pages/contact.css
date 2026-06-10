@@ -112,7 +112,12 @@
    RESPONSIVE
 ------------------------------------- */
 
+/* =====================================================
+   MOBILE PORTRAIT
+===================================================== */
+
 @media (max-width: 768px) {
+
   [data-page="kontakt"] main,
   [data-page="contact"] main {
     padding-top: 12vh;
@@ -128,5 +133,49 @@
   [data-page="contact"] .contact-hero p {
     font-size: 1rem;
   }
+
+  [data-page="kontakt"] .site-footer,
+  [data-page="contact"] .site-footer {
+    border-top: none;
+  }
+
+  .burger,
+  .site-header {
+    border-bottom: none;
+  }
 }
 
+
+/* =====================================================
+   MOBILE LANDSCAPE
+===================================================== */
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+  [data-page="kontakt"] main,
+  [data-page="contact"] main {
+    padding-top: 15vh;
+  }
+
+  [data-page="kontakt"] .contact-hero,
+  [data-page="contact"] .contact-hero {
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+
+  [data-page="kontakt"] .contact-hero p,
+  [data-page="contact"] .contact-hero p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .burger,
+  .site-header {
+    border-bottom: none;
+  }
+
+  [data-page="kontakt"] .site-footer,
+  [data-page="contact"] .site-footer {
+    display: none;
+  }
+}

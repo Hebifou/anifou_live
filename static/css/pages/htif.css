@@ -105,7 +105,12 @@
    RESPONSIVE
 ------------------------------------- */
 
+/* =====================================================
+   MOBILE PORTRAIT
+===================================================== */
+
 @media (max-width: 768px) {
+
   [data-page="how_the_internet_feels"] main {
     padding-top: 22vh;
   }
@@ -118,5 +123,44 @@
   [data-page="how_the_internet_feels"] .htif-hero p {
     font-size: 1rem;
   }
+
+  .burger,
+  .site-header {
+    border-bottom: none;
+  }
+
+  [data-page="how_the_internet_feels"] .site-footer {
+    border-top: none;
+  }
 }
 
+
+/* =====================================================
+   MOBILE LANDSCAPE
+===================================================== */
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+  [data-page="how_the_internet_feels"] main {
+    padding-top: 20vh;
+  }
+
+  [data-page="how_the_internet_feels"] .htif-hero {
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+
+  [data-page="how_the_internet_feels"] .htif-hero p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .burger,
+  .site-header {
+    border-bottom: none;
+  }
+
+  [data-page="how_the_internet_feels"] .site-footer {
+    display: none;
+  }
+}
