@@ -26,7 +26,7 @@ body[data-page="services"] .page-wrapper {
   align-items: center;
   text-align: center;
   gap: 1.4rem;
-  max-width: 62ch;
+  max-width: 55ch;
   margin: 0 auto;
   padding: 0 1rem;
   line-height: 1.7;
@@ -35,18 +35,18 @@ body[data-page="services"] .page-wrapper {
   animation: fadeInInfo 1.2s ease-out forwards;
 }
 
-[data-page="services"] .services-hero p,
-[data-page="services"] .services-title {
-  font-size: 1rem;
+/* Identisch zur About-Seite */
+
+[data-page="services"] .services-hero p {
+  font-size: 1.05rem;
   line-height: 1.7;
   margin: 0;
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 
-[data-page="services"] .services-hero p + p,
-[data-page="services"] .services-title + p {
-  margin-top: 0.8rem;
+[data-page="services"] .services-hero p + p {
+  margin-top: 1.3rem;
 }
 
 [data-page="services"] .services-hero p:first-child {
@@ -89,19 +89,13 @@ body[data-page="services"] .page-wrapper {
 
   [data-page="services"] .services-hero {
     max-width: 55ch;
-    gap: 1.3rem;
     line-height: 1.65;
+    gap: 1.1rem;
   }
 
-  [data-page="services"] .eyebrow,
-  [data-page="services"] .services-title,
-  [data-page="services"] .services-list {
+  [data-page="services"] .services-hero p {
     font-size: 0.9rem;
     line-height: 1.7;
-  }
-
-  [data-page="services"] .services-list {
-    max-width: 24ch;
   }
 }
 
@@ -122,15 +116,9 @@ body[data-page="services"] .page-wrapper {
     max-width: 60ch;
   }
 
-  [data-page="services"] .eyebrow,
-  [data-page="services"] .services-title,
-  [data-page="services"] .services-list {
+  [data-page="services"] .services-hero p {
     font-size: 0.9rem;
-  }
-
-  [data-page="services"] .services-list {
     line-height: 1.55;
-    max-width: 32ch;
   }
 
   [data-page="services"] .site-footer {
