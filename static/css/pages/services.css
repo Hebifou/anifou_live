@@ -83,32 +83,107 @@ body[data-page="services"] .page-wrapper {
 
 @media (max-width: 768px) {
 
+  /* =====================================
+     MOBILE TOP BAR
+  ===================================== */
+
+  .burger {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 1rem;
+
+    background: #eaeaea;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    z-index: 2000;
+  }
+
   body[data-page="services"] .page-wrapper {
-    padding-top: 35vh !important;
+    padding-top: calc(56px + 28vh) !important;
   }
 
   [data-page="services"] .services-hero {
     max-width: 55ch;
     line-height: 1.65;
-    gap: 1.1rem;
   }
 
   [data-page="services"] .services-hero p {
     font-size: 0.9rem;
     line-height: 1.7;
   }
+
+  /* =====================================
+     MOBILE FOOTER BAR
+  ===================================== */
+
+  [data-page="services"] .site-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaeaea;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    transform: none;
+    font-size: 0.82rem;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+
+    z-index: 2000;
+  }
+
 }
 
 /* =====================================================
    Mobile Landscape
 ===================================================== */
 
-@media (max-width: 900px) and (orientation: landscape) {
+@media (max-width: 1024px) and (orientation: landscape) {
+
+  /* =====================================
+     MOBILE TOP BAR
+  ===================================== */
+
+  .burger {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 1rem;
+
+    background: #eaeaea;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    z-index: 2000;
+  }
 
   body[data-page="services"] .page-wrapper {
     min-height: auto !important;
     height: auto !important;
-    padding-top: 20vh !important;
+    padding-top: 25vh !important;
   }
 
   [data-page="services"] .services-hero {
@@ -121,8 +196,31 @@ body[data-page="services"] .page-wrapper {
     line-height: 1.55;
   }
 
+  /* =====================================
+     MOBILE FOOTER BAR
+  ===================================== */
+
   [data-page="services"] .site-footer {
-    bottom: 0.6rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaeaea;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    transform: none;
     font-size: 0.75rem;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+
+    z-index: 2000;
   }
+
 }
