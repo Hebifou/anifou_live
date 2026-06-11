@@ -120,7 +120,7 @@
 
   [data-page="kontakt"] main,
   [data-page="contact"] main {
-    padding-top: 15vh;
+    padding-top: 20vh;
   }
 
   [data-page="kontakt"] .contact-hero,
@@ -131,7 +131,7 @@
 
   [data-page="kontakt"] .contact-hero p,
   [data-page="contact"] .contact-hero p {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   [data-page="kontakt"] .site-footer,
@@ -154,7 +154,7 @@
 
   [data-page="kontakt"] main,
   [data-page="contact"] main {
-    padding-top: 15vh;
+    padding-top: 20vh;
   }
 
   [data-page="kontakt"] .contact-hero,
