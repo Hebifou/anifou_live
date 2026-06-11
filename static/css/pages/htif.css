@@ -1,6 +1,5 @@
 /* =====================================================
    HOW THE INTERNET FEELS – Editorial Layout
-   basiert auf index.css (About)
 ===================================================== */
 
 [data-page="how_the_internet_feels"] {
@@ -12,87 +11,101 @@
   overflow: hidden;
 }
 
-/* -------------------------------------
-   MAIN LAYOUT – Golden Ratio Positioning
-------------------------------------- */
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
 
-[data-page="how_the_internet_feels"] main {
+body[data-page="how_the_internet_feels"] .page-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: calc(100vh - var(--nav-h, 80px) - var(--footer-h, 60px));
-  padding-inline: 2rem;
-  padding-top: 18vh; /* optische Balance */
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  min-height: 100vh !important;
+  padding-top: 25vh !important;
+  box-sizing: border-box;
 }
-
-/* -------------------------------------
-   HERO BLOCK
-------------------------------------- */
 
 [data-page="how_the_internet_feels"] .htif-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   gap: 1.4rem;
-  max-width: 62ch;
+
+  max-width: 55ch;
   margin: 0 auto;
   padding: 0 1rem;
+
   line-height: 1.7;
+
   opacity: 0;
   transform: translateY(6px);
   animation: fadeInInfo 1.2s ease-out forwards;
 }
 
-/* -------------------------------------
+/* =====================================================
    TEXT
-------------------------------------- */
+===================================================== */
 
 [data-page="how_the_internet_feels"] .htif-hero p {
   font-size: 1.05rem;
+  font-weight: 300;
   line-height: 1.7;
   margin: 0;
   opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
 [data-page="how_the_internet_feels"] .htif-hero p + p {
   margin-top: 1.3rem;
 }
 
-/* -------------------------------------
-   LINKS
-------------------------------------- */
-
-[data-page="how_the_internet_feels"] .htif-links a {
-  color: rgba(25, 25, 25, 0.9);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: opacity 0.25s ease;
+[data-page="how_the_internet_feels"] .htif-hero p:first-child {
+  opacity: 0.92;
 }
 
-[data-page="how_the_internet_feels"] .htif-links a:hover {
+[data-page="how_the_internet_feels"] .htif-hero p:last-child {
+  opacity: 0.85;
+}
+
+/* =====================================================
+   LINKS
+===================================================== */
+
+[data-page="how_the_internet_feels"] .htif-hero a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: none;
+  font-weight: 300;
+  transition: opacity 0.3s ease;
+}
+
+[data-page="how_the_internet_feels"] .htif-hero a:hover {
   opacity: 0.6;
 }
 
-/* -------------------------------------
+/* =====================================================
    FOOTER
-------------------------------------- */
+===================================================== */
 
 [data-page="how_the_internet_feels"] .site-footer {
   position: fixed;
   bottom: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
+
   width: 100%;
   text-align: center;
+
   font-size: 0.82rem;
   opacity: 0.7;
+
+  border-top: none;
   letter-spacing: 0.02em;
 }
 
-/* -------------------------------------
+/* =====================================================
    ANIMATION
-------------------------------------- */
+===================================================== */
 
 @keyframes fadeInInfo {
   to {
@@ -101,18 +114,34 @@
   }
 }
 
-/* -------------------------------------
-   RESPONSIVE
-------------------------------------- */
-
 /* =====================================================
    MOBILE PORTRAIT
 ===================================================== */
 
 @media (max-width: 768px) {
 
-  [data-page="how_the_internet_feels"] main {
-    padding-top: 22vh;
+  .burger {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 1rem;
+
+    background: #eaeaea;
+    border-bottom: none;
+
+    z-index: 2000;
+  }
+
+  body[data-page="how_the_internet_feels"] .page-wrapper {
+    padding-top: calc(56px + 25vh) !important;
   }
 
   [data-page="how_the_internet_feels"] .htif-hero {
@@ -121,19 +150,34 @@
   }
 
   [data-page="how_the_internet_feels"] .htif-hero p {
-    font-size: 1rem;
-  }
-
-  .burger,
-  .site-header {
-    border-bottom: none;
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
   [data-page="how_the_internet_feels"] .site-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaeaea;
     border-top: none;
+
+    transform: none;
+
+    font-size: 0.82rem;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+
+    z-index: 2000;
   }
 }
-
 
 /* =====================================================
    MOBILE LANDSCAPE
@@ -141,23 +185,40 @@
 
 @media (max-width: 1024px) and (orientation: landscape) {
 
-  [data-page="how_the_internet_feels"] main {
-    padding-top: 20vh;
+  .burger {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 1rem;
+
+    background: #eaeaea;
+    border-bottom: none;
+
+    z-index: 2000;
+  }
+
+  body[data-page="how_the_internet_feels"] .page-wrapper {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 25vh !important;
   }
 
   [data-page="how_the_internet_feels"] .htif-hero {
+    gap: 0.9rem;
     max-width: 60ch;
-    line-height: 1.6;
   }
 
   [data-page="how_the_internet_feels"] .htif-hero p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.5;
-  }
-
-  .burger,
-  .site-header {
-    border-bottom: none;
   }
 
   [data-page="how_the_internet_feels"] .site-footer {

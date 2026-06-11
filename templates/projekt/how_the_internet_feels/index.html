@@ -1,20 +1,45 @@
 {% extends "base.html" %}
-{% block title %}How The Internet Feels{% endblock %}
+
+{% block title %}
+  How The Internet Feels
+{% endblock %}
 
 {% block meta_description %}
-  <meta name="description" content="A data-driven exploration of how emotion thrives through the internet — mapping the affective and structural patterns that shape online narratives." />
+  <meta
+    name="description"
+    content="A data-driven exploration of how emotion thrives through the internet — mapping the affective and structural patterns that shape online narratives."
+  />
 {% endblock %}
 
 {% block page_css %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/htif.css') }}?v=2">
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/pages/htif.css') }}?v=2"
+  />
 {% endblock %}
 
 {% block content %}
-<main>
   <section class="htif-hero">
+
     <p>
-      coming soon
+      How The Internet Feels
     </p>
+
+    <p>
+      Exploring discourse dynamics through NLP, <br>
+      sentiment analysis and digital narratives.
+    </p>
+
+    <p>
+      Prototype currently available in German <br>
+      <a
+        href="https://howtheinternetfeels-demo-de.streamlit.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        → Open Demo
+      </a>
+    </p>
+
   </section>
-</main>
 {% endblock %}
