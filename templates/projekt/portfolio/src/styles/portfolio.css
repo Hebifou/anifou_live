@@ -1,0 +1,667 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");@import "./variables.css";
+@import "./base.css";
+
+/* -------------------------------- */
+/* Screen */
+/* -------------------------------- */
+
+body {
+  background: #ECECEC;
+
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -------------------------------- */
+/* Portfolio */
+/* -------------------------------- */
+
+.portfolio {
+  max-width: 1780px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 16px 30px 18px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* -------------------------------- */
+/* Header */
+/* -------------------------------- */
+
+.portfolio-header {
+  margin-top: 28px;
+  margin-bottom: 30px;
+}
+
+.portfolio-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 4px;
+}
+
+.portfolio-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-back-link {
+  flex-shrink: 0;
+
+  color: #666;
+  font-size: 12px;
+  line-height: 1.45;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    color 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.portfolio-back-link:hover {
+  color: #111;
+}
+
+.portfolio-back-link:focus-visible {
+  color: #111;
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.portfolio-services {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.portfolio-intro {
+  max-width: 520px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #1f1f1f;
+}
+
+/* -------------------------------- */
+/* Grid */
+/* -------------------------------- */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* -------------------------------- */
+/* Card */
+/* -------------------------------- */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+
+  background: #ECECEC;
+  border: 1px solid rgba(0, 0, 0, 0.035);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.035);
+}
+
+/* -------------------------------- */
+/* Card Typography */
+/* -------------------------------- */
+
+.project-title {
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-description {
+  margin-bottom: 6px;
+  line-height: 1.45;
+}
+
+.project-role {
+  margin-bottom: 3px;
+  color: #9a9a9a;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.project-list {
+  display: grid;
+  gap: 0;
+  margin-bottom: 6px;
+}
+
+.project-list div {
+  line-height: 1.35;
+}
+
+.project-tags {
+  margin-top: auto;
+  color: #8d8d8d;
+  line-height: 1.35;
+}
+
+.project-link {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+.project-link a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0.5px solid currentColor;
+}
+
+/* -------------------------------- */
+/* Film Strip */
+/* -------------------------------- */
+
+.project-strip {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 0.5px solid #e4e4e4;
+}
+
+.strip-button {
+  flex: 1;
+  aspect-ratio: 4 / 3;
+
+  overflow: hidden;
+
+  padding: 0;
+
+  border: 0.5px solid #dddddd;
+
+  background: #efefef;
+
+  cursor: zoom-in;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.strip-button:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.strip-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  background: #efefef;
+
+  transition: transform 0.25s ease;
+}
+
+.strip-button:hover .strip-image {
+  transform: scale(1.05);
+}
+
+/* -------------------------------- */
+/* HTIF Hero */
+/* -------------------------------- */
+
+.project-single-image {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 0.5px solid #e4e4e4;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.project-single-image .strip-button {
+  flex: none;
+
+  width: 68px;
+  aspect-ratio: 4 / 3;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.single-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  transition: transform 0.25s ease;
+}
+
+.project-single-image .strip-button:hover .single-image {
+  transform: scale(1.03);
+}
+
+/* -------------------------------- */
+/* Image Overlay */
+/* -------------------------------- */
+
+.image-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 48px;
+
+  background: rgba(20, 18, 15, 0.76);
+
+  opacity: 0;
+
+  animation:
+    overlayFadeIn
+    320ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.image-overlay.closing {
+  animation:
+    overlayFadeOut
+    260ms
+    cubic-bezier(0.4, 0, 1, 1)
+    forwards;
+}
+
+.image-overlay-img {
+  max-width: 90vw;
+  max-height: 90vh;
+
+  display: block;
+
+  object-fit: contain;
+
+  background: #fff;
+
+  opacity: 0;
+
+  animation:
+    overlayImageIn
+    320ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.image-overlay.closing .image-overlay-img {
+  animation:
+    overlayImageOut
+    260ms
+    cubic-bezier(0.4, 0, 1, 1)
+    forwards;
+}
+
+.image-overlay-close {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+
+  border: 0;
+  background: transparent;
+
+  color: #fff;
+  font-size: 28px;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  animation:
+    overlayFadeIn
+    320ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+
+  transition: opacity 0.2s ease;
+}
+
+.image-overlay-close:hover {
+  opacity: 0.7;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes overlayImageIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayImageOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* -------------------------------- */
+/* Dashboard Hero */
+/* -------------------------------- */
+
+.project-dashboard-image {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 0.5px solid #e4e4e4;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.project-dashboard-image .strip-button {
+  flex: none;
+
+  width: 80px;
+  aspect-ratio: 4 / 3;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.dashboard-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  filter: contrast(1.08) brightness(0.98);
+
+  transform: scale(1.12);
+
+  transition: transform 0.25s ease;
+}
+
+.project-dashboard-image
+  .strip-button:hover
+  .dashboard-image {
+  transform: scale(1.16);
+}
+
+/* ==================================================
+   Mobile Portrait
+================================================== */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .portfolio {
+    padding:
+      14px
+      14px
+      22px;
+  }
+
+  .portfolio-header {
+    margin-top: 8px;
+    margin-bottom: 22px;
+  }
+
+  .portfolio-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 10px;
+  }
+
+  .portfolio-title {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .portfolio-back-link {
+    flex-shrink: 0;
+
+    margin-left: auto;
+
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .portfolio-services,
+  .portfolio-intro {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .project-card {
+    padding: 12px;
+  }
+
+  .project-strip {
+    gap: 8px;
+  }
+
+  .project-dashboard-image .strip-button {
+    width: 96px;
+  }
+
+  .project-single-image .strip-button {
+    width: 84px;
+  }
+
+  .image-overlay {
+    padding: 20px;
+  }
+
+}
+
+/* ==================================================
+   Mobile Landscape
+================================================== */
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .portfolio {
+    padding:
+      16px
+      20px
+      20px;
+  }
+
+  .portfolio-header {
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  .portfolio-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 18px;
+  }
+
+  .portfolio-back-link {
+    flex-shrink: 0;
+
+    margin-left: auto;
+
+    white-space: nowrap;
+  }
+
+  .portfolio-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 16px;
+  }
+
+  .project-card {
+    padding: 14px;
+  }
+
+  .project-dashboard-image .strip-button {
+    width: 88px;
+  }
+
+  .project-single-image .strip-button {
+    width: 76px;
+  }
+
+  .image-overlay {
+    padding: 24px;
+  }
+
+}
+
+/* -------------------------------- */
+/* Print */
+/* -------------------------------- */
+
+@media print {
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  body {
+    background: #fffdfa;
+  }
+
+  .portfolio {
+    width: 297mm;
+    min-height: 210mm;
+    padding: 10mm;
+  }
+
+  .portfolio-back-link {
+    display: none;
+  }
+
+  .project-card {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .image-overlay {
+    display: none;
+  }
+
+  .strip-button {
+    cursor: default;
+  }
+
+}
+
+/* -------------------------------- */
+/* GIA PANTA */
+/* -------------------------------- */
+
+.gia-image-0 {
+  object-fit: contain;
+  object-position: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.gia-image-1 {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(1.06);
+}
+
+.gia-image-2 {
+  object-fit: contain;
+  object-position: center;
+  padding: 0;
+  transform: scale(1.12);
+}
+
+.gia-image-3 {
+  object-fit: contain;
+  object-position: center 60%;
+  padding: 0;
+}

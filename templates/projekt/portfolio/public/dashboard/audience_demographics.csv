@@ -1,0 +1,10 @@
+group,segment,value,percentage
+age,18-24,1101,2.7
+age,25-34,4608,11.1
+age,35-44,9548,23.0
+age,45-54,13169,31.8
+age,55-64,10708,25.8
+age,65+,2340,5.6
+gender,Female,20369,48.7
+gender,Undisclosed,11250,27.1
+gender,Male,10064,24.2

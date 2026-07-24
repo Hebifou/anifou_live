@@ -1,0 +1,6 @@
+metric,label,value,change,type
+followers,Followers,185400,12.8,number
+reach,Reach,2400000,18.6,number
+engagement,Engagement,7.9,3.1,percent
+top_city,Top City,Berlin,,text
+core_audience,Core Audience,25-34,,text

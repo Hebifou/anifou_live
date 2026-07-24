@@ -1,0 +1,11 @@
+group,segment,value,percentage
+country,DE,38655,92.1
+country,AT,1614,4.1
+country,CH,1209,3.0
+country,US,166,0.4
+country,ES,136,0.3
+city,Berlin,1687,38.4
+city,Hamburg,1203,27.4
+city,Cologne,578,13.2
+city,Munich,516,11.8
+city,Essen,404,9.2

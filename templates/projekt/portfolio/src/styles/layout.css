@@ -1,0 +1,27 @@
+.portfolio {
+  width: 100%;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: start;
+  gap: 56px;
+}
+
+.intro-left,
+.intro-right {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+.intro-right {
+  max-width: 560px;
+}

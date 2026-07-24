@@ -1,0 +1,1853 @@
+html,
+body {
+    margin: 8px;
+    padding: 0;
+
+    min-height: 100%;
+
+    background: #eaeaea;
+
+    color:
+        rgba(
+            25,
+            25,
+            25,
+            .72
+        );
+
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    letter-spacing: .16px;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    text-rendering: geometricPrecision;
+}
+
+#root {
+    min-height: 100%;
+}
+
+/* ==================================================
+   Dashboard Layout
+================================================== */
+
+.dashboard-page {
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font: inherit;
+    color: inherit;
+
+    background: #ececec;
+
+    animation:
+        dashboardPageIn
+        .55s
+        cubic-bezier(
+            .22,
+            1,
+            .36,
+            1
+        )
+        both;
+}
+
+.dashboard-shell {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    width: auto;
+
+    height:
+        calc(
+            100vh - 32px
+        );
+
+    margin: 16px;
+    padding: 18px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background: #f8f8f5;
+
+    box-sizing: border-box;
+}
+
+
+/* ==================================================
+   Header
+================================================== */
+
+.dashboard-header {
+  display: grid;
+  grid-template-columns:
+    360px
+    minmax(0, 1fr)
+    160px;
+
+  align-items: start;
+
+  column-gap: 28px;
+
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+.dashboard-header-left {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.35;
+
+  color: #151515;
+}
+
+.dashboard-subtitle {
+  margin: 0;
+
+  overflow: hidden;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.35;
+
+  color: #8a8a84;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 0;
+}
+
+.dashboard-header-right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  min-width: 0;
+}
+
+
+/* ==================================================
+   Dashboard Back Link
+================================================== */
+
+.dashboard-back-link {
+  position: absolute;
+
+  top: 20px;
+  right: 24px;
+
+  z-index: 20;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  color: #686863;
+
+  text-decoration: none;
+
+  transition:
+    color 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.dashboard-back-link:hover {
+  color: #151515;
+}
+
+.dashboard-back-link:focus-visible {
+  border-radius: 3px;
+
+  outline:
+    2px solid
+    rgba(21, 21, 21, 0.2);
+
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+   Status
+================================================== */
+
+.dashboard-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  color: #777772;
+}
+
+
+/* ==================================================
+   Buttons
+================================================== */
+
+.dashboard-export-button,
+.dashboard-filters button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 12px;
+
+  border: 1px solid #d8d8d2;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  color: #151515;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.dashboard-export-button:hover,
+.dashboard-filters button:hover {
+  border-color: #ccccc6;
+
+  background: #f3f3ef;
+}
+
+.dashboard-export-button:active,
+.dashboard-filters button:active {
+  transform: translateY(1px);
+}
+
+.dashboard-export-button:focus-visible,
+.dashboard-filters button:focus-visible {
+  outline:
+    2px solid
+    rgba(21, 21, 21, 0.2);
+
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+   Filters
+================================================== */
+
+.dashboard-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==================================================
+   Header Navigation
+================================================== */
+
+.dashboard-filter-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.dashboard-filter-divider {
+  flex-shrink: 0;
+
+  font-size: 11px;
+
+  color: #c8c8c2;
+
+  user-select: none;
+}
+
+.dashboard-filter-button {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  color: #8a8a84;
+
+  cursor: pointer;
+
+  transition:
+    color 0.18s ease;
+}
+
+.dashboard-filter-button:hover,
+.dashboard-filter-button.active {
+  color: #151515;
+}
+
+.dashboard-filter-button:focus-visible {
+  border-radius: 3px;
+
+  outline:
+    2px solid
+    rgba(21, 21, 21, 0.2);
+
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+   KPI Row
+================================================== */
+
+.dashboard-kpi-row {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+  flex-shrink: 0;
+
+  margin-bottom: 10px;
+
+  overflow: hidden;
+
+  border: 1px solid #deded8;
+  border-radius: 16px;
+
+  background: #ffffff;
+}
+
+.dashboard-kpi-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 50px;
+
+  padding: 8px 10px;
+
+  border: none;
+
+  background: transparent;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.dashboard-kpi-card:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  right: 4px;
+
+  width: 1px;
+  height: 20px;
+
+  background: #ecece8;
+
+  transform: translateY(-50%);
+}
+
+.dashboard-kpi-card:hover {
+  background: #fafaf8;
+}
+
+.dashboard-kpi-card.active {
+  background: #f7f7f4;
+}
+
+.dashboard-kpi-card:focus-visible {
+  z-index: 1;
+
+  outline:
+    2px solid
+    rgba(21, 21, 21, 0.18);
+
+  outline-offset: -2px;
+}
+
+.dashboard-kpi-header {
+  min-width: 0;
+
+  margin-bottom: 2px;
+}
+
+.dashboard-kpi-header p,
+.dashboard-kpi-label {
+  margin: 0;
+
+  overflow: hidden;
+
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+
+  color: #73736d;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-kpi-value-row {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.dashboard-kpi-card strong {
+  min-width: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  color: #151515;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-kpi-change {
+  flex-shrink: 0;
+
+  margin: 0;
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  color: #7a7a75;
+
+  white-space: nowrap;
+}
+
+.dashboard-kpi-badge,
+.dashboard-kpi-filter {
+  display: none;
+}
+
+/* ==================================================
+   Dashboard Grid
+================================================== */
+
+.dashboard-main-grid {
+  display: grid;
+
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  gap: 14px;
+
+  grid-template-columns:
+    320px
+    220px
+    320px
+    minmax(
+      340px,
+      1fr
+    );
+
+  grid-template-rows:
+    240px
+    200px
+    130px;
+
+  grid-template-areas:
+    "insights audience drivers geography"
+    "growth growth growth growth"
+    "timeline timeline timeline timeline";
+
+  transition:
+    grid-template-columns
+    0.35s ease,
+    grid-template-rows
+    0.35s ease;
+}
+
+
+/* ==================================================
+   Grid Areas
+================================================== */
+
+.card-growth {
+  grid-area: growth;
+}
+
+.card-timeline {
+  grid-area: timeline;
+}
+
+.card-drivers {
+  grid-area: drivers;
+}
+
+.card-audience {
+  grid-area: audience;
+}
+
+.card-geography {
+  grid-area: geography;
+}
+
+.card-insights {
+  grid-area: insights;
+}
+
+
+/* ==================================================
+   Cards
+================================================== */
+
+.dashboard-card {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: visible;
+
+  padding: 16px;
+
+  border: 1px solid #e4e4de;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  opacity: 0.92;
+
+  transition:
+    grid-column 0.35s ease,
+    grid-row 0.35s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease,
+    z-index 0s;
+
+  will-change:
+    transform,
+    grid-column,
+    grid-row,
+    opacity;
+}
+
+.dashboard-card:hover {
+  z-index: 100;
+
+  border-color: #d5d5cf;
+
+  box-shadow:
+    0 12px 26px
+    rgba(
+      0,
+      0,
+      0,
+      0.05
+    );
+
+  transform:
+    translateY(-2px);
+}
+
+.dashboard-card.focused {
+  opacity: 1;
+}
+
+.dashboard-card.selection-active:not(.focused) {
+  opacity: 0.65;
+}
+
+
+/* ==================================================
+   Hero State
+================================================== */
+
+.dashboard-card.hero {
+  border-color: #cfcfc8;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 20px 38px
+    rgba(
+      0,
+      0,
+      0,
+      0.06
+    );
+
+  transform:
+    scale(1.01);
+}
+
+.dashboard-card.hero:hover {
+  transform:
+    scale(1.01)
+    translateY(-2px);
+}
+
+.dashboard-card.hero
+.dashboard-card-header h2 {
+  font-weight: 700;
+}
+
+.dashboard-card.hero
+.dashboard-card-content {
+  padding-top: 4px;
+}
+
+
+/* ==================================================
+   Card Header
+================================================== */
+
+.dashboard-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  min-width: 0;
+
+  padding:
+    12px
+    16px
+    8px;
+}
+
+.dashboard-card-title {
+  min-width: 0;
+
+  margin: 0;
+
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.3;
+
+  color: #151515;
+}
+
+.dashboard-card-subtitle-inline {
+  font-size: inherit;
+  font-weight: 450;
+
+  color: #8a8a84;
+}
+
+
+/* ==================================================
+   Card Badges
+================================================== */
+
+.dashboard-card-badges {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 6px;
+}
+
+.dashboard-card-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3px 8px;
+
+  border: 1px solid #e2e2dc;
+  border-radius: 999px;
+
+  background: #fafaf8;
+
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  color: #7d7d77;
+
+  white-space: nowrap;
+}
+
+.dashboard-card-badge-focus {
+  border-color: #151515;
+
+  background: #151515;
+
+  color: #ffffff;
+}
+
+
+/* ==================================================
+   Card Content
+================================================== */
+
+.dashboard-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: visible;
+}
+
+
+/* ==================================================
+   Card Footer
+================================================== */
+
+.dashboard-card-footer {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  margin-top: 12px;
+  padding-top: 10px;
+
+  border-top: 1px solid #efefea;
+
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.dashboard-card-meta-value {
+  min-width: 0;
+
+  overflow: hidden;
+
+  font-weight: 500;
+
+  color: #8a8a84;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-card-meta-divider {
+  flex-shrink: 0;
+
+  color: #c5c5bf;
+}
+
+
+/* ==================================================
+   Growth Chart
+================================================== */
+
+.dashboard-chart {
+  position: relative;
+
+  flex: 1;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: visible;
+}
+
+.dashboard-chart svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+.growth-line {
+  fill: none;
+}
+
+.growth-point {
+  transition:
+    opacity 0.18s ease,
+    r 0.18s ease;
+}
+
+.selected-event-line {
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   Audience, Drivers & Geography Charts
+================================================== */
+
+.audience-chart,
+.drivers-chart,
+.dashboard-map-chart {
+  position: relative;
+
+  display: flex;
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: visible;
+}
+
+.audience-chart svg,
+.drivers-chart svg,
+.dashboard-map-chart svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+}
+
+
+/* ==================================================
+   Tooltip
+================================================== */
+
+.dashboard-tooltip {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 9999;
+
+  width: 176px;
+  max-width: 176px;
+
+  padding: 8px 10px;
+
+  overflow: hidden;
+
+  border: 1px solid #e3e3dd;
+  border-radius: 12px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.97
+    );
+
+  box-shadow:
+    0 10px 24px
+    rgba(
+      0,
+      0,
+      0,
+      0.06
+    );
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  color: #151515;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  pointer-events: none;
+
+  animation:
+    dashboardTooltipFade
+    0.16s ease;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.dashboard-tooltip strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  overflow: hidden;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  color: #151515;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-tooltip div:first-of-type {
+  margin-bottom: 6px;
+
+  overflow: hidden;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  color: #7b7b75;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dashboard-tooltip div:not(:first-of-type) {
+  margin-top: 2px;
+
+  overflow: hidden;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  color: #666660;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@keyframes dashboardTooltipFade {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+/* ==================================================
+   Insight Panel
+================================================== */
+
+.insight-panel {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  min-width: 0;
+  min-height: 0;
+
+  font-size: 10px;
+}
+
+
+/* --------------------------------------------------
+   Insight Header
+-------------------------------------------------- */
+
+.insight-header {
+  margin-bottom: 3px;
+}
+
+.insight-header h3,
+.insight-block h4 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 4px;
+
+  margin: 0;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+
+  color: #151515;
+}
+
+.insight-divider {
+  flex-shrink: 0;
+
+  font-weight: 400;
+
+  color: #b4b4ae;
+}
+
+.insight-description,
+.insight-value {
+  font-weight: 500;
+  line-height: 1.3;
+
+  color: #7b7b75;
+}
+
+
+/* --------------------------------------------------
+   Insight Blocks
+-------------------------------------------------- */
+
+.insight-block {
+  min-width: 0;
+
+  margin:
+    0
+    0
+    5px;
+}
+
+.insight-block:last-child {
+  margin-bottom: 0;
+}
+
+.insight-block h4 {
+  margin-bottom: 4px;
+}
+
+
+/* --------------------------------------------------
+   Insight Lists
+-------------------------------------------------- */
+
+.insight-list {
+  margin: 0;
+
+  padding-left: 38px;
+
+  list-style-position: outside;
+
+  font-size: 10px;
+}
+
+.insight-list li {
+  margin: 2px 0;
+
+  padding-left: 0;
+
+  line-height: 1.3;
+}
+
+
+/* ==================================================
+   Dashboard Onboarding
+================================================== */
+
+.dashboard-onboarding {
+  position: fixed;
+  inset: 0;
+
+  z-index: 10000;
+
+  animation:
+    dashboardOnboardingFadeIn
+    0.28s ease
+    both;
+}
+
+.dashboard-onboarding-closing {
+  pointer-events: none;
+
+  animation:
+    dashboardOnboardingFadeOut
+    0.24s ease
+    both;
+}
+
+
+/* --------------------------------------------------
+   Onboarding Backdrop
+-------------------------------------------------- */
+
+.dashboard-onboarding-backdrop {
+  position: absolute;
+  inset: 0;
+
+  background:
+    rgba(
+      20,
+      20,
+      18,
+      0.12
+    );
+
+  backdrop-filter:
+    blur(1px);
+
+  -webkit-backdrop-filter:
+    blur(1px);
+}
+
+
+/* --------------------------------------------------
+   Onboarding Card
+-------------------------------------------------- */
+
+.dashboard-onboarding-card {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 340px;
+  min-height: 210px;
+
+  padding: 24px;
+
+  border:
+    1px solid
+    rgba(
+      223,
+      223,
+      217,
+      0.96
+    );
+
+  border-radius: 20px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.97
+    );
+
+  box-shadow:
+    0 24px 64px
+    rgba(
+      0,
+      0,
+      0,
+      0.13
+    );
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  box-sizing: border-box;
+
+  animation:
+    dashboardOnboardingCardIn
+    0.42s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+.dashboard-onboarding-closing
+.dashboard-onboarding-card {
+  animation:
+    dashboardOnboardingCardOut
+    0.24s ease
+    both;
+}
+
+
+/* --------------------------------------------------
+   Onboarding Copy
+-------------------------------------------------- */
+
+.dashboard-onboarding-copy {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.dashboard-onboarding-text {
+  max-width: 292px;
+
+  margin: 0;
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  letter-spacing: 0;
+
+  color: #3f3f3b;
+}
+
+
+/* --------------------------------------------------
+   Onboarding Button
+-------------------------------------------------- */
+
+.dashboard-onboarding-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: flex-start;
+
+  margin-top: 20px;
+  padding: 8px 16px;
+
+  border: 1px solid #151515;
+  border-radius: 999px;
+
+  background: #151515;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 550;
+  line-height: 1.3;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.dashboard-onboarding-button:hover {
+  background: #30302d;
+
+  box-shadow:
+    0 8px 18px
+    rgba(
+      0,
+      0,
+      0,
+      0.14
+    );
+
+  transform:
+    translateY(-1px);
+}
+
+.dashboard-onboarding-button:active {
+  transform:
+    translateY(0);
+}
+
+.dashboard-onboarding-button:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      21,
+      21,
+      21,
+      0.28
+    );
+
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+   Animations
+================================================== */
+
+@keyframes dashboardPageIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes dashboardOnboardingFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dashboardOnboardingFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dashboardOnboardingCardIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(
+        -50%,
+        calc(-50% + 12px)
+      )
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1);
+  }
+}
+
+@keyframes dashboardOnboardingCardOut {
+  from {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1);
+  }
+
+  to {
+    opacity: 0;
+
+    transform:
+      translate(
+        -50%,
+        calc(-50% + 8px)
+      )
+      scale(0.99);
+  }
+}
+
+/* ==================================================
+   Responsive – Compact Desktop
+================================================== */
+
+@media (
+  max-width: 1280px
+) {
+  .dashboard-page {
+    height: auto;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .dashboard-shell {
+    height: auto;
+    min-height:
+      calc(
+        100vh - 24px
+      );
+
+    margin: 12px;
+    padding: 16px;
+
+    overflow: visible;
+
+    border-radius: 20px;
+  }
+
+  .dashboard-header {
+    grid-template-columns:
+      minmax(
+        220px,
+        0.8fr
+      )
+      minmax(
+        300px,
+        1.4fr
+      )
+      120px;
+
+    column-gap: 20px;
+  }
+
+  .dashboard-main-grid {
+    flex: none;
+
+    grid-template-columns:
+      minmax(
+        240px,
+        0.9fr
+      )
+      minmax(
+        240px,
+        0.9fr
+      )
+      minmax(
+        320px,
+        1.2fr
+      );
+
+    grid-template-rows:
+      240px
+      220px
+      150px;
+
+    grid-template-areas:
+      "insights audience geography"
+      "drivers growth growth"
+      "timeline timeline timeline";
+  }
+}
+
+
+
+
+/* ==================================================
+   Reduced Motion
+================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .dashboard-page,
+  .dashboard-onboarding,
+  .dashboard-onboarding-card,
+  .dashboard-onboarding-closing,
+  .dashboard-onboarding-closing
+  .dashboard-onboarding-card,
+  .dashboard-tooltip {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+
+  .dashboard-card,
+  .dashboard-kpi-card,
+  .dashboard-export-button,
+  .dashboard-filters button,
+  .dashboard-filter-button,
+  .dashboard-back-link,
+  .dashboard-onboarding-button,
+  .growth-point,
+  .dashboard-main-grid {
+    scroll-behavior: auto;
+
+    transition-duration: 0.01ms;
+  }
+}
+
+/* ==================================================
+   Mobile Info
+================================================== */
+
+.dashboard-mobile-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: auto;
+
+    min-height:
+        calc(
+            100vh - 16px
+        );
+
+    padding:
+        20px
+        12px
+        28px;
+
+    box-sizing: border-box;
+
+    background: #eaeaea;
+
+    color:
+        rgba(
+            25,
+            25,
+            25,
+            .9
+        );
+
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.01em;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.dashboard-mobile-info__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: -40px;
+
+    animation:
+        fadeInInfo
+        1.2s
+        ease-out
+        forwards;
+}
+
+/* --------------------------------------------------
+   Preview
+-------------------------------------------------- */
+
+.dashboard-mobile-preview {
+    position: relative;
+
+    width:
+        min(
+            calc(
+                100vw - 12px
+            ),
+            620px
+        );
+
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        rgba(
+            25,
+            25,
+            25,
+            .08
+        );
+
+    box-shadow:
+        0 2px 28px
+        rgba(
+            0,
+            0,
+            0,
+            .045
+        );
+}
+
+.dashboard-mobile-preview__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position:
+        center
+        top;
+
+    transform:
+        scale(1.10);
+
+    transform-origin: center;
+
+    filter: none;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------
+   Description
+-------------------------------------------------- */
+
+.dashboard-mobile-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    margin-top: 8px;
+
+    text-align: center;
+}
+
+.dashboard-mobile-info__title,
+.dashboard-mobile-info__subtitle {
+    margin: 0;
+
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.01em;
+
+    color:
+        rgba(
+            25,
+            25,
+            25,
+            .9
+        );
+
+    text-align: center;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.dashboard-mobile-info__subtitle {
+    max-width: 28ch;
+}
+
+/* --------------------------------------------------
+   Decorative Layers
+-------------------------------------------------- */
+
+.dashboard-mobile-preview__glass,
+.dashboard-mobile-preview__fog {
+    display: none;
+}
+
+/* --------------------------------------------------
+   Animation
+-------------------------------------------------- */
+
+@keyframes fadeInInfo {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+
+    .dashboard-mobile-info {
+
+        padding:
+            8px
+            16px
+            12px;
+
+    }
+
+    .dashboard-mobile-info__content {
+
+        width: 100%;
+
+        margin:
+            12px
+            auto
+            0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .dashboard-mobile-preview {
+
+        width: 352px;
+
+        max-width: 352px;
+
+        aspect-ratio: 16 / 10;
+
+    }
+
+    .dashboard-mobile-description {
+
+        margin-top: 10px;
+
+        gap: 2px;
+
+    }
+
+    .dashboard-mobile-info__title,
+    .dashboard-mobile-info__subtitle {
+
+        margin: 0;
+
+        font-family:
+            "Inter",
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            sans-serif;
+
+        font-size: 0.85rem;
+
+        font-weight: 300;
+
+        line-height: 1.5;
+
+        letter-spacing: 0.01em;
+
+        color:
+            rgba(
+                25,
+                25,
+                25,
+                .9
+            );
+
+        text-align: center;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+    }
+
+}
