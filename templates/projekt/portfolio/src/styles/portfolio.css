@@ -497,10 +497,24 @@ body {
     white-space: nowrap;
   }
 
+  /* Einheitliche Typografie */
+
   .portfolio-services,
-  .portfolio-intro {
+  .portfolio-intro,
+  .project-description {
     font-size: 12px;
     line-height: 1.6;
+  }
+
+  /* Nur die Leselänge leicht begrenzen */
+
+  .portfolio-services,
+  .portfolio-intro {
+    max-width: 36ch;
+  }
+
+  .project-description {
+    max-width: 34ch;
   }
 
   .portfolio-grid {
@@ -565,7 +579,29 @@ body {
 
     margin-left: auto;
 
+    font-size: 12px;
+
     white-space: nowrap;
+  }
+
+  /* Einheitliche Typografie */
+
+  .portfolio-services,
+  .portfolio-intro,
+  .project-description {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* Nur die Leselänge leicht begrenzen */
+
+  .portfolio-services,
+  .portfolio-intro {
+    max-width: 54ch;
+  }
+
+  .project-description {
+    max-width: 48ch;
   }
 
   .portfolio-grid {
@@ -594,74 +630,4 @@ body {
     padding: 24px;
   }
 
-}
-
-/* -------------------------------- */
-/* Print */
-/* -------------------------------- */
-
-@media print {
-
-  @page {
-    size: A4 landscape;
-    margin: 0;
-  }
-
-  body {
-    background: #fffdfa;
-  }
-
-  .portfolio {
-    width: 297mm;
-    min-height: 210mm;
-    padding: 10mm;
-  }
-
-  .portfolio-back-link {
-    display: none;
-  }
-
-  .project-card {
-    box-shadow: none;
-    transform: none;
-  }
-
-  .image-overlay {
-    display: none;
-  }
-
-  .strip-button {
-    cursor: default;
-  }
-
-}
-
-/* -------------------------------- */
-/* GIA PANTA */
-/* -------------------------------- */
-
-.gia-image-0 {
-  object-fit: contain;
-  object-position: center;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.gia-image-1 {
-  object-fit: cover;
-  object-position: center;
-  filter: brightness(1.06);
-}
-
-.gia-image-2 {
-  object-fit: contain;
-  object-position: center;
-  padding: 0;
-  transform: scale(1.12);
-}
-
-.gia-image-3 {
-  object-fit: contain;
-  object-position: center 60%;
-  padding: 0;
 }
