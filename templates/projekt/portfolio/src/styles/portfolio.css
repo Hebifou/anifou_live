@@ -455,7 +455,7 @@ body {
    Mobile Portrait
 ================================================== */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 900px) and (orientation: portrait) {
 
   body {
     overflow-x: hidden;
@@ -510,11 +510,11 @@ body {
 
   .portfolio-services,
   .portfolio-intro {
-    max-width: 36ch;
+    max-width: 50ch;
   }
 
   .project-description {
-    max-width: 34ch;
+    max-width: 38ch;
   }
 
   .portfolio-grid {
@@ -548,7 +548,7 @@ body {
    Mobile Landscape
 ================================================== */
 
-@media (max-width: 1024px) and (orientation: landscape) {
+@media screen and (max-width: 1100px) and (orientation: landscape) {
 
   body {
     overflow-x: hidden;
@@ -584,7 +584,9 @@ body {
     white-space: nowrap;
   }
 
-  /* Einheitliche Typografie */
+  /* --------------------------------
+     Einheitliche Typografie
+  -------------------------------- */
 
   .portfolio-services,
   .portfolio-intro,
@@ -593,15 +595,20 @@ body {
     line-height: 1.6;
   }
 
-  /* Nur die Leselänge leicht begrenzen */
+  /* --------------------------------
+     Header
+  -------------------------------- */
 
-  .portfolio-services,
   .portfolio-intro {
-    max-width: 54ch;
+    max-width: none;
   }
 
+  /* --------------------------------
+     Karten
+  -------------------------------- */
+
   .project-description {
-    max-width: 48ch;
+    max-width: 38ch;
   }
 
   .portfolio-grid {
@@ -630,4 +637,34 @@ body {
     padding: 24px;
   }
 
+}
+
+/* -------------------------------- */
+/* GIA PANTA */
+/* -------------------------------- */
+
+.gia-image-0 {
+  object-fit: contain;
+  object-position: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.gia-image-1 {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(1.06);
+}
+
+.gia-image-2 {
+  object-fit: contain;
+  object-position: center;
+  padding: 0;
+  transform: scale(1.12);
+}
+
+.gia-image-3 {
+  object-fit: contain;
+  object-position: center 60%;
+  padding: 0;
 }
