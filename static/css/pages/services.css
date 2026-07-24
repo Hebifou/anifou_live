@@ -206,3 +206,17 @@ body[data-page="services"] .page-wrapper {
   }
 
 }
+
+/* =====================================================
+   LINK
+===================================================== */
+
+[data-page="services"] .services-hero a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+[data-page="services"] .services-hero a:hover {
+  opacity: 0.6;
+}

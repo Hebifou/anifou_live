@@ -3,8 +3,8 @@
 
 {% block meta_description %}
 <meta
-name="description"
-content="Operational solutions for businesses. Websites, automation, internal tools, analytics, reporting and forecasting."
+  name="description"
+  content="Operational solutions for businesses. Websites, automation, internal tools, analytics, reporting and forecasting."
 />
 {% endblock %}
 
@@ -30,7 +30,13 @@ content="Operational solutions for businesses. Websites, automation, internal to
 
   <p>
     Websites · Automation · Internal Tools ·<br>
-    Analytics & Reporting · Forecasting
+    Analytics & Reporting · Forecasting<br>
+    <a
+      class="services-hero__link"
+      href="{{ url_for('portfolio') }}"
+    >
+      → Open Portfolio
+    </a>
   </p>
 
 </section>

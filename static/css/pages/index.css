@@ -228,3 +228,16 @@ body[data-page="index"] .page-wrapper {
     display: none;
   }
 }
+/* =====================================================
+   LINKS
+===================================================== */
+
+[data-page="index"] .about-hero a {
+  color: rgba(25, 25, 25, 0.9);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+[data-page="index"] .about-hero a:hover {
+  opacity: 0.6;
+}

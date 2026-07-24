@@ -17,6 +17,13 @@
 
     <p>
       {{ _('My personal projects explore data, machine learning, computer vision and NLP at the intersection of culture and technology.') }}
+      <br>
+      <a
+        class="about-hero__link"
+        href="{{ url_for('portfolio') }}"
+      >
+        → {{ _('Open Portfolio') }}
+      </a>
     </p>
   </section>
 {% endblock %}

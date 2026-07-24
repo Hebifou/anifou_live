@@ -1,0 +1,11 @@
+date,followers,reach,engagement,event,city,age,driver
+2026-01-01,124000,420000,4.8,Baseline,All,All,None
+2026-01-15,128500,455000,5.1,High-performing post,Berlin,25-34,Post
+2026-02-01,134200,520000,5.4,Single teaser,Hamburg,18-24,Teaser
+2026-02-15,142800,690000,6.2,TV appearance,Berlin,35-44,TV appearance
+2026-03-01,151300,780000,6.7,Release week,Berlin,25-34,Release week
+2026-03-15,160900,920000,7.1,Press coverage,Hamburg,35-44,Press coverage
+2026-04-01,169400,1100000,7.4,Campaign phase,Cologne,25-34,Campaign phase
+2026-04-15,176800,1280000,7.7,Viral post,Berlin,18-24,Viral post
+2026-05-01,181200,1480000,7.8,Tour announcement,Hamburg,35-44,Tour announcement
+2026-05-15,185400,1640000,7.9,Community peak,Berlin,45-54,Community peak
