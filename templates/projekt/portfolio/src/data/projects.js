@@ -41,7 +41,7 @@ export const projects = [
 
         language: "DE",
 
-        link: "https://howtheinternetfeels.de",
+        link: "https://howtheinternetfeels.com",
 
         heroImage: true,
 
