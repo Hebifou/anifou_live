@@ -32,7 +32,7 @@ export default function Portfolio() {
         </div>
 
         <div className="portfolio-intro">
-          Selected work across strategy, design, data and digital products.
+          Selected work in strategy, design, data & digital.
         </div>
       </header>
 
