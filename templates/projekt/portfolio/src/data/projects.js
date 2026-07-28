@@ -39,7 +39,7 @@ export const projects = [
             "FastAPI",
         ],
 
-        language: "DE",
+        language: "",
 
         link: "https://howtheinternetfeels.com",
 
