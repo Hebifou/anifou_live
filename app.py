@@ -262,6 +262,9 @@ def services():
         hide_footer=True,
     )
 
+@app.route("/lfn")
+def lfn():
+    return render_template("projekt/lfn/lfn.html")
 
 @app.route("/studio-template-kunst")
 def studio_template_kunst():

@@ -1,0 +1,439 @@
+/* =========================================================
+   LFN — LES FILLES NOIRES
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #f1f0eb;
+    color: #0a0a0a;
+
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.lfn {
+    position: relative;
+    width: 100vw;
+    height: 100svh;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+/* IDENTITY */
+
+.identity {
+    position: absolute;
+    top: 5vh;
+    left: 2.5vw;
+    z-index: 10;
+}
+
+.identity h1 {
+    font-size: clamp(7rem, 11.5vw, 12rem);
+    font-weight: 400;
+    line-height: .72;
+    letter-spacing: -.085em;
+}
+
+.identity p {
+    margin-top: 2.3rem;
+    margin-left: .15rem;
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+
+/* IMAGE */
+
+.visual {
+    position: absolute;
+
+    top: 43%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+
+    width: clamp(210px, 17vw, 290px);
+    height: clamp(250px, 33vh, 340px);
+
+    margin: 0;
+    z-index: 2;
+}
+
+.visual img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 50% 42%;
+
+    filter:
+        saturate(.78)
+        contrast(1.025);
+
+    -webkit-mask-image: radial-gradient(
+        ellipse 70% 76% at 50% 48%,
+        #000 0%,
+        #000 52%,
+        rgba(0, 0, 0, .85) 67%,
+        rgba(0, 0, 0, .38) 82%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse 70% 76% at 50% 48%,
+        #000 0%,
+        #000 52%,
+        rgba(0, 0, 0, .85) 67%,
+        rgba(0, 0, 0, .38) 82%,
+        transparent 100%
+    );
+}
+
+
+/* =========================================================
+   STATEMENT
+   ========================================================= */
+
+.statement {
+    position: absolute;
+
+    left: 2.5vw;
+    bottom: 17vh;
+
+    z-index: 5;
+}
+
+.gender {
+    margin-bottom: 5px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.15;
+}
+
+.sound {
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   SELECTED
+   ========================================================= */
+
+.selected {
+    position: absolute;
+
+    right: 4.5vw;
+    bottom: 17vh;
+
+    width: min(30vw, 420px);
+
+    z-index: 5;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.selected .label {
+    margin-bottom: 10px;
+
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.references {
+    max-width: 420px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    position: absolute;
+
+    left: 2.5vw;
+    right: 2.5vw;
+    bottom: 3.5vh;
+
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    font-size: 12px;
+}
+
+
+/* SOUNDCLOUD */
+
+.soundcloud {
+    font-weight: 600;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+
+    transition:
+        opacity 180ms ease,
+        letter-spacing 220ms ease;
+}
+
+.soundcloud:hover {
+    opacity: .55;
+    letter-spacing: .15em;
+}
+
+
+/* CONTACT */
+
+.contact {
+    display: flex;
+    gap: 28px;
+}
+
+.contact a {
+    transition: opacity 180ms ease;
+}
+
+.contact a:hover {
+    opacity: .45;
+}
+
+
+/* =========================================================
+   PORTRAIT
+   ========================================================= */
+
+@media (max-width: 700px) and (orientation: portrait) {
+
+    .identity {
+        top: 4vh;
+        left: 6vw;
+    }
+
+    .identity h1 {
+        font-size: clamp(5.2rem, 28vw, 8rem);
+        line-height: .72;
+    }
+
+    .identity p {
+        margin-top: 1.3rem;
+        font-size: 9px;
+    }
+
+
+    /* IMAGE */
+
+    .visual {
+        top: 39%;
+        left: 58%;
+
+        width: 46vw;
+        height: 27vh;
+
+        max-width: 230px;
+        max-height: 280px;
+    }
+
+    .visual img {
+        object-position: 50% 40%;
+    }
+
+
+    /* STATEMENT */
+
+    .statement {
+        left: 6vw;
+        bottom: 27.5vh;
+    }
+
+    .gender {
+        margin-bottom: 4px;
+        font-size: 17px;
+    }
+
+    .sound {
+        font-size: 11px;
+    }
+
+
+    /* SELECTED */
+
+    .selected {
+        right: 6vw;
+        bottom: 30vh;
+
+        width: 47vw;
+
+        font-size: 10.5px;
+        line-height: 1.45;
+    }
+
+    .selected .label {
+        margin-bottom: 7px;
+        font-size: 9px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        left: 6vw;
+        right: 6vw;
+        bottom: 4vh;
+
+        font-size: 10px;
+    }
+
+    .soundcloud {
+        font-weight: 600;
+        letter-spacing: .11em;
+    }
+
+    .contact {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 3px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   ========================================================= */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+    .identity {
+        top: 8vh;
+        left: 3.5vw;
+    }
+
+    .identity h1 {
+        font-size: clamp(4.5rem, 13vw, 8rem);
+        line-height: .7;
+    }
+
+    .identity p {
+        margin-top: 1rem;
+        font-size: 9px;
+    }
+
+
+    /* IMAGE */
+
+    .visual {
+        top: 40%;
+        left: 52%;
+
+        width: 31vw;
+        height: 43vh;
+
+        max-width: none;
+        max-height: none;
+    }
+
+    .visual img {
+        object-position: 50% 35%;
+
+        -webkit-mask-image: radial-gradient(
+            ellipse 72% 80% at center,
+            #000 0%,
+            #000 50%,
+            rgba(0, 0, 0, .75) 70%,
+            transparent 100%
+        );
+
+        mask-image: radial-gradient(
+            ellipse 72% 80% at center,
+            #000 0%,
+            #000 50%,
+            rgba(0, 0, 0, .75) 70%,
+            transparent 100%
+        );
+    }
+
+
+    /* STATEMENT */
+
+    .statement {
+        left: 3.5vw;
+        bottom: 27vh;
+    }
+
+    .gender {
+        font-size: 17px;
+    }
+
+    .sound {
+        font-size: 11px;
+    }
+
+
+    /* SELECTED */
+
+    .selected {
+        right: 4.5vw;
+        bottom: 26vh;
+
+        width: 26vw;
+
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    .selected .label {
+        margin-bottom: 6px;
+        font-size: 9px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        left: 3.5vw;
+        right: 3.5vw;
+        bottom: 7vh;
+
+        font-size: 10px;
+    }
+
+    .soundcloud {
+        font-weight: 600;
+        letter-spacing: .11em;
+    }
+
+    .contact {
+        gap: 18px;
+    }
+}

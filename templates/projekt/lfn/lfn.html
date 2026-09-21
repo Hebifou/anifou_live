@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LFN — Les Filles Noires</title>
+
+    <meta
+        name="description"
+        content="LFN — Les Filles Noires. Gender fluid. Sound / selection."
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='lfn/lfn.css') }}"
+    >
+</head>
+
+<body>
+
+<main class="lfn">
+
+    <header class="identity">
+        <h1>LFN</h1>
+        <p>Les Filles Noires</p>
+    </header>
+
+
+    <figure class="visual">
+        <img
+            src="{{ url_for('static', filename='lfn/lfn.png') }}"
+            alt="LFN — Les Filles Noires"
+        >
+    </figure>
+
+
+    <section class="statement">
+        <p class="gender">gender fluid</p>
+        <p class="sound">sound / selection</p>
+    </section>
+
+
+    <section class="selected">
+        <p class="label">Selected</p>
+
+        <p class="references">
+            Filmfest Hamburg, Fashion Week Berlin, Chanel,
+            Warner Music Group, Melt Festival, Watergate
+        </p>
+    </section>
+
+
+    <footer class="footer">
+
+        <a
+            class="soundcloud"
+            href="https://soundcloud.com/lesfillesnoires"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            SoundCloud
+        </a>
+
+
+        <div class="contact">
+            <a href="mailto:mail@anifou.com">
+                mail@anifou.com
+            </a>
+
+            <a href="tel:+491788801921">
+                +49 178 8801921
+            </a>
+        </div>
+
+    </footer>
+
+</main>
+
+</body>
+</html>
