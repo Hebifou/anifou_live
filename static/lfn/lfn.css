@@ -174,6 +174,10 @@ a {
     max-width: 420px;
 }
 
+.desktop-break {
+    display: inline;
+}
+
 
 /* =========================================================
    FOOTER
@@ -231,7 +235,7 @@ a {
 
 
 /* =========================================================
-   PORTRAIT
+   MOBILE PORTRAIT — BASE
    ========================================================= */
 
 @media (max-width: 700px) and (orientation: portrait) {
@@ -274,7 +278,12 @@ a {
 
     .statement {
         left: 6vw;
-        bottom: 27.5vh;
+        bottom: 25vh;
+    }
+
+    .genre {
+        font-size: 16px;
+        line-height: 1.2;
     }
 
     .gender {
@@ -291,9 +300,9 @@ a {
 
     .selected {
         right: 6vw;
-        bottom: 30vh;
+        bottom: 25vh;
 
-        width: 47vw;
+        width: 51vw;
 
         font-size: 10.5px;
         line-height: 1.45;
@@ -302,6 +311,15 @@ a {
     .selected .label {
         margin-bottom: 7px;
         font-size: 9px;
+    }
+
+    .references {
+        max-width: none;
+    }
+
+    /* Mobile decides its own natural wrapping */
+    .desktop-break {
+        display: none;
     }
 
 
@@ -329,6 +347,137 @@ a {
 
 
 /* =========================================================
+   SMALL PORTRAIT
+   iPhone SE / narrow phones
+   ========================================================= */
+
+@media (max-width: 390px) and (orientation: portrait) {
+
+    .identity {
+        top: 4vh;
+    }
+
+    .identity h1 {
+        font-size: 27vw;
+    }
+
+    .identity p {
+        margin-top: 1.15rem;
+        font-size: 8.5px;
+    }
+
+
+    /* IMAGE */
+
+    .visual {
+        top: 40%;
+        left: 59%;
+
+        width: 46vw;
+        height: 28vh;
+
+        max-width: 205px;
+        max-height: 235px;
+    }
+
+
+    /* LOWER CONTENT */
+
+    .statement {
+        bottom: 26vh;
+    }
+
+    .genre {
+        font-size: 15px;
+    }
+
+    .selected {
+        right: 6vw;
+        bottom: 25.5vh;
+
+        width: 50vw;
+
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+    .selected .label {
+        margin-bottom: 6px;
+        font-size: 8.5px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        bottom: 4vh;
+        font-size: 9.5px;
+    }
+}
+
+
+/* =========================================================
+   LARGE PORTRAIT
+   Larger iPhones / tall phones
+   ========================================================= */
+
+@media (min-width: 391px) and (max-width: 700px)
+       and (orientation: portrait) {
+
+    .identity {
+        top: 4vh;
+        left: 6vw;
+    }
+
+    .identity h1 {
+        font-size: 27vw;
+    }
+
+
+    /* IMAGE */
+
+    .visual {
+        top: 42%;
+        left: 58%;
+
+        width: 43vw;
+        height: 25vh;
+
+        max-width: 235px;
+        max-height: 285px;
+    }
+
+
+    /* LOWER CONTENT */
+
+    .statement {
+        bottom: 22vh;
+    }
+
+    .genre {
+        font-size: 16px;
+    }
+
+    .selected {
+        right: 6vw;
+        bottom: 22vh;
+
+        width: 52vw;
+
+        font-size: 10.5px;
+        line-height: 1.45;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        bottom: 4vh;
+    }
+}
+
+
+/* =========================================================
    MOBILE LANDSCAPE
    ========================================================= */
 
@@ -340,45 +489,47 @@ a {
     }
 
     .identity h1 {
-        font-size: clamp(4.5rem, 13vw, 8rem);
+        font-size: clamp(4.3rem, 12vw, 7rem);
         line-height: .7;
     }
 
     .identity p {
-        margin-top: 1rem;
-        font-size: 9px;
+        margin-top: .9rem;
+        font-size: 8.5px;
     }
 
 
     /* IMAGE */
 
     .visual {
-        top: 40%;
-        left: 52%;
+        top: 42%;
+        left: 50%;
 
-        width: 31vw;
-        height: 43vh;
+        width: min(25vw, 230px);
+        height: min(50vh, 220px);
 
-        max-width: none;
-        max-height: none;
+        max-width: 230px;
+        max-height: 220px;
     }
 
     .visual img {
-        object-position: 50% 35%;
+        object-position: 50% 40%;
 
         -webkit-mask-image: radial-gradient(
-            ellipse 72% 80% at center,
+            ellipse 70% 78% at 50% 48%,
             #000 0%,
-            #000 50%,
-            rgba(0, 0, 0, .75) 70%,
+            #000 52%,
+            rgba(0, 0, 0, .82) 68%,
+            rgba(0, 0, 0, .35) 83%,
             transparent 100%
         );
 
         mask-image: radial-gradient(
-            ellipse 72% 80% at center,
+            ellipse 70% 78% at 50% 48%,
             #000 0%,
-            #000 50%,
-            rgba(0, 0, 0, .75) 70%,
+            #000 52%,
+            rgba(0, 0, 0, .82) 68%,
+            rgba(0, 0, 0, .35) 83%,
             transparent 100%
         );
     }
@@ -388,33 +539,49 @@ a {
 
     .statement {
         left: 3.5vw;
-        bottom: 27vh;
+        bottom: 24vh;
+    }
+
+    .genre {
+        font-size: 15px;
     }
 
     .gender {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .sound {
-        font-size: 11px;
+        font-size: 10.5px;
     }
 
 
     /* SELECTED */
 
     .selected {
-        right: 4.5vw;
-        bottom: 26vh;
+        right: 3.5vw;
+        bottom: 23vh;
 
-        width: 26vw;
+        width: 31vw;
 
-        font-size: 10px;
+        font-size: 9.5px;
         line-height: 1.4;
     }
 
     .selected .label {
         margin-bottom: 6px;
-        font-size: 9px;
+        font-size: 8.5px;
+    }
+
+    .references {
+        max-width: none;
+    }
+
+    /*
+       Landscape has enough horizontal room again,
+       so restore the intentional two-line composition.
+    */
+    .desktop-break {
+        display: inline;
     }
 
 
@@ -423,9 +590,9 @@ a {
     .footer {
         left: 3.5vw;
         right: 3.5vw;
-        bottom: 7vh;
+        bottom: 6vh;
 
-        font-size: 10px;
+        font-size: 9.5px;
     }
 
     .soundcloud {
@@ -434,6 +601,82 @@ a {
     }
 
     .contact {
+        flex-direction: row;
+        align-items: flex-end;
         gap: 18px;
+    }
+}
+
+
+/* =========================================================
+   VERY SHORT LANDSCAPE
+   e.g. small phones in landscape
+   ========================================================= */
+
+@media (max-height: 400px) and (orientation: landscape) {
+
+    .identity {
+        top: 8vh;
+    }
+
+    .identity h1 {
+        font-size: 10.5vw;
+    }
+
+    .identity p {
+        margin-top: .7rem;
+        font-size: 8px;
+    }
+
+
+    /* IMAGE */
+
+    .visual {
+        top: 40%;
+        left: 50%;
+
+        width: 23vw;
+        height: 48vh;
+
+        max-width: 210px;
+        max-height: 190px;
+    }
+
+
+    /* LOWER CONTENT */
+
+    .statement {
+        bottom: 23vh;
+    }
+
+    .genre {
+        font-size: 14px;
+    }
+
+    .selected {
+        right: 3.5vw;
+        bottom: 22vh;
+
+        width: 32vw;
+
+        font-size: 9px;
+        line-height: 1.35;
+    }
+
+    .selected .label {
+        margin-bottom: 5px;
+        font-size: 8px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        bottom: 6vh;
+        font-size: 9px;
+    }
+
+    .contact {
+        gap: 15px;
     }
 }
